@@ -1,0 +1,92 @@
+# 俄罗斯 83 个联邦主体，按 ISO 3166-2:RU 收录。
+# 地区 ASN 层只在 DB-IP 已经给出 RU 时细化地区，从不改国家；DB-IP 给出的地区不在表里时保留原值。
+# Russia's 83 federal subjects as listed in ISO 3166-2:RU. The regional ASN layer only refines records DB-IP already
+# places in RU and never changes countries; DB-IP's region is kept whenever it is not in this table.
+# iso_code: ISO 3166-2:RU 代码去掉 "RU-"。name_ru / capital_ru: 俄文官方名称和行政中心。
+# latitude, longitude: 行政中心城市中心坐标，已和 DB-IP City Lite 对过（全部在 6 km 以内）。
+# dbip_names: DB-IP（2026-06 版）对这个主体用过的各种拼写，用 ';' 分隔；"Altai" 在 DB-IP 里是阿尔泰共和国（戈尔诺-阿尔泰斯克）。
+# radius_km: 只知道主体时的精度半径 = 与该主体面积相等的圆的半径，向上取整到 50 km（至少 50 km）。
+iso_code,name_ru,name_en,dbip_names,geoname_id,capital_ru,capital_en,capital_geoname_id,latitude,longitude,radius_km
+AD,Республика Адыгея,Adygea,Adygea;Adygeya Republic,,Майкоп,Maykop,,44.6098,40.1006,50
+AL,Республика Алтай,Altai Republic,Altai Republic;Altai,,Горно-Алтайск,Gorno-Altaysk,,51.9581,85.9603,200
+ALT,Алтайский край,Altai Krai,Altai Krai;Altay Kray,,Барнаул,Barnaul,,53.3606,83.7636,250
+AMU,Амурская область,Amur Oblast,Amur Oblast,,Благовещенск,Blagoveshchensk,,50.2907,127.5272,350
+ARK,Архангельская область,Arkhangelsk Oblast,Arkhangelsk Oblast;Arkhangelskaya,,Архангельск,Arkhangelsk,,64.5393,40.5187,400
+AST,Астраханская область,Astrakhan Oblast,Astrakhan Oblast;Astrakhan,,Астрахань,Astrakhan,,46.3497,48.0408,150
+BA,Республика Башкортостан,Bashkortostan,Bashkortostan;Bashkortostan Republic,,Уфа,Ufa,,54.7388,55.9721,250
+BEL,Белгородская область,Belgorod Oblast,Belgorod Oblast,,Белгород,Belgorod,,50.5997,36.5983,100
+BRY,Брянская область,Bryansk Oblast,Bryansk Oblast,,Брянск,Bryansk,,53.2521,34.3717,150
+BU,Республика Бурятия,Buryatia,Buryatia;Buryatiya Republic,,Улан-Удэ,Ulan-Ude,,51.8335,107.5841,350
+CE,Чеченская Республика,Chechnya,Chechnya,,Грозный,Grozny,,43.3178,45.6949,100
+CHE,Челябинская область,Chelyabinsk Oblast,Chelyabinsk Oblast;Chelyabinsk,,Челябинск,Chelyabinsk,,55.1644,61.4368,200
+CHU,Чукотский автономный округ,Chukotka,Chukotka,,Анадырь,Anadyr,,64.7337,177.5089,500
+CU,Чувашская Республика,Chuvashia,Chuvashia;Chuvash Republic,,Чебоксары,Cheboksary,,56.1439,47.2489,100
+DA,Республика Дагестан,Dagestan,Dagestan,,Махачкала,Makhachkala,,42.9849,47.5047,150
+IN,Республика Ингушетия,Ingushetia,Ingushetia;Ingushetiya Republic,,Магас,Magas,,43.1688,44.8131,50
+IRK,Иркутская область,Irkutsk Oblast,Irkutsk Oblast,,Иркутск,Irkutsk,,52.2870,104.3050,500
+IVA,Ивановская область,Ivanovo Oblast,Ivanovo Oblast;Ivanovo,,Иваново,Ivanovo,,57.0004,40.9739,100
+KAM,Камчатский край,Kamchatka Krai,Kamchatka Krai;Kamchatka,,Петропавловск-Камчатский,Petropavlovsk-Kamchatsky,,53.0452,158.6483,400
+KB,Кабардино-Балкарская Республика,Kabardino-Balkaria,Kabardino-Balkaria;Kabardino-Balkariya Republic,,Нальчик,Nalchik,,43.4853,43.6071,100
+KC,Карачаево-Черкесская Республика,Karachay-Cherkessia,Karachay-Cherkessia;Karachayevo-Cherkesiya Republic,,Черкесск,Cherkessk,,44.2233,42.0578,100
+KDA,Краснодарский край,Krasnodar Krai,Krasnodar Krai;Krasnodarskiy,,Краснодар,Krasnodar,,45.0355,38.9753,200
+KEM,Кемеровская область — Кузбасс,Kemerovo Oblast,Kemerovo Oblast;Kuzbass,,Кемерово,Kemerovo,,55.3547,86.0873,200
+KGD,Калининградская область,Kaliningrad Oblast,Kaliningrad Oblast;Kaliningrad,,Калининград,Kaliningrad,,54.7104,20.4522,100
+KGN,Курганская область,Kurgan Oblast,Kurgan Oblast,,Курган,Kurgan,,55.4410,65.3411,200
+KHA,Хабаровский край,Khabarovsk Krai,Khabarovsk Krai;Khabarovsk,,Хабаровск,Khabarovsk,,48.4802,135.0719,550
+KHM,Ханты-Мансийский автономный округ — Югра,Khanty-Mansi,Khanty-Mansi;Khanty-Mansia,,Ханты-Мансийск,Khanty-Mansiysk,,61.0042,69.0019,450
+KIR,Кировская область,Kirov Oblast,Kirov Oblast;Kirov,,Киров,Kirov,,58.6036,49.6680,200
+KK,Республика Хакасия,Khakassia,Khakassia;Khakasiya Republic,,Абакан,Abakan,,53.7156,91.4292,150
+KL,Республика Калмыкия,Kalmykia,Kalmykia;Kalmykiya Republic,,Элиста,Elista,,46.3078,44.2558,200
+KLU,Калужская область,Kaluga Oblast,Kaluga Oblast;Kaluga,,Калуга,Kaluga,,54.5293,36.2754,100
+KO,Республика Коми,Komi,Komi,,Сыктывкар,Syktyvkar,,61.6688,50.8364,400
+KOS,Костромская область,Kostroma Oblast,Kostroma Oblast,,Кострома,Kostroma,,57.7665,40.9269,150
+KR,Республика Карелия,Karelia,Karelia,,Петрозаводск,Petrozavodsk,,61.7849,34.3469,250
+KRS,Курская область,Kursk Oblast,Kursk Oblast;Kursk,,Курск,Kursk,,51.7304,36.1926,100
+KYA,Красноярский край,Krasnoyarsk Krai,Krasnoyarsk Krai;Krasnoyarskiy,,Красноярск,Krasnoyarsk,,56.0153,92.8932,900
+LEN,Ленинградская область,Leningrad Oblast,Leningrad Oblast;Leningradskaya Oblast',,Гатчина,Gatchina,,59.5764,30.1283,200
+LIP,Липецкая область,Lipetsk Oblast,Lipetsk Oblast,,Липецк,Lipetsk,,52.6031,39.5708,100
+MAG,Магаданская область,Magadan Oblast,Magadan Oblast,,Магадан,Magadan,,59.5612,150.8301,400
+ME,Республика Марий Эл,Mari El,Mari El;Mariy-El Republic,,Йошкар-Ола,Yoshkar-Ola,,56.6344,47.8999,100
+MO,Республика Мордовия,Mordovia,Mordovia;Mordoviya Republic,,Саранск,Saransk,,54.1838,45.1749,100
+MOS,Московская область,Moscow Oblast,Moscow Oblast,,Красногорск,Krasnogorsk,,55.8204,37.3302,150
+MOW,Москва,Moscow,Moscow,,Москва,Moscow,,55.7558,37.6173,50
+MUR,Мурманская область,Murmansk Oblast,Murmansk Oblast;Murmansk,,Мурманск,Murmansk,,68.9585,33.0827,250
+NEN,Ненецкий автономный округ,Nenets,Nenets,,Нарьян-Мар,Naryan-Mar,,67.6380,53.0069,250
+NGR,Новгородская область,Novgorod Oblast,Novgorod Oblast,,Великий Новгород,Veliky Novgorod,,58.5215,31.2755,150
+NIZ,Нижегородская область,Nizhny Novgorod Oblast,Nizhny Novgorod Oblast,,Нижний Новгород,Nizhny Novgorod,,56.3269,44.0059,200
+NVS,Новосибирская область,Novosibirsk Oblast,Novosibirsk Oblast,,Новосибирск,Novosibirsk,,55.0084,82.9357,250
+OMS,Омская область,Omsk Oblast,Omsk Oblast;Omsk,,Омск,Omsk,,54.9885,73.3242,250
+ORE,Оренбургская область,Orenburg Oblast,Orenburg Oblast,,Оренбург,Orenburg,,51.7682,55.0970,200
+ORL,Орловская область,Oryol Oblast,Oryol Oblast;Orel Oblast;Oryol oblast,,Орёл,Oryol,,52.9673,36.0697,100
+PER,Пермский край,Perm Krai,Perm Krai;Perm,,Пермь,Perm,,58.0105,56.2502,250
+PNZ,Пензенская область,Penza Oblast,Penza Oblast;Penza,,Пенза,Penza,,53.1959,45.0183,150
+PRI,Приморский край,Primorsky Krai,Primorsky Krai;Primorskiy (Maritime) Kray;Primorye,,Владивосток,Vladivostok,,43.1155,131.8855,250
+PSK,Псковская область,Pskov Oblast,Pskov Oblast,,Псков,Pskov,,57.8194,28.3318,150
+ROS,Ростовская область,Rostov Oblast,Rostov Oblast;Rostov,,Ростов-на-Дону,Rostov-on-Don,,47.2357,39.7015,200
+RYA,Рязанская область,Ryazan Oblast,Ryazan Oblast,,Рязань,Ryazan,,54.6269,39.6916,150
+SA,Республика Саха (Якутия),Sakha (Yakutia),Sakha (Yakutia);Sakha,,Якутск,Yakutsk,,62.0355,129.6755,1000
+SAK,Сахалинская область,Sakhalin Oblast,Sakhalin Oblast,,Южно-Сахалинск,Yuzhno-Sakhalinsk,,46.9591,142.7380,200
+SAM,Самарская область,Samara Oblast,Samara Oblast,,Самара,Samara,,53.1959,50.1002,150
+SAR,Саратовская область,Saratov Oblast,Saratov Oblast;Saratovskaya Oblast,,Саратов,Saratov,,51.5331,46.0342,200
+SE,Республика Северная Осетия — Алания,North Ossetia-Alania,North Ossetia-Alania;North Ossetia;North Ossetia–Alania,,Владикавказ,Vladikavkaz,,43.0205,44.6819,100
+SMO,Смоленская область,Smolensk Oblast,Smolensk Oblast;Smolensk;Smolenskaya Oblast’,,Смоленск,Smolensk,,54.7826,32.0453,150
+SPE,Санкт-Петербург,Saint Petersburg,Saint Petersburg;St.-Petersburg,,Санкт-Петербург,Saint Petersburg,,59.9386,30.3141,50
+STA,Ставропольский край,Stavropol Krai,Stavropol Krai;Stavropol Kray;Stavropol’ Kray,,Ставрополь,Stavropol,,45.0428,41.9734,150
+SVE,Свердловская область,Sverdlovsk Oblast,Sverdlovsk Oblast;Sverdlovsk,,Екатеринбург,Yekaterinburg,,56.8389,60.6057,250
+TA,Республика Татарстан,Tatarstan,Tatarstan;Tatarstan Republic,,Казань,Kazan,,55.7963,49.1088,150
+TAM,Тамбовская область,Tambov Oblast,Tambov Oblast;Tambov,,Тамбов,Tambov,,52.7212,41.4523,150
+TOM,Томская область,Tomsk Oblast,Tomsk Oblast,,Томск,Tomsk,,56.4847,84.9482,350
+TUL,Тульская область,Tula Oblast,Tula Oblast;Tula,,Тула,Tula,,54.1931,37.6173,100
+TVE,Тверская область,Tver Oblast,Tver Oblast;Tver’ Oblast,,Тверь,Tver,,56.8587,35.9176,200
+TY,Республика Тыва,Tuva,Tuva;Tyva Republic,,Кызыл,Kyzyl,,51.7191,94.4378,250
+TYU,Тюменская область,Tyumen Oblast,Tyumen Oblast;Tyumen’ Oblast,,Тюмень,Tyumen,,57.1522,65.5272,250
+UD,Удмуртская Республика,Udmurtia,Udmurtia;Udmurtiya Republic,,Ижевск,Izhevsk,,56.8526,53.2045,150
+ULY,Ульяновская область,Ulyanovsk Oblast,Ulyanovsk Oblast;Ulyanovsk,,Ульяновск,Ulyanovsk,,54.3142,48.4031,150
+VGG,Волгоградская область,Volgograd Oblast,Volgograd Oblast,,Волгоград,Volgograd,,48.7080,44.5133,200
+VLA,Владимирская область,Vladimir Oblast,Vladimir Oblast;Vladimir,,Владимир,Vladimir,,56.1290,40.4066,100
+VLG,Вологодская область,Vologda Oblast,Vologda Oblast;Vologda,,Вологда,Vologda,,59.2205,39.8916,250
+VOR,Воронежская область,Voronezh Oblast,Voronezh Oblast;Voronezj,,Воронеж,Voronezh,,51.6720,39.1843,150
+YAN,Ямало-Ненецкий автономный округ,Yamalo-Nenets,Yamalo-Nenets,,Салехард,Salekhard,,66.5299,66.6019,500
+YAR,Ярославская область,Yaroslavl Oblast,Yaroslavl Oblast;Jaroslavl,,Ярославль,Yaroslavl,,57.6261,39.8845,150
+YEV,Еврейская автономная область,Jewish Autonomous Oblast,Jewish Autonomous Oblast,,Биробиджан,Birobidzhan,,48.7928,132.9241,150
+ZAB,Забайкальский край,Zabaykalsky Krai,Zabaykalsky Krai;Transbaikal Territory;Zabaykalskiy (Transbaikal) Kray,,Чита,Chita,,52.0340,113.4994,400

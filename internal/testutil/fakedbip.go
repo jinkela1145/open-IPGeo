@@ -65,6 +65,12 @@ var DefaultFakeNets = []FakeNet{
 	{CIDR: "2a02:1::/41", Country: "DE", Subdivision: "Berlin", City: "Berlin", Lat: 52.52, Lon: 13.40},
 	{CIDR: "2a02:1:80::/42", Country: "DE", Subdivision: "Hamburg", City: "Hamburg", Lat: 53.55, Lon: 9.99},
 	{CIDR: "2a02:1:c0::/42", Country: "DE", Subdivision: "Berlin", City: "Berlin", Lat: 52.52, Lon: 13.40},
+	// Russia: the regional ASN layer.
+	{CIDR: "5.2.0.0/16", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
+	{CIDR: "5.3.0.0/16", Country: "RU", Subdivision: "Sverdlovsk", City: "Yekaterinburg", Lat: 56.84, Lon: 60.61},
+	{CIDR: "5.4.0.0/16", Country: "RU", Subdivision: "Tatarstan Republic", City: "Kazan", Lat: 55.79, Lon: 49.12},
+	{CIDR: "5.5.0.0/16", Country: "RU", Subdivision: "Krasnodarskiy Kray", City: "Krasnodar", Lat: 45.04, Lon: 38.98},
+	{CIDR: "5.6.0.0/16", Country: "RU", Lat: 60.0, Lon: 100.0},
 }
 
 var countryInfo = map[string][4]string{
@@ -81,6 +87,7 @@ var countryInfo = map[string][4]string{
 	"FR": {"EU", "Europe", "France", "法国"},
 	"NL": {"EU", "Europe", "Netherlands", "荷兰"},
 	"BE": {"EU", "Europe", "Belgium", "比利时"},
+	"RU": {"EU", "Europe", "Russia", "俄罗斯"},
 }
 
 // WriteFakeDBIP writes a gzip-compressed MMDB that looks like DB-IP City Lite.
@@ -171,7 +178,12 @@ const IPtoASNSample = "1.0.0.0\t1.0.0.255\t13335\tUS\tCLOUDFLARENET\n" +
 	"2409:8000::\t2409:8000:ffff:ffff:ffff:ffff:ffff:ffff\t9808\tCN\tCMNET-GD Guangdong Mobile Communication Co.Ltd.\n" +
 	"2409:8020::\t2409:8020:ffff:ffff:ffff:ffff:ffff:ffff\t56046\tCN\tCMNET-JIANGSU-AP China Mobile communications corporation\n" +
 	"2400:cb00::\t2400:cb00:ffff:ffff:ffff:ffff:ffff:ffff\t13335\tUS\tCLOUDFLARENET\n" +
-	"2a00:1450::\t2a00:1450:ffff:ffff:ffff:ffff:ffff:ffff\t15169\tUS\tGOOGLE\n"
+	"2a00:1450::\t2a00:1450:ffff:ffff:ffff:ffff:ffff:ffff\t15169\tUS\tGOOGLE\n" +
+	"5.2.0.0\t5.2.255.255\t8580\tRU\tSANDY MTS Nizhniy Novgorod, Russia\n" +
+	"5.3.0.0\t5.3.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n" +
+	"5.4.0.0\t5.4.255.255\t8580\tRU\tSANDY MTS Nizhniy Novgorod, Russia\n" +
+	"5.5.0.0\t5.5.255.255\t64701\tRU\tTEST-KRD Krasnodar, Russia\n" +
+	"5.6.0.0\t5.6.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n"
 
 // AWSSample is a small ip-ranges.json.
 const AWSSample = `{

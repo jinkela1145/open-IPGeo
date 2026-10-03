@@ -185,7 +185,7 @@ func TestCuratedTables(t *testing.T) {
 		t.Fatalf("cn_admin: %v %+v", err, provs)
 	}
 	asn := writeTemp(t, "cn_asn.csv", strings.Join(HeaderCNASN, ",")+"\n56046,JS,CMNET-JIANGSU-AP,iptoasn AS_description,\n")
-	if rows, err := ReadCNASN(asn); err != nil || rows[0].ProvinceISO != "JS" {
+	if rows, err := ReadCNASN(asn); err != nil || rows[0].RegionISO != "JS" || rows[0].Country != "CN" {
 		t.Fatalf("cn_asn: %v %+v", err, rows)
 	}
 	noEvidence := writeTemp(t, "cn_asn2.csv", strings.Join(HeaderCNASN, ",")+"\n56046,JS,X,,\n")

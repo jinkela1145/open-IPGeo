@@ -153,6 +153,16 @@ func newFixture(t *testing.T) *fixture {
 		"JS,江苏省,Jiangsu,Jiangsu,1806260,南京,Nanjing,1799962,32.06167,118.77778,250")
 	write(FileCNCities, sources.HeaderCNCities, "GD,深圳市,Shenzhen,1795565,22.54554,114.0683")
 	write(FileCNASN, sources.HeaderCNASN, "56046,JS,CMNET-JIANGSU-AP,iptoasn AS_description,test")
+	write(FileRUAdmin, sources.HeaderRUAdmin,
+		"MOW,Москва,Moscow,Moscow,,Москва,Moscow,,55.7558,37.6173,50",
+		"NIZ,Нижегородская область,Nizhny Novgorod Oblast,Nizhny Novgorod Oblast,,Нижний Новгород,Nizhny Novgorod,,56.3269,44.0059,200",
+		"SVE,Свердловская область,Sverdlovsk Oblast,Sverdlovsk Oblast;Sverdlovsk,,Екатеринбург,Yekaterinburg,,56.8389,60.6057,250",
+		"TA,Республика Татарстан,Tatarstan,Tatarstan Republic,,Казань,Kazan,,55.7963,49.1088,150",
+		"KDA,Краснодарский край,Krasnodar Krai,Krasnodar Krai,,Краснодар,Krasnodar,,45.0355,38.9753,200")
+	write(FileRUASN, sources.HeaderRUASN,
+		"8580,NIZ,SANDY,iptoasn AS description: SANDY MTS Nizhniy Novgorod,test",
+		"64700,SVE,TEST-EKB,test,test",
+		"64701,KDA,TEST-KRD,test,test")
 	write(FileAnycastNS, sources.HeaderAnycastNets,
 		"1.1.1.0/24,true,false,Cloudflare 1.1.1.1,test",
 		"8.8.8.0/24,true,false,Google Public DNS,test")
@@ -306,6 +316,36 @@ func TestEndToEnd(t *testing.T) {
 			t.Errorf("%s: location %v,%v want %v,%v", c.ip, got.Location.Latitude, got.Location.Longitude, c.lat, c.lon)
 		}
 	}
+	// Russia: same rules with Moscow as the carriers' headquarters.
+	for _, c := range []struct {
+		ip, sub, ru, source string
+		radius              uint16
+	}{
+		{"5.2.0.1", "NIZ", "Нижегородская область", "bgp-asn", 200}, // DB-IP says Moscow -> corrected
+		{"5.3.0.1", "", "", "dbip", 50},                            // DB-IP agrees (variant spelling "Sverdlovsk")
+		{"5.4.0.1", "", "", "dbip", 50},                            // DB-IP names another region -> kept
+		{"5.5.0.1", "", "", "dbip", 50},                            // unknown spelling of a region -> kept
+		{"5.6.0.1", "SVE", "Свердловская область", "bgp-asn", 250}, // no region in DB-IP -> filled
+	} {
+		var got fullRec
+		if !lookup(t, full, c.ip, &got) || got.Country.ISOCode != "RU" || got.Source != c.source || got.Location.AccuracyRadius != c.radius {
+			t.Errorf("%s: got %+v", c.ip, got)
+			continue
+		}
+		if c.sub != "" && (len(got.Subdivisions) == 0 || got.Subdivisions[0].ISOCode != c.sub || got.Subdivisions[0].Names["ru"] != c.ru || got.City.Names != nil) {
+			t.Errorf("%s: subdivision %+v city %+v, want %s %s", c.ip, got.Subdivisions, got.City, c.sub, c.ru)
+		}
+	}
+	if ru := m.Stats.IPv4.RegionLayer["RU"]; ru["corrected"] != 65536 || ru["agree"] != 65536 || ru["conflict"] != 2*65536 || ru["filled"] != 65536 {
+		t.Errorf("RU layer stats: %v", ru)
+	}
+	if b, err := os.ReadFile(filepath.Join(out, "reports", "unmatched_ru_subdivisions.csv")); err != nil || !strings.Contains(string(b), "Krasnodarskiy Kray,") {
+		t.Errorf("unmatched RU subdivisions report: %v %q", err, b)
+	}
+	if b, err := os.ReadFile(filepath.Join(out, "reports", "ru_asn_candidates.csv")); err != nil || !strings.Contains(string(b), "8580,\"SANDY MTS Nizhniy Novgorod, Russia\"") {
+		t.Errorf("RU candidates report: %v %q", err, b)
+	}
+
 	var none fullRec
 	for _, ip := range []string{"10.0.0.1", "192.168.1.1", "2001:db8::1", "::1"} {
 		if lookup(t, full, ip, &none) {
@@ -524,6 +564,12 @@ func TestRepositoryDataFilesAreValid(t *testing.T) {
 	if _, err := sources.ReadCNASN(filepath.Join(dir, FileCNASN)); err != nil {
 		t.Error(err)
 	}
+	if _, err := sources.ReadRUAdmin(filepath.Join(dir, FileRUAdmin)); err != nil {
+		t.Error(err)
+	}
+	if _, err := sources.ReadRUASN(filepath.Join(dir, FileRUASN)); err != nil {
+		t.Error(err)
+	}
 	if _, err := sources.ReadAnycastASNs(filepath.Join(dir, FileAnycastAS)); err != nil {
 		t.Error(err)
 	}
@@ -546,7 +592,7 @@ func TestRepositoryDataFilesAreValid(t *testing.T) {
 // to a province missing from cn_admin.csv, an invalid override) fail here.
 func TestBuildWithRepositoryTables(t *testing.T) {
 	fx := newFixture(t)
-	for _, name := range []string{FileCNAdmin, FileCNCities, FileCNASN, FileAnycastNS, FileAnycastAS, FileOverrides} {
+	for _, name := range []string{FileCNAdmin, FileCNCities, FileCNASN, FileRUAdmin, FileRUASN, FileAnycastNS, FileAnycastAS, FileOverrides} {
 		b, err := os.ReadFile(filepath.Join("../../data", name))
 		if err != nil {
 			t.Fatal(err)

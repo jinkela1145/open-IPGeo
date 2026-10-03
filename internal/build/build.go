@@ -23,14 +23,17 @@ import (
 
 // Inputs are the parsed layers, lowest priority first.
 type Inputs struct {
-	Base      *sources.BaseData
-	ASN       *sources.ASNData // may be nil
-	Flags     []sources.FlagEntry
-	ASNFlags  map[uint32]sources.NetFlags
-	Provinces []sources.CNProvince
-	Cities    []sources.CNCity
-	CNASN     []sources.CNASN
-	Overrides []sources.Override
+	Base     *sources.BaseData
+	ASN      *sources.ASNData // may be nil
+	Flags    []sources.FlagEntry
+	ASNFlags map[uint32]sources.NetFlags
+	// Regions and RegionASNs feed the regional ASN layer (China, Russia):
+	// the subdivisions of each covered country and the ASNs of networks that
+	// serve a single subdivision.
+	Regions    []sources.Region
+	RegionASNs []sources.RegionASN
+	Cities     []sources.CNCity
+	Overrides  []sources.Override
 	// Address space delegated to China, only used for coverage statistics.
 	CNDelegatedV4, CNDelegatedV6 []iprange.Range
 }
@@ -179,8 +182,8 @@ func Build(in *Inputs, opt Options) (*Result, error) {
 		IPv4: accs[true].report(), IPv6: accs[false].report(),
 		CNCoverageIPv4: accs[true].coverage(), CNCoverageIPv6: accs[false].coverage(),
 	}
-	if len(r.unmatchedCN) > 0 {
-		res.Stats.UnmatchedCNSubdivisions = r.unmatchedCN
+	if len(r.unmatched) > 0 {
+		res.Stats.UnmatchedSubdivisions = r.unmatched
 	}
 
 	// Pass 2: Lite database.

@@ -17,7 +17,9 @@ type familyAcc struct {
 	cdn      iprange.U128
 	cloud    map[string]iprange.U128
 	withASN  iprange.U128
-	cnLayer  [cnOutcomes]iprange.U128 // by cnOutcome
+	// regionLayer counts what the regional ASN layer did, per country of
+	// the base record and outcome.
+	regionLayer map[string]*[outcomes]iprange.U128
 
 	// China coverage: address space delegated to CN by APNIC.
 	delegated   iprange.U128
@@ -25,12 +27,13 @@ type familyAcc struct {
 	delCountry  map[string]iprange.U128
 	delCNLevel  [4]iprange.U128 // by level, only records with country CN
 	delCNSource map[string]iprange.U128
-	delCNLayer  [cnOutcomes]iprange.U128
+	delCNLayer  [outcomes]iprange.U128
 }
 
 func newFamilyAcc(is4 bool, delegated []iprange.Range) *familyAcc {
 	a := &familyAcc{
 		is4:         is4,
+		regionLayer: map[string]*[outcomes]iprange.U128{},
 		bySource:    map[string]iprange.U128{},
 		cloud:       map[string]iprange.U128{},
 		delCountry:  map[string]iprange.U128{},
@@ -42,7 +45,7 @@ func newFamilyAcc(is4 bool, delegated []iprange.Range) *familyAcc {
 	return a
 }
 
-func (a *familyAcc) add(r *resolver, k key, outcome cnOutcome, size iprange.U128, inDelegated bool) {
+func (a *familyAcc) add(r *resolver, k key, oc outcome, size iprange.U128, inDelegated bool) {
 	country, lv, source := r.summary(k)
 	a.total = a.total.Add(size)
 	a.bySource[source] = a.bySource[source].Add(size)
@@ -61,7 +64,15 @@ func (a *familyAcc) add(r *resolver, k key, outcome cnOutcome, size iprange.U128
 	if k.asn >= 0 {
 		a.withASN = a.withASN.Add(size)
 	}
-	a.cnLayer[outcome] = a.cnLayer[outcome].Add(size)
+	if oc != outNone {
+		cc := countryISO(r.base.Records[k.base].Country)
+		l := a.regionLayer[cc]
+		if l == nil {
+			l = &[outcomes]iprange.U128{}
+			a.regionLayer[cc] = l
+		}
+		l[oc] = l[oc].Add(size)
+	}
 	if !inDelegated {
 		return
 	}
@@ -70,21 +81,23 @@ func (a *familyAcc) add(r *resolver, k key, outcome cnOutcome, size iprange.U128
 	if country == "CN" {
 		a.delCNLevel[lv] = a.delCNLevel[lv].Add(size)
 		a.delCNSource[source] = a.delCNSource[source].Add(size)
-		a.delCNLayer[outcome] = a.delCNLayer[outcome].Add(size)
+		a.delCNLayer[oc] = a.delCNLayer[oc].Add(size)
 	}
 }
 
 // FamilyReport summarises one family of the full database.
 type FamilyReport struct {
-	Unit       string             `json:"unit"`
-	Ranges     int                `json:"ranges"`
-	Total      float64            `json:"total"`
-	BySource   map[string]float64 `json:"by_source"`
-	Anycast    float64            `json:"anycast"`
-	CDN        float64            `json:"cdn"`
-	Cloud      map[string]float64 `json:"cloud"`
-	WithASN    float64            `json:"with_asn"`
-	CNASNLayer map[string]float64 `json:"cn_asn_layer"`
+	Unit     string             `json:"unit"`
+	Ranges   int                `json:"ranges"`
+	Total    float64            `json:"total"`
+	BySource map[string]float64 `json:"by_source"`
+	Anycast  float64            `json:"anycast"`
+	CDN      float64            `json:"cdn"`
+	Cloud    map[string]float64 `json:"cloud"`
+	WithASN  float64            `json:"with_asn"`
+	// RegionLayer reports the regional ASN layer per country:
+	// agree / corrected / filled / conflict.
+	RegionLayer map[string]map[string]float64 `json:"asn_region_layer"`
 }
 
 // CoverageReport describes how the address space APNIC delegated to China is
@@ -98,11 +111,13 @@ type CoverageReport struct {
 
 // Stats is written to manifest.json.
 type Stats struct {
-	IPv4                    FamilyReport   `json:"ipv4"`
-	IPv6                    FamilyReport   `json:"ipv6"`
-	CNCoverageIPv4          CoverageReport `json:"cn_coverage_ipv4"`
-	CNCoverageIPv6          CoverageReport `json:"cn_coverage_ipv6"`
-	UnmatchedCNSubdivisions map[string]int `json:"unmatched_cn_subdivisions,omitempty"`
+	IPv4           FamilyReport   `json:"ipv4"`
+	IPv6           FamilyReport   `json:"ipv6"`
+	CNCoverageIPv4 CoverageReport `json:"cn_coverage_ipv4"`
+	CNCoverageIPv6 CoverageReport `json:"cn_coverage_ipv6"`
+	// UnmatchedSubdivisions counts DB-IP subdivision names of countries
+	// with a region table that match no row, per country.
+	UnmatchedSubdivisions map[string]map[string]int `json:"unmatched_subdivisions,omitempty"`
 	// LiteAggregation reports the Lite block aggregation per family
 	// ("ipv4", "ipv6").
 	LiteAggregation map[string]LiteAggStats `json:"lite_aggregation,omitempty"`
@@ -122,12 +137,15 @@ func (a *familyAcc) report() FamilyReport {
 		Unit: unit, Ranges: a.ranges, Total: conv(a.total),
 		BySource: map[string]float64{}, Cloud: map[string]float64{},
 		Anycast: conv(a.anycast), CDN: conv(a.cdn), WithASN: conv(a.withASN),
-		CNASNLayer: map[string]float64{
-			"agree":     conv(a.cnLayer[cnAgree]),
-			"corrected": conv(a.cnLayer[cnCorrected]),
-			"filled":    conv(a.cnLayer[cnFilled]),
-			"conflict":  conv(a.cnLayer[cnConflict]),
-		},
+		RegionLayer: map[string]map[string]float64{},
+	}
+	for cc, l := range a.regionLayer {
+		fr.RegionLayer[cc] = map[string]float64{
+			"agree":     conv(l[outAgree]),
+			"corrected": conv(l[outCorrected]),
+			"filled":    conv(l[outFilled]),
+			"conflict":  conv(l[outConflict]),
+		}
 	}
 	for k, v := range a.bySource {
 		fr.BySource[k] = conv(v)
@@ -154,10 +172,10 @@ func (a *familyAcc) coverage() CoverageReport {
 	cr.Percent["cn_source_dbip"] = pct(a.delCNSource[SourceDBIP])
 	cr.Percent["cn_source_bgp_asn"] = pct(a.delCNSource[SourceBGPASN])
 	cr.Percent["cn_source_override"] = pct(a.delCNSource[SourceOverride])
-	cr.Percent["cn_asn_agree"] = pct(a.delCNLayer[cnAgree])
-	cr.Percent["cn_asn_corrected"] = pct(a.delCNLayer[cnCorrected])
-	cr.Percent["cn_asn_filled"] = pct(a.delCNLayer[cnFilled])
-	cr.Percent["cn_asn_conflict"] = pct(a.delCNLayer[cnConflict])
+	cr.Percent["cn_asn_agree"] = pct(a.delCNLayer[outAgree])
+	cr.Percent["cn_asn_corrected"] = pct(a.delCNLayer[outCorrected])
+	cr.Percent["cn_asn_filled"] = pct(a.delCNLayer[outFilled])
+	cr.Percent["cn_asn_conflict"] = pct(a.delCNLayer[outConflict])
 	type kv struct {
 		k string
 		v iprange.U128

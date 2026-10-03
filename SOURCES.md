@@ -53,7 +53,7 @@
 - **内容**：IP 段 → 起源 ASN、国家代码、AS 名称（来自 BGP 路由表）。
 - **下载**：`https://iptoasn.com/data/ip2asn-combined.tsv.gz`，每小时更新。TSV 列：`range_start`、`range_end`、`AS_number`、`country_code`、`AS_description`。
 - **协议**：PDDL 1.0（公有领域，不强制署名），维护者 Frank Denis。公共查询 API 已于 2020-12-31 停用；构建每天最多下载一次并使用缓存。
-- **用途**：每条记录的 ASN；中国省级修正用到的「网段 → 起源 ASN」。`data/cn_asn_province.csv` 里的「ASN → 省份」由人工审核，依据之一是 iptoasn 自带的 AS 名称（PDDL）；iptoasn 没有说明这些名称最初的来源。
+- **用途**：每条记录的 ASN；中国省级修正和俄罗斯地区修正用到的「网段 → 起源 ASN」。`data/cn_asn_province.csv`、`data/ru_asn_region.csv` 里的「ASN → 地区」由人工审核，依据之一是 iptoasn 自带的 AS 名称（PDDL）；iptoasn 没有说明这些名称最初的来源。
 - **出处**：<https://iptoasn.com/>
 
 ### Cloudflare / Fastly 公布的网段
@@ -83,11 +83,12 @@
 
 ### 本仓库维护的表 / Curated tables
 
-`data/overrides.csv`、`data/cn_admin.csv`、`data/cn_cities.csv`、`data/cn_asn_province.csv`、`data/anycast_prefixes.csv`、`data/anycast_asns.csv`，随数据按 CC BY 4.0 发布：
+`data/overrides.csv`、`data/cn_admin.csv`、`data/cn_cities.csv`、`data/cn_asn_province.csv`、`data/ru_admin.csv`、`data/ru_asn_region.csv`、`data/anycast_prefixes.csv`、`data/anycast_asns.csv`，随数据按 CC BY 4.0 发布：
 
 - 每一行都要写依据；
 - 依据不能来自标 ❌ 的数据源，也不能是 APNIC whois 的查询结果；
 - 优先使用当事方自己公布的信息。
+- `data/ru_admin.csv` 的名称和行政中心是公开的官方名称，坐标是行政中心的城市中心（常识数据），已和 DB-IP City Lite 逐个对过，全部相差不到 6 km。
 
 ---
 
@@ -114,6 +115,7 @@
 
 - geofeed 是各运营商自己发布的 CSV，绝大多数没写授权。
 - 找 geofeed 地址要读 RIR 的 whois。RIPE Database Terms and Conditions 第 4.5 条："A User may not re-package, download, compile, re-distribute or re-use any or all of the RIPE Database or the data contained therein unless they do so only with an insubstantial part of the RIPE Database or the data contained therein or when permission to do so is granted by the RIPE NCC."；第 3.1 条又把 "publishing geolocation information about the usage of Internet number resources" 列为数据库用途之一。动手前要向 RIPE NCC 确认。
+- 2026-10-03：给 RIPE NCC 的询问邮件已起草，等仓库主人发出；回复之前不使用 RIPE 数据库。
 
 ---
 

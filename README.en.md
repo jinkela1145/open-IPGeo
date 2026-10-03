@@ -29,6 +29,7 @@ Lowest priority first; later layers override earlier ones:
 
 1. **Base**: DB-IP IP to City Lite (CC BY 4.0).
 2. **Mainland China provinces**: many provincial carrier networks announce their prefixes in the global routing table with their own AS numbers. DB-IP often places the national carriers' space in Beijing, where their headquarters are (Beijing holds over a quarter of DB-IP's Chinese IPv4 space in 2026). When a prefix's origin AS belongs to a provincial network ([`data/cn_asn_province.csv`](data/cn_asn_province.csv), a few hundred entries, rules at the top of the file) and DB-IP says Beijing or gives no province, the province is replaced (capital coordinates, `source` = `bgp-asn`). When DB-IP agrees, its city-level result is kept; when DB-IP names another province, DB-IP is kept too. Prefix-to-AS data comes from iptoasn (PDDL 1.0).
+   **Russia** uses the same rules with Moscow city as the headquarters default ([`data/ru_admin.csv`](data/ru_admin.csv), [`data/ru_asn_region.csv`](data/ru_asn_region.csv)). DB-IP already places Russian regional operators well; most of its Moscow bias comes from national carriers whose ASNs do not say the region, so the effect is much smaller than in China (about 0.4 % of Russian IPv4 in the 2026-06 data). The layer only refines records DB-IP already places in RU and never changes countries; the region table follows ISO 3166-2:RU, and DB-IP's region is kept whenever it is not in the table.
 3. **Network flags**: Cloudflare and Fastly ranges, AWS / Google Cloud / Azure / Oracle cloud ranges, public DNS ranges confirmed to be anycast ([`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)) and CDN ASNs ([`data/anycast_asns.csv`](data/anycast_asns.csv)).
 4. **Manual overrides**: [`data/overrides.csv`](data/overrides.csv), highest priority.
 
@@ -94,6 +95,7 @@ The Azure download link changes every week; the build reads the current one from
 - Mobile networks can usually only be located to a province, sometimes only to a country.
 - DB-IP Lite is a free edition with limited accuracy. An accuracy benchmark will be added to `ACCURACY.md`.
 - China IPv6: the province correction only covers prefixes announced by provincial ASNs; most China Telecom prefixes are announced by the national backbone AS4134.
+- Russia: DB-IP places about a third of Russian IPv4 in Moscow; much of the national carriers' mobile space is really elsewhere, but ASNs cannot tell. Regional data from the RIPE database or operator geofeeds would help; the licensing question is open (see [`SOURCES.md`](SOURCES.md)).
 - No street-level location, no proxy / VPN detection.
 
 ## Attribution (required)

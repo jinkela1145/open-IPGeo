@@ -29,6 +29,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 
 1. **底库**：DB-IP IP to City Lite（全球城市和坐标，CC BY 4.0）。
 2. **中国大陆省份修正**：运营商的省公司很多有自己的 ASN，并且用它在全球路由表里宣告网段。DB-IP 常把全国运营商的地址落在总部所在的北京（2026 年北京占了 DB-IP 里中国 IPv4 的四分之一以上）。所以如果某个网段的起源 ASN 属于某个省级网络（[`data/cn_asn_province.csv`](data/cn_asn_province.csv)，三百多个，收录规则写在文件开头），而 DB-IP 给出的是北京或没有省份，就改成这个省（省会坐标，`source` 记为 `bgp-asn`）。DB-IP 的省份一致时保留 DB-IP 的城市级结果；DB-IP 给的是别的具体省份时也保留 DB-IP，它可能知道更细的信息。网段归属哪个 ASN 来自 iptoasn（PDDL）。
+   **俄罗斯**用同样的规则，总部默认值换成莫斯科市（[`data/ru_admin.csv`](data/ru_admin.csv)、[`data/ru_asn_region.csv`](data/ru_asn_region.csv)）。俄罗斯的地区运营商 DB-IP 本来就放得比较准，偏到莫斯科的主要是全国性运营商（MTS、Beeline、MegaFon 的移动网等），它们的 ASN 不分地区，这一层帮不上，所以效果比中国小得多（2026-06 的数据约挪回 0.4% 的俄罗斯 IPv4）。这一层只在 DB-IP 已经给出 RU 时细化地区，从不改国家；地区表按 ISO 3166-2:RU 收录，DB-IP 给出的地区不在表里时保留原值。
 3. **网络类型标记**：Cloudflare、Fastly 公布的网段，AWS / Google Cloud / Azure / Oracle 公布的云网段，确认是任播的公共 DNS 网段（[`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)），以及按 ASN 标记的 CDN（[`data/anycast_asns.csv`](data/anycast_asns.csv)）。
 4. **人工修正**：[`data/overrides.csv`](data/overrides.csv)，优先级最高。
 
@@ -170,6 +171,7 @@ Azure 的下载链接每周都会变，构建时会自动从微软的下载页�
 - **移动网络**通常只能定位到省，有时只到国家。
 - **DB-IP Lite** 是免费版，精度不如商业版。准确度基准测试会在后续版本加入 `ACCURACY.md`。
 - **中国 IPv6**：省级修正只覆盖用省公司 ASN 宣告的网段。电信的大部分网段挂在全国骨干 AS4134 下面，这一层帮不上。
+- **俄罗斯**：DB-IP 把约三分之一的俄罗斯 IPv4 放在莫斯科，其中全国性运营商的移动网大多其实在各地，但只靠 ASN 分不出来。要改善得用 RIPE 数据库里的地区信息或运营商的 geofeed，授权问题还在确认（见 [`SOURCES.md`](SOURCES.md)）。
 - 不做比城市更细的定位，也不做代理 / VPN 检测。
 
 ## 署名（必须）

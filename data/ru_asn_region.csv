@@ -1,0 +1,175 @@
+# 只服务俄罗斯一个联邦主体的网络的 ASN → 主体代码（ISO 3166-2:RU，不带 "RU-"）。
+# ASN of networks that serve a single Russian federal subject -> subject code (ISO 3166-2:RU without "RU-").
+#
+# 2026-10-03 第一版的收录规则 / rules of the first version:
+# - AS 名称或描述里明确写了唯一一个主体（或只属于一个主体的城市），由运营者自己注册；
+# - 运营者是接入网络：Rostelecom / MTS / MegaFon / Tele2 / Beeline / ER-Telecom 等的地区分支，或地区 ISP；
+# - 不收：全国性 ASN、名字指向大区（西北、西伯利亚、伏尔加、乌拉尔、南方、远东、高加索…）的网络、
+#   托管 / 数据中心 / 云 / 内容公司、银行和企业、政府机构、大学和科研网络、交换中心；
+# - DB-IP 把它的一半以上放在另一个具体主体的，先不收。
+# - 只用 ru_admin.csv 里的主体代码；这一层只细化 DB-IP 已经给出 RU 的记录，从不改国家。
+# Rules: the AS name/description names exactly one subject (or a city inside one); the operator runs an access network
+# (regional branches of Rostelecom, MTS, MegaFon, Tele2, Beeline, ER-Telecom..., or a regional ISP). Left out: national
+# ASNs, networks named after macro-regions, hosting / data centres / cloud / content companies, banks and enterprises,
+# government bodies, universities and research networks, exchange points, and ASNs that DB-IP places mostly in another
+# named subject. Only subject codes from ru_admin.csv are used, and the layer never changes countries.
+asn,region_iso,as_name,evidence,note
+12846,ALT,"Barnaul,","iptoasn AS description: Barnaul, Russia",regional ISP
+21365,ALT,INTELECA-AS,"iptoasn AS description: INTELECA-AS Russia, Barnaul",regional ISP
+50512,ALT,BARNAUL-AS,iptoasn AS description: BARNAUL-AS,regional ISP
+61416,ARK,ARKHANGELSK-AS,iptoasn AS description: ARKHANGELSK-AS,regional ISP
+35177,AST,ASI-AS,iptoasn AS description: ASI-AS PJSC Rostelecom. Astrakhan branch,Rostelecom regional branch
+44941,AST,ASTRAKHAN-DTV-AS,iptoasn AS description: ASTRAKHAN-DTV-AS Megafon,MegaFon regional network
+51035,BA,UFA-AS,iptoasn AS description: UFA-AS,regional ISP
+201123,BA,ZT-UFA-AS,iptoasn AS description: ZT-UFA-AS,regional ISP
+201858,BA,Teleset,iptoasn AS description: Teleset Ufa,regional ISP
+29456,BEL,BELSVYAZ-AS,iptoasn AS description: BELSVYAZ-AS PJSC Rostelecom. Belgorod branch,Rostelecom regional branch
+197023,BEL,ASCOMTELTV,iptoasn AS description: ASCOMTELTV MTS Belgorod branch,MTS regional network
+34267,BRY,DEBRYANSK-AS-1,iptoasn AS description: DEBRYANSK-AS-1 PJSC Rostelecom. Bryansk branch,Rostelecom regional branch
+57044,BRY,BRYANSK-AS,iptoasn AS description: BRYANSK-AS,regional ISP
+41403,BU,ULAN-UDE-AS,iptoasn AS description: ULAN-UDE-AS,regional ISP
+8427,CHE,MAGINFO-AS,"iptoasn AS description: MAGINFO-AS Magnitogorsk, Russia",regional ISP
+41661,CHE,ERTH-CHEL-AS,iptoasn AS description: ERTH-CHEL-AS,ER-Telecom city network
+41925,CHE,IZET-CHELYABINSK,iptoasn AS description: IZET-CHELYABINSK,regional ISP
+44493,CHE,CHELYABINSK-SIGNAL-AS,iptoasn AS description: CHELYABINSK-SIGNAL-AS,regional ISP
+5547,IRK,ORTEL-AS,"iptoasn AS description: ORTEL-AS Irkutsk Region, Russia",regional ISP
+8382,IRK,IRTEL-AS,iptoasn AS description: IRTEL-AS PJSC Rostelecom. Irkutsk branch,Rostelecom regional branch
+21087,IRK,ELCITY-AS,"iptoasn AS description: ELCITY-AS Irkutsk Region, Russia",regional ISP
+51645,IRK,IRKUTSK-AS,iptoasn AS description: IRKUTSK-AS,regional ISP
+24699,IVA,IVTELECOM-AS,iptoasn AS description: IVTELECOM-AS PJSC Rostelecom. Ivanovo branch,Rostelecom regional branch
+34351,IVA,MTS-IVANOVO-AS,iptoasn AS description: MTS-IVANOVO-AS,MTS regional network
+34974,KAM,PJSC,iptoasn AS description: PJSC Rostelecom. Kamchatka branch,Rostelecom regional branch
+42548,KC,KCHR-AS,iptoasn AS description: KCHR-AS PJSC Rostelecom. Karachaevo-Cherkess branch,Rostelecom regional branch
+48479,KDA,KUBAN-TELECOM-AS,iptoasn AS description: KUBAN-TELECOM-AS,regional ISP
+51607,KDA,IPMEDIA-SOCHI,iptoasn AS description: IPMEDIA-SOCHI,regional ISP
+215115,KDA,OPTICS-KUBAN-AS,iptoasn AS description: OPTICS-KUBAN-AS,regional ISP
+29072,KEM,RDTC-AS,iptoasn AS description: RDTC-AS RDTC Autonomous System ISP at Novokuznetsk city,regional ISP
+201786,KEM,COMLINE-AS,iptoasn AS description: COMLINE-AS COMLINE Novokuznetsk AS,regional ISP
+43148,KGN,MTS-KURGAN-AS,iptoasn AS description: MTS-KURGAN-AS,MTS regional network
+56330,KGN,KURGAN-AS,iptoasn AS description: KURGAN-AS,regional ISP
+210109,KGN,KURGAN-TELECOM-AS,iptoasn AS description: KURGAN-TELECOM-AS,regional ISP
+34584,KHA,PJSC,iptoasn AS description: PJSC Rostelecom. Khabarovsk branch,Rostelecom regional branch
+42740,KHA,BACKSTAGE-AS,"iptoasn AS description: BACKSTAGE-AS BRAVO Telecom, Khabarovsk, Russia",regional ISP
+49301,KHA,TRANSTELECOM-DV,"iptoasn AS description: TRANSTELECOM-DV Khabarovsk, Russia",TransTeleCom regional network
+38934,KHM,PRIDENET-AS,"iptoasn AS description: PRIDENET-AS Nizhnevartovsk, Russia",regional ISP
+44811,KHM,AVANTEL-NIZHNEVARTOVSK-ASN,iptoasn AS description: AVANTEL-NIZHNEVARTOVSK-ASN,regional ISP
+25436,KIR,KIROV-CAIT-AS,iptoasn AS description: KIROV-CAIT-AS PJSC Rostelecom. Kirov branch,Rostelecom regional branch
+41123,KIR,GTS-AS,"iptoasn AS description: GTS-AS Russia, Kirov",regional ISP
+42091,KK,KHAKAS-AS,iptoasn AS description: KHAKAS-AS PJSC Rostelecom. Abakan branch,Rostelecom regional branch
+15468,KLU,KLGELECS-AS,iptoasn AS description: KLGELECS-AS PJSC Rostelecom. Kaluga branch,Rostelecom regional branch
+21438,KLU,ECOM-KALUGA-AS,iptoasn AS description: ECOM-KALUGA-AS,regional ISP
+48123,KLU,STREAM-TV-KALUGA,iptoasn AS description: STREAM-TV-KALUGA,MTS regional network
+35516,KRS,KURSKNET-RU-AS,iptoasn AS description: KURSKNET-RU-AS PJSC Rostelecom. Kursk branch,Rostelecom regional branch
+43038,KRS,TVK-AS,iptoasn AS description: TVK-AS MTS Kursk,MTS regional network
+59713,KRS,ERTH-KURSK-AS,iptoasn AS description: ERTH-KURSK-AS,ER-Telecom city network
+211150,KRS,SVYAZINFORM-KURSK-AS,iptoasn AS description: SVYAZINFORM-KURSK-AS,regional ISP
+33871,KYA,NORILSK-TELECOM-AS,iptoasn AS description: NORILSK-TELECOM-AS,regional ISP
+50544,KYA,KRSK-AS,iptoasn AS description: KRSK-AS,regional ISP
+50498,LIP,LIPETSK-AS,iptoasn AS description: LIPETSK-AS,regional ISP
+34205,MAG,MRBD-AS,iptoasn AS description: MRBD-AS PJSC Rostelecom. Magadan branch,Rostelecom regional branch
+44715,MOS,GLOBALCOM-AS,"iptoasn AS description: GLOBALCOM-AS Podolsk, Russia",regional ISP
+196698,MOS,KOROLEV-TELECOM-AS,iptoasn AS description: KOROLEV-TELECOM-AS,regional ISP
+13257,MUR,POLARCOM-AS,iptoasn AS description: POLARCOM-AS Murmansk,regional ISP
+24783,MUR,ASN-MELS-MURMANELECTROSVIAZ,iptoasn AS description: ASN-MELS-MURMANELECTROSVIAZ PJSC Rostelecom Murmansk Region Autonomous System,Rostelecom regional branch
+8371,NIZ,VIMPELCOM-NN,"iptoasn AS description: VIMPELCOM-NN Vimpelcom, Nizhniy Novgorod branch, fixed network",Beeline (VimpelCom) regional network
+8580,NIZ,SANDY,"iptoasn AS description: SANDY MTS Nizhniy Novgorod, Russia",MTS regional network
+28900,NIZ,ATLASNN-AS,"iptoasn AS description: ATLASNN-AS Nizhny Novgorod, Russia",regional ISP
+42682,NIZ,ERTH-NNOV-AS,iptoasn AS description: ERTH-NNOV-AS,ER-Telecom city network
+34757,NVS,SIBSET-NSK-AS,iptoasn AS description: SIBSET-NSK-AS,regional ISP
+41143,NVS,OBTELECOM-NSK,iptoasn AS description: OBTELECOM-NSK,regional ISP
+41330,NVS,T2-NOVOSIBIRSK-AS,iptoasn AS description: T2-NOVOSIBIRSK-AS T2 Russia Network,Tele2 (T2) regional mobile network
+43478,NVS,ERTH-NSK-AS,iptoasn AS description: ERTH-NSK-AS,ER-Telecom city network
+48100,NVS,MKS-NSK,iptoasn AS description: MKS-NSK,regional ISP
+204833,NVS,VTEL-NSK-AS,iptoasn AS description: VTEL-NSK-AS,regional ISP
+41771,OMS,MTS-BB-OMSK,iptoasn AS description: MTS-BB-OMSK,MTS regional network
+41843,OMS,ERTH-OMSK-AS,iptoasn AS description: ERTH-OMSK-AS,ER-Telecom city network
+48612,ORE,RTC-ORENBURG-AS,iptoasn AS description: RTC-ORENBURG-AS MTS Orenburg,MTS regional network
+41134,ORL,CTC-OREL-AS,iptoasn AS description: CTC-OREL-AS PJSC Rostelecom. Orel branch,Rostelecom regional branch
+43521,ORL,RECOM-OREL-AS,iptoasn AS description: RECOM-OREL-AS,regional ISP
+35728,PNZ,MTS-PENZA-AS,iptoasn AS description: MTS-PENZA-AS,MTS regional network
+41754,PNZ,ERTH-PENZA-AS,iptoasn AS description: ERTH-PENZA-AS,ER-Telecom city network
+8920,PRI,VTC-AS,"iptoasn AS description: VTC-AS Russia, Vladivostok",regional ISP
+12332,PRI,PRIMORYE-AS,iptoasn AS description: PRIMORYE-AS PJSC Rostelecom ex RU.PRIMORYE,Rostelecom regional branch
+34925,PRI,VLADIVOSTOK-AS,iptoasn AS description: VLADIVOSTOK-AS,regional ISP
+24873,PSK,ELLINK-AS,iptoasn AS description: ELLINK-AS OJSC Electrosvyaz of Pskov Oblast,regional ISP
+21479,ROS,ROSTOV-TELEGRAF-AS,iptoasn AS description: ROSTOV-TELEGRAF-AS PJSC Rostelecom. Rostov-na-Dony branch,Rostelecom regional branch
+42437,ROS,T2-ROSTOV-AS,iptoasn AS description: T2-ROSTOV-AS T2 Russia Network,Tele2 (T2) regional mobile network
+57378,ROS,ROSTOV-AS,iptoasn AS description: ROSTOV-AS,regional ISP
+56420,RYA,RYAZAN-AS,iptoasn AS description: RYAZAN-AS,regional ISP
+21487,SA,PJSC,iptoasn AS description: PJSC Rostelecom. Yakutsk branch,Rostelecom regional branch
+8443,SAK,SKHDSV-AS,iptoasn AS description: SKHDSV-AS PJSC Rostelecom. Sakhalin branch,Rostelecom regional branch
+202542,SAK,MF-SAKHALIN-ISLAND,iptoasn AS description: MF-SAKHALIN-ISLAND,MegaFon regional network
+13227,SAM,KRAFT-S,"iptoasn AS description: KRAFT-S Samara, Russia",regional ISP
+16043,SAM,SAMARA-TELECOM-AS,iptoasn AS description: SAMARA-TELECOM-AS,regional ISP
+30960,SAM,TETRA-AS,"iptoasn AS description: TETRA-AS Samara, Russia",regional ISP
+197235,SAM,AVANTEL-SAMARA,iptoasn AS description: AVANTEL-SAMARA,regional ISP
+212600,SAM,NEWNET-SAMARA,iptoasn AS description: NEWNET-SAMARA,regional ISP
+48709,SAR,"ISP,","iptoasn AS description: ISP, Saratov, Russia.",regional ISP
+50543,SAR,SARATOV-AS,iptoasn AS description: SARATOV-AS,regional ISP
+42362,SE,ALANIA-AS,iptoasn AS description: ALANIA-AS PJSC Rostelecom. North Ossetion branch,Rostelecom regional branch
+35125,SMO,SMOLENSK-AS,iptoasn AS description: SMOLENSK-AS PJSC Rostelecom. Smolensk branch,Rostelecom regional branch
+6858,SPE,SEVEREN_COMLINK-AS,"iptoasn AS description: SEVEREN_COMLINK-AS St.Petersburg, Russia",regional ISP
+20632,SPE,PETERSTAR-AS,iptoasn AS description: PETERSTAR-AS Saint-Petersburg,regional ISP
+20807,SPE,CREDOLINK-ASN,iptoasn AS description: CREDOLINK-ASN St.-Petersburg,regional ISP
+24739,SPE,SEVEREN-TELECOM,"iptoasn AS description: SEVEREN-TELECOM St.Petersburg, Russia",regional ISP
+25408,SPE,WESTCALL-SPB-AS,iptoasn AS description: WESTCALL-SPB-AS,regional ISP
+29329,SPE,NODEX-AS,"iptoasn AS description: NODEX-AS NODEX Fiber Optic Network Saint-Petersburg, Russia",regional ISP
+31444,SPE,SEANET-AS,"iptoasn AS description: SEANET-AS Russia, Saint-Petersburg",regional ISP
+35807,SPE,AS-SKYNET-SPB,iptoasn AS description: AS-SKYNET-SPB,regional ISP
+39046,SPE,THEOREMA,"iptoasn AS description: THEOREMA St. Petersburg, Russian Federation",regional ISP
+42339,SPE,CHTP-AS,"iptoasn AS description: CHTP-AS St.Petersburg, Russia",regional ISP
+47333,SPE,HIGHLINK-SPB-AS,iptoasn AS description: HIGHLINK-SPB-AS,regional ISP
+50488,SPE,UTELCOM,"iptoasn AS description: UTELCOM Utelcom, St.Petersburg, Russia",regional ISP
+51178,SPE,AVANTEL-SPB-AS,iptoasn AS description: AVANTEL-SPB-AS St.Petersburg branch,regional ISP
+51570,SPE,SPB-AS,iptoasn AS description: SPB-AS,regional ISP
+52060,SPE,MAXIMATELECOM-SPB-AS,iptoasn AS description: MAXIMATELECOM-SPB-AS,regional ISP
+56534,SPE,COMFORTEL,"iptoasn AS description: COMFORTEL Comfortel, St.Petersburg, Russia",regional ISP
+60252,SPE,OST-LLC-AS,iptoasn AS description: OST-LLC-AS St.Petersburg,regional ISP
+62205,SPE,UNITEL,"iptoasn AS description: UNITEL Saint-Petersburg, Russia, LLC Unitel",regional ISP
+196754,SPE,GRANT-TELECOM-SPB-AS,iptoasn AS description: GRANT-TELECOM-SPB-AS,regional ISP
+204272,SPE,ASARTA-SPB-AS,iptoasn AS description: ASARTA-SPB-AS St.Petersburg,regional ISP
+214173,SPE,SEVER-TELECOM-SPB,iptoasn AS description: SEVER-TELECOM-SPB,ER-Telecom city network
+12683,STA,STATEL-AS,iptoasn AS description: STATEL-AS PJSC Rostelecom. Stavropol branch,Rostelecom regional branch
+6828,SVE,USI,iptoasn AS description: USI PJSC Rostelecom. Ekaterinburg branch,Rostelecom regional branch
+16285,SVE,ASN-UMN,"iptoasn AS description: ASN-UMN Technicheskaya Str.18b, Yekaterinburg, Russia",regional ISP
+48190,SVE,T2-EKATERINBURG-AS,iptoasn AS description: T2-EKATERINBURG-AS T2 Russia Network,Tele2 (T2) regional mobile network
+48524,SVE,INTERRA-AS,"iptoasn AS description: INTERRA-AS at Pervouralsk Bilimbay, Severka, Sredneuralsk, Revda Degtyarsk, Kachkanar, Lesnoy N.Tura, Polevskoy, Krasnoufimsk, Asbest cities of Sverdlovsk reg",regional ISP
+24810,TA,TELESET-KAZAN,iptoasn AS description: TELESET-KAZAN PJSC Rostelecom. Kazan branch,Rostelecom regional branch
+28840,TA,TATTELECOM-AS,iptoasn AS description: TATTELECOM-AS,regional ISP
+29194,TA,ASN-TVT,"iptoasn AS description: ASN-TVT Kazan, Tatarstan, Russia",regional ISP
+34518,TA,FATUM-AS,"iptoasn AS description: FATUM-AS Russia, Kazan, 420061, Kosmonavtov, str.29a",regional ISP
+41668,TA,ERTH-KAZAN-AS,iptoasn AS description: ERTH-KAZAN-AS,ER-Telecom city network
+43265,TA,RNTELECOM,iptoasn AS description: RNTELECOM 420044 Russia Kazan,regional ISP
+60651,TA,STEK-KAZAN,iptoasn AS description: STEK-KAZAN from Rostelecom,Rostelecom regional branch
+5553,TAM,TAMBOVMAN-AS,"iptoasn AS description: TAMBOVMAN-AS Tambov, Russia",regional ISP
+13056,TAM,RT-TMB-AS,iptoasn AS description: RT-TMB-AS PJSC Rostelecom. Tambov branch,Rostelecom regional branch
+48000,TAM,STREAM-TV-TAMBOV-AS,iptoasn AS description: STREAM-TV-TAMBOV-AS,MTS regional network
+8510,TOM,"Tomsk,","iptoasn AS description: Tomsk, Russia",regional ISP
+31357,TOM,TOMICA-AS,iptoasn AS description: TOMICA-AS Tomsk Information and Consulting Agency,regional ISP
+49814,TOM,TOMGATE-AS,"iptoasn AS description: TOMGATE-AS Internet Service Provider, Tomsk, Russia",regional ISP
+56981,TOM,TOMSK-AS,iptoasn AS description: TOMSK-AS,regional ISP
+35401,TUL,SUNLINK-AS,"iptoasn AS description: SUNLINK-AS Sunlink Telecom ISP, Tula, Russia",regional ISP
+52207,TUL,TULA-AS,iptoasn AS description: TULA-AS,regional ISP
+21378,TVE,CTCTVER,iptoasn AS description: CTCTVER PJSC Rostelecom. Tver branch,Rostelecom regional branch
+43761,TVE,SVSERV-AS,"iptoasn AS description: SVSERV-AS Russia, Tver region, Konakovo",regional ISP
+48124,TVE,COMSTAR-REGIONS-TVER,iptoasn AS description: COMSTAR-REGIONS-TVER,MTS regional network
+49048,TVE,TVER-AS,iptoasn AS description: TVER-AS,regional ISP
+15493,TYU,RUSCOMP-AS,"iptoasn AS description: RUSCOMP-AS Russian company LLC. Internet Service Provider, Tyumen",regional ISP
+34038,TYU,COMTEL-TMN-AS,iptoasn AS description: COMTEL-TMN-AS,regional ISP
+41682,TYU,ERTH-TMN-AS,iptoasn AS description: ERTH-TMN-AS,ER-Telecom city network
+34590,UD,IZHEVSK-AS,iptoasn AS description: IZHEVSK-AS,regional ISP
+34287,VGG,VOLGOGRAD-GSM-AS,iptoasn AS description: VOLGOGRAD-GSM-AS T2 Russia Network,Tele2 (T2) regional mobile network
+44988,VLA,KOVROV-NET-AS,iptoasn AS description: KOVROV-NET-AS,regional ISP
+59534,VLA,NAVIGATOR-MUROM-AS,iptoasn AS description: NAVIGATOR-MUROM-AS,regional ISP
+30749,VLG,VOLOGDA-AS,iptoasn AS description: VOLOGDA-AS PJSC Rostelecom Vologda Region Autonomous System,Rostelecom regional branch
+6856,VOR,IC-VORONEZH-AS,iptoasn AS description: IC-VORONEZH-AS Informsvyaz - Chernozemye,regional ISP
+21017,VOR,VSI-AS,iptoasn AS description: VSI-AS PJSC Rostelecom. Voronezh branch,Rostelecom regional branch
+50542,VOR,VORONEZH-AS,iptoasn AS description: VORONEZH-AS,regional ISP
+41904,YAN,LLC12BIT-AS,iptoasn AS description: LLC12BIT-AS 12BIT Small ISP in Novy Urengoy Russia,regional ISP
+43849,YAN,SEVER-SVYAZ-AS,"iptoasn AS description: SEVER-SVYAZ-AS Noyabrsk, YNAO",regional ISP
+13118,YAR,ASN-YARTELECOM,iptoasn AS description: ASN-YARTELECOM PJSC Rostelecom. Yaroslavl branch,Rostelecom regional branch
+25592,YAR,NETIS-AS,"iptoasn AS description: NETIS-AS NETIS TELECOM ISP, Yaroslavl region, Russia",regional ISP
+44425,YAR,DIS-YAROSLAVL-AS,iptoasn AS description: DIS-YAROSLAVL-AS,regional ISP
+45005,YAR,GORIZONT-YAROSLAVL-AS,iptoasn AS description: GORIZONT-YAROSLAVL-AS,regional ISP
+201952,YAR,ATEL-RYBINSK,iptoasn AS description: ATEL-RYBINSK,regional ISP
+48212,ZAB,MKS-CHITA-AS,iptoasn AS description: MKS-CHITA-AS,regional ISP

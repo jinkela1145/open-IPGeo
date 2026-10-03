@@ -142,6 +142,25 @@ type fullRecord struct {
 
 var validSources = []string{"dbip", "bgp-asn", "override"}
 
+// regionLangs maps the countries of the regional ASN layer to the language
+// of their local region names.
+var regionLangs = func() map[string]string {
+	m := map[string]string{}
+	for _, t := range config.RegionTables {
+		m[t.Country] = t.Lang
+	}
+	return m
+}()
+
+func regionCountries() []string {
+	out := make([]string, 0, len(regionLangs))
+	for cc := range regionLangs {
+		out = append(out, cc)
+	}
+	slices.Sort(out)
+	return out
+}
+
 func checkNetworkMap(rep *Report, where string, m map[string]any, allowRegion bool) {
 	for k, v := range m {
 		switch k {
@@ -239,8 +258,11 @@ func Run(cfg *config.Config, dir, knownPath string) (*Report, error) {
 			}
 		}
 		if rec.Source == "bgp-asn" {
-			if rec.Country.ISOCode != "CN" || len(rec.Subdivisions) == 0 || rec.Subdivisions[0].Names["zh-CN"] == "" {
-				rep.failf("%s: China overlay record must be CN with a zh-CN province name", where)
+			// Records of the regional ASN layer name a region of a covered
+			// country, with its code and local name.
+			lang, covered := regionLangs[rec.Country.ISOCode]
+			if !covered || len(rec.Subdivisions) == 0 || rec.Subdivisions[0].ISOCode == "" || rec.Subdivisions[0].Names[lang] == "" {
+				rep.failf("%s: regional ASN record must be in %v with a region code and a local name", where, regionCountries())
 			}
 		}
 		checkNetworkMap(rep, where, rec.Network, true)

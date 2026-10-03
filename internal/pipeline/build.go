@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"time"
 
@@ -15,13 +16,39 @@ import (
 
 // Data file names inside the data directory.
 const (
-	FileCNAdmin   = "cn_admin.csv"
+	FileCNAdmin   = config.FileCNAdmin
 	FileCNCities  = "cn_cities.csv"
-	FileCNASN     = "cn_asn_province.csv"
+	FileCNASN     = config.FileCNASN
+	FileRUAdmin   = config.FileRUAdmin
+	FileRUASN     = config.FileRUASN
 	FileAnycastAS = "anycast_asns.csv"
 	FileAnycastNS = "anycast_prefixes.csv"
 	FileOverrides = "overrides.csv"
 )
+
+// readRegionTables reads the admin and ASN tables of every RegionTables
+// entry from dir.
+func readRegionTables(dir string) ([]sources.Region, []sources.RegionASN, map[string][2]int, error) {
+	var regions []sources.Region
+	var asns []sources.RegionASN
+	counts := map[string][2]int{}
+	for _, t := range config.RegionTables {
+		rs, err := sources.ReadRegions(filepath.Join(dir, t.AdminFile), t.Country, t.Lang, t.Col)
+		if err != nil {
+			return nil, nil, nil, err
+		}
+		for i := range rs {
+			rs[i].CarrierHQ = slices.Contains(t.CarrierHQ, rs[i].ISO)
+		}
+		as, err := sources.ReadRegionASNs(filepath.Join(dir, t.ASNFile), t.Country, t.ISOColumn)
+		if err != nil {
+			return nil, nil, nil, err
+		}
+		regions, asns = append(regions, rs...), append(asns, as...)
+		counts[t.Country] = [2]int{len(rs), len(as)}
+	}
+	return regions, asns, counts, nil
+}
 
 // BuildOptions control Build.
 type BuildOptions struct {
@@ -136,21 +163,20 @@ func Load(opt BuildOptions) (*Loaded, error) {
 		return nil, err
 	}
 	l.Layers["anycast_asns"] = len(l.In.ASNFlags)
-	if l.In.Provinces, err = sources.ReadCNAdmin(dd(FileCNAdmin)); err != nil {
+	var counts map[string][2]int
+	if l.In.Regions, l.In.RegionASNs, counts, err = readRegionTables(opt.DataDir); err != nil {
 		return nil, err
+	}
+	for _, t := range config.RegionTables {
+		l.Layers[t.LayerRegions], l.Layers[t.LayerASN] = counts[t.Country][0], counts[t.Country][1]
 	}
 	if l.In.Cities, err = sources.ReadCNCities(dd(FileCNCities)); err != nil {
-		return nil, err
-	}
-	if l.In.CNASN, err = sources.ReadCNASN(dd(FileCNASN)); err != nil {
 		return nil, err
 	}
 	if l.In.Overrides, err = sources.ReadOverrides(dd(FileOverrides)); err != nil {
 		return nil, err
 	}
-	l.Layers["cn_provinces"] = len(l.In.Provinces)
 	l.Layers["cn_cities"] = len(l.In.Cities)
-	l.Layers["cn_asn_province"] = len(l.In.CNASN)
 	l.Layers["overrides"] = len(l.In.Overrides)
 
 	if has(config.SrcAPNIC) {

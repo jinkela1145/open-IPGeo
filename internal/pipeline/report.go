@@ -119,6 +119,7 @@ func accuracyMarkdown(m *Manifest) string {
 	b.WriteString("## 全库各层占比 / Layer shares of the whole database\n\n")
 	familyTable(&b, "IPv4", m.Stats.IPv4)
 	familyTable(&b, "IPv6", m.Stats.IPv6)
+	regionLayerTable(&b, m.Stats)
 	liteTable(&b, m.Stats.LiteAggregation)
 	b.WriteString("## 基准测试 / Benchmark\n\n第 3 阶段加入 / Coming in phase 3.\n")
 	return b.String()
@@ -238,24 +239,27 @@ func writeReports(dir string, l *Loaded, res *build.Result) error {
 		return err
 	}
 	if l.In.ASN != nil {
-		if err := writeASNCandidates(filepath.Join(dir, "cn_asn_candidates.csv"), l); err != nil {
-			return err
+		for _, t := range config.RegionTables {
+			name := strings.ToLower(t.Country) + "_asn_candidates.csv"
+			if err := writeASNCandidates(filepath.Join(dir, name), l, t.Country); err != nil {
+				return err
+			}
 		}
 	}
-	if len(res.Stats.UnmatchedCNSubdivisions) > 0 {
-		f, err := os.Create(filepath.Join(dir, "unmatched_cn_subdivisions.csv"))
+	for cc, unmatched := range res.Stats.UnmatchedSubdivisions {
+		f, err := os.Create(filepath.Join(dir, "unmatched_"+strings.ToLower(cc)+"_subdivisions.csv"))
 		if err != nil {
 			return err
 		}
 		w := csv.NewWriter(f)
 		_ = w.Write([]string{"dbip_subdivision_name", "records"})
-		names := make([]string, 0, len(res.Stats.UnmatchedCNSubdivisions))
-		for n := range res.Stats.UnmatchedCNSubdivisions {
+		names := make([]string, 0, len(unmatched))
+		for n := range unmatched {
 			names = append(names, n)
 		}
 		slices.Sort(names)
 		for _, n := range names {
-			_ = w.Write([]string{n, strconv.Itoa(res.Stats.UnmatchedCNSubdivisions[n])})
+			_ = w.Write([]string{n, strconv.Itoa(unmatched[n])})
 		}
 		w.Flush()
 		if err := f.Close(); err != nil {
@@ -265,13 +269,39 @@ func writeReports(dir string, l *Loaded, res *build.Result) error {
 	return nil
 }
 
-// writeASNCandidates lists the ASNs registered in China with their address
-// space and where DB-IP places that space, to help maintain
-// data/cn_asn_province.csv. The dbip_* columns use IPv4 when the AS has
-// IPv4 space DB-IP knows about, otherwise IPv6; labels are cn_admin province
-// codes for mainland China, "CN" for Chinese records without a known
-// province, and country codes elsewhere.
-func writeASNCandidates(path string, l *Loaded) error {
+// guessRegion suggests the regions whose English name, capital or DB-IP
+// spelling appears in an AS description. It only helps review.
+func guessRegion(desc string, regions []sources.Region) string {
+	u := strings.ToUpper(desc)
+	var found []string
+	for _, r := range regions {
+		for _, w := range append([]string{r.NameEN, r.CapitalEN}, r.DBIPNames...) {
+			w = strings.ToUpper(strings.TrimSpace(w))
+			if len(w) < 4 {
+				continue
+			}
+			if i := strings.Index(u, w); i >= 0 && !isLetter(u, i-1) && !isLetter(u, i+len(w)) {
+				if !slices.Contains(found, r.ISO) {
+					found = append(found, r.ISO)
+				}
+				break
+			}
+		}
+	}
+	return strings.Join(found, ";")
+}
+
+func isLetter(s string, i int) bool {
+	return i >= 0 && i < len(s) && (s[i] >= 'A' && s[i] <= 'Z' || s[i] >= 'a' && s[i] <= 'z')
+}
+
+// writeASNCandidates lists the ASNs registered in country with their address
+// space and where DB-IP places that space, to help maintain the country's
+// ASN table. The dbip_* columns use IPv4 when the AS has IPv4 space DB-IP
+// knows about, otherwise IPv6; labels are region codes of the country's
+// admin table, the country code for its records without a known region, and
+// other country codes elsewhere.
+func writeASNCandidates(path string, l *Loaded, country string) error {
 	asn := l.In.ASN
 	type agg struct {
 		v4, v6     float64
@@ -285,7 +315,7 @@ func writeASNCandidates(path string, l *Loaded) error {
 			list = asn.V4
 		}
 		for _, s := range list {
-			if asn.Infos[s.Val].Country != "CN" {
+			if asn.Infos[s.Val].Country != country {
 				continue
 			}
 			a := sums[s.Val]
@@ -302,8 +332,13 @@ func writeASNCandidates(path string, l *Loaded) error {
 		}
 	}
 
+	var regions []sources.Region
 	provByName := map[string]string{}
-	for _, p := range l.In.Provinces {
+	for _, p := range l.In.Regions {
+		if p.Country != country {
+			continue
+		}
+		regions = append(regions, p)
 		provByName[strings.ToLower(p.NameEN)] = p.ISO
 		provByName[strings.ToLower(p.ISO)] = p.ISO
 		for _, n := range p.DBIPNames {
@@ -314,7 +349,7 @@ func writeASNCandidates(path string, l *Loaded) error {
 		if rec.Country == nil {
 			return "?"
 		}
-		if rec.Country.ISOCode != "CN" {
+		if rec.Country.ISOCode != country {
 			return rec.Country.ISOCode
 		}
 		if len(rec.Subdivs) > 0 {
@@ -325,7 +360,13 @@ func writeASNCandidates(path string, l *Loaded) error {
 				}
 			}
 		}
-		return "CN"
+		return country
+	}
+	guess := func(desc string) string {
+		if country == "CN" {
+			return guessProvince(desc)
+		}
+		return guessRegion(desc, regions)
 	}
 	labels := make([]string, len(l.In.Base.Records))
 	for i := range l.In.Base.Records {
@@ -351,8 +392,10 @@ func writeASNCandidates(path string, l *Loaded) error {
 	}
 
 	mapped := map[uint32]string{}
-	for _, row := range l.In.CNASN {
-		mapped[row.ASN] = row.ProvinceISO
+	for _, row := range l.In.RegionASNs {
+		if row.Country == country {
+			mapped[row.ASN] = row.RegionISO
+		}
 	}
 	ids := make([]int32, 0, len(sums))
 	for id := range sums {
@@ -373,7 +416,7 @@ func writeASNCandidates(path string, l *Loaded) error {
 		return err
 	}
 	w := csv.NewWriter(f)
-	_ = w.Write([]string{"asn", "as_description", "ipv4_addresses", "ipv6_48s", "keyword_province", "mapped_province",
+	_ = w.Write([]string{"asn", "as_description", "ipv4_addresses", "ipv6_48s", "keyword_region", "mapped_region",
 		"dbip_basis", "dbip_top", "dbip_top_share", "dbip_second", "dbip_second_share", "dbip_agrees_share"})
 	share := func(v, total float64) string { return strconv.FormatFloat(v/total, 'f', 3, 64) }
 	for _, id := range ids {
@@ -381,7 +424,7 @@ func writeASNCandidates(path string, l *Loaded) error {
 		a := sums[id]
 		row := []string{strconv.FormatUint(uint64(info.ASN), 10), info.Org,
 			strconv.FormatFloat(a.v4, 'f', 0, 64), strconv.FormatFloat(a.v6, 'f', 2, 64),
-			guessProvince(info.Org), mapped[info.ASN]}
+			guess(info.Org), mapped[info.ASN]}
 		fi := 0
 		if a.distTotals[0] == 0 {
 			fi = 1
@@ -420,4 +463,33 @@ func writeASNCandidates(path string, l *Loaded) error {
 		return err
 	}
 	return f.Close()
+}
+
+// regionLayerTable reports what the regional ASN layer did per country.
+func regionLayerTable(b *strings.Builder, st build.Stats) {
+	if len(st.IPv4.RegionLayer) == 0 && len(st.IPv6.RegionLayer) == 0 {
+		return
+	}
+	b.WriteString("## 地区 ASN 层 / Regional ASN layer\n\n")
+	b.WriteString("网段的起源 AS 属于只服务一个地区的网络（中国的省公司、俄罗斯的地区运营商）时：DB-IP 给出运营商总部所在地" +
+		"（北京 / 莫斯科）或没有给地区，就改成这个地区；DB-IP 给了别的地区就保留 DB-IP。\n" +
+		"When the origin AS of a prefix serves a single region and DB-IP puts the prefix at the carriers' headquarters " +
+		"(Beijing / Moscow) or in no region, the region is replaced; when DB-IP names another region, DB-IP is kept.\n\n")
+	b.WriteString("| 地址族 / Family | 国家 / Country | 一致 / agree | 纠正 / corrected | 补上 / filled | 保留 DB-IP / kept |\n|---|---|---|---|---|---|\n")
+	for _, fam := range []struct {
+		name string
+		fr   build.FamilyReport
+	}{{"IPv4", st.IPv4}, {"IPv6", st.IPv6}} {
+		ccs := make([]string, 0, len(fam.fr.RegionLayer))
+		for cc := range fam.fr.RegionLayer {
+			ccs = append(ccs, cc)
+		}
+		slices.Sort(ccs)
+		for _, cc := range ccs {
+			l := fam.fr.RegionLayer[cc]
+			fmt.Fprintf(b, "| %s | %s | %s | %s | %s | %s |\n", fam.name, cc,
+				human(l["agree"]), human(l["corrected"]), human(l["filled"]), human(l["conflict"]))
+		}
+	}
+	b.WriteString("\n单位：IPv4 为地址数，IPv6 为 /48 个数。/ Units: addresses for IPv4, /48s for IPv6.\n\n")
 }

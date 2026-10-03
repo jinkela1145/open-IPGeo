@@ -14,12 +14,25 @@ import (
 	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
 )
 
+// AdminHeader is the header of a data/<cc>_admin.csv table whose
+// local-language columns end in col ("zh", "ru").
+func AdminHeader(col string) []string {
+	return []string{"iso_code", "name_" + col, "name_en", "dbip_names", "geoname_id",
+		"capital_" + col, "capital_en", "capital_geoname_id", "latitude", "longitude", "radius_km"}
+}
+
+// RegionASNHeader is the header of a data/<cc>_asn_*.csv table.
+func RegionASNHeader(isoColumn string) []string {
+	return []string{"asn", isoColumn, "as_name", "evidence", "note"}
+}
+
 // Curated table headers. Lines starting with # are comments.
 var (
-	HeaderCNAdmin = []string{"iso_code", "name_zh", "name_en", "dbip_names", "geoname_id",
-		"capital_zh", "capital_en", "capital_geoname_id", "latitude", "longitude", "radius_km"}
+	HeaderCNAdmin      = AdminHeader("zh")
 	HeaderCNCities     = []string{"province_iso", "name_zh", "name_en", "geoname_id", "latitude", "longitude"}
-	HeaderCNASN        = []string{"asn", "province_iso", "as_name", "evidence", "note"}
+	HeaderCNASN        = RegionASNHeader("province_iso")
+	HeaderRUAdmin      = AdminHeader("ru")
+	HeaderRUASN        = RegionASNHeader("region_iso")
 	HeaderAnycastASNs  = []string{"asn", "anycast", "cdn", "operator", "evidence"}
 	HeaderAnycastNets  = []string{"network", "anycast", "cdn", "operator", "evidence"}
 	HeaderOverrides    = []string{"network", "country_iso", "province", "city", "latitude", "longitude", "accuracy_km", "evidence"}
@@ -105,34 +118,44 @@ func parseCoord(s string, limit float64) (float64, error) {
 	return v, nil
 }
 
-// CNProvince is a row of data/cn_admin.csv.
-type CNProvince struct {
-	ISO              string
-	NameZH, NameEN   string
+// Region is a row of a data/<cc>_admin.csv table: a first-level subdivision
+// of one country.
+type Region struct {
+	Country          string // ISO 3166-1 code of the table
+	Lang             string // MMDB language key of the local names ("zh-CN", "ru")
+	ISO              string // ISO 3166-2 code without the country prefix
+	NameLocal        string
+	NameEN           string
 	DBIPNames        []string
 	GeonameID        uint32
-	CapitalZH        string
+	CapitalLocal     string
 	CapitalEN        string
 	CapitalGeonameID uint32
 	Lat, Lon         float64
 	RadiusKM         uint16
+	// CarrierHQ is set by the caller for subdivisions where DB-IP puts the
+	// national carriers' address space by default.
+	CarrierHQ bool
 }
 
-// ReadCNAdmin reads data/cn_admin.csv.
-func ReadCNAdmin(path string) ([]CNProvince, error) {
-	rows, err := readCSV(path, HeaderCNAdmin)
+// ReadRegions reads a data/<cc>_admin.csv table of the given country. lang is
+// the MMDB language key of the local names and col the suffix of their
+// columns (for example "zh-CN" and "zh").
+func ReadRegions(path, country, lang, col string) ([]Region, error) {
+	rows, err := readCSV(path, AdminHeader(col))
 	if err != nil {
 		return nil, err
 	}
-	var out []CNProvince
+	var out []Region
 	seen := map[string]bool{}
 	for _, r := range rows {
-		p := CNProvince{
-			ISO: strings.ToUpper(r.get("iso_code")), NameZH: r.get("name_zh"), NameEN: r.get("name_en"),
-			CapitalZH: r.get("capital_zh"), CapitalEN: r.get("capital_en"),
+		p := Region{
+			Country: country, Lang: lang,
+			ISO: strings.ToUpper(r.get("iso_code")), NameLocal: r.get("name_" + col), NameEN: r.get("name_en"),
+			CapitalLocal: r.get("capital_" + col), CapitalEN: r.get("capital_en"),
 		}
-		if p.ISO == "" || p.NameZH == "" || p.NameEN == "" {
-			return nil, r.errf(path, "iso_code, name_zh and name_en are required")
+		if p.ISO == "" || p.NameLocal == "" || p.NameEN == "" {
+			return nil, r.errf(path, "iso_code, name_%s and name_en are required", col)
 		}
 		if seen[p.ISO] {
 			return nil, r.errf(path, "duplicate iso_code %s", p.ISO)
@@ -164,6 +187,12 @@ func ReadCNAdmin(path string) ([]CNProvince, error) {
 	}
 	return out, nil
 }
+
+// ReadCNAdmin reads data/cn_admin.csv.
+func ReadCNAdmin(path string) ([]Region, error) { return ReadRegions(path, "CN", "zh-CN", "zh") }
+
+// ReadRUAdmin reads data/ru_admin.csv.
+func ReadRUAdmin(path string) ([]Region, error) { return ReadRegions(path, "RU", "ru", "ru") }
 
 // CNCity is a row of data/cn_cities.csv.
 type CNCity struct {
@@ -199,21 +228,24 @@ func ReadCNCities(path string) ([]CNCity, error) {
 	return out, nil
 }
 
-// CNASN is a row of data/cn_asn_province.csv.
-type CNASN struct {
-	ASN         uint32
-	ProvinceISO string
-	ASName      string
-	Evidence    string
+// RegionASN is a row of a data/<cc>_asn_*.csv table: an AS whose address
+// space is used in one region.
+type RegionASN struct {
+	ASN       uint32
+	Country   string
+	RegionISO string
+	ASName    string
+	Evidence  string
 }
 
-// ReadCNASN reads data/cn_asn_province.csv.
-func ReadCNASN(path string) ([]CNASN, error) {
-	rows, err := readCSV(path, HeaderCNASN)
+// ReadRegionASNs reads a data/<cc>_asn_*.csv table of the given country whose
+// region column is called isoColumn.
+func ReadRegionASNs(path, country, isoColumn string) ([]RegionASN, error) {
+	rows, err := readCSV(path, RegionASNHeader(isoColumn))
 	if err != nil {
 		return nil, err
 	}
-	var out []CNASN
+	var out []RegionASN
 	seen := map[uint32]bool{}
 	for _, r := range rows {
 		asn, err := parseUint32(r.get("asn"), false)
@@ -224,9 +256,9 @@ func ReadCNASN(path string) ([]CNASN, error) {
 			return nil, r.errf(path, "duplicate asn %d", asn)
 		}
 		seen[asn] = true
-		row := CNASN{ASN: asn, ProvinceISO: strings.ToUpper(r.get("province_iso")), ASName: r.get("as_name"), Evidence: r.get("evidence")}
-		if row.ProvinceISO == "" {
-			return nil, r.errf(path, "province_iso is required")
+		row := RegionASN{ASN: asn, Country: country, RegionISO: strings.ToUpper(r.get(isoColumn)), ASName: r.get("as_name"), Evidence: r.get("evidence")}
+		if row.RegionISO == "" {
+			return nil, r.errf(path, "%s is required", isoColumn)
 		}
 		if row.Evidence == "" {
 			return nil, r.errf(path, "%v", errMissingEvidence)
@@ -235,6 +267,12 @@ func ReadCNASN(path string) ([]CNASN, error) {
 	}
 	return out, nil
 }
+
+// ReadCNASN reads data/cn_asn_province.csv.
+func ReadCNASN(path string) ([]RegionASN, error) { return ReadRegionASNs(path, "CN", "province_iso") }
+
+// ReadRUASN reads data/ru_asn_region.csv.
+func ReadRUASN(path string) ([]RegionASN, error) { return ReadRegionASNs(path, "RU", "region_iso") }
 
 // ReadAnycastASNs reads data/anycast_asns.csv: flags applied to every range
 // announced by the AS (via iptoasn).

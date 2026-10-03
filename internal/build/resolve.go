@@ -3,7 +3,6 @@ package build
 import (
 	"fmt"
 	"math"
-	"slices"
 	"strings"
 
 	"github.com/jinkela1145/enhanced-geoip/internal/config"
@@ -17,32 +16,39 @@ const (
 	SourceOverride = "override"
 )
 
-// cnOutcome describes what the China ASN-province layer did to a piece.
-type cnOutcome uint8
+// outcome describes what the regional ASN layer did to a piece.
+//
+// The layer only acts where DB-IP names the same country as the region
+// table. It overrides DB-IP when DB-IP gives no subdivision, or names a
+// subdivision marked CarrierHQ: DB-IP places much of the national carriers'
+// space where their headquarters are (Beijing holds over a quarter of DB-IP's
+// Chinese IPv4 space in 2026). When DB-IP names any other subdivision it
+// probably knows something specific, and is kept; so is a subdivision name
+// the region table does not know (a variant spelling, or a territory the
+// table deliberately leaves out).
+type outcome uint8
 
 const (
-	cnNone      cnOutcome = iota // layer not applicable
-	cnAgree                      // DB-IP already in the ASN's province: kept DB-IP
-	cnCorrected                  // DB-IP at the carriers' headquarters: replaced
-	cnFilled                     // DB-IP had no province: filled
-	cnConflict                   // DB-IP names another province: kept DB-IP
-	cnOutcomes
+	outNone      outcome = iota // layer not applicable
+	outAgree                    // DB-IP already in the AS's region: kept DB-IP
+	outCorrected                // DB-IP at the carriers' headquarters: replaced
+	outFilled                   // DB-IP had no subdivision: filled
+	outConflict                 // DB-IP names another or an unknown subdivision: kept DB-IP
+	outcomes
 )
 
-// cnHeadquarters are the provinces where the national carriers have their
-// headquarters. DB-IP places a large part of their address space there by
-// default (Beijing holds over a quarter of DB-IP's Chinese IPv4 space in
-// 2026), so a provincial ASN overrides DB-IP only when DB-IP says one of
-// these provinces or gives no province. When DB-IP names any other province
-// it probably knows something specific, and is kept.
-var cnHeadquarters = []string{"BJ"}
+// Values of resolver.baseRegion besides region indexes.
+const (
+	noSubdivision      = -1
+	unknownSubdivision = -2
+)
 
 // key identifies the final record of a piece of address space.
 type key struct {
 	base  int32
 	asn   int32 // index into ASNData.Infos, -1 if none
 	flags int32 // index into resolver.flagTable, -1 if none
-	prov  int16 // province index applied by the ASN layer, -1 if none
+	prov  int16 // region applied by the regional ASN layer, -1 if none
 	over  int32 // index into resolver.overrides, -1 if none
 }
 
@@ -72,54 +78,66 @@ func (l level) String() string {
 }
 
 type resolver struct {
-	cfg       *config.Config
-	base      *sources.BaseData
-	asn       *sources.ASNData
-	provinces []sources.CNProvince
-	provPlace []*sources.Place
-	provSubs  [][]*sources.Place
-	asnProv   map[uint32]int16
-	asnFlags  map[uint32]sources.NetFlags
-	flagTable []sources.NetFlags
-	flagIndex map[sources.NetFlags]int32
-	baseProv  []int16 // per base record: province index or -1
-	overrides []override
+	cfg         *config.Config
+	base        *sources.BaseData
+	asn         *sources.ASNData
+	regions     []sources.Region
+	regionPlace []*sources.Place
+	regionSubs  [][]*sources.Place
+	byCountry   map[string][]int16 // region indexes per country
+	asnRegion   map[uint32]int16
+	asnFlags    map[uint32]sources.NetFlags
+	flagTable   []sources.NetFlags
+	flagIndex   map[sources.NetFlags]int32
+	baseRegion  []int16 // per base record: region index, noSubdivision or unknownSubdivision
+	overrides   []override
 
-	unmatchedCN map[string]int // DB-IP CN subdivision names with no cn_admin match
-	hqProv      map[int16]bool // cn_admin indexes of cnHeadquarters
+	// unmatched counts DB-IP subdivision names of covered countries that no
+	// region table row matches, per country.
+	unmatched map[string]map[string]int
 }
 
 func newResolver(in *Inputs, cfg *config.Config) (*resolver, error) {
 	r := &resolver{
-		cfg:         cfg,
-		base:        in.Base,
-		asn:         in.ASN,
-		provinces:   in.Provinces,
-		asnProv:     map[uint32]int16{},
-		asnFlags:    in.ASNFlags,
-		flagIndex:   map[sources.NetFlags]int32{},
-		baseProv:    make([]int16, len(in.Base.Records)),
-		unmatchedCN: map[string]int{},
-		hqProv:      map[int16]bool{},
+		cfg:        cfg,
+		base:       in.Base,
+		asn:        in.ASN,
+		regions:    in.Regions,
+		byCountry:  map[string][]int16{},
+		asnRegion:  map[uint32]int16{},
+		asnFlags:   in.ASNFlags,
+		flagIndex:  map[sources.NetFlags]int32{},
+		baseRegion: make([]int16, len(in.Base.Records)),
+		unmatched:  map[string]map[string]int{},
 	}
-	provByISO := map[string]int16{}
-	for i, p := range in.Provinces {
-		provByISO[p.ISO] = int16(i)
-		if slices.Contains(cnHeadquarters, p.ISO) {
-			r.hqProv[int16(i)] = true
+	byISO := map[string]int16{}
+	for i, p := range in.Regions {
+		key := p.Country + "-" + p.ISO
+		if _, dup := byISO[key]; dup {
+			return nil, fmt.Errorf("region %s is listed twice", key)
 		}
-		names := sources.Names{"en": p.NameEN, "zh-CN": p.NameZH}
+		byISO[key] = int16(i)
+		r.byCountry[p.Country] = append(r.byCountry[p.Country], int16(i))
+		names := sources.Names{"en": p.NameEN}
+		if p.Lang != "" && p.NameLocal != "" {
+			names[p.Lang] = p.NameLocal
+		}
 		place := &sources.Place{GeonameID: p.GeonameID, ISOCode: p.ISO, Names: names}
-		r.provPlace = append(r.provPlace, place)
-		r.provSubs = append(r.provSubs, []*sources.Place{place})
+		r.regionPlace = append(r.regionPlace, place)
+		r.regionSubs = append(r.regionSubs, []*sources.Place{place})
 	}
-	r.matchBaseProvinces()
-	for _, row := range in.CNASN {
-		idx, ok := provByISO[row.ProvinceISO]
+	r.matchBaseRegions()
+	for _, row := range in.RegionASNs {
+		idx, ok := byISO[row.Country+"-"+row.RegionISO]
 		if !ok {
-			return nil, fmt.Errorf("cn_asn_province.csv: AS%d refers to unknown province %q (add it to cn_admin.csv)", row.ASN, row.ProvinceISO)
+			return nil, fmt.Errorf("%s ASN table: AS%d refers to unknown region %q (add it to the %s admin table)",
+				row.Country, row.ASN, row.RegionISO, row.Country)
 		}
-		r.asnProv[row.ASN] = idx
+		if prev, dup := r.asnRegion[row.ASN]; dup && prev != idx {
+			return nil, fmt.Errorf("AS%d is listed for both %s-%s and %s-%s", row.ASN,
+				r.regions[prev].Country, r.regions[prev].ISO, row.Country, row.RegionISO)
+		}
+		r.asnRegion[row.ASN] = idx
 	}
 	for _, o := range in.Overrides {
 		ro, err := r.prepareOverride(o, in.Cities)
@@ -155,55 +173,64 @@ func normalizeCN(s string) string {
 	return s
 }
 
-func (r *resolver) findProvince(name string) int16 {
+// findRegion returns the index of the region of country called name (its
+// ISO code, English or local name, or a DB-IP spelling), or -1.
+func (r *resolver) findRegion(country, name string) int16 {
 	if name == "" {
 		return -1
 	}
-	n := strings.ToLower(strings.TrimSpace(name))
-	cn := normalizeCN(name)
-	for i, p := range r.provinces {
-		if strings.EqualFold(p.ISO, n) || strings.EqualFold(p.NameEN, n) || normalizeCN(p.NameZH) == cn {
-			return int16(i)
+	n := strings.TrimSpace(name)
+	cn := normalizeCN(n)
+	for _, i := range r.byCountry[country] {
+		p := &r.regions[i]
+		if strings.EqualFold(p.ISO, n) || strings.EqualFold(p.NameEN, n) || strings.EqualFold(p.NameLocal, n) ||
+			country == "CN" && normalizeCN(p.NameLocal) == cn {
+			return i
 		}
 		for _, alias := range p.DBIPNames {
 			if strings.EqualFold(alias, n) {
-				return int16(i)
+				return i
 			}
 		}
 	}
 	return -1
 }
 
-// matchBaseProvinces maps the first subdivision of every Chinese base record
-// to a cn_admin row and records the DB-IP names that match no row.
-func (r *resolver) matchBaseProvinces() {
-	byPlace := map[*sources.Place]int16{}
+// matchBaseRegions maps the first subdivision of every base record of a
+// covered country to a region and counts the DB-IP names that match none.
+func (r *resolver) matchBaseRegions() {
+	type memo struct {
+		country string
+		place   *sources.Place
+	}
+	seen := map[memo]int16{}
 	for i := range r.base.Records {
 		rec := &r.base.Records[i]
-		r.baseProv[i] = -1
-		if rec.Country == nil || rec.Country.ISOCode != "CN" || len(rec.Subdivs) == 0 {
+		r.baseRegion[i] = noSubdivision
+		if rec.Country == nil || len(r.byCountry[rec.Country.ISOCode]) == 0 || len(rec.Subdivs) == 0 {
 			continue
 		}
-		s := rec.Subdivs[0]
-		p, ok := byPlace[s]
+		cc, s := rec.Country.ISOCode, rec.Subdivs[0]
+		p, ok := seen[memo{cc, s}]
 		if !ok {
-			p = -1
-			for _, cand := range []string{s.ISOCode, s.Names["en"], s.Names["zh-CN"]} {
-				if p = r.findProvince(cand); p >= 0 {
+			p = unknownSubdivision
+			for _, cand := range []string{s.ISOCode, s.Names["en"], s.Names["zh-CN"], s.Names["ru"]} {
+				if idx := r.findRegion(cc, cand); idx >= 0 {
+					p = idx
 					break
 				}
 			}
-			byPlace[s] = p
+			seen[memo{cc, s}] = p
 		}
-		if p < 0 && len(r.provinces) > 0 {
-			r.unmatchedCN[s.Names["en"]]++
+		if p == unknownSubdivision {
+			if r.unmatched[cc] == nil {
+				r.unmatched[cc] = map[string]int{}
+			}
+			r.unmatched[cc][s.Names["en"]]++
 		}
-		r.baseProv[i] = p
+		r.baseRegion[i] = p
 	}
 }
-
-// baseProvince returns the cn_admin index of a base record's subdivision.
-func (r *resolver) baseProvince(idx int32) int16 { return r.baseProv[idx] }
 
 func (r *resolver) prepareOverride(o sources.Override, cities []sources.CNCity) (override, error) {
 	fail := func(format string, args ...any) (override, error) {
@@ -218,12 +245,12 @@ func (r *resolver) prepareOverride(o sources.Override, cities []sources.CNCity) 
 	var haveProvCoord, haveCityCoord bool
 	if o.Province != "" {
 		if o.Country == "CN" {
-			pi := r.findProvince(o.Province)
+			pi := r.findRegion("CN", o.Province)
 			if pi < 0 {
 				return fail("province %q is not in cn_admin.csv", o.Province)
 			}
-			p := r.provinces[pi]
-			ro.subdivs = []*sources.Place{r.provPlace[pi]}
+			p := r.regions[pi]
+			ro.subdivs = []*sources.Place{r.regionPlace[pi]}
 			provCoord, haveProvCoord = [2]float64{p.Lat, p.Lon}, true
 			if o.City != "" {
 				var found *sources.CNCity
@@ -235,7 +262,7 @@ func (r *resolver) prepareOverride(o sources.Override, cities []sources.CNCity) 
 					}
 				}
 				if found == nil {
-					return fail("city %q of %s is not in cn_cities.csv", o.City, p.NameZH)
+					return fail("city %q of %s is not in cn_cities.csv", o.City, p.NameLocal)
 				}
 				ro.city = &sources.Place{GeonameID: found.GeonameID, Names: sources.Names{"en": found.NameEN, "zh-CN": found.NameZH}}
 				cityCoord, haveCityCoord = [2]float64{found.Lat, found.Lon}, true
@@ -275,36 +302,36 @@ func (r *resolver) prepareOverride(o sources.Override, cities []sources.CNCity) 
 }
 
 // keyFor computes the record key of a piece.
-func (r *resolver) keyFor(baseIdx, asnIdx, listFlags, overIdx int32) (key, cnOutcome) {
+func (r *resolver) keyFor(baseIdx, asnIdx, listFlags, overIdx int32) (key, outcome) {
 	k := key{base: baseIdx, asn: asnIdx, flags: -1, prov: -1, over: overIdx}
 	var f sources.NetFlags
 	if listFlags >= 0 {
 		f = r.flagTable[listFlags]
 	}
-	outcome := cnNone
+	oc := outNone
 	if asnIdx >= 0 {
 		info := &r.asn.Infos[asnIdx]
 		if af, ok := r.asnFlags[info.ASN]; ok {
 			f = f.Merge(af)
 		}
-		if p, ok := r.asnProv[info.ASN]; ok {
+		if p, ok := r.asnRegion[info.ASN]; ok {
 			rec := &r.base.Records[baseIdx]
-			if rec.Country != nil && rec.Country.ISOCode == "CN" {
-				switch bp := r.baseProvince(baseIdx); {
+			if rec.Country != nil && rec.Country.ISOCode == r.regions[p].Country {
+				switch bp := r.baseRegion[baseIdx]; {
 				case bp == p:
-					outcome = cnAgree
-				case bp < 0:
-					k.prov, outcome = p, cnFilled
-				case r.hqProv[bp]:
-					k.prov, outcome = p, cnCorrected
+					oc = outAgree
+				case bp == noSubdivision:
+					k.prov, oc = p, outFilled
+				case bp >= 0 && r.regions[bp].CarrierHQ:
+					k.prov, oc = p, outCorrected
 				default:
-					outcome = cnConflict
+					oc = outConflict
 				}
 			}
 		}
 	}
 	k.flags = r.internFlags(f)
-	return k, outcome
+	return k, oc
 }
 
 // resolved is the final content of a record.
@@ -341,8 +368,8 @@ func (r *resolver) resolve(k key) resolved {
 		out.radius = rec.Radius
 	}
 	if k.prov >= 0 {
-		p := r.provinces[k.prov]
-		out.subdivs = r.provSubs[k.prov]
+		p := r.regions[k.prov]
+		out.subdivs = r.regionSubs[k.prov]
 		out.city = nil
 		out.lat, out.lon, out.hasLoc = p.Lat, p.Lon, true
 		out.radius = p.RadiusKM
