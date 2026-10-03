@@ -1,2 +1,6 @@
 # 中国大陆地级市（用于人工修正表里的城市名）。Generated with `egeo gen-cn-admin` from GeoNames (CC BY 4.0), reviewed by hand.
+# 暂时留空：2026-10 的 GeoNames 候选有错——混入了不属于对应省份的地点，有的中文名是街道名或拼音，有的是县城不是地级市，
+# 而且缺了不少地级市。生成器改好、逐条核对之前不收录；在此之前人工修正表里不能写中国大陆的城市（只能写到省）。
+# Left empty on purpose: the GeoNames candidates of 2026-10 list places under the wrong province, use street names or
+# pinyin as Chinese names and miss many prefecture-level cities. Until fixed, overrides can name a province but no city.
 province_iso,name_zh,name_en,geoname_id,latitude,longitude

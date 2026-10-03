@@ -3,6 +3,7 @@ package build
 import (
 	"fmt"
 	"math"
+	"slices"
 	"strings"
 
 	"github.com/jinkela1145/enhanced-geoip/internal/config"
@@ -22,9 +23,19 @@ type cnOutcome uint8
 const (
 	cnNone      cnOutcome = iota // layer not applicable
 	cnAgree                      // DB-IP already in the ASN's province: kept DB-IP
-	cnCorrected                  // DB-IP in another province: replaced
+	cnCorrected                  // DB-IP at the carriers' headquarters: replaced
 	cnFilled                     // DB-IP had no province: filled
+	cnConflict                   // DB-IP names another province: kept DB-IP
+	cnOutcomes
 )
+
+// cnHeadquarters are the provinces where the national carriers have their
+// headquarters. DB-IP places a large part of their address space there by
+// default (Beijing holds over a quarter of DB-IP's Chinese IPv4 space in
+// 2026), so a provincial ASN overrides DB-IP only when DB-IP says one of
+// these provinces or gives no province. When DB-IP names any other province
+// it probably knows something specific, and is kept.
+var cnHeadquarters = []string{"BJ"}
 
 // key identifies the final record of a piece of address space.
 type key struct {
@@ -75,6 +86,7 @@ type resolver struct {
 	overrides []override
 
 	unmatchedCN map[string]int // DB-IP CN subdivision names with no cn_admin match
+	hqProv      map[int16]bool // cn_admin indexes of cnHeadquarters
 }
 
 func newResolver(in *Inputs, cfg *config.Config) (*resolver, error) {
@@ -88,10 +100,14 @@ func newResolver(in *Inputs, cfg *config.Config) (*resolver, error) {
 		flagIndex:   map[sources.NetFlags]int32{},
 		baseProv:    make([]int16, len(in.Base.Records)),
 		unmatchedCN: map[string]int{},
+		hqProv:      map[int16]bool{},
 	}
 	provByISO := map[string]int16{}
 	for i, p := range in.Provinces {
 		provByISO[p.ISO] = int16(i)
+		if slices.Contains(cnHeadquarters, p.ISO) {
+			r.hqProv[int16(i)] = true
+		}
 		names := sources.Names{"en": p.NameEN, "zh-CN": p.NameZH}
 		place := &sources.Place{GeonameID: p.GeonameID, ISOCode: p.ISO, Names: names}
 		r.provPlace = append(r.provPlace, place)
@@ -277,10 +293,12 @@ func (r *resolver) keyFor(baseIdx, asnIdx, listFlags, overIdx int32) (key, cnOut
 				switch bp := r.baseProvince(baseIdx); {
 				case bp == p:
 					outcome = cnAgree
-				case bp >= 0:
+				case bp < 0:
+					k.prov, outcome = p, cnFilled
+				case r.hqProv[bp]:
 					k.prov, outcome = p, cnCorrected
 				default:
-					k.prov, outcome = p, cnFilled
+					outcome = cnConflict
 				}
 			}
 		}

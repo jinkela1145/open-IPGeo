@@ -1,5 +1,40 @@
-# 中国大陆 31 个省级行政区：中文名 → ISO 3166-2 代码、GeoNames ID、省会坐标。
-# Generated with `egeo gen-cn-admin` from GeoNames (CC BY 4.0), reviewed by hand, then committed.
-# dbip_names: subdivision names used by DB-IP for this province, separated by ';'.
-# radius_km: accuracy radius used when only the province is known.
+# 中国大陆 31 个省级行政区。
+# The 31 province-level divisions of mainland China.
+# iso_code: ISO 3166-2:CN 代码去掉 "CN-"。name_zh / capital_zh: 官方全称。
+# name_en, geoname_id, capital_*, latitude, longitude: GeoNames (CC BY 4.0)，由 `egeo gen-cn-admin` 生成后人工核对；
+#   坐标是省会（直辖市为市中心）。capital_en of XJ fixed from GeoNames' ASCII form "UEruemqi" to "Urumqi".
+# dbip_names: DB-IP 对这个省用的英文名（2026-06 版实际出现的就是 name_en），外加常见写法，用 ';' 分隔。
+# radius_km: 只知道省份时的精度半径 = 与该省陆地面积相等的圆的半径，向上取整到 50 km（至少 50 km）。
+# radius_km: equal-area circle radius of the province's land area, rounded up to 50 km (minimum 50 km).
 iso_code,name_zh,name_en,dbip_names,geoname_id,capital_zh,capital_en,capital_geoname_id,latitude,longitude,radius_km
+AH,安徽省,Anhui,Anhui,1818058,合肥市,Hefei,1808722,31.86389,117.28083,250
+BJ,北京市,Beijing,Beijing,2038349,北京市,Beijing,1816670,39.9075,116.39723,100
+CQ,重庆市,Chongqing,Chongqing,1814905,重庆市,Chongqing,1814906,29.56026,106.55771,200
+FJ,福建省,Fujian,Fujian,1811017,福州市,Fuzhou,1810821,26.06139,119.30611,200
+GD,广东省,Guangdong,Guangdong,1809935,广州市,Guangzhou,1809858,23.11667,113.25,250
+GS,甘肃省,Gansu,Gansu,1810676,兰州市,Lanzhou,1804430,36.05701,103.83987,400
+GX,广西壮族自治区,Guangxi,Guangxi;Guangxi Zhuang Autonomous Region,1809867,南宁市,Nanning,1799869,22.81667,108.31667,300
+GZ,贵州省,Guizhou,Guizhou,1809445,贵阳市,Guiyang,1809461,26.58333,106.71667,250
+HA,河南省,Henan,Henan,1808520,郑州市,Zhengzhou,1784658,34.75778,113.64861,250
+HB,湖北省,Hubei,Hubei,1806949,武汉市,Wuhan,1791247,30.58333,114.26667,250
+HE,河北省,Hebei,Hebei,1808773,石家庄市,Shijiazhuang,1795270,38.04139,114.47861,250
+HI,海南省,Hainan,Hainan,1809054,海口市,Haikou,1809078,20.03421,110.34651,150
+HL,黑龙江省,Heilongjiang,Heilongjiang,2036965,哈尔滨市,Harbin,2037013,45.75,126.65,400
+HN,湖南省,Hunan,Hunan,1806691,长沙市,Changsha,1815577,28.19874,112.97087,300
+JL,吉林省,Jilin,Jilin,2036500,长春市,Changchun,2038180,43.88,125.32278,250
+JS,江苏省,Jiangsu,Jiangsu,1806260,南京市,Nanjing,1799962,32.06167,118.77778,200
+JX,江西省,Jiangxi,Jiangxi,1806222,南昌市,Nanchang,1800163,28.68396,115.85306,250
+LN,辽宁省,Liaoning,Liaoning,2036115,沈阳市,Shenyang,2034937,41.79222,123.43278,250
+NM,内蒙古自治区,Inner Mongolia,Inner Mongolia;Nei Mongol;Inner Mongolia Autonomous Region,2035607,呼和浩特市,Hohhot,2036892,40.81056,111.65222,650
+NX,宁夏回族自治区,Ningxia,Ningxia;Ningxia Hui Autonomous Region,1799355,银川市,Yinchuan,1786657,38.46806,106.27306,150
+QH,青海省,Qinghai,Qinghai,1280239,西宁市,Xining,1788852,36.62554,101.75739,500
+SC,四川省,Sichuan,Sichuan,1794299,成都市,Chengdu,1815286,30.66667,104.06667,400
+SD,山东省,Shandong,Shandong,1796328,济南市,Jinan,1805753,36.66833,116.99722,250
+SH,上海市,Shanghai,Shanghai,1796231,上海市,Shanghai,1796236,31.22222,121.45806,50
+SN,陕西省,Shaanxi,Shaanxi,1796480,西安市,Xi'an,1790630,34.25833,108.92861,300
+SX,山西省,Shanxi,Shanxi,1795912,太原市,Taiyuan,1793511,37.86944,112.56028,250
+TJ,天津市,Tianjin,Tianjin,1792943,天津市,Tianjin,1792947,39.14222,117.17667,100
+XJ,新疆维吾尔自治区,Xinjiang,Xinjiang;Xinjiang Uygur Autonomous Region;Xinjiang Uyghur Autonomous Region,1529047,乌鲁木齐市,Urumqi,1529102,43.80096,87.60046,750
+XZ,西藏自治区,Tibet,Tibet;Xizang;Tibet Autonomous Region;Xizang Autonomous Region,1279685,拉萨市,Lhasa,1280737,29.65,91.1,650
+YN,云南省,Yunnan,Yunnan,1785694,昆明市,Kunming,1804651,25.03889,102.71833,400
+ZJ,浙江省,Zhejiang,Zhejiang,1784764,杭州市,Hangzhou,1808926,30.29365,120.16142,200

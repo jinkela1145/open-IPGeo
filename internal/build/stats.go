@@ -17,7 +17,7 @@ type familyAcc struct {
 	cdn      iprange.U128
 	cloud    map[string]iprange.U128
 	withASN  iprange.U128
-	cnLayer  [4]iprange.U128 // by cnOutcome
+	cnLayer  [cnOutcomes]iprange.U128 // by cnOutcome
 
 	// China coverage: address space delegated to CN by APNIC.
 	delegated   iprange.U128
@@ -25,7 +25,7 @@ type familyAcc struct {
 	delCountry  map[string]iprange.U128
 	delCNLevel  [4]iprange.U128 // by level, only records with country CN
 	delCNSource map[string]iprange.U128
-	delCNLayer  [4]iprange.U128
+	delCNLayer  [cnOutcomes]iprange.U128
 }
 
 func newFamilyAcc(is4 bool, delegated []iprange.Range) *familyAcc {
@@ -126,6 +126,7 @@ func (a *familyAcc) report() FamilyReport {
 			"agree":     conv(a.cnLayer[cnAgree]),
 			"corrected": conv(a.cnLayer[cnCorrected]),
 			"filled":    conv(a.cnLayer[cnFilled]),
+			"conflict":  conv(a.cnLayer[cnConflict]),
 		},
 	}
 	for k, v := range a.bySource {
@@ -156,6 +157,7 @@ func (a *familyAcc) coverage() CoverageReport {
 	cr.Percent["cn_asn_agree"] = pct(a.delCNLayer[cnAgree])
 	cr.Percent["cn_asn_corrected"] = pct(a.delCNLayer[cnCorrected])
 	cr.Percent["cn_asn_filled"] = pct(a.delCNLayer[cnFilled])
+	cr.Percent["cn_asn_conflict"] = pct(a.delCNLayer[cnConflict])
 	type kv struct {
 		k string
 		v iprange.U128

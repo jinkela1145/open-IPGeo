@@ -28,7 +28,7 @@ jsDelivr only serves files up to 20 MB, so the CDN URL carries the compressed Li
 Lowest priority first; later layers override earlier ones:
 
 1. **Base**: DB-IP IP to City Lite (CC BY 4.0).
-2. **Mainland China provinces**: many provincial carrier networks announce their prefixes in the global routing table with their own AS numbers. When a prefix's origin AS belongs to a provincial network ([`data/cn_asn_province.csv`](data/cn_asn_province.csv)) and DB-IP puts it in another province or in no province, the province is replaced (capital coordinates, 250–500 km radius, `source` = `bgp-asn`). When DB-IP agrees, its city-level result is kept. Prefix-to-AS data comes from iptoasn (PDDL 1.0).
+2. **Mainland China provinces**: many provincial carrier networks announce their prefixes in the global routing table with their own AS numbers. DB-IP often places the national carriers' space in Beijing, where their headquarters are (Beijing holds over a quarter of DB-IP's Chinese IPv4 space in 2026). When a prefix's origin AS belongs to a provincial network ([`data/cn_asn_province.csv`](data/cn_asn_province.csv), a few hundred entries, rules at the top of the file) and DB-IP says Beijing or gives no province, the province is replaced (capital coordinates, `source` = `bgp-asn`). When DB-IP agrees, its city-level result is kept; when DB-IP names another province, DB-IP is kept too. Prefix-to-AS data comes from iptoasn (PDDL 1.0).
 3. **Network flags**: Cloudflare and Fastly ranges, AWS / Google Cloud / Azure / Oracle cloud ranges, public DNS ranges confirmed to be anycast ([`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)) and CDN ASNs ([`data/anycast_asns.csv`](data/anycast_asns.csv)).
 4. **Manual overrides**: [`data/overrides.csv`](data/overrides.csv), highest priority.
 
@@ -56,7 +56,7 @@ Same structure as GeoLite2-City (example record):
 - `autonomous_system_number`, `autonomous_system_organization`: same names as GeoLite2-ASN.
 - `network`: `anycast`, `cdn`, `cloud` (vendor code), `cloud_region` (vendor region code). False or empty keys are omitted.
 - `source`: the layer that produced the location: `dbip`, `bgp-asn` or `override`.
-- `accuracy_radius`: DB-IP Lite has no radius, so it is derived: 50 km with a city, 250 km with a subdivision only, 1000 km with a country only, 1000 km for anycast, 250–500 km for province corrections.
+- `accuracy_radius`: DB-IP Lite has no radius, so it is derived: 50 km with a city, 250 km with a subdivision only, 1000 km with a country only, 1000 km for anycast, and for province corrections the radius of a circle with the province's land area (50–750 km, see [`data/cn_admin.csv`](data/cn_admin.csv)).
 
 ### Lite edition
 
@@ -85,6 +85,8 @@ Python: the full edition's `database_type` contains `City`, so `geoip2.database.
 ## Updates
 
 Upstream files are checked every day at 02:17 UTC and a release (tagged by date, e.g. `2026.10.02`) is published when an input changed. The newest 30 releases are kept.
+
+The Azure download link changes every week; the build reads the current one from Microsoft's download page. If any upstream file other than the DB-IP base fails to download, the copy cached within the last 14 days is used and an issue is opened; if the DB-IP base fails, that day's release is skipped.
 
 ## Limitations
 

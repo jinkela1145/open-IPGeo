@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"math"
+	"net/netip"
 	"os"
 	"path/filepath"
 	"slices"
@@ -13,6 +14,8 @@ import (
 
 	"github.com/jinkela1145/enhanced-geoip/internal/build"
 	"github.com/jinkela1145/enhanced-geoip/internal/config"
+	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/enhanced-geoip/internal/sources"
 )
 
 func pct(m map[string]float64, k string) string {
@@ -41,8 +44,9 @@ func coverageTable(b *strings.Builder, title string, c build.CoverageReport) {
 		{"CN：位置来自省公司 ASN 层 / located by provincial ASN layer", "cn_source_bgp_asn"},
 		{"CN：位置来自人工修正 / located by overrides", "cn_source_override"},
 		{"ASN 层与 DB-IP 省份一致（保留 DB-IP）/ ASN layer agrees with DB-IP", "cn_asn_agree"},
-		{"ASN 层纠正了 DB-IP 的省份 / ASN layer corrected the province", "cn_asn_corrected"},
+		{"ASN 层纠正了 DB-IP 的省份（DB-IP 给的是北京）/ ASN layer corrected the province (DB-IP said Beijing)", "cn_asn_corrected"},
 		{"ASN 层补上了缺失的省份 / ASN layer filled a missing province", "cn_asn_filled"},
+		{"DB-IP 给了别的省，保留 DB-IP / DB-IP names another province, kept", "cn_asn_conflict"},
 	}
 	for _, r := range rows {
 		fmt.Fprintf(b, "| %s | %s |\n", r.label, pct(c.Percent, r.key))
@@ -234,70 +238,7 @@ func writeReports(dir string, l *Loaded, res *build.Result) error {
 		return err
 	}
 	if l.In.ASN != nil {
-		type agg struct {
-			v4, v6 float64
-		}
-		sums := map[int32]*agg{}
-		for _, is4 := range []bool{true, false} {
-			list := l.In.ASN.V6
-			if is4 {
-				list = l.In.ASN.V4
-			}
-			for _, s := range list {
-				info := l.In.ASN.Infos[s.Val]
-				if info.Country != "CN" {
-					continue
-				}
-				a := sums[s.Val]
-				if a == nil {
-					a = &agg{}
-					sums[s.Val] = a
-				}
-				size := s.Range().Size().Float64()
-				if is4 {
-					a.v4 += size
-				} else {
-					a.v6 += size / math.Ldexp(1, 80)
-				}
-			}
-		}
-		mapped := map[uint32]string{}
-		for _, row := range l.In.CNASN {
-			mapped[row.ASN] = row.ProvinceISO
-		}
-		ids := make([]int32, 0, len(sums))
-		for id := range sums {
-			ids = append(ids, id)
-		}
-		sort.Slice(ids, func(i, j int) bool {
-			a, b := sums[ids[i]], sums[ids[j]]
-			if a.v6 != b.v6 {
-				return a.v6 > b.v6
-			}
-			if a.v4 != b.v4 {
-				return a.v4 > b.v4
-			}
-			return l.In.ASN.Infos[ids[i]].ASN < l.In.ASN.Infos[ids[j]].ASN
-		})
-		f, err := os.Create(filepath.Join(dir, "cn_asn_candidates.csv"))
-		if err != nil {
-			return err
-		}
-		w := csv.NewWriter(f)
-		_ = w.Write([]string{"asn", "as_description", "ipv4_addresses", "ipv6_48s", "keyword_province", "mapped_province"})
-		for _, id := range ids {
-			info := l.In.ASN.Infos[id]
-			a := sums[id]
-			_ = w.Write([]string{strconv.FormatUint(uint64(info.ASN), 10), info.Org,
-				strconv.FormatFloat(a.v4, 'f', 0, 64), strconv.FormatFloat(a.v6, 'f', 2, 64),
-				guessProvince(info.Org), mapped[info.ASN]})
-		}
-		w.Flush()
-		if err := w.Error(); err != nil {
-			f.Close()
-			return err
-		}
-		if err := f.Close(); err != nil {
+		if err := writeASNCandidates(filepath.Join(dir, "cn_asn_candidates.csv"), l); err != nil {
 			return err
 		}
 	}
@@ -322,4 +263,161 @@ func writeReports(dir string, l *Loaded, res *build.Result) error {
 		}
 	}
 	return nil
+}
+
+// writeASNCandidates lists the ASNs registered in China with their address
+// space and where DB-IP places that space, to help maintain
+// data/cn_asn_province.csv. The dbip_* columns use IPv4 when the AS has
+// IPv4 space DB-IP knows about, otherwise IPv6; labels are cn_admin province
+// codes for mainland China, "CN" for Chinese records without a known
+// province, and country codes elsewhere.
+func writeASNCandidates(path string, l *Loaded) error {
+	asn := l.In.ASN
+	type agg struct {
+		v4, v6     float64
+		dist       [2]map[string]float64 // [0] IPv4 addresses, [1] IPv6 /48s
+		distTotals [2]float64
+	}
+	sums := map[int32]*agg{}
+	for _, is4 := range []bool{true, false} {
+		list := asn.V6
+		if is4 {
+			list = asn.V4
+		}
+		for _, s := range list {
+			if asn.Infos[s.Val].Country != "CN" {
+				continue
+			}
+			a := sums[s.Val]
+			if a == nil {
+				a = &agg{dist: [2]map[string]float64{{}, {}}}
+				sums[s.Val] = a
+			}
+			size := s.Range().Size().Float64()
+			if is4 {
+				a.v4 += size
+			} else {
+				a.v6 += size / math.Ldexp(1, 80)
+			}
+		}
+	}
+
+	provByName := map[string]string{}
+	for _, p := range l.In.Provinces {
+		provByName[strings.ToLower(p.NameEN)] = p.ISO
+		provByName[strings.ToLower(p.ISO)] = p.ISO
+		for _, n := range p.DBIPNames {
+			provByName[strings.ToLower(n)] = p.ISO
+		}
+	}
+	labelOf := func(rec *sources.BaseRecord) string {
+		if rec.Country == nil {
+			return "?"
+		}
+		if rec.Country.ISOCode != "CN" {
+			return rec.Country.ISOCode
+		}
+		if len(rec.Subdivs) > 0 {
+			sd := rec.Subdivs[0]
+			for _, n := range []string{sd.ISOCode, sd.Names["en"]} {
+				if iso, ok := provByName[strings.ToLower(n)]; ok && n != "" {
+					return iso
+				}
+			}
+		}
+		return "CN"
+	}
+	labels := make([]string, len(l.In.Base.Records))
+	for i := range l.In.Base.Records {
+		labels[i] = labelOf(&l.In.Base.Records[i])
+	}
+	for fi, fam := range []struct {
+		base iprange.SegSpans[int32]
+		asn  iprange.SegSpans[int32]
+		unit float64
+	}{{l.In.Base.V4, asn.V4, 1}, {l.In.Base.V6, asn.V6, math.Ldexp(1, 80)}} {
+		iprange.Refine(fam.base, []iprange.Spans{fam.asn}, func(s, e netip.Addr, bi int, li []int) {
+			if li[0] < 0 {
+				return
+			}
+			a := sums[fam.asn[li[0]].Val]
+			if a == nil {
+				return
+			}
+			w := iprange.Range{Start: s, End: e}.Size().Float64() / fam.unit
+			a.dist[fi][labels[fam.base[bi].Val]] += w
+			a.distTotals[fi] += w
+		})
+	}
+
+	mapped := map[uint32]string{}
+	for _, row := range l.In.CNASN {
+		mapped[row.ASN] = row.ProvinceISO
+	}
+	ids := make([]int32, 0, len(sums))
+	for id := range sums {
+		ids = append(ids, id)
+	}
+	sort.Slice(ids, func(i, j int) bool {
+		a, b := sums[ids[i]], sums[ids[j]]
+		if a.v6 != b.v6 {
+			return a.v6 > b.v6
+		}
+		if a.v4 != b.v4 {
+			return a.v4 > b.v4
+		}
+		return asn.Infos[ids[i]].ASN < asn.Infos[ids[j]].ASN
+	})
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	w := csv.NewWriter(f)
+	_ = w.Write([]string{"asn", "as_description", "ipv4_addresses", "ipv6_48s", "keyword_province", "mapped_province",
+		"dbip_basis", "dbip_top", "dbip_top_share", "dbip_second", "dbip_second_share", "dbip_agrees_share"})
+	share := func(v, total float64) string { return strconv.FormatFloat(v/total, 'f', 3, 64) }
+	for _, id := range ids {
+		info := asn.Infos[id]
+		a := sums[id]
+		row := []string{strconv.FormatUint(uint64(info.ASN), 10), info.Org,
+			strconv.FormatFloat(a.v4, 'f', 0, 64), strconv.FormatFloat(a.v6, 'f', 2, 64),
+			guessProvince(info.Org), mapped[info.ASN]}
+		fi := 0
+		if a.distTotals[0] == 0 {
+			fi = 1
+		}
+		total := a.distTotals[fi]
+		if total == 0 {
+			row = append(row, "", "", "", "", "", "")
+		} else {
+			type kv struct {
+				k string
+				v float64
+			}
+			var top []kv
+			for k, v := range a.dist[fi] {
+				top = append(top, kv{k, v})
+			}
+			sort.Slice(top, func(i, j int) bool { return top[i].v > top[j].v || top[i].v == top[j].v && top[i].k < top[j].k })
+			basis := map[int]string{0: "ipv4", 1: "ipv6"}[fi]
+			row = append(row, basis, top[0].k, share(top[0].v, total))
+			if len(top) > 1 {
+				row = append(row, top[1].k, share(top[1].v, total))
+			} else {
+				row = append(row, "", "")
+			}
+			if p := mapped[info.ASN]; p != "" {
+				row = append(row, share(a.dist[fi][p], total))
+			} else {
+				row = append(row, "")
+			}
+		}
+		_ = w.Write(row)
+	}
+	w.Flush()
+	if err := w.Error(); err != nil {
+		f.Close()
+		return err
+	}
+	return f.Close()
 }

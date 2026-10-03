@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"io"
+	"maps"
 	"math"
 	"net/http"
 	"net/http/httptest"
@@ -15,12 +16,14 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
 	"github.com/oschwald/maxminddb-golang/v2"
 
 	"github.com/jinkela1145/enhanced-geoip/internal/config"
+	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
 	"github.com/jinkela1145/enhanced-geoip/internal/sources"
 	"github.com/jinkela1145/enhanced-geoip/internal/testutil"
 	"github.com/jinkela1145/enhanced-geoip/internal/verify"
@@ -47,11 +50,26 @@ type fixture struct {
 	dbipGz  []byte
 	months  map[string]bool // which DB-IP months exist
 	iptoasn []byte
+
+	mu   sync.Mutex
+	fail map[string]bool // paths that answer 404
+}
+
+func (fx *fixture) setFail(path string, fail bool) {
+	fx.mu.Lock()
+	defer fx.mu.Unlock()
+	fx.fail[path] = fail
+}
+
+func (fx *fixture) failing(path string) bool {
+	fx.mu.Lock()
+	defer fx.mu.Unlock()
+	return fx.fail[path]
 }
 
 func newFixture(t *testing.T) *fixture {
 	t.Helper()
-	fx := &fixture{t: t, cache: t.TempDir(), data: t.TempDir(), months: map[string]bool{"2026-10": true}}
+	fx := &fixture{t: t, cache: t.TempDir(), data: t.TempDir(), months: map[string]bool{"2026-10": true}, fail: map[string]bool{}}
 	p := filepath.Join(t.TempDir(), "dbip.mmdb.gz")
 	if err := testutil.WriteFakeDBIP(p, testutil.DefaultFakeNets); err != nil {
 		t.Fatal(err)
@@ -80,9 +98,15 @@ func newFixture(t *testing.T) *fixture {
 		"/gcp":            []byte(testutil.GCPSample),
 		"/oracle":         []byte(testutil.OracleSample),
 		"/apnic":          []byte(testutil.DelegatedSample),
+		"/azure-page":     []byte(`<a href="https://download.microsoft.com/download/x/ServiceTags_Public_20260928.json">`),
+		"/azure-json":     []byte(testutil.AzureSample),
 	}
 	for path, body := range static {
 		mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
+			if fx.failing(path) {
+				http.NotFound(w, r)
+				return
+			}
 			if path == "/iptoasn.tsv.gz" {
 				_, _ = w.Write(fx.iptoasn)
 				return
@@ -239,7 +263,8 @@ func TestEndToEnd(t *testing.T) {
 		{ip: "1.0.8.1", country: "CN", city: "Guangzhou", source: "dbip", asn: 4134, radius: 50},
 		{ip: "240e::1", country: "CN", city: "Beijing", source: "dbip", asn: 4134, radius: 50},
 		{ip: "2409:8000::1", country: "CN", city: "Guangzhou", source: "dbip", asn: 9808, radius: 50},
-		{ip: "2409:8020::1", country: "CN", subISO: "JS", source: "bgp-asn", asn: 56046, radius: 250},
+		// DB-IP names a province other than Beijing (Guangdong): the ASN layer keeps DB-IP.
+		{ip: "2409:8020::1", country: "CN", city: "Guangzhou", source: "dbip", asn: 56046, radius: 50},
 		// HK / MO / TW keep their own country codes.
 		{ip: "223.0.0.1", country: "HK", city: "Hong Kong", source: "dbip", asn: 4760, radius: 50},
 		{ip: "223.1.0.1", country: "TW", city: "Taipei", source: "dbip", radius: 50},
@@ -413,8 +438,11 @@ func TestEndToEnd(t *testing.T) {
 
 	// Coverage statistics and reports.
 	cov := m.Stats.CNCoverageIPv6
-	if cov.Delegated == 0 || cov.Percent["country_cn"] <= 0 || cov.Percent["cn_asn_corrected"] <= 0 {
+	if cov.Delegated == 0 || cov.Percent["country_cn"] <= 0 || cov.Percent["cn_asn_conflict"] <= 0 || cov.Percent["cn_asn_corrected"] != 0 {
 		t.Errorf("coverage: %+v", cov)
+	}
+	if cov4 := m.Stats.CNCoverageIPv4; cov4.Percent["cn_asn_corrected"] <= 0 || cov4.Percent["cn_asn_filled"] <= 0 {
+		t.Errorf("IPv4 coverage: %+v", cov4)
 	}
 	for _, f := range []string{"manifest.json", "ACCURACY.md", "RELEASE_NOTES.md", "reports/cn_asn_candidates.csv",
 		fx.cfg.FullFile() + ".sha256", fx.cfg.LiteFile() + ".sha256", fx.cfg.LiteGzipFile() + ".sha256"} {
@@ -425,6 +453,10 @@ func TestEndToEnd(t *testing.T) {
 	cands, _ := os.ReadFile(filepath.Join(out, "reports/cn_asn_candidates.csv"))
 	if !strings.Contains(string(cands), "56046,CMNET-JIANGSU-AP China Mobile communications corporation") || !strings.Contains(string(cands), ",JS,JS") {
 		t.Errorf("candidates:\n%s", cands)
+	}
+	// Where DB-IP places AS56046: 36.0/16 Beijing, 36.1/16 no province, 39.0/16 Jiangsu.
+	if !strings.Contains(string(cands), ",JS,JS,ipv4,BJ,0.333,CN,0.333,0.333\n") {
+		t.Errorf("candidates lack the DB-IP placement columns:\n%s", cands)
 	}
 	sum, _ := os.ReadFile(filepath.Join(out, fx.cfg.FullFile()+".sha256"))
 	if !strings.HasPrefix(string(sum), m.Outputs["full"].SHA256+"  "+fx.cfg.FullFile()) {
@@ -507,4 +539,123 @@ func TestRepositoryDataFilesAreValid(t *testing.T) {
 	if _, err := config.Load("../../config.json"); err != nil {
 		t.Error(err)
 	}
+}
+
+// TestBuildWithRepositoryTables builds the fake upstream data with the
+// curated tables from data/, so that broken cross-references (an ASN pointing
+// to a province missing from cn_admin.csv, an invalid override) fail here.
+func TestBuildWithRepositoryTables(t *testing.T) {
+	fx := newFixture(t)
+	for _, name := range []string{FileCNAdmin, FileCNCities, FileCNASN, FileAnycastNS, FileAnycastAS, FileOverrides} {
+		b, err := os.ReadFile(filepath.Join("../../data", name))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(fx.data, name), b, 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	out := t.TempDir()
+	m := fx.run(out)
+	if m.Layers["cn_provinces"] != 31 || m.Layers["cn_asn_province"] == 0 {
+		t.Errorf("layers: %v", m.Layers)
+	}
+	full, err := maxminddb.Open(filepath.Join(out, fx.cfg.FullFile()))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer full.Close()
+	// AS56046 (CMNET-JIANGSU-AP) is Jiangsu in the table; DB-IP says Beijing.
+	var got fullRec
+	if !lookup(t, full, "36.0.0.1", &got) || got.Source != "bgp-asn" || len(got.Subdivisions) == 0 ||
+		got.Subdivisions[0].ISOCode != "JS" || got.Subdivisions[0].Names["zh-CN"] != "江苏省" || got.Location.AccuracyRadius != 200 {
+		t.Errorf("36.0.0.1 = %+v", got)
+	}
+	// Records of countries without a region table are never touched.
+	got = fullRec{}
+	if !lookup(t, full, "223.0.0.1", &got) || got.Country.ISOCode != "HK" || got.Source != "dbip" {
+		t.Errorf("223.0.0.1 = %+v", got)
+	}
+	if rep, err := verify.Run(fx.cfg, out, ""); err != nil {
+		t.Errorf("verify: %v (%+v)", err, rep)
+	}
+}
+
+// TestFetchFallsBackToCache: when a list cannot be downloaded, a cached copy
+// younger than MaxStaleAge is used with a warning; older copies fail the run.
+func TestFetchFallsBackToCache(t *testing.T) {
+	fx := newFixture(t)
+	ctx := context.Background()
+	day1 := time.Date(2026, 10, 2, 2, 17, 0, 0, time.UTC)
+	fetchAt := func(now time.Time) (*InputsFile, error) {
+		return Fetch(ctx, FetchOptions{Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now,
+			Fetcher: fixedClock(fx.cache, now)}, "")
+	}
+	first, err := fetchAt(day1)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fx.setFail("/fastly", true)
+	fx.setFail("/iptoasn.tsv.gz", true)
+	fx.setFail("/dbip/dbip-asn-lite-2026-10.mmdb.gz", true)
+	in, err := fetchAt(day1.Add(3 * 24 * time.Hour))
+	if err != nil {
+		t.Fatalf("fallback: %v", err)
+	}
+	if in.Sources[config.SrcFastly].SHA256 != first.Sources[config.SrcFastly].SHA256 || in.ASNSource != config.SrcIPtoASN ||
+		len(in.Warnings) != 2 || !strings.Contains(in.Warnings[0], "iptoasn download failed, reused the copy") {
+		t.Errorf("fallback inputs: %+v", in)
+	}
+	if in.Fingerprint != first.Fingerprint {
+		t.Error("reusing cached copies must not change the fingerprint")
+	}
+	if _, err := fetchAt(day1.Add(15 * 24 * time.Hour)); err == nil || !strings.Contains(err.Error(), "fastly") {
+		t.Errorf("a stale cache must fail the run, got %v", err)
+	}
+
+	// APNIC is only used for statistics: without a cached copy the run goes on.
+	fx.setFail("/fastly", false)
+	fx.setFail("/iptoasn.tsv.gz", false)
+	fx.setFail("/apnic", true)
+	fresh := t.TempDir()
+	in, err = Fetch(ctx, FetchOptions{Config: fx.cfg, CacheDir: fresh, DataDir: fx.data, Now: day1}, "")
+	if err != nil {
+		t.Fatalf("missing APNIC file: %v", err)
+	}
+	if _, ok := in.Sources[config.SrcAPNIC]; ok || len(in.Warnings) != 1 || !strings.Contains(in.Warnings[0], "coverage statistics are missing") {
+		t.Errorf("missing APNIC: %+v", in)
+	}
+}
+
+// TestFetchAzureFallback: the Azure link is read from the download page; if
+// the page cannot be read, the last downloaded JSON is reused.
+func TestFetchAzureFallback(t *testing.T) {
+	fx := newFixture(t)
+	ctx := context.Background()
+	now := time.Date(2026, 10, 2, 2, 17, 0, 0, time.UTC)
+	cfg := *fx.cfg
+	cfg.DisabledSources = nil
+	cfg.Sources = maps.Clone(fx.cfg.Sources)
+	cfg.Sources[config.SrcAzurePage] = fx.srv.URL + "/azure-page"
+	// Seed the cache as a previous run would have.
+	if _, _, err := fixedClock(fx.cache, now).Fetch(ctx, config.SrcAzure, fx.srv.URL+"/azure-json"); err != nil {
+		t.Fatal(err)
+	}
+	fx.setFail("/azure-page", true)
+	in, err := Fetch(ctx, FetchOptions{Config: &cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now.Add(24 * time.Hour)}, "")
+	if err != nil {
+		t.Fatalf("azure fallback: %v", err)
+	}
+	if _, ok := in.Sources[config.SrcAzure]; !ok || len(in.Warnings) != 1 || !strings.Contains(in.Warnings[0], "azure download failed") {
+		t.Errorf("azure fallback: %+v", in)
+	}
+}
+
+// fixedClock returns a Fetcher whose download times are now, without
+// retries, so tests can age the cache.
+func fixedClock(cache string, now time.Time) *fetch.Fetcher {
+	f := fetch.New(cache, "egeo-test")
+	f.Now = func() time.Time { return now }
+	f.Attempts = 1
+	return f
 }

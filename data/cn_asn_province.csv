@@ -2,4 +2,328 @@
 # 全国骨干 ASN（如 AS4134、AS4837、AS9808）绝对不能放进来，否则会把整块网段落到总部所在地。
 # Provincial ASN -> province. Never list national backbones (e.g. AS4134, AS4837, AS9808).
 # Candidates come from reports/cn_asn_candidates.csv of a build (iptoasn AS_description, PDDL 1.0); every row needs evidence.
+#
+# 2026-10-03 第一版的收录规则 / rules of the first version:
+# - AS 名称或描述里明确写了唯一一个省份（或只属于一个省的城市），由运营者自己注册；
+# - 运营者是中国电信 / 联通 / 移动的省级网络（含省内的 IDC、城域网、5G 网络）或省级广电网络；
+# - 不收：全国骨干、云和内容公司、教育科研网（含 CERNET2 各地交换点）、物联网专网、跨省的网络；
+# - DB-IP 把它整体放在另一个具体省份（不是北京）的，先不收，等核实。
+# Rules: the AS name/description names exactly one province (or a city inside one); operator is a provincial
+# network of China Telecom / Unicom / Mobile (incl. their IDCs, metro and 5G networks) or a provincial cable
+# network; national backbones, cloud/content, education/research, IoT and multi-province networks are left out;
+# ASNs that DB-IP places wholly in another named province are left out until checked.
 asn,province_iso,as_name,evidence,note
+63607,AH,ANHUIGUANGDIAN,"iptoasn AS description: ANHUIGUANGDIAN Anhui Radio and Television Information Network Co.,Ltd.",provincial cable / broadcast network
+132833,AH,CHINANET-ANHUI-WUHU-NEWIDC,iptoasn AS description: CHINANET-ANHUI-WUHU-NEWIDC China Telecom,China Telecom IDC
+134425,AH,CHINANET-HEFEI-QIMENLU-IDC,iptoasn AS description: CHINANET-HEFEI-QIMENLU-IDC China Telecom,China Telecom IDC
+139721,AH,CHINATELECOM-ANHUI-HEFEI-MAN,iptoasn AS description: CHINATELECOM-ANHUI-HEFEI-MAN HeFei,China Telecom metro network
+140083,AH,CHINANET-ANHUI-AS-AP,iptoasn AS description: CHINANET-ANHUI-AS-AP China Telecom,China Telecom provincial network
+140245,AH,CHINATELECOM-ANHUI-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-SHENGJI-5G-NETWORK CHINATELECOM Anhui province Shengji 5G network,China Telecom 5G / mobile core network
+140246,AH,CHINATELECOM-ANHUI-HEFEI-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-HEFEI-5G-NETWORK CHINATELECOM Anhui province Hefei 5G network,China Telecom 5G / mobile core network
+140247,AH,CHINATELECOM-ANHUI-WUHU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-WUHU-5G-NETWORK CHINATELECOM Anhui province Wuhu 5G network,China Telecom 5G / mobile core network
+140248,AH,CHINATELECOM-ANHUI-ANQING-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-ANQING-5G-NETWORK CHINATELECOM Anhui province Anqing 5G network,China Telecom 5G / mobile core network
+140249,AH,CHINATELECOM-ANHUI-BENGBU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-BENGBU-5G-NETWORK CHINATELECOM Anhui province Bengbu 5G network,China Telecom 5G / mobile core network
+140250,AH,CHINATELECOM-ANHUI-FUYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-FUYANG-5G-NETWORK CHINATELECOM Anhui province Fuyang 5G network,China Telecom 5G / mobile core network
+140251,AH,CHINATELECOM-ANHUI-BOZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-BOZHOU-5G-NETWORK CHINATELECOM Anhui province Bozhou 5G network,China Telecom 5G / mobile core network
+140252,AH,CHINATELECOM-ANHUI-HUAIBEI-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-HUAIBEI-5G-NETWORK CHINATELECOM Anhui province Huaibei 5G network,China Telecom 5G / mobile core network
+140253,AH,CHINATELECOM-ANHUI-HUAINAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-HUAINAN-5G-NETWORK CHINATELECOM Anhui province Huainan 5G network,China Telecom 5G / mobile core network
+140254,AH,CHINATELECOM-ANHUI-SHUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-SHUZHOU-5G-NETWORK CHINATELECOM Anhui province Shuzhou 5G network,China Telecom 5G / mobile core network
+140255,AH,CHINATELECOM-ANHUI-CHUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-CHUZHOU-5G-NETWORK CHINATELECOM Anhui province Chuzhou 5G network,China Telecom 5G / mobile core network
+140256,AH,CHINATELECOM-ANHUI-LIUAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-LIUAN-5G-NETWORK CHINATELECOM Anhui province Liuan 5G network,China Telecom 5G / mobile core network
+140257,AH,CHINATELECOM-ANHUI-CHIZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-CHIZHOU-5G-NETWORK CHINATELECOM Anhui province Chizhou 5G network,China Telecom 5G / mobile core network
+140258,AH,CHINATELECOM-ANHUI-MAANSHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-MAANSHAN-5G-NETWORK CHINATELECOM Anhui province Maanshan 5G network,China Telecom 5G / mobile core network
+140259,AH,CHINATELECOM-ANHUI-TONGLING-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-TONGLING-5G-NETWORK CHINATELECOM Anhui province Tongling 5G network,China Telecom 5G / mobile core network
+140260,AH,CHINATELECOM-ANHUI-XUANCHENG-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-XUANCHENG-5G-NETWORK CHINATELECOM Anhui province Xuancheng 5G network,China Telecom 5G / mobile core network
+140261,AH,CHINATELECOM-ANHUI-HUANGSHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-ANHUI-HUANGSHAN-5G-NETWORK CHINATELECOM Anhui province Huangshan 5G network,China Telecom 5G / mobile core network
+140527,AH,CHINANET-ANHUI-WUHU-IDC,iptoasn AS description: CHINANET-ANHUI-WUHU-IDC China Telecom,China Telecom IDC
+140726,AH,UNICOM-HEFEI-MAN,iptoasn AS description: UNICOM-HEFEI-MAN UNICOM AnHui province network,China Unicom metro network
+142608,AH,CHINANET-ANHUI-BENGBU-IDC,iptoasn AS description: CHINANET-ANHUI-BENGBU-IDC China Telecom,China Telecom IDC
+149178,AH,CT-HEFEI-NANGANG-IDC,iptoasn AS description: CT-HEFEI-NANGANG-IDC China Telecom,China Telecom IDC
+4808,BJ,CHINA169-BJ,iptoasn AS description: CHINA169-BJ China Unicom Beijing Province Network,China Unicom provincial network
+17429,BJ,BGCTVNET,iptoasn AS description: BGCTVNET BEIJING GEHUA CATV NETWORK CO.LTD,provincial cable / broadcast network
+24147,BJ,CBDTELENET,"iptoasn AS description: CBDTELENET BEIJING CBD TELECOM CO,.LTD",China Telecom provincial network
+56048,BJ,CMNET-BEIJING-AP,iptoasn AS description: CMNET-BEIJING-AP China Mobile Communicaitons Corporation,China Mobile provincial network
+17969,CQ,CNT,iptoasn AS description: CNT ChongQing Broadcast & TV Transfer Network Co. Ltd,provincial cable / broadcast network
+38355,CQ,CNT,iptoasn AS description: CNT ChongQing Broadcast & TV Broadband IP MAN,provincial cable / broadcast network
+134420,CQ,CHINATELECOM-CHONGQING-IDC,iptoasn AS description: CHINATELECOM-CHONGQING-IDC Chongqing Telecom,China Telecom IDC
+141739,CQ,CT-CHONGQING-MAN2-AP,iptoasn AS description: CT-CHONGQING-MAN2-AP China Telecom,China Telecom metro network
+58772,FJ,CHINANET-FUJIAN-FUZHOU-IDC,iptoasn AS description: CHINANET-FUJIAN-FUZHOU-IDC CHINANET Fujian province Fuzhou IDC network,China Telecom IDC
+133774,FJ,CHINATELECOM-FUJIAN-FUZHOU-IDC1,iptoasn AS description: CHINATELECOM-FUJIAN-FUZHOU-IDC1 Fuzhou,China Telecom IDC
+133775,FJ,CHINATELECOM-FUJIAN-XIAMEN-IDC1,iptoasn AS description: CHINATELECOM-FUJIAN-XIAMEN-IDC1 Xiamen,China Telecom IDC
+133776,FJ,CHINATELECOM-FUJIAN-QUANZHOU-IDC1,iptoasn AS description: CHINATELECOM-FUJIAN-QUANZHOU-IDC1 Quanzhou,China Telecom IDC
+140328,FJ,CHINATELECOM-FUJIAN-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-SHENGJI-5G-NETWORK CHINATELECOM Fujian province Shengji 5G network,China Telecom 5G / mobile core network
+140329,FJ,CHINATELECOM-FUJIAN-FUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-FUZHOU-5G-NETWORK CHINATELECOM Fujian province Fuzhou 5G network,China Telecom 5G / mobile core network
+140330,FJ,CHINATELECOM-FUJIAN-XIAMEN-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-XIAMEN-5G-NETWORK CHINATELECOM Fujian province Xiamen 5G network,China Telecom 5G / mobile core network
+140331,FJ,CHINATELECOM-FUJIAN-NINGDE-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-NINGDE-5G-NETWORK CHINATELECOM Fujian province NINGDE 5G network,China Telecom 5G / mobile core network
+140332,FJ,CHINATELECOM-FUJIAN-PUTIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-PUTIAN-5G-NETWORK CHINATELECOM Fujian province Putian 5G network,China Telecom 5G / mobile core network
+140333,FJ,CHINATELECOM-FUJIAN-QUANZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-QUANZHOU-5G-NETWORK CHINATELECOM Fujian province Quanzhou 5G network,China Telecom 5G / mobile core network
+140334,FJ,CHINATELECOM-FUJIAN-ZHANGZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-ZHANGZHOU-5G-NETWORK CHINATELECOM Fujian province Zhangzhou 5G network,China Telecom 5G / mobile core network
+140335,FJ,CHINATELECOM-FUJIAN-LONGYAN--5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-LONGYAN--5G-NETWORK CHINATELECOM Fujian province Longyan 5G network,China Telecom 5G / mobile core network
+140336,FJ,CHINATELECOM-FUJIAN-SANMING-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-SANMING-5G-NETWORK CHINATELECOM Fujian province Sanming 5G network,China Telecom 5G / mobile core network
+140337,FJ,CHINATELECOM-FUJIAN-NANPING-5G-NETWORK,iptoasn AS description: CHINATELECOM-FUJIAN-NANPING-5G-NETWORK CHINATELECOM Fujian province Nanping 5G network,China Telecom 5G / mobile core network
+4813,GD,BACKBONE-GUANGDONG-AP,iptoasn AS description: BACKBONE-GUANGDONG-AP China TelecomGroup,China Telecom provincial network
+4816,GD,CHINANET-IDC-GD,iptoasn AS description: CHINANET-IDC-GD China Telecom Group,"China Telecom IDC; AS name CHINANET-IDC-GD: China Telecom IDC, GD = Guangdong"
+17622,GD,CNCGROUP-GZ,iptoasn AS description: CNCGROUP-GZ China Unicom Guangzhou network,China Unicom provincial network
+17623,GD,CNCGROUP-SZ,iptoasn AS description: CNCGROUP-SZ China Unicom Shenzen network,"China Unicom provincial network; AS name CNCGROUP-SZ, ""China Unicom Shenzen network"": Shenzhen, Guangdong"
+17816,GD,CHINA169-GZ,iptoasn AS description: CHINA169-GZ China Unicom IP network China169 Guangdong province,China Unicom provincial network
+17962,GD,TOPWAY-NET,iptoasn AS description: TOPWAY-NET ShenZhen Topway Video Communication Co. Ltd,"cable broadband; AS description ""ShenZhen Topway Video Communication"": Shenzhen cable broadband operator"
+56040,GD,CMNET-GUANGDONG-AP,iptoasn AS description: CMNET-GUANGDONG-AP China Mobile communications corporation,China Mobile provincial network
+58466,GD,CT-GUANGZHOU-IDC,iptoasn AS description: CT-GUANGZHOU-IDC CHINANET Guangdong province network,China Telecom IDC
+58543,GD,CHINATELECOM-GUANGDONG-IDC,iptoasn AS description: CHINATELECOM-GUANGDONG-IDC Guangdong,China Telecom IDC
+58834,GD,GCABLENET,iptoasn AS description: GCABLENET Guangdong Cable Corporation Limited,provincial cable / broadcast network
+134543,GD,UNICOM-DONGGUAN-IDC,iptoasn AS description: UNICOM-DONGGUAN-IDC China Unicom Guangdong IP network,China Unicom IDC
+134763,GD,CT-DONGGUAN-IDC,iptoasn AS description: CT-DONGGUAN-IDC CHINANET Guangdong province network,China Telecom IDC
+134764,GD,CT-FOSHAN-IDC,iptoasn AS description: CT-FOSHAN-IDC CHINANET Guangdong province network,China Telecom IDC
+134772,GD,CHINANET-GUANGDONG-DONGGUAN-MAN,iptoasn AS description: CHINANET-GUANGDONG-DONGGUAN-MAN CHINANET Guangdong province Dongguan MAN network,China Telecom metro network
+134773,GD,CHINANET-GUANGDONG-GUANGZHOU-MAN,iptoasn AS description: CHINANET-GUANGDONG-GUANGZHOU-MAN CHINANET Guangdong province Guangzhou MAN network,China Telecom metro network
+134774,GD,CHINANET-GUANGDONG-SHENZHEN-MAN,iptoasn AS description: CHINANET-GUANGDONG-SHENZHEN-MAN CHINANET Guangdong province Shenzhen MAN network,China Telecom metro network
+134775,GD,CHINANET-GUANGDONG-ZHUSANJIAO-MAN,iptoasn AS description: CHINANET-GUANGDONG-ZHUSANJIAO-MAN CHINANET Guangdong province Zhusanjiao MAN network,China Telecom metro network
+135061,GD,UNICOM-SHENZHEN-IDC,iptoasn AS description: UNICOM-SHENZHEN-IDC China Unicom Guangdong IP network,China Unicom IDC
+135089,GD,CHINANET-GUANGZHOU-SOUTHBASE-IDC,iptoasn AS description: CHINANET-GUANGZHOU-SOUTHBASE-IDC China Telecom,China Telecom IDC
+136198,GD,CHINANET-GUANGDONG-YUEXI-MAN,iptoasn AS description: CHINANET-GUANGDONG-YUEXI-MAN CHINANET Guangdong province Yuexi MAN network,China Telecom metro network
+136199,GD,CHINANET-GUANGDONG-YUEDONG-MAN,iptoasn AS description: CHINANET-GUANGDONG-YUEDONG-MAN CHINANET Guangdong province Yuedong MAN network,China Telecom metro network
+136200,GD,CHINANET-GUANGDONG-FOSHAN-MAN,iptoasn AS description: CHINANET-GUANGDONG-FOSHAN-MAN CHINANET Guangdong province Foshan MAN network,China Telecom metro network
+136958,GD,UNICOM-GUANGZHOU-IDC,iptoasn AS description: UNICOM-GUANGZHOU-IDC China Unicom Guangdong IP network,China Unicom IDC
+136959,GD,UNICOM-FUOSHAN-IDC,iptoasn AS description: UNICOM-FUOSHAN-IDC China Unicom Guangdong IP network,China Unicom IDC
+140308,GD,CHINATELECOM-GUANGDONG-ZHUHAI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-ZHUHAI-5G-NETWORK CHINATELECOM Guangdong province Zhuhai 5G network,China Telecom 5G / mobile core network
+140309,GD,CHINATELECOM-GUANGDONG-ZHONGSHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-ZHONGSHAN-5G-NETWORK CHINATELECOM Guangdong province Zhongshan 5G network,China Telecom 5G / mobile core network
+140310,GD,CHINATELECOM-GUANGDONG-DONGGUAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-DONGGUAN-5G-NETWORK CHINATELECOM Guangdong province Dongguan 5G network,China Telecom 5G / mobile core network
+140311,GD,CHINATELECOM-GUANGDONG-JIANGMEN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-JIANGMEN-5G-NETWORK CHINATELECOM Guangdong province Jiangmen 5G network,China Telecom 5G / mobile core network
+140312,GD,CHINATELECOM-GUANGDONG-ZHANJIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-ZHANJIANG-5G-NETWORK CHINATELECOM Guangdong province Zhanjiang 5G network,China Telecom 5G / mobile core network
+140313,GD,CHINATELECOM-GUANGDONG-ZHAOQING-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-ZHAOQING-5G-NETWORK CHINATELECOM Guangdong province Zhaoqing 5G network,China Telecom 5G / mobile core network
+140314,GD,CHINATELECOM-GUANGDONG-SHANTOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-SHANTOU-5G-NETWORK CHINATELECOM Guangdong province Shantou 5G network,China Telecom 5G / mobile core network
+140315,GD,CHINATELECOM-GUANGDONG-JIEYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-JIEYANG-5G-NETWORK CHINATELECOM Guangdong province Jieyang 5G network,China Telecom 5G / mobile core network
+140316,GD,CHINATELECOM-GUANGDONG-CHAOZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-CHAOZHOU-5G-NETWORK CHINATELECOM Guangdong province Chaozhou 5G network,China Telecom 5G / mobile core network
+140318,GD,CHINATELECOM-GUANGDONG-HEYUAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-HEYUAN-5G-NETWORK CHINATELECOM Guangdong province Heyuan 5G network,China Telecom 5G / mobile core network
+140319,GD,CHINATELECOM-GUANGDONG-QINGYUAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-QINGYUAN-5G-NETWORK CHINATELECOM Guangdong province Qingyuan 5G network,China Telecom 5G / mobile core network
+140320,GD,CHINATELECOM-GUANGDONG-SHANWEI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGDONG-SHANWEI-5G-NETWORK CHINATELECOM Guangdong province Shanwei 5G network,China Telecom 5G / mobile core network
+141425,GD,CMNET-GUANGDONG-CN,iptoasn AS description: CMNET-GUANGDONG-CN China Mobile Group Guangdong communications corporation,China Mobile provincial network
+141998,GS,CHINANET-LANZHOU-IDC,iptoasn AS description: CHINANET-LANZHOU-IDC China Telecom,China Telecom IDC
+149464,GS,CHINANET-GANSU-JIAYUGUAN-5G-MAN-NETWORK,iptoasn AS description: CHINANET-GANSU-JIAYUGUAN-5G-MAN-NETWORK CHINATELECOM Gansu province Jiayuguan 5G MAN network,China Telecom 5G / mobile core network
+63581,GX,GXRTVNET,"iptoasn AS description: GXRTVNET GUANGXI RADIO & TELEVISION INFORMATION NETWORK CO.,LTD.",provincial cable / broadcast network
+134419,GX,CHINATELECOM-GUANGXI-BEIHAI-MAN,iptoasn AS description: CHINATELECOM-GUANGXI-BEIHAI-MAN Beihai,China Telecom metro network
+137693,GX,CHINATELECOM-GUANGXI-NANNING-IDC,"iptoasn AS description: CHINATELECOM-GUANGXI-NANNING-IDC CHINATELECOM Guangxi Nanning IDC networkdescr: NanningGuangxi Province, P.R.China.",China Telecom IDC
+138991,GX,CHINATELECOM-GUANGXI-LIUZHOU-IDC,iptoasn AS description: CHINATELECOM-GUANGXI-LIUZHOU-IDC China Telecom,China Telecom IDC
+140508,GX,CHINATELECOM-GUANGXI-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-SHENGJI-5G-NETWORK CHINATELECOM GUANGXI province Shengji 5G network,China Telecom 5G / mobile core network
+140509,GX,CHINATELECOM-GUANGXI-NANNING-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-NANNING-5G-NETWORK CHINATELECOM GUANGXI province NanNing 5G network,China Telecom 5G / mobile core network
+140510,GX,CHINATELECOM-GUANGXI-LIUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-LIUZHOU-5G-NETWORK CHINATELECOM GUANGXI province LiuZhou 5G network,China Telecom 5G / mobile core network
+140511,GX,CHINATELECOM-GUANGXI-GUILIN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-GUILIN-5G-NETWORK CHINATELECOM GUANGXI province GuiLin 5G network,China Telecom 5G / mobile core network
+140512,GX,CHINATELECOM-GUANGXI-YULIN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-YULIN-5G-NETWORK CHINATELECOM GUANGXI province YuLin 5G network,China Telecom 5G / mobile core network
+140513,GX,CHINATELECOM-GUANGXI-BAISE-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-BAISE-5G-NETWORK CHINATELECOM GUANGXI province BaiSe 5G network,China Telecom 5G / mobile core network
+140514,GX,CHINATELECOM-GUANGXI-GUIGANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-GUIGANG-5G-NETWORK CHINATELECOM GUANGXI province GuiGang 5G network,China Telecom 5G / mobile core network
+140515,GX,CHINATELECOM-GUANGXI-HECHI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-HECHI-5G-NETWORK CHINATELECOM GUANGXI province HeChi 5G network,China Telecom 5G / mobile core network
+140516,GX,CHINATELECOM-GUANGXI-QINZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-QINZHOU-5G-NETWORK CHINATELECOM GUANGXI province QinZhou 5G network,China Telecom 5G / mobile core network
+140517,GX,CHINATELECOM-GUANGXI-WUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-WUZHOU-5G-NETWORK CHINATELECOM GUANGXI province WuZhou 5G network,China Telecom 5G / mobile core network
+140518,GX,CHINATELECOM-GUANGXI-BEIHAI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-BEIHAI-5G-NETWORK CHINATELECOM GUANGXI province BeiHai 5G network,China Telecom 5G / mobile core network
+140519,GX,CHINATELECOM-GUANGXI-CHONGZUO-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-CHONGZUO-5G-NETWORK CHINATELECOM GUANGXI province ChongZuo 5G network,China Telecom 5G / mobile core network
+140520,GX,CHINATELECOM-GUANGXI-LAIBIN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-LAIBIN-5G-NETWORK CHINATELECOM GUANGXI province LaiBin 5G network,China Telecom 5G / mobile core network
+140521,GX,CHINATELECOM-GUANGXI-HEZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-HEZHOU-5G-NETWORK CHINATELECOM GUANGXI province HeZhou 5G network,China Telecom 5G / mobile core network
+140522,GX,CHINATELECOM-GUANGXI-FANGCHENGGANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUANGXI-FANGCHENGGANG-5G-NETWORK CHINATELECOM GUANGXI province FangChengGang 5G network,China Telecom 5G / mobile core network
+140886,GX,UNICOM-GX-IDC,iptoasn AS description: UNICOM-GX-IDC UNICOM Guangxi province network,China Unicom IDC
+58571,GZ,CHINATELECOM-GUIZHOU,iptoasn AS description: CHINATELECOM-GUIZHOU CHINANET Guizhou province network,China Telecom provincial network
+58852,GZ,GZGD,iptoasn AS description: GZGD Guizhou provincial radio and television information Network Inc,provincial cable / broadcast network
+138407,GZ,CMNET-GZIDC-CN,iptoasn AS description: CMNET-GZIDC-CN The Internet Data Center of Guizhou Mobile Communication Company Limited,China Mobile IDC
+139203,GZ,CHINANET-GUIZHOU-GUIAN-IDC,iptoasn AS description: CHINANET-GUIZHOU-GUIAN-IDC Guizhou GuiAn IDC,China Telecom IDC
+139462,GZ,CHINANET-GY-AS,iptoasn AS description: CHINANET-GY-AS CHINANET Guizhou Yilong IDC,China Telecom IDC
+140647,GZ,CHINATELECOM-GUIZHOU-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-SHENGJI-5G-NETWORK CHINATELECOM Guizhou province Shengji 5G network,China Telecom 5G / mobile core network
+140649,GZ,CHINATELECOM-GUIZHOU-ZUNYI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-ZUNYI-5G-NETWORK CHINATELECOM Guizhou province Zunyi 5G network,China Telecom 5G / mobile core network
+140650,GZ,CHINATELECOM-GUIZHOU-ANSHUN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-ANSHUN-5G-NETWORK CHINATELECOM Guizhou province Anshun 5G network,China Telecom 5G / mobile core network
+140651,GZ,CHINATELECOM-GUIZHOU-QIANNAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-QIANNAN-5G-NETWORK CHINATELECOM Guizhou province Qiannan 5G network,China Telecom 5G / mobile core network
+140652,GZ,CHINATELECOM-GUIZHOU-QIANDONGNAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-QIANDONGNAN-5G-NETWORK CHINATELECOM Guizhou province Qiandongnan 5G network,China Telecom 5G / mobile core network
+140653,GZ,CHINATELECOM-GUIZHOU-TONGREN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-TONGREN-5G-NETWORK CHINATELECOM Guizhou province Tongren 5G network,China Telecom 5G / mobile core network
+140654,GZ,CHINATELECOM-GUIZHOU-BIJIE-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-BIJIE-5G-NETWORK CHINATELECOM Guizhou province Bijie 5G network,China Telecom 5G / mobile core network
+140655,GZ,CHINATELECOM-GUIZHOU-LIUPANSHUI-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-LIUPANSHUI-5G-NETWORK CHINATELECOM Guizhou province Liupanshui 5G network,China Telecom 5G / mobile core network
+140656,GZ,CHINATELECOM-GUIZHOU-QIANXINAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-QIANXINAN-5G-NETWORK CHINATELECOM Guizhou province Qianxinan 5G network,China Telecom 5G / mobile core network
+140657,GZ,CHINATELECOM-GUIZHOU-GUIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-GUIZHOU-GUIAN-5G-NETWORK CHINATELECOM Guizhou province Guian 5G network,China Telecom 5G / mobile core network
+24445,HA,CMNET-V4HENAN-AS-AP,"iptoasn AS description: CMNET-V4HENAN-AS-AP Henan Mobile Communications Co.,Ltd",China Mobile provincial network
+59016,HA,HACN,"iptoasn AS description: HACN China Broadcast Henan Network Co., Ltd",provincial cable / broadcast network
+137687,HA,CHINATELECOM-HENAN-LUOYANG-IDC,"iptoasn AS description: CHINATELECOM-HENAN-LUOYANG-IDC Luoyang, Henan Province, P.R.China.",China Telecom IDC
+139018,HA,CHINANET-HENAN-LUOYANG-IDC,iptoasn AS description: CHINANET-HENAN-LUOYANG-IDC Henan Luoyang IDC,China Telecom IDC
+139587,HA,CHINANET-HENAN-ZHENGZHOU-SHUJUGANG-IDC,iptoasn AS description: CHINANET-HENAN-ZHENGZHOU-SHUJUGANG-IDC China Telecom Henan Zhengzhou Shujugang IDC network,China Telecom IDC
+58563,HB,CHINATELECOM-HUBEI-IDC,iptoasn AS description: CHINATELECOM-HUBEI-IDC CHINANET Hubei province network,China Telecom IDC
+131285,HB,CHINATELECOM-HUBEI-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-SHENGJI-5G-NETWORK CHINATELECOM Hubei province Shengji 5G network,China Telecom 5G / mobile core network
+136191,HB,CHINATELECOM-HUBEI-YICHANG-IDC,"iptoasn AS description: CHINATELECOM-HUBEI-YICHANG-IDC YICHANG, Hubei Province, P.R.China.",China Telecom IDC
+136192,HB,CHINATELECOM-HUBEI-XIANGYANG-IDC,"iptoasn AS description: CHINATELECOM-HUBEI-XIANGYANG-IDC Xiangyang, Hubei Province, P.R.China.",China Telecom IDC
+136194,HB,CHINATELECOM-HUBEI-HUANGSHI-IDC,"iptoasn AS description: CHINATELECOM-HUBEI-HUANGSHI-IDC Huangshi, Hubei Province, P.R.China.",China Telecom IDC
+137266,HB,CHINATELECOM-HUBEI-WUHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-WUHAN-5G-NETWORK CHINATELECOM Hubei province Wuhan 5G network,China Telecom 5G / mobile core network
+137401,HB,CHINATELECOM-HUBEI-HUANGSHI-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-HUANGSHI-5G-NETWORK CHINATELECOM Hubei province Huangshi 5G network,China Telecom 5G / mobile core network
+137402,HB,CHINATELECOM-HUBEI-SHIYAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-SHIYAN-5G-NETWORK CHINATELECOM Hubei province Shiyan 5G network,China Telecom 5G / mobile core network
+138982,HB,CHINANET-HUBEI-JIANGXIA-IDC,iptoasn AS description: CHINANET-HUBEI-JIANGXIA-IDC Hubei Jiangxia IDC,China Telecom IDC
+140528,HB,CHINATELECOM-HUBEI-YICHANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-YICHANG-5G-NETWORK CHINATELECOM Hubei province Yichang 5G network,China Telecom 5G / mobile core network
+140529,HB,CHINATELECOM-HUBEI-XIANGYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-XIANGYANG-5G-NETWORK CHINATELECOM Hubei province Xiangyang 5G network,China Telecom 5G / mobile core network
+140530,HB,CHINATELECOM-HUBEI-EZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-EZHOU-5G-NETWORK CHINATELECOM Hubei province Ezhou 5G network,China Telecom 5G / mobile core network
+140531,HB,CHINATELECOM-HUBEI-JINGMEN-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-JINGMEN-5G-NETWORK CHINATELECOM Hubei province Jingmen 5G network,China Telecom 5G / mobile core network
+140532,HB,CHINATELECOM-HUBEI-XIAOGAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-XIAOGAN-5G-NETWORK CHINATELECOM Hubei province Xiaogan 5G network,China Telecom 5G / mobile core network
+140533,HB,CHINATELECOM-HUBEI-JINGZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-JINGZHOU-5G-NETWORK CHINATELECOM Hubei province Jingzhou 5G network,China Telecom 5G / mobile core network
+140534,HB,CHINATELECOM-HUBEI-HUANGGANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-HUANGGANG-5G-NETWORK CHINATELECOM Hubei province Huanggang 5G network,China Telecom 5G / mobile core network
+140535,HB,CHINATELECOM-HUBEI-XIANNING-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-XIANNING-5G-NETWORK CHINATELECOM Hubei province Xianning 5G network,China Telecom 5G / mobile core network
+140536,HB,CHINATELECOM-HUBEI-SUIZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-SUIZHOU-5G-NETWORK CHINATELECOM Hubei province Suizhou 5G network,China Telecom 5G / mobile core network
+140537,HB,CHINATELECOM-HUBEI-ENSHI-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-ENSHI-5G-NETWORK CHINATELECOM Hubei province Enshi 5G network,China Telecom 5G / mobile core network
+140538,HB,CHINATELECOM-HUBEI-XIANTAO-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUBEI-XIANTAO-5G-NETWORK CHINATELECOM Hubei province Xiantao 5G network,China Telecom 5G / mobile core network
+148981,HB,CHINANET-HUBEI-SHIYAN-IDC,iptoasn AS description: CHINANET-HUBEI-SHIYAN-IDC China Telecom,China Telecom IDC
+150145,HB,CHINANET-HUBEI-SANXIA-IDC,iptoasn AS description: CHINANET-HUBEI-SANXIA-IDC China Telecom,China Telecom IDC
+24547,HE,CMNET-V4HEBEI-AS-AP,iptoasn AS description: CMNET-V4HEBEI-AS-AP Hebei Mobile Communication Company Limited,China Mobile provincial network
+58539,HE,CHINATELECOM-HEBEI-LANGFANG-IDC,"iptoasn AS description: CHINATELECOM-HEBEI-LANGFANG-IDC Langfang,Hebei province, P.R.China",China Telecom IDC
+63590,HE,HEBBTN,iptoasn AS description: HEBBTN Hebei Broadcasting&TV Network,provincial cable / broadcast network
+134760,HE,CHINANET-HEBEI-SHIJIAZHUANG-IDC,"iptoasn AS description: CHINANET-HEBEI-SHIJIAZHUANG-IDC Shijiazhuang IDC network, CHINANET Hebei province",China Telecom IDC
+136197,HE,CHINATELECOM-HEBEI-XIONGAN,"iptoasn AS description: CHINATELECOM-HEBEI-XIONGAN Xiongan, Hebei Province, P.R.China.",China Telecom provincial network
+140903,HE,CHINANET-HEBEI-BAODING-MAN,iptoasn AS description: CHINANET-HEBEI-BAODING-MAN CHINA TELECOM,China Telecom metro network
+141771,HE,CHINANET-HEBEI-ZHANGJIAKOU-MAN,iptoasn AS description: CHINANET-HEBEI-ZHANGJIAKOU-MAN China Telecom,China Telecom metro network
+135054,HI,CMNET-HAINAN-IDC,"iptoasn AS description: CMNET-HAINAN-IDC China Mobile Group Hainan Co., Ltd.",China Mobile IDC
+151058,HI,CT-HAINAN,iptoasn AS description: CT-HAINAN China Telecom,China Telecom provincial network
+17897,HL,CHINATELECOM-HLJ-AS-AP,iptoasn AS description: CHINATELECOM-HLJ-AS-AP asn for Heilongjiang Provincial Net of CT,China Telecom provincial network
+131506,HL,LJWL,"iptoasn AS description: LJWL HEILONGJIANG RADIO & TV NETWORK CO.,LTD",provincial cable / broadcast network
+132525,HL,CMNET-HEILONGJIANG-CN,iptoasn AS description: CMNET-HEILONGJIANG-CN HeiLongJiang Mobile Communication Company Limited,China Mobile provincial network
+137539,HL,UNICOM-HARBIN-IDC,iptoasn AS description: UNICOM-HARBIN-IDC China Unicom,China Unicom IDC
+137691,HL,CHINATELECOM-HEILONGJIANG-IDC,"iptoasn AS description: CHINATELECOM-HEILONGJIANG-IDC Heilongjiang Province, P.R.China.",China Telecom IDC
+137698,HL,CHINATELECOM-HEILONGJIANG-HANAN-IDC,"iptoasn AS description: CHINATELECOM-HEILONGJIANG-HANAN-IDC HaerbingHeilongjiang Province, P.R.China.",China Telecom IDC
+56047,HN,CMNET-HUNAN-AP,iptoasn AS description: CMNET-HUNAN-AP China Mobile communications corporation,China Mobile provincial network
+63835,HN,CT-HUNAN-CHANGSHA-IDC,"iptoasn AS description: CT-HUNAN-CHANGSHA-IDC No.293,Wanbao Avenue",China Telecom IDC
+63838,HN,CT-HUNAN-HENGYANG-IDC,iptoasn AS description: CT-HUNAN-HENGYANG-IDC Hengyang,China Telecom IDC
+140364,HN,CHINATELECOM-HUNAN-5G-CORE-NETWORK-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-5G-CORE-NETWORK-5G-NETWORK CHINATELECOM Hunan province 5G Core Network 5G network,China Telecom 5G / mobile core network
+140365,HN,CHINATELECOM-HUNAN-CHANGSHA-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-CHANGSHA-5G-NETWORK CHINATELECOM Hunan province Changsha 5G network,China Telecom 5G / mobile core network
+140366,HN,CHINATELECOM-HUNAN-HENGYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-HENGYANG-5G-NETWORK CHINATELECOM Hunan province Hengyang 5G network,China Telecom 5G / mobile core network
+140367,HN,CHINATELECOM-HUNAN-YUEYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-YUEYANG-5G-NETWORK CHINATELECOM Hunan province Yueyang 5G network,China Telecom 5G / mobile core network
+140368,HN,CHINATELECOM-HUNAN-ZHUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-ZHUZHOU-5G-NETWORK CHINATELECOM Hunan province Zhuzhou 5G network,China Telecom 5G / mobile core network
+140369,HN,CHINATELECOM-HUNAN-XIANGTAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-XIANGTAN-5G-NETWORK CHINATELECOM Hunan province Xiangtan 5G network,China Telecom 5G / mobile core network
+140370,HN,CHINATELECOM-HUNAN-CHENZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-CHENZHOU-5G-NETWORK CHINATELECOM Hunan province Chenzhou 5G network,China Telecom 5G / mobile core network
+140371,HN,CHINATELECOM-HUNAN-YONGZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-YONGZHOU-5G-NETWORK CHINATELECOM Hunan province Yongzhou 5G network,China Telecom 5G / mobile core network
+140372,HN,CHINATELECOM-HUNAN-YIYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-YIYANG-5G-NETWORK CHINATELECOM Hunan province Yiyang 5G network,China Telecom 5G / mobile core network
+140373,HN,CHINATELECOM-HUNAN-CHANGDE-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-CHANGDE-5G-NETWORK CHINATELECOM Hunan province Changde 5G network,China Telecom 5G / mobile core network
+140374,HN,CHINATELECOM-HUNAN-ZHANGJIAJIE-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-ZHANGJIAJIE-5G-NETWORK CHINATELECOM Hunan province Zhangjiajie 5G network,China Telecom 5G / mobile core network
+140375,HN,CHINATELECOM-HUNAN-XIANGXI-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-XIANGXI-5G-NETWORK CHINATELECOM Hunan province Xiangxi 5G network,China Telecom 5G / mobile core network
+140376,HN,CHINATELECOM-HUNAN-HUAIHUA-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-HUAIHUA-5G-NETWORK CHINATELECOM Hunan province Huaihua 5G network,China Telecom 5G / mobile core network
+140377,HN,CHINATELECOM-HUNAN-SHAOYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-SHAOYANG-5G-NETWORK CHINATELECOM Hunan province Shaoyang 5G network,China Telecom 5G / mobile core network
+140378,HN,CHINATELECOM-HUNAN-DOUDI-5G-NETWORK,iptoasn AS description: CHINATELECOM-HUNAN-DOUDI-5G-NETWORK CHINATELECOM Hunan province Loudi 5G network,China Telecom 5G / mobile core network
+134810,JL,CMNET-JILIN-AS-AP,iptoasn AS description: CMNET-JILIN-AS-AP China Mobile Group JiLin communications corporation,China Mobile provincial network
+23650,JS,CHINANET-JIANGSU-PROVINCE-IDC,iptoasn AS description: CHINANET-JIANGSU-PROVINCE-IDC AS Number for CHINANET jiangsu province backbone,China Telecom IDC
+45106,JS,JSCNNET,iptoasn AS description: JSCNNET JIANGSU BROADCASTING DATA NETWORK CORPORATION LIMITED,provincial cable / broadcast network
+56046,JS,CMNET-JIANGSU-AP,iptoasn AS description: CMNET-JIANGSU-AP China Mobile communications corporation,China Mobile provincial network
+131325,JS,CHINATELECOM-JIANGSU-NANTONG-MAN,iptoasn AS description: CHINATELECOM-JIANGSU-NANTONG-MAN CHINATELECOM JIANGSU province NANTONG MAN network,China Telecom metro network
+134417,JS,CHINATELECOM-JIANGSU-NANJING-HEXI-IDC,iptoasn AS description: CHINATELECOM-JIANGSU-NANJING-HEXI-IDC Nanjing,China Telecom IDC
+134756,JS,CHINANET-NANJING-JISHAN-IDC,iptoasn AS description: CHINANET-NANJING-JISHAN-IDC CHINANET Nanjing Jishan IDC network,China Telecom IDC
+134769,JS,CHINANET-JIANGSU-CHANGZHOU-LIYANG-IDC,iptoasn AS description: CHINANET-JIANGSU-CHANGZHOU-LIYANG-IDC ChinaNet Jiangsu Changzhou Liyang IDC network,China Telecom IDC
+134770,JS,CHINANET-JIANGSU-SUZHOU-TAIHU-IDC,iptoasn AS description: CHINANET-JIANGSU-SUZHOU-TAIHU-IDC CHINANET Jiangsu province Suzhou taihu IDC network,China Telecom IDC
+137697,JS,CHINATELECOM-JIANGSU-YANGZHOU-IDC,"iptoasn AS description: CHINATELECOM-JIANGSU-YANGZHOU-IDC CHINATELECOM JiangSu YangZhou IDC networkdescr: YangZhouJiangsu Province, P.R.China.",China Telecom IDC
+137699,JS,CHINATELECOM-JIANGSU-SUQIAN-IDC,iptoasn AS description: CHINATELECOM-JIANGSU-SUQIAN-IDC CHINATELECOM Jiangsu Suqian IDC network,China Telecom IDC
+137702,JS,CHINATELECOM-JIANGSU-NANJING-IDC,"iptoasn AS description: CHINATELECOM-JIANGSU-NANJING-IDC Nanjing, Jiangsu Province, P.R.China.",China Telecom IDC
+138950,JS,CHINATELECOM-JIANGSU-WUXI-INTERNATIONAL-IDC,iptoasn AS description: CHINATELECOM-JIANGSU-WUXI-INTERNATIONAL-IDC Jiangsu Wuxi International IDC network,China Telecom IDC
+140290,JS,CHINATELECOM-JIANGSU-5G-CORE-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-5G-CORE-NETWORK CHINATELECOM Jiangsu province 5G CORE network,China Telecom 5G / mobile core network
+140291,JS,CHINATELECOM-JIANGSU-NANJING-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-NANJING-5G-NETWORK CHINATELECOM Jiangsu province Nanjing 5G network,China Telecom 5G / mobile core network
+140292,JS,CHINATELECOM-JIANGSU-SUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-SUZHOU-5G-NETWORK CHINATELECOM Jiangsu province Suzhou 5G network,China Telecom 5G / mobile core network
+140293,JS,CHINATELECOM-JIANGSU-CHANGZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-CHANGZHOU-5G-NETWORK CHINATELECOM Jiangsu province Changzhou 5G network,China Telecom 5G / mobile core network
+140294,JS,CHINATELECOM-JIANGSU-YANGZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-YANGZHOU-5G-NETWORK CHINATELECOM Jiangsu provinceYangzhou 5G network,China Telecom 5G / mobile core network
+140295,JS,CHINATELECOM-JIANGSU-LIANYUNGANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-LIANYUNGANG-5G-NETWORK CHINATELECOM Jiangsu province Lianyungang 5G network,China Telecom 5G / mobile core network
+140296,JS,CHINATELECOM-JIANGSU-WUXI-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-WUXI-5G-NETWORK CHINATELECOM Jiangsu province Wuxi 5G network,China Telecom 5G / mobile core network
+140297,JS,CHINATELECOM-JIANGSU-XUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-XUZHOU-5G-NETWORK CHINATELECOM Jiangsu province Xuzhou 5G network,China Telecom 5G / mobile core network
+140298,JS,CHINATELECOM-JIANGSU-YANCHENG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-YANCHENG-5G-NETWORK CHINATELECOM Jiangsu province Yancheng 5G network,China Telecom 5G / mobile core network
+140299,JS,CHINATELECOM-JIANGSU-NANTONG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-NANTONG-5G-NETWORK CHINATELECOM Jiangsu province Nantong 5G network,China Telecom 5G / mobile core network
+140300,JS,CHINATELECOM-JIANGSU-SUQIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-SUQIAN-5G-NETWORK CHINATELECOM Jiangsu province Suqian 5G network,China Telecom 5G / mobile core network
+140301,JS,CHINATELECOM-JIANGSU-TAIZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-TAIZHOU-5G-NETWORK CHINATELECOM Jiangsu province Taizhou 5G network,China Telecom 5G / mobile core network
+140302,JS,CHINATELECOM-JIANGSU-ZHENJIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-ZHENJIANG-5G-NETWORK CHINATELECOM Jiangsu province Zhenjiang 5G network,China Telecom 5G / mobile core network
+140303,JS,CHINATELECOM-JIANGSU-HUAIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGSU-HUAIAN-5G-NETWORK CHINATELECOM Jiangsu province Huaian 5G network,China Telecom 5G / mobile core network
+140716,JS,UNICOM-JSWX-IDC,iptoasn AS description: UNICOM-JSWX-IDC UNICOM JiangSu WuXi IDC network,China Unicom IDC
+140717,JS,UNICOM-JSSZ-IDC,iptoasn AS description: UNICOM-JSSZ-IDC UNICOM JiangSu Suzhou IDC network,China Unicom IDC
+24415,JX,CNNIC-JXBTIN-AP,iptoasn AS description: CNNIC-JXBTIN-AP Jiangxi Broadcasting and TV information Network,provincial cable / broadcast network
+56045,JX,CMNET-JIANGXI-AP,iptoasn AS description: CMNET-JIANGXI-AP China Mobile communications corporation,China Mobile provincial network
+134238,JX,CT-JIANGXI-IDC,iptoasn AS description: CT-JIANGXI-IDC CHINANET Jiangx province IDC network,China Telecom IDC
+139201,JX,CHINANET-JIANGXI-JIUJIANG-IDC,iptoasn AS description: CHINANET-JIANGXI-JIUJIANG-IDC Jiangxi Jiujiang IDC,China Telecom IDC
+140852,JX,CHINATELECOM-JIANGXI-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-SHENGJI-5G-NETWORK CHINATELECOM Jiangxi province Shengji 5G network,China Telecom 5G / mobile core network
+140853,JX,CHINATELECOM-JIANGXI-NANCHANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-NANCHANG-5G-NETWORK CHINATELECOM Jiangxi province Nanchang 5G network,China Telecom 5G / mobile core network
+140854,JX,CHINATELECOM-JIANGXI-JIUJIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-JIUJIANG-5G-NETWORK CHINATELECOM Jiangxi province Jiujiang 5G network,China Telecom 5G / mobile core network
+140855,JX,CHINATELECOM-JIANGXI-JINGDEZHEN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-JINGDEZHEN-5G-NETWORK CHINATELECOM Jiangxi province Jingdezhen 5G network,China Telecom 5G / mobile core network
+140856,JX,CHINATELECOM-JIANGXI-SHANGRAO-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-SHANGRAO-5G-NETWORK CHINATELECOM Jiangxi province Shangrao 5G network,China Telecom 5G / mobile core network
+140857,JX,CHINATELECOM-JIANGXI-YINGTAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-YINGTAN-5G-NETWORK CHINATELECOM Jiangxi province yingtan 5G network,China Telecom 5G / mobile core network
+140858,JX,CHINATELECOM-JIANGXI-YICHUN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-YICHUN-5G-NETWORK CHINATELECOM Jiangxi province Yichun 5G network,China Telecom 5G / mobile core network
+140859,JX,CHINATELECOM-JIANGXI-PINGXIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-PINGXIANG-5G-NETWORK CHINATELECOM Jiangxi province Pingxiang 5G network,China Telecom 5G / mobile core network
+140860,JX,CHINATELECOM-JIANGXI-XINYU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-XINYU-5G-NETWORK CHINATELECOM Jiangxi province Xinyu 5G network,China Telecom 5G / mobile core network
+140861,JX,CHINATELECOM-JIANGXI-GANZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-GANZHOU-5G-NETWORK CHINATELECOM Jiangxi province Ganzhou 5G network,China Telecom 5G / mobile core network
+140862,JX,CHINATELECOM-JIANGXI-JIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-JIAN-5G-NETWORK CHINATELECOM Jiangxi province Jian 5G network,China Telecom 5G / mobile core network
+140863,JX,CHINATELECOM-JIANGXI-FUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-JIANGXI-FUZHOU-5G-NETWORK CHINATELECOM Jiangxi province Fuzhou 5G network,China Telecom 5G / mobile core network; AS name CHINATELECOM-JIANGXI-FUZHOU-5G-NETWORK: Fuzhou here is the city in Jiangxi
+148969,JX,CHINANET-JIANGXI-LINKONG-IDC,iptoasn AS description: CHINANET-JIANGXI-LINKONG-IDC China Telecom,China Telecom IDC
+149837,JX,CHINANET-JX-YUNHE-IDC,iptoasn AS description: CHINANET-JX-YUNHE-IDC China Telecom,China Telecom IDC
+17799,LN,CHINATELECOM-LN-AS-AP,iptoasn AS description: CHINATELECOM-LN-AS-AP asn for Liaoning Provincial Net of CT,China Telecom provincial network
+56044,LN,CMNET-AS-LIAONING,iptoasn AS description: CMNET-AS-LIAONING China Mobile communications corporation,China Mobile provincial network
+134762,LN,CHINANET-LIAONING-DALIAN-MAN,iptoasn AS description: CHINANET-LIAONING-DALIAN-MAN CHINANET Liaoning province Dalian MAN network,China Telecom metro network
+137688,LN,CHINATELECOM-LIAONING-BENXI-MAN,iptoasn AS description: CHINATELECOM-LIAONING-BENXI-MAN CHINATELECOM Liaoning Benxi MAN,China Telecom metro network
+141025,LN,CT-LIAONING-SHENYANG-MAN,"iptoasn AS description: CT-LIAONING-SHENYANG-MAN Shenyang MAN, Liaoning, China Telecom",China Telecom metro network
+131565,NM,IMBTVN,iptoasn AS description: IMBTVN INNER MONGOLIA BROADCAST&TV NETWORK GROUP CORPORATION,provincial cable / broadcast network
+139007,NM,UNICOM-NM-WULANCHABU-IDC,iptoasn AS description: UNICOM-NM-WULANCHABU-IDC UNICOM InnerMongolia province network,China Unicom IDC
+141006,NM,CT-NEIMENGGU-WULANCHABU-MAN,iptoasn AS description: CT-NEIMENGGU-WULANCHABU-MAN China Telecom,China Telecom metro network
+63621,NX,NXBCTV-NET,"iptoasn AS description: NXBCTV-NET NINGXIA BROADCAST&TV NETWORK CO.,LTD",provincial cable / broadcast network
+134761,NX,CHINANET-NINGXIA-ZHONGWEI-IDC,iptoasn AS description: CHINANET-NINGXIA-ZHONGWEI-IDC CHINANET NINGXIA province ZHONGWEI IDC network,China Telecom IDC
+140707,NX,UNICOM-NXZW-IDC,iptoasn AS description: UNICOM-NXZW-IDC UNICOM Ningxia province network,China Unicom IDC
+59223,QH,CT-QINGHAI-IDC,iptoasn AS description: CT-QINGHAI-IDC CHINANET Qinghai province IDC network,China Telecom IDC
+132225,QH,CHINATELECOM-QINGHAI-5G-NETWORK,iptoasn AS description: CHINATELECOM-QINGHAI-5G-NETWORK China Telecom,China Telecom 5G / mobile core network
+137755,QH,QHGDNET,iptoasn AS description: QHGDNET China Radio and Television Qinghai Network Co. Ltd,provincial cable / broadcast network
+140061,QH,CHINANET-QINGHAI-AS-AP,iptoasn AS description: CHINANET-QINGHAI-AS-AP Qinghai Telecom,China Telecom provincial network
+38283,SC,CHINANET-SCIDC-AS-AP,iptoasn AS description: CHINANET-SCIDC-AS-AP CHINANET SiChuan Telecom Internet Data Center,China Telecom IDC
+139080,SC,CMNET-SCIDC-CN,iptoasn AS description: CMNET-SCIDC-CN The Internet Data Center of Sichuan Mobile Communication Company Limited,China Mobile IDC
+139220,SC,CHINANET-SICHUAN-CHUANXI-IDC,iptoasn AS description: CHINANET-SICHUAN-CHUANXI-IDC Sichuan Chuanxn IDC,China Telecom IDC
+17633,SD,CHINATELECOM-SD-AS-AP,iptoasn AS description: CHINATELECOM-SD-AS-AP ASN for Shandong Provincial Net of CT,China Telecom provincial network
+24143,SD,CNNIC-QCN-AP,iptoasn AS description: CNNIC-QCN-AP Qingdao Cable TV Network Center,provincial cable / broadcast network
+24444,SD,CMNET-V4SHANDONG-AS-AP,iptoasn AS description: CMNET-V4SHANDONG-AS-AP Shandong Mobile Communication Company Limited,China Mobile provincial network
+58540,SD,CHINATELECOM-SHANDONG-JINAN-IDC,"iptoasn AS description: CHINATELECOM-SHANDONG-JINAN-IDC Jinan,250000",China Telecom IDC
+58541,SD,CHINATELECOM-SHANDONG-QINGDAO-IDC,"iptoasn AS description: CHINATELECOM-SHANDONG-QINGDAO-IDC Qingdao,266000",China Telecom IDC
+137690,SD,CHINATELECOM-SHANDONG-ZAOZHUANG-IDC,"iptoasn AS description: CHINATELECOM-SHANDONG-ZAOZHUANG-IDC Zaozhuang,Shandong Province, P.R.China.",China Telecom IDC
+139887,SD,CHINANET-YANTAI-IDC,iptoasn AS description: CHINANET-YANTAI-IDC ChinaNet Shandong Yantai IDC network,China Telecom IDC
+4811,SH,CHINANET-SHANGHAI-MAN,iptoasn AS description: CHINANET-SHANGHAI-MAN China Telecom Group,China Telecom metro network
+4812,SH,CHINANET-SH-AP,iptoasn AS description: CHINANET-SH-AP China Telecom Group,China Telecom provincial network; AS name CHINANET-SH-AP: China Telecom Shanghai
+17621,SH,CNCGROUP-SH,iptoasn AS description: CNCGROUP-SH China Unicom Shanghai network,China Unicom provincial network
+17739,SH,HAPLINK-CN-AP,"iptoasn AS description: HAPLINK-CN-AP Shanghai Telecom Haplink Network Co., Ltd",China Telecom provincial network
+17789,SH,CNCGROUP-SH-IDC,iptoasn AS description: CNCGROUP-SH-IDC CNCGROUP IP network of ShangHai IDC,China Unicom IDC
+24400,SH,CMNET-V4SHANGHAI-AS-AP,"iptoasn AS description: CMNET-V4SHANGHAI-AS-AP Shanghai Mobile Communications Co.,Ltd.",China Mobile provincial network
+140979,SH,UNICOM-SHFT-IDC,iptoasn AS description: UNICOM-SHFT-IDC China Unicom Shanghai FuTe IDC network,China Unicom IDC
+138387,SN,CHINATELECOM-SHAANXI-XIAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-XIAN-5G-NETWORK CHINATELECOM Shaanxi province Xian 5G network,China Telecom 5G / mobile core network
+138409,SN,CHINATELECOM-SHAANXI-TONGCHUAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-TONGCHUAN-5G-NETWORK CHINATELECOM Shaanxi province Tongchuan 5G network,China Telecom 5G / mobile core network
+138436,SN,CHINATELECOM-SHAANXI-BAOJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-BAOJI-5G-NETWORK CHINATELECOM Shaanxi province Baoji 5G network,China Telecom 5G / mobile core network
+138513,SN,CHINATELECOM-SHAANXI-WEINAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-WEINAN-5G-NETWORK CHINATELECOM Shaanxi province Weinan 5G network,China Telecom 5G / mobile core network
+138514,SN,CHINATELECOM-SHAANXI-XIANYANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-XIANYANG-5G-NETWORK CHINATELECOM Shaanxi province Xianyang 5G network,China Telecom 5G / mobile core network
+138597,SN,CHINATELECOM-SHAANXI-HANZHONG-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-HANZHONG-5G-NETWORK CHINATELECOM Shaanxi province Hanzhong 5G network,China Telecom 5G / mobile core network
+138635,SN,CHINATELECOM-SHAANXI-ANKANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-ANKANG-5G-NETWORK CHINATELECOM Shaanxi province Ankang 5G network,China Telecom 5G / mobile core network
+138641,SN,CHINATELECOM-SHAANXI-YULIN-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-YULIN-5G-NETWORK CHINATELECOM Shaanxi province Yulin 5G network,China Telecom 5G / mobile core network
+138679,SN,CHINATELECOM-SHAANXI-YANAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-YANAN-5G-NETWORK CHINATELECOM Shaanxi province Yanan 5G network,China Telecom 5G / mobile core network
+140105,SN,CMNET-SNIDC-CN-AP,iptoasn AS description: CMNET-SNIDC-CN-AP Shaanxi Mobile Communication Company Limited,China Mobile IDC
+140238,SN,CHINATELECOM-SHAANXI-SHANGLUO-5G-NETWORK,iptoasn AS description: CHINATELECOM-SHAANXI-SHANGLUO-5G-NETWORK CHINATELECOM Shaanxi province Shangluo 5G network,China Telecom 5G / mobile core network
+56042,SX,CMNET-SHANXI-AP,iptoasn AS description: CMNET-SHANXI-AP China Mobile communications corporation,China Mobile provincial network
+132147,SX,CT-SHANXI-MAN,"iptoasn AS description: CT-SHANXI-MAN No.3,Shu-Ma Road",China Telecom metro network
+132153,SX,CT-SHANXI-MAN-2,"iptoasn AS description: CT-SHANXI-MAN-2 No.3,Shu-Ma Road",China Telecom metro network
+132510,SX,SHANXIMCC-IDC,iptoasn AS description: SHANXIMCC-IDC IDC ShanXi China Mobile communications corporation,"China Mobile IDC; AS name SHANXIMCC-IDC, ""IDC ShanXi China Mobile"": Shanxi Mobile IDC (Shaanxi Mobile uses CMNET-SNIDC)"
+17638,TJ,CHINATELECOM-TJ-AS-AP,iptoasn AS description: CHINATELECOM-TJ-AS-AP ASN for TIANJIN Provincial Net of CT,China Telecom provincial network
+38019,TJ,CMNET-V4TIANJIN-AS-AP,iptoasn AS description: CMNET-V4TIANJIN-AS-AP tianjin Mobile Communication Company Limited,China Mobile provincial network
+58542,TJ,CHINATELECOM-TIANJIN,"iptoasn AS description: CHINATELECOM-TIANJIN Tianjij,300000",China Telecom provincial network
+132536,TJ,CHINANET-TIANJIN-MAN-NEW,iptoasn AS description: CHINANET-TIANJIN-MAN-NEW China Telecom,China Telecom metro network
+131526,XJ,XJGDNET,"iptoasn AS description: XJGDNET XINJIANG BROADCAST NETWORK CO.,LTD",provincial cable / broadcast network
+137694,XJ,CHINATELECOM-XINJIANG-KEZHOU-MAN,iptoasn AS description: CHINATELECOM-XINJIANG-KEZHOU-MAN CHINATELECOM Xinjiang Kezhou MAN network,China Telecom metro network
+137695,XJ,CHINATELECOM-XINJIANG-WULUMUQI-MAN,iptoasn AS description: CHINATELECOM-XINJIANG-WULUMUQI-MAN CHINATELECOM Xinjiang Wulumuqi MAN network,China Telecom metro network
+140553,XJ,CHINATELECOM-XINJIANG-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-XINJIANG-SHENGJI-5G-NETWORK CHINATELECOM XINJIANG province Shengji 5G network,China Telecom 5G / mobile core network
+134421,YN,CHINATELECOM-YUNNAN-YUEME-CDN,iptoasn AS description: CHINATELECOM-YUNNAN-YUEME-CDN Yunnan Telecom,China Telecom provincial network
+134765,YN,CHINANET-YUNNAN-IDC1,iptoasn AS description: CHINANET-YUNNAN-IDC1 CHINANET Yunnan province IDC1 network,China Telecom IDC
+134766,YN,CHINANET-YUNNAN-IDC2,iptoasn AS description: CHINANET-YUNNAN-IDC2 CHINANET Yunnan province IDC2 network,China Telecom IDC
+140345,YN,CHINATELECOM-YUNNAN-SHENGJI-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-SHENGJI-5G-NETWORK CHINATELECOM Yunnan province Shengji 5G network,China Telecom 5G / mobile core network
+140346,YN,CHINATELECOM-YUNNAN-KUNMING-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-KUNMING-5G-NETWORK CHINATELECOM Yunnan province Kunming 5G network,China Telecom 5G / mobile core network
+140347,YN,CHINATELECOM-YUNNAN-XISHUANGBANNA-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-XISHUANGBANNA-5G-NETWORK CHINATELECOM Yunnan province Xishuangbanna 5G network,China Telecom 5G / mobile core network
+140348,YN,CHINATELECOM-YUNNAN-BAOSHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-BAOSHAN-5G-NETWORK CHINATELECOM Yunnan province Baoshan 5G network,China Telecom 5G / mobile core network
+140349,YN,CHINATELECOM-YUNNAN-CHUXIONG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-CHUXIONG-5G-NETWORK CHINATELECOM Yunnan province Chuxiong 5G network,China Telecom 5G / mobile core network
+140350,YN,CHINATELECOM-YUNNAN-DALI-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-DALI-5G-NETWORK CHINATELECOM Yunnan province Dali 5G network,China Telecom 5G / mobile core network
+140351,YN,CHINATELECOM-YUNNAN-DEHONG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-DEHONG-5G-NETWORK CHINATELECOM Yunnan province Dehong 5G network,China Telecom 5G / mobile core network
+140352,YN,CHINATELECOM-YUNNAN-DIQING-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-DIQING-5G-NETWORK CHINATELECOM Yunnan province Diqing 5G network,China Telecom 5G / mobile core network
+140353,YN,CHINATELECOM-YUNNAN-HONGHE-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-HONGHE-5G-NETWORK CHINATELECOM Yunnan province Honghe 5G network,China Telecom 5G / mobile core network
+140354,YN,CHINATELECOM-YUNNAN-LIJIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-LIJIANG-5G-NETWORK CHINATELECOM Yunnan province Lijiang 5G network,China Telecom 5G / mobile core network
+140355,YN,CHINATELECOM-YUNNAN-LINCANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-LINCANG-5G-NETWORK CHINATELECOM Yunnan province Lincang 5G network,China Telecom 5G / mobile core network
+140356,YN,CHINATELECOM-YUNNAN-NUJIANG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-NUJIANG-5G-NETWORK CHINATELECOM Yunnan province Nujiang 5G network,China Telecom 5G / mobile core network
+140357,YN,CHINATELECOM-YUNNAN-PUER-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-PUER-5G-NETWORK CHINATELECOM Yunnan province Puer 5G network,China Telecom 5G / mobile core network
+140358,YN,CHINATELECOM-YUNNAN-QUJING-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-QUJING-5G-NETWORK CHINATELECOM Yunnan province Qujing 5G network,China Telecom 5G / mobile core network
+140359,YN,CHINATELECOM-YUNNAN-WENSHAN-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-WENSHAN-5G-NETWORK CHINATELECOM Yunnan province Wenshan 5G network,China Telecom 5G / mobile core network
+140360,YN,CHINATELECOM-YUNNAN-YUXI-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-YUXI-5G-NETWORK CHINATELECOM Yunnan province Yuxi 5G network,China Telecom 5G / mobile core network
+140361,YN,CHINATELECOM-YUNNAN-ZHAOTONG-5G-NETWORK,iptoasn AS description: CHINATELECOM-YUNNAN-ZHAOTONG-5G-NETWORK CHINATELECOM Yunnan province Zhaotong 5G network,China Telecom 5G / mobile core network
+146802,YN,CBN-YN,"iptoasn AS description: CBN-YN China Broadcasting Network Yunnan Co.,Ltd",provincial cable / broadcast network
+56041,ZJ,CMNET-ZHEJIANG-AP,iptoasn AS description: CMNET-ZHEJIANG-AP China Mobile communications corporation,China Mobile provincial network
+58461,ZJ,CT-HANGZHOU-IDC,"iptoasn AS description: CT-HANGZHOU-IDC No.288,Fu-chun Road",China Telecom IDC
+134771,ZJ,CHINATELECOM-ZHEJIANG-WENZHOU-IDC,"iptoasn AS description: CHINATELECOM-ZHEJIANG-WENZHOU-IDC WENZHOU, ZHEJIANG Province, P.R.China.",China Telecom IDC
+136188,ZJ,CHINATELECOM-ZHEJIANG-NINGBO-IDC,"iptoasn AS description: CHINATELECOM-ZHEJIANG-NINGBO-IDC NINGBO, ZHEJIANG Province, P.R.China.",China Telecom IDC
+136190,ZJ,CHINATELECOM-ZHEJIANG-JINHUA-IDC,"iptoasn AS description: CHINATELECOM-ZHEJIANG-JINHUA-IDC JINHUA, ZHEJIANG Province, P.R.China.",China Telecom IDC
+140484,ZJ,CHINATELECOM-ZHEJIANG-SHENGJI-EPCCE-NETWORK,iptoasn AS description: CHINATELECOM-ZHEJIANG-SHENGJI-EPCCE-NETWORK CHINATELECOM ZHEJIANG province Shengji EPCCE network,China Telecom 5G / mobile core network
+140485,ZJ,CHINATELECOM-ZHEJIANG-HANGZHOU-5GC-NETWORK,iptoasn AS description: CHINATELECOM-ZHEJIANG-HANGZHOU-5GC-NETWORK CHINATELECOM ZHEJIANG province HANGZHOU 5GC network,China Telecom 5G / mobile core network
+140486,ZJ,CHINATELECOM-ZHEJIANG-JINHUA-5GC-NETWORK,iptoasn AS description: CHINATELECOM-ZHEJIANG-JINHUA-5GC-NETWORK CHINATELECOM ZHEJIANG province JINHUA 5GC network,China Telecom 5G / mobile core network
+140494,ZJ,CHINATELECOM-ZHEJIANG-HUZHOU-5G-NETWORK,iptoasn AS description: CHINATELECOM-ZHEJIANG-HUZHOU-5G-NETWORK CHINATELECOM ZHEJIANG province HUZHOU 5G network,China Telecom 5G / mobile core network

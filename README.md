@@ -28,7 +28,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 按优先级从低到高叠加，高的覆盖低的：
 
 1. **底库**：DB-IP IP to City Lite（全球城市和坐标，CC BY 4.0）。
-2. **中国大陆省份修正**：运营商的省公司很多有自己的 ASN，并且用它在全球路由表里宣告网段。如果某个网段的起源 ASN 属于某个省公司（[`data/cn_asn_province.csv`](data/cn_asn_province.csv)），而 DB-IP 给出的是别的省或没有省份，就改成这个省（省会坐标，精度半径按省份大小 250–500 km，`source` 记为 `bgp-asn`）。DB-IP 的省份一致时保留 DB-IP 的城市级结果。网段归属哪个 ASN 来自 iptoasn（PDDL）。
+2. **中国大陆省份修正**：运营商的省公司很多有自己的 ASN，并且用它在全球路由表里宣告网段。DB-IP 常把全国运营商的地址落在总部所在的北京（2026 年北京占了 DB-IP 里中国 IPv4 的四分之一以上）。所以如果某个网段的起源 ASN 属于某个省级网络（[`data/cn_asn_province.csv`](data/cn_asn_province.csv)，三百多个，收录规则写在文件开头），而 DB-IP 给出的是北京或没有省份，就改成这个省（省会坐标，`source` 记为 `bgp-asn`）。DB-IP 的省份一致时保留 DB-IP 的城市级结果；DB-IP 给的是别的具体省份时也保留 DB-IP，它可能知道更细的信息。网段归属哪个 ASN 来自 iptoasn（PDDL）。
 3. **网络类型标记**：Cloudflare、Fastly 公布的网段，AWS / Google Cloud / Azure / Oracle 公布的云网段，确认是任播的公共 DNS 网段（[`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)），以及按 ASN 标记的 CDN（[`data/anycast_asns.csv`](data/anycast_asns.csv)）。
 4. **人工修正**：[`data/overrides.csv`](data/overrides.csv)，优先级最高。
 
@@ -56,7 +56,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 - `autonomous_system_number`、`autonomous_system_organization`：和 GeoLite2-ASN 同名。
 - `network`：`anycast`（任播）、`cdn`、`cloud`（云厂商代号）、`cloud_region`（云厂商的地域代码）。值为假或为空的键直接省略。
 - `source`：位置最终来自哪一层：`dbip`、`bgp-asn`、`override`。
-- `accuracy_radius`：DB-IP Lite 不提供精度半径，这里按规则填写：有城市 50 km，只有省 250 km，只有国家 1000 km，任播 1000 km，省级修正按省份 250–500 km。
+- `accuracy_radius`：DB-IP Lite 不提供精度半径，这里按规则填写：有城市 50 km，只有省 250 km，只有国家 1000 km，任播 1000 km，省级修正用与该省陆地面积相等的圆的半径（50–750 km，见 [`data/cn_admin.csv`](data/cn_admin.csv)）。
 
 ### 精简版 `EnhancedGeo-City-Lite.mmdb`
 
@@ -162,6 +162,8 @@ with maxminddb.open_database("EnhancedGeo-City.mmdb") as reader:
 
 每天 UTC 02:17 检查所有上游，输入有变化才发新版（tag 用日期，例如 `2026.10.02`），只保留最近 30 个 Release。iptoasn 每小时更新，所以通常每天都会有新版；DB-IP 每月 1 日更新。
 
+Azure 的下载链接每周都会变，构建时会自动从微软的下载页读出当天的链接，不用手动改。除 DB-IP 底库外，任何一个上游当天下载失败时，会改用 14 天内缓存的上一份，并开 issue 提醒；DB-IP 底库下载失败则当天不发版。
+
 ## 局限
 
 - **任播地址**的坐标没有地理意义（同一个地址在全世界很多地方同时存在），所以半径设为 1000 km 并标 `network.anycast`。
@@ -190,7 +192,7 @@ network,country_iso,province,city,latitude,longitude,accuracy_km,evidence
 
 - `network`：CIDR，或者 `起始IP-结束IP`。
 - `country_iso`：ISO 3166-1 两位代码。
-- `province` / `city`：中国大陆用中文名，必须在 [`data/cn_admin.csv`](data/cn_admin.csv) / [`data/cn_cities.csv`](data/cn_cities.csv) 里；其他地方写英文名。
+- `province` / `city`：中国大陆用中文名，必须在 [`data/cn_admin.csv`](data/cn_admin.csv) / [`data/cn_cities.csv`](data/cn_cities.csv) 里（城市表还在整理，暂时为空，所以中国大陆目前只能写到省）；其他地方写英文名。
 - `latitude` / `longitude`：中国大陆的省市在表里时可以不写；其他情况必须写。`accuracy_km` 可以不写。
 - `evidence`：**必填**，写链接或说明。最好是当事方自己公布的信息（例如高校网络中心公布的本校网段、云厂商公布的地域网段）。**不能**抄自 GeoLite2、纯真、IPIP.net 等不允许再分发的数据库，也不能来自 APNIC whois 查询结果（APNIC 的条款禁止用 whois 数据做 IP 定位）。
 
