@@ -19,9 +19,9 @@ import (
 	"slices"
 	"time"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/pipeline"
-	"github.com/jinkela1145/enhanced-geoip/internal/verify"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/pipeline"
+	"github.com/jinkela1145/open-IPGeo/internal/verify"
 )
 
 type common struct {

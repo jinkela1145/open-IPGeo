@@ -22,11 +22,11 @@ import (
 
 	"github.com/oschwald/maxminddb-golang/v2"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
-	"github.com/jinkela1145/enhanced-geoip/internal/testutil"
-	"github.com/jinkela1145/enhanced-geoip/internal/verify"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/testutil"
+	"github.com/jinkela1145/open-IPGeo/internal/verify"
 )
 
 func gz(t *testing.T, s string) []byte {
@@ -247,7 +247,7 @@ func TestEndToEnd(t *testing.T) {
 		t.Fatal(err)
 	}
 	defer full.Close()
-	if full.Metadata.DatabaseType != "EnhancedGeo-City" || full.Metadata.IPVersion != 6 {
+	if full.Metadata.DatabaseType != "OpenIPGeo-City" || full.Metadata.IPVersion != 6 {
 		t.Errorf("metadata %+v", full.Metadata)
 	}
 
@@ -275,7 +275,7 @@ func TestEndToEnd(t *testing.T) {
 		{ip: "2409:8000::1", country: "CN", city: "Guangzhou", source: "dbip", asn: 9808, radius: 50},
 		// DB-IP names a province other than Beijing (Guangdong): the ASN layer keeps DB-IP.
 		{ip: "2409:8020::1", country: "CN", city: "Guangzhou", source: "dbip", asn: 56046, radius: 50},
-		// HK / MO / TW keep their own country codes.
+		// Country codes of the base database are kept.
 		{ip: "223.0.0.1", country: "HK", city: "Hong Kong", source: "dbip", asn: 4760, radius: 50},
 		{ip: "223.1.0.1", country: "TW", city: "Taipei", source: "dbip", radius: 50},
 		{ip: "223.2.0.1", country: "MO", city: "Macau", source: "dbip", radius: 50},
@@ -400,7 +400,7 @@ func TestEndToEnd(t *testing.T) {
 		{ip: "5.1.5.1", country: "DE", lat: 52.5, lon: 13.5, radius: 50}, // gap: kept
 		{ip: "5.1.5.130", country: "DE", lat: 48, lon: 11.5, radius: 50},
 		{ip: "5.1.5.200", missing: true},
-		{ip: "223.3.0.1", country: "CN", lat: 22.5, lon: 114, radius: 50}, // CN and HK share a /24: never merged
+		{ip: "223.3.0.1", country: "CN", lat: 22.5, lon: 114, radius: 50}, // two countries share a /24: never merged
 		{ip: "223.3.0.129", country: "HK", lat: 22.5, lon: 114, radius: 50},
 		{ip: "2a02:1:90::1", country: "DE", lat: 52.5, lon: 13.5, radius: 50}, // Hamburg in the full database
 	}
@@ -439,7 +439,7 @@ func TestEndToEnd(t *testing.T) {
 
 	// The gzip copy decompresses to the Lite database.
 	gzOut, ok := m.Outputs["lite_gz"]
-	if !ok || gzOut.File != fx.cfg.LiteGzipFile() || gzOut.Compression != "gzip" || gzOut.DatabaseType != "EnhancedGeo-City-Lite" {
+	if !ok || gzOut.File != fx.cfg.LiteGzipFile() || gzOut.Compression != "gzip" || gzOut.DatabaseType != "OpenIPGeo-City-Lite" {
 		t.Fatalf("lite_gz output: %+v", gzOut)
 	}
 	gf, err := os.Open(filepath.Join(out, gzOut.File))

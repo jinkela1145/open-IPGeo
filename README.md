@@ -1,25 +1,25 @@
-# EnhancedGeo
+# OpenIPGeo
 
 [English](README.en.md)
 
 一个开源、可以放心再分发的 IP 地理位置合并库，GitHub Actions 每天自动构建。它把 DB-IP 的免费城市库、iptoasn 的 ASN、CDN 和云厂商公布的网段合并成标准 MMDB，并用各省运营商自己的 ASN 修正中国大陆的省份。
 
-> **状态：开发中，还没有正式发布。** `EnhancedGeo` 是暂定的文件名前缀，统一写在 [`config.json`](config.json) 里。
+> **状态：开发中，还没有正式发布。** 文件名前缀 `OpenIPGeo` 统一写在 [`config.json`](config.json) 里。
 
 ## 下载
 
 | 文件 | 内容 |
 |---|---|
-| `EnhancedGeo-City.mmdb` | 完整版：兼容 GeoLite2-City 的结构，外加 ASN 和网络类型标记 |
-| `EnhancedGeo-City-Lite.mmdb` | 地图精简版：国家、取整后的坐标、精度半径、网络类型标记 |
-| `EnhancedGeo-City-Lite.mmdb.gz` | 精简版的 gzip 压缩包，解压后和上一个文件一模一样 |
+| `OpenIPGeo-City.mmdb` | 完整版：兼容 GeoLite2-City 的结构，外加 ASN 和网络类型标记 |
+| `OpenIPGeo-City-Lite.mmdb` | 地图精简版：国家、取整后的坐标、精度半径、网络类型标记 |
+| `OpenIPGeo-City-Lite.mmdb.gz` | 精简版的 gzip 压缩包，解压后和上一个文件一模一样 |
 
 固定下载地址（第一次发布之后可用）：
 
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City.mmdb`
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City-Lite.mmdb`
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City-Lite.mmdb.gz`
-- jsDelivr 加速：`https://cdn.jsdelivr.net/gh/jinkela1145/enhanced-geoip@release/EnhancedGeo-City-Lite.mmdb.gz`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City.mmdb`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb.gz`
+- jsDelivr 加速：`https://cdn.jsdelivr.net/gh/jinkela1145/open-IPGeo@release/OpenIPGeo-City-Lite.mmdb.gz`
 
 jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版的压缩包；完整版和未压缩的精简版请从 Releases 下载。每个文件都附带 `.sha256`。`manifest.json` 记录每个上游的版本、哈希和各层的覆盖情况，`ACCURACY.md` 记录中国 IPv4 / IPv6 的覆盖率。
 
@@ -33,11 +33,11 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 3. **网络类型标记**：Cloudflare、Fastly 公布的网段，AWS / Google Cloud / Azure / Oracle 公布的云网段，确认是任播的公共 DNS 网段（[`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)），以及按 ASN 标记的 CDN（[`data/anycast_asns.csv`](data/anycast_asns.csv)）。
 4. **人工修正**：[`data/overrides.csv`](data/overrides.csv)，优先级最高。
 
-每个数据源的授权和核对日期见 [SOURCES.md](SOURCES.md)。保留地址和私有地址不收录；香港 HK、澳门 MO、台湾 TW 始终保持自己的国家代码，不会并进 CN。
+每个数据源的授权和核对日期见 [SOURCES.md](SOURCES.md)。保留地址和私有地址不收录。
 
 ## 字段
 
-### 完整版 `EnhancedGeo-City.mmdb`
+### 完整版 `OpenIPGeo-City.mmdb`
 
 结构和 GeoLite2-City 一致，现成的读库可以直接读（示例记录）：
 
@@ -59,7 +59,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 - `source`：位置最终来自哪一层：`dbip`、`bgp-asn`、`override`。
 - `accuracy_radius`：DB-IP Lite 不提供精度半径，这里按规则填写：有城市 50 km，只有省 250 km，只有国家 1000 km，任播 1000 km，省级修正用与该省陆地面积相等的圆的半径（50–750 km，见 [`data/cn_admin.csv`](data/cn_admin.csv)）。
 
-### 精简版 `EnhancedGeo-City-Lite.mmdb`
+### 精简版 `OpenIPGeo-City-Lite.mmdb`
 
 给世界地图用，**字段不会随意改动**：
 
@@ -75,7 +75,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 - `accuracy_radius` 分档：10 / 25 / 50 / 100 / 250 / 500 / 1000 km（向上取档）。
 - `network` 里值为假或为空的键省略，全部为空时整个 `network` 省略；精简版没有 `cloud_region`。
 - 不含名称和 ASN，这样相邻的相同记录能合并，文件更小。
-- 位置按 IPv4 /24、IPv6 /40 的块合并：一个块被切成几个位置时，取覆盖地址最多的那个位置，再把 `accuracy_radius` 放大到能盖住这个块三分之二的地址（MaxMind 对精度半径的定义是 67% 置信度）。各部分国家不同、网络标记不同、或者块里有空洞时，这个块原样保留。所以精简版的国家和网络标记跟完整版完全一致，香港、澳门、台湾也不会被并进 CN。需要 /24、/40 以下更细的位置时请用完整版。每次合并了多少，写在 `ACCURACY.md` 里。
+- 位置按 IPv4 /24、IPv6 /40 的块合并：一个块被切成几个位置时，取覆盖地址最多的那个位置，再把 `accuracy_radius` 放大到能盖住这个块三分之二的地址（MaxMind 对精度半径的定义是 67% 置信度）。各部分国家不同、网络标记不同、或者块里有空洞时，这个块原样保留。所以精简版的国家和网络标记跟完整版完全一致。需要 /24、/40 以下更细的位置时请用完整版。每次合并了多少，写在 `ACCURACY.md` 里。
 
 `cloud` 代号：
 
@@ -99,7 +99,7 @@ import (
 	"github.com/oschwald/maxminddb-golang/v2"
 )
 
-db, err := maxminddb.Open("EnhancedGeo-City-Lite.mmdb")
+db, err := maxminddb.Open("OpenIPGeo-City-Lite.mmdb")
 if err != nil {
 	return err
 }
@@ -126,7 +126,7 @@ err = db.Lookup(netip.MustParseAddr("1.1.1.1")).Decode(&rec)
 从 jsDelivr 下载的是 `.gz`，解压后直接在内存里打开即可（只用标准库的 `compress/gzip`）：
 
 ```go
-f, err := os.Open("EnhancedGeo-City-Lite.mmdb.gz")
+f, err := os.Open("OpenIPGeo-City-Lite.mmdb.gz")
 if err != nil {
 	return err
 }
@@ -150,11 +150,11 @@ db, err := maxminddb.OpenBytes(data)
 import geoip2.database
 import maxminddb
 
-with geoip2.database.Reader("EnhancedGeo-City.mmdb") as reader:
+with geoip2.database.Reader("OpenIPGeo-City.mmdb") as reader:
     r = reader.city("8.8.8.8")
     print(r.country.iso_code, r.location.latitude, r.location.longitude)
 
-with maxminddb.open_database("EnhancedGeo-City.mmdb") as reader:
+with maxminddb.open_database("OpenIPGeo-City.mmdb") as reader:
     rec = reader.get("8.8.8.8")
     print(rec.get("network"), rec.get("autonomous_system_number"), rec.get("source"))
 ```

@@ -4,7 +4,7 @@ import (
 	"net/netip"
 	"slices"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // Networks never written to the databases. The IPv4 list mirrors the reserved

@@ -10,7 +10,7 @@ The databases built by this repository (`*.mmdb`, `manifest.json`, `ACCURACY.md`
 
 使用、分享或修改这些数据时 / When you use, share or adapt the data:
 
-1. 署名本项目（例如 "EnhancedGeo (https://github.com/jinkela1145/enhanced-geoip)"），附上 CC BY 4.0 链接，并说明你是否做了修改。
+1. 署名本项目（例如 "OpenIPGeo (https://github.com/jinkela1145/open-IPGeo)"），附上 CC BY 4.0 链接，并说明你是否做了修改。
    Credit this project, link to CC BY 4.0, and indicate whether you made changes.
 2. 说明数据包含 DB-IP 和 GeoNames 的数据：`IP Geolocation by DB-IP (https://db-ip.com)`、`GeoNames (https://www.geonames.org)`。
    Mention that the data contains data from DB-IP and GeoNames.

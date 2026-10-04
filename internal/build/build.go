@@ -15,10 +15,10 @@ import (
 	"github.com/maxmind/mmdbwriter"
 	"github.com/maxmind/mmdbwriter/mmdbtype"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // Inputs are the parsed layers, lowest priority first.

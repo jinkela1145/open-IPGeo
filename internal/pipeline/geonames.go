@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // provinceISO maps the start of GeoNames' English admin1 names to ISO

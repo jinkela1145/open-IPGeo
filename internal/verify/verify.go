@@ -20,8 +20,8 @@ import (
 
 	"github.com/oschwald/maxminddb-golang/v2"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/geo"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/geo"
 )
 
 // KnownIP is a row of testdata/known_ips.csv.

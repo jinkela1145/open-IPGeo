@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
 )
 
 // gzipFile writes a gzip copy of src to dst. The gzip header carries no

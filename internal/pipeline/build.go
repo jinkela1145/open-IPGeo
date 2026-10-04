@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/build"
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/build"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // Data file names inside the data directory.

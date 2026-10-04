@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // AdminHeader is the header of a data/<cc>_admin.csv table whose

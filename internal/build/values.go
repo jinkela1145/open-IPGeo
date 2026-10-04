@@ -5,7 +5,7 @@ import (
 
 	"github.com/maxmind/mmdbwriter/mmdbtype"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // valueCache builds mmdbtype values and shares identical sub-values so that

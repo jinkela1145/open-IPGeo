@@ -1,25 +1,25 @@
-# EnhancedGeo
+# OpenIPGeo
 
 [中文](README.md)
 
 An open-source IP geolocation database that is safe to redistribute, rebuilt daily by GitHub Actions. It merges DB-IP's free city database, ASN data from iptoasn, and the network lists published by CDN and cloud providers into standard MMDB files, and corrects mainland China provinces using the ASNs of provincial carrier networks.
 
-> **Status: in development, not released yet.** `EnhancedGeo` is a provisional file name prefix, configured in [`config.json`](config.json).
+> **Status: in development, not released yet.** The file name prefix `OpenIPGeo` is configured in [`config.json`](config.json).
 
 ## Downloads
 
 | File | Content |
 |---|---|
-| `EnhancedGeo-City.mmdb` | Full edition: GeoLite2-City compatible structure plus ASN and network flags |
-| `EnhancedGeo-City-Lite.mmdb` | Map edition: country, rounded coordinates, accuracy radius and network flags |
-| `EnhancedGeo-City-Lite.mmdb.gz` | The Lite edition, gzip-compressed; identical after decompression |
+| `OpenIPGeo-City.mmdb` | Full edition: GeoLite2-City compatible structure plus ASN and network flags |
+| `OpenIPGeo-City-Lite.mmdb` | Map edition: country, rounded coordinates, accuracy radius and network flags |
+| `OpenIPGeo-City-Lite.mmdb.gz` | The Lite edition, gzip-compressed; identical after decompression |
 
 Stable URLs (available after the first release):
 
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City.mmdb`
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City-Lite.mmdb`
-- `https://github.com/jinkela1145/enhanced-geoip/releases/latest/download/EnhancedGeo-City-Lite.mmdb.gz`
-- jsDelivr: `https://cdn.jsdelivr.net/gh/jinkela1145/enhanced-geoip@release/EnhancedGeo-City-Lite.mmdb.gz`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City.mmdb`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb`
+- `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb.gz`
+- jsDelivr: `https://cdn.jsdelivr.net/gh/jinkela1145/open-IPGeo@release/OpenIPGeo-City-Lite.mmdb.gz`
 
 jsDelivr only serves files up to 20 MB, so the CDN URL carries the compressed Lite edition; get the full edition and the uncompressed Lite edition from Releases. Every file comes with a `.sha256` file. `manifest.json` records the version and hash of every upstream file and per-layer statistics; `ACCURACY.md` reports coverage of the address space delegated to China.
 
@@ -33,7 +33,7 @@ Lowest priority first; later layers override earlier ones:
 3. **Network flags**: Cloudflare and Fastly ranges, AWS / Google Cloud / Azure / Oracle cloud ranges, public DNS ranges confirmed to be anycast ([`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)) and CDN ASNs ([`data/anycast_asns.csv`](data/anycast_asns.csv)).
 4. **Manual overrides**: [`data/overrides.csv`](data/overrides.csv), highest priority.
 
-Licenses and check dates of every source are listed in [SOURCES.md](SOURCES.md). Reserved and private networks are excluded. Hong Kong (HK), Macao (MO) and Taiwan (TW) always keep their own country codes and are never merged into CN.
+Licenses and check dates of every source are listed in [SOURCES.md](SOURCES.md). Reserved and private networks are excluded.
 
 ## Fields
 
@@ -73,7 +73,7 @@ Designed for world maps; **the fields are stable**:
 
 Coordinates are rounded to 0.5° (configurable), radii use the tiers 10 / 25 / 50 / 100 / 250 / 500 / 1000 km, false or empty `network` keys are omitted, and there are no names, ASNs or `cloud_region`. `cloud` codes: `aws`, `gcp`, `azure`, `oracle`.
 
-Locations are aggregated to IPv4 /24 and IPv6 /40 blocks: when a block is split between several locations it gets the location that covers most of its addresses, and `accuracy_radius` is widened until it covers two thirds of the block (MaxMind defines the radius at 67 % confidence). Blocks whose parts differ in country or network flags, or that have gaps, are left as they are, so countries and network flags are exactly those of the full edition and Hong Kong, Macao and Taiwan are never merged into CN. Use the full edition when you need locations finer than /24 or /40. `ACCURACY.md` reports how much was merged in each build.
+Locations are aggregated to IPv4 /24 and IPv6 /40 blocks: when a block is split between several locations it gets the location that covers most of its addresses, and `accuracy_radius` is widened until it covers two thirds of the block (MaxMind defines the radius at 67 % confidence). Blocks whose parts differ in country or network flags, or that have gaps, are left as they are, so countries and network flags are exactly those of the full edition. Use the full edition when you need locations finer than /24 or /40. `ACCURACY.md` reports how much was merged in each build.
 
 The `.gz` file can be opened in memory with the standard library: `gzip.NewReader`, `io.ReadAll`, then `maxminddb.OpenBytes(data)`.
 

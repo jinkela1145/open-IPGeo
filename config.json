@@ -1,6 +1,6 @@
 {
-  "name": "EnhancedGeo",
-  "repo": "jinkela1145/enhanced-geoip",
+  "name": "OpenIPGeo",
+  "repo": "jinkela1145/open-IPGeo",
   "description": {
     "en": "IP geolocation merged from DB-IP Lite (CC BY 4.0), iptoasn.com (PDDL 1.0), GeoNames (CC BY 4.0) and public CDN / cloud network lists. IP Geolocation by DB-IP (https://db-ip.com). See SOURCES.md in the repository.",
     "zh-CN": "合并自 DB-IP Lite（CC BY 4.0）、iptoasn.com（PDDL 1.0）、GeoNames（CC BY 4.0）以及 CDN / 云厂商公开网段的 IP 地理位置数据。IP Geolocation by DB-IP（https://db-ip.com）。数据来源见仓库中的 SOURCES.md。"

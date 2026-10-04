@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 func TestRadiusTier(t *testing.T) {

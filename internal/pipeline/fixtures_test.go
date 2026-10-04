@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/testutil"
+	"github.com/jinkela1145/open-IPGeo/internal/testutil"
 )
 
 // TestWriteFixtures writes the synthetic upstream files to $EGEO_FIXTURES so

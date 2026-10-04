@@ -14,9 +14,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/fetch"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/fetch"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // BuilderVersion changes whenever the output format or merge logic changes,

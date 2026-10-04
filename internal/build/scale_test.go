@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // TestScale builds databases from large synthetic inputs to estimate time and

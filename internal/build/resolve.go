@@ -5,8 +5,8 @@ import (
 	"math"
 	"strings"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/config"
-	"github.com/jinkela1145/enhanced-geoip/internal/sources"
+	"github.com/jinkela1145/open-IPGeo/internal/config"
+	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
 // Location sources written to the "source" field.

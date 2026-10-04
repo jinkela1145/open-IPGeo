@@ -4,7 +4,7 @@ import (
 	"math"
 	"sort"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // familyAcc accumulates address counts for one address family.

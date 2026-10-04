@@ -5,8 +5,8 @@ import (
 	"net/netip"
 	"slices"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/geo"
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/geo"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // liteRun is a maximal run of addresses that share one Lite value.

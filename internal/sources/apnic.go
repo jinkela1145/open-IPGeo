@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // ReadDelegated parses an RIR statistics exchange file (for example APNIC's

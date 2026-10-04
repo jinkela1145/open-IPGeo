@@ -9,7 +9,7 @@ import (
 
 	"github.com/oschwald/maxminddb-golang/v2"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
 )
 
 // Names maps a locale code to a name.

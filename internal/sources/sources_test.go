@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/iprange"
-	"github.com/jinkela1145/enhanced-geoip/internal/testutil"
+	"github.com/jinkela1145/open-IPGeo/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/testutil"
 )
 
 func writeTemp(t *testing.T, name, content string) string {

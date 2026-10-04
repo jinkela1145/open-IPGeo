@@ -1,4 +1,4 @@
-module github.com/jinkela1145/enhanced-geoip
+module github.com/jinkela1145/open-IPGeo
 
 go 1.24.0
 

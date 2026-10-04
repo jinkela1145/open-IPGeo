@@ -7,7 +7,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/jinkela1145/enhanced-geoip/internal/geo"
+	"github.com/jinkela1145/open-IPGeo/internal/geo"
 )
 
 var testTiers = []uint16{10, 25, 50, 100, 250, 500, 1000}
@@ -76,7 +76,7 @@ func TestAggregateLite(t *testing.T) {
 			merged: 1,
 		},
 		{
-			name: "different countries are never merged (HK stays HK)",
+			name: "different countries are never merged",
 			bits: 24,
 			in: []liteRun{
 				run("223.3.0.0", "223.3.0.127", cn),
