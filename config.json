@@ -2,8 +2,8 @@
   "name": "OpenIPGeo",
   "repo": "jinkela1145/open-IPGeo",
   "description": {
-    "en": "IP geolocation merged from DB-IP Lite (CC BY 4.0), iptoasn.com (PDDL 1.0), GeoNames (CC BY 4.0) and public CDN / cloud network lists. IP Geolocation by DB-IP (https://db-ip.com). See SOURCES.md in the repository.",
-    "zh-CN": "合并自 DB-IP Lite（CC BY 4.0）、iptoasn.com（PDDL 1.0）、GeoNames（CC BY 4.0）以及 CDN / 云厂商公开网段的 IP 地理位置数据。IP Geolocation by DB-IP（https://db-ip.com）。数据来源见仓库中的 SOURCES.md。"
+    "en": "IP geolocation merged from DB-IP Lite (CC BY 4.0), iptoasn.com (PDDL 1.0), GeoNames (CC BY 4.0), public CDN / cloud network lists, operators' geofeeds and the RIPE Database (used with permission of the RIPE NCC). IP Geolocation by DB-IP (https://db-ip.com). See SOURCES.md in the repository.",
+    "zh-CN": "合并自 DB-IP Lite（CC BY 4.0）、iptoasn.com（PDDL 1.0）、GeoNames（CC BY 4.0）、CDN / 云厂商公开网段、运营商发布的 geofeed 以及 RIPE 数据库（经 RIPE NCC 许可使用）的 IP 地理位置数据。IP Geolocation by DB-IP（https://db-ip.com）。数据来源见仓库中的 SOURCES.md。"
   },
   "radius_km": {
     "city": 50,
@@ -39,6 +39,8 @@
     "apnic_delegated": "https://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest",
     "geonames_admin1": "https://download.geonames.org/export/dump/admin1CodesASCII.txt",
     "geonames_cn": "https://download.geonames.org/export/dump/CN.zip",
-    "geonames_cn_altnames": "https://download.geonames.org/export/dump/alternatenames/CN.zip"
+    "geonames_cn_altnames": "https://download.geonames.org/export/dump/alternatenames/CN.zip",
+    "ripe_inetnum": "https://ftp.ripe.net/ripe/dbase/split/ripe.db.inetnum.gz",
+    "ripe_inet6num": "https://ftp.ripe.net/ripe/dbase/split/ripe.db.inet6num.gz"
   }
 }

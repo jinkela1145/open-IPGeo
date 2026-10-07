@@ -2,7 +2,7 @@
 
 [English](README.en.md)
 
-一个开源、可以放心再分发的 IP 地理位置合并库，GitHub Actions 每天自动构建。它把 DB-IP 的免费城市库、iptoasn 的 ASN、CDN 和云厂商公布的网段合并成标准 MMDB，并用各省运营商自己的 ASN 修正中国大陆的省份。
+一个开源、可以放心再分发的 IP 地理位置合并库，GitHub Actions 每天自动构建。它把 DB-IP 的免费城市库、iptoasn 的 ASN、CDN 和云厂商公布的网段合并成标准 MMDB，用各省运营商自己的 ASN 修正中国大陆的省份，并用地区运营商的 ASN、RIPE 数据库和运营商发布的 geofeed 修正俄罗斯的地区。
 
 > **状态：开发中，还没有正式发布。** 文件名前缀 `OpenIPGeo` 统一写在 [`config.json`](config.json) 里。
 
@@ -21,7 +21,7 @@
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb.gz`
 - jsDelivr 加速：`https://cdn.jsdelivr.net/gh/jinkela1145/open-IPGeo@release/OpenIPGeo-City-Lite.mmdb.gz`
 
-jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版的压缩包；完整版和未压缩的精简版请从 Releases 下载。每个文件都附带 `.sha256`。`manifest.json` 记录每个上游的版本、哈希和各层的覆盖情况，`ACCURACY.md` 记录中国 IPv4 / IPv6 的覆盖率。
+jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版的压缩包；完整版和未压缩的精简版请从 Releases 下载。每个文件都附带 `.sha256`。`manifest.json` 记录每个上游的版本、哈希和各层的覆盖情况，`ACCURACY.md` 记录中国 IPv4 / IPv6 的覆盖率和地区层的修正量。
 
 ## 数据从哪来
 
@@ -30,6 +30,7 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 1. **底库**：DB-IP IP to City Lite（全球城市和坐标，CC BY 4.0）。
 2. **中国大陆省份修正**：运营商的省公司很多有自己的 ASN，并且用它在全球路由表里宣告网段。DB-IP 常把全国运营商的地址落在总部所在的北京（2026 年北京占了 DB-IP 里中国 IPv4 的四分之一以上）。所以如果某个网段的起源 ASN 属于某个省级网络（[`data/cn_asn_province.csv`](data/cn_asn_province.csv)，三百多个，收录规则写在文件开头），而 DB-IP 给出的是北京或没有省份，就改成这个省（省会坐标，`source` 记为 `bgp-asn`）。DB-IP 的省份一致时保留 DB-IP 的城市级结果；DB-IP 给的是别的具体省份时也保留 DB-IP，它可能知道更细的信息。网段归属哪个 ASN 来自 iptoasn（PDDL）。
    **俄罗斯**用同样的规则，总部默认值换成莫斯科市（[`data/ru_admin.csv`](data/ru_admin.csv)、[`data/ru_asn_region.csv`](data/ru_asn_region.csv)）。俄罗斯的地区运营商 DB-IP 本来就放得比较准，偏到莫斯科的主要是全国性运营商（MTS、Beeline、MegaFon 的移动网等），它们的 ASN 不分地区，这一层帮不上，所以效果比中国小得多（2026-06 的数据约挪回 0.4% 的俄罗斯 IPv4）。这一层只在 DB-IP 已经给出 RU 时细化地区，从不改国家；地区表按 ISO 3166-2:RU 收录，DB-IP 给出的地区不在表里时保留原值。
+   俄罗斯还用 **RIPE 数据库**（经 RIPE NCC 许可）：运营商在 inetnum 对象里引用了自己发布的 geofeed（RFC 8805）时，按 geofeed 写的地区修正，只接受落在引用它的对象范围内的条目（`source` 记为 `geofeed`）；对象的 netname / descr 里只写了一个地区的地名时，把它当作线索（`source` 记为 `whois`，地名的其他拼写和城市名见 [`data/ru_place_names.csv`](data/ru_place_names.csv)）。依据的优先级：geofeed、地区 ASN、对象里的地名。修改规则同上：只改 DB-IP 放在莫斯科市或没有地区的地址；geofeed 说这段地址在别的国家时，这一层不碰它。
 3. **网络类型标记**：Cloudflare、Fastly 公布的网段，AWS / Google Cloud / Azure / Oracle 公布的云网段，确认是任播的公共 DNS 网段（[`data/anycast_prefixes.csv`](data/anycast_prefixes.csv)），以及按 ASN 标记的 CDN（[`data/anycast_asns.csv`](data/anycast_asns.csv)）。
 4. **人工修正**：[`data/overrides.csv`](data/overrides.csv)，优先级最高。
 
@@ -56,8 +57,8 @@ jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版�
 - `continent`、`country`、`subdivisions`、`city`、`location`：同 GeoLite2-City。名称至少有 `en`；中国省级修正的记录同时有 `zh-CN`；其他地方上游有中文名就带上（DB-IP 只给大洲和国家提供中文名）。`location.time_zone` 只在上游提供时才写。
 - `autonomous_system_number`、`autonomous_system_organization`：和 GeoLite2-ASN 同名。
 - `network`：`anycast`（任播）、`cdn`、`cloud`（云厂商代号）、`cloud_region`（云厂商的地域代码）。值为假或为空的键直接省略。
-- `source`：位置最终来自哪一层：`dbip`、`bgp-asn`、`override`。
-- `accuracy_radius`：DB-IP Lite 不提供精度半径，这里按规则填写：有城市 50 km，只有省 250 km，只有国家 1000 km，任播 1000 km，省级修正用与该省陆地面积相等的圆的半径（50–750 km，见 [`data/cn_admin.csv`](data/cn_admin.csv)）。
+- `source`：位置最终来自哪一层：`dbip`、`bgp-asn`（地区 ASN）、`geofeed`（运营商的 geofeed）、`whois`（RIPE 数据库对象里的地名）、`override`。
+- `accuracy_radius`：DB-IP Lite 不提供精度半径，这里按规则填写：有城市 50 km，只有省 250 km，只有国家 1000 km，任播 1000 km，地区修正用与该地区陆地面积相等的圆的半径（见 [`data/cn_admin.csv`](data/cn_admin.csv)、[`data/ru_admin.csv`](data/ru_admin.csv)）。
 
 ### 精简版 `OpenIPGeo-City-Lite.mmdb`
 
@@ -171,7 +172,7 @@ Azure 的下载链接每周都会变，构建时会自动从微软的下载页�
 - **移动网络**通常只能定位到省，有时只到国家。
 - **DB-IP Lite** 是免费版，精度不如商业版。准确度基准测试会在后续版本加入 `ACCURACY.md`。
 - **中国 IPv6**：省级修正只覆盖用省公司 ASN 宣告的网段。电信的大部分网段挂在全国骨干 AS4134 下面，这一层帮不上。
-- **俄罗斯**：DB-IP 把约三分之一的俄罗斯 IPv4 放在莫斯科，其中全国性运营商的移动网大多其实在各地，但只靠 ASN 分不出来。要改善得用 RIPE 数据库里的地区信息或运营商的 geofeed，授权问题还在确认（见 [`SOURCES.md`](SOURCES.md)）。
+- **俄罗斯**：DB-IP 把约三分之一的俄罗斯 IPv4 放在莫斯科，其中全国性运营商的移动网大多其实在各地，只靠 ASN 分不出来。RIPE 数据库和 geofeed 能补上一部分，每次修正了多少写在 `ACCURACY.md` 的「地区层」一节；不在对象里写地区、也没有 geofeed 的网络仍然留在莫斯科。
 - 不做比城市更细的定位，也不做代理 / VPN 检测。
 
 ## 署名（必须）

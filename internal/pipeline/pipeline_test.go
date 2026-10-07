@@ -42,14 +42,16 @@ func gz(t *testing.T, s string) []byte {
 }
 
 type fixture struct {
-	t       *testing.T
-	srv     *httptest.Server
-	cfg     *config.Config
-	cache   string
-	data    string
-	dbipGz  []byte
-	months  map[string]bool // which DB-IP months exist
-	iptoasn []byte
+	t        *testing.T
+	srv      *httptest.Server
+	gf       *httptest.Server // HTTPS server of the test geofeed
+	gfClient *http.Client
+	cfg      *config.Config
+	cache    string
+	data     string
+	dbipGz   []byte
+	months   map[string]bool // which DB-IP months exist
+	iptoasn  []byte
 
 	mu   sync.Mutex
 	fail map[string]bool // paths that answer 404
@@ -79,6 +81,17 @@ func newFixture(t *testing.T) *fixture {
 		t.Fatal(err)
 	}
 	fx.iptoasn = gz(t, testutil.IPtoASNSample)
+	gfMux := http.NewServeMux()
+	gfMux.HandleFunc("/feed.csv", func(w http.ResponseWriter, r *http.Request) {
+		if fx.failing("/feed.csv") {
+			http.Error(w, "down", http.StatusServiceUnavailable)
+			return
+		}
+		_, _ = w.Write([]byte(testutil.Geofeed))
+	})
+	fx.gf = httptest.NewTLSServer(gfMux)
+	t.Cleanup(fx.gf.Close)
+	fx.gfClient = fx.gf.Client()
 	mux := http.NewServeMux()
 	mux.HandleFunc("/dbip/", func(w http.ResponseWriter, r *http.Request) {
 		name := strings.TrimPrefix(r.URL.Path, "/dbip/")
@@ -100,6 +113,8 @@ func newFixture(t *testing.T) *fixture {
 		"/apnic":          []byte(testutil.DelegatedSample),
 		"/azure-page":     []byte(`<a href="https://download.microsoft.com/download/x/ServiceTags_Public_20260928.json">`),
 		"/azure-json":     []byte(testutil.AzureSample),
+		"/ripe/inetnum":   gz(t, testutil.RIPEInetnum(fx.gf.URL+"/feed.csv")),
+		"/ripe/inet6num":  gz(t, testutil.RIPEInet6num),
 	}
 	for path, body := range static {
 		mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
@@ -133,6 +148,8 @@ func newFixture(t *testing.T) *fixture {
 		config.SrcGCP:          u + "/gcp",
 		config.SrcOracle:       u + "/oracle",
 		config.SrcAPNIC:        u + "/apnic",
+		config.SrcRIPEInetnum:  u + "/ripe/inetnum",
+		config.SrcRIPEInet6num: u + "/ripe/inet6num",
 	}
 	cfg.DisabledSources = []string{config.SrcAzurePage}
 	if err := cfg.Validate(); err != nil {
@@ -177,7 +194,7 @@ func (fx *fixture) run(out string) *Manifest {
 	fx.t.Helper()
 	ctx := context.Background()
 	now := time.Date(2026, 10, 2, 2, 17, 0, 0, time.UTC)
-	in, err := Fetch(ctx, FetchOptions{Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now}, filepath.Join(out, "inputs.json"))
+	in, err := Fetch(ctx, FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now}, filepath.Join(out, "inputs.json"))
 	if err != nil {
 		fx.t.Fatal(err)
 	}
@@ -336,8 +353,69 @@ func TestEndToEnd(t *testing.T) {
 			t.Errorf("%s: subdivision %+v city %+v, want %s %s", c.ip, got.Subdivisions, got.City, c.sub, c.ru)
 		}
 	}
-	if ru := m.Stats.IPv4.RegionLayer["RU"]; ru["corrected"] != 65536 || ru["agree"] != 65536 || ru["conflict"] != 2*65536 || ru["filled"] != 65536 {
+	if ru := m.Stats.IPv4.RegionLayer["RU"]; ru["corrected"] != 2*65536 || ru["agree"] != 65536 || ru["conflict"] != 2*65536 || ru["filled"] != 65536 {
 		t.Errorf("RU layer stats: %v", ru)
+	}
+	// Russia: the RIPE layer. Evidence order: geofeed, curated ASN, place
+	// name in the RIPE object; a geofeed entry in another country blocks.
+	for _, c := range []struct {
+		ip, sub, source string
+		radius          uint16
+	}{
+		{"5.7.0.1", "KDA", "whois", 200},    // "Krasnodar branch" in descr
+		{"5.8.0.1", "SVE", "geofeed", 250},  // geofeed beats the descr
+		{"5.8.200.1", "", "dbip", 50},       // geofeed says DE: layer blocked
+		{"5.9.0.1", "", "dbip", 50},         // geofeed entry outside the object; Moscow + oblast only
+		{"5.10.0.1", "SVE", "bgp-asn", 250}, // curated ASN beats the descr
+		{"2a0c:1::1", "TA", "whois", 150},   // continuation line of descr
+		{"2.0.0.1", "", "", 0},              // not in DB-IP
+	} {
+		var got fullRec
+		if !lookup(t, full, c.ip, &got) {
+			if c.source != "" {
+				t.Errorf("%s: not found", c.ip)
+			}
+			continue
+		}
+		if got.Source != c.source || got.Location.AccuracyRadius != c.radius {
+			t.Errorf("%s: source %q radius %d, want %q %d", c.ip, got.Source, got.Location.AccuracyRadius, c.source, c.radius)
+		}
+		if c.sub != "" && (len(got.Subdivisions) == 0 || got.Subdivisions[0].ISOCode != c.sub || got.Subdivisions[0].Names["ru"] == "" || got.City.Names != nil) {
+			t.Errorf("%s: subdivision %+v city %+v, want %s", c.ip, got.Subdivisions, got.City, c.sub)
+		}
+		if c.sub == "" && got.City.Names["en"] != "Moscow" {
+			t.Errorf("%s: DB-IP's Moscow record should be kept, got %+v", c.ip, got)
+		}
+	}
+	if g := m.Stats.IPv4.GeofeedRegionLayer["RU"]; g["corrected"] != 32768 {
+		t.Errorf("RU geofeed layer: %v", g)
+	}
+	if w4, w6 := m.Stats.IPv4.WhoisRegionLayer["RU"], m.Stats.IPv6.WhoisRegionLayer["RU"]; w4["corrected"] != 65536 || w6["corrected"] != 65536 {
+		t.Errorf("RU whois layer: %v %v", w4, w6)
+	}
+	rs := m.RIPE.Stats
+	if rs.Objects != 6 || rs.CountryObjects["RU"] != 5 || rs.WhoisHints["RU"] != 4 || rs.GeofeedURLs != 1 || rs.GeofeedsRead != 1 ||
+		rs.Entries != 4 || rs.Accepted["RU"] != 1 || rs.CountryOnly != 1 || rs.OtherCountry != 1 || rs.Outside != 1 || rs.BadLines != 1 {
+		t.Errorf("RIPE stats: %+v", rs)
+	}
+	// The manifest carries the counts only; inputs.json lists the usable feeds.
+	if g := m.RIPE.Geofeeds; g == nil || g.Referenced != 1 || g.Downloaded != 1 || len(g.Usable) != 0 {
+		t.Errorf("geofeed summary: %+v", g)
+	}
+	if in, err := ReadInputs(filepath.Join(out, "inputs.json")); err != nil || in.Geofeeds == nil || len(in.Geofeeds.Usable) != 1 {
+		t.Errorf("inputs.json geofeeds: %v", err)
+	}
+	for name, want := range map[string]string{
+		"unmatched_ru_geofeed_regions.csv": "Atlantis,1",
+		"ripe_whois_hints_top.csv":         "5.7.0.0-5.7.255.255,RU,KDA,krasnodar",
+		"region_moves.csv":                 "ipv4,RU,SVE,geofeed,32768,0",
+	} {
+		if b, err := os.ReadFile(filepath.Join(out, "reports", name)); err != nil || !strings.Contains(string(b), want) {
+			t.Errorf("report %s: %v %q", name, err, b)
+		}
+	}
+	if b, err := os.ReadFile(filepath.Join(out, "manifest.json")); err != nil || strings.Contains(string(b), fx.gf.URL) {
+		t.Errorf("manifest.json must not contain geofeed URLs (%v)", err)
 	}
 	if b, err := os.ReadFile(filepath.Join(out, "reports", "unmatched_ru_subdivisions.csv")); err != nil || !strings.Contains(string(b), "Krasnodarskiy Kray,") {
 		t.Errorf("unmatched RU subdivisions report: %v %q", err, b)
@@ -517,7 +595,7 @@ func TestEndToEnd(t *testing.T) {
 		t.Error("unchanged inputs reported as changed")
 	}
 	_ = os.WriteFile(filepath.Join(fx.data, FileOverrides), []byte(strings.Join(sources.HeaderOverrides, ",")+"\n"), 0o644)
-	in3, err := Fetch(context.Background(), FetchOptions{Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data,
+	in3, err := Fetch(context.Background(), FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data,
 		Now: time.Date(2026, 10, 3, 0, 0, 0, 0, time.UTC)}, "")
 	if err != nil {
 		t.Fatal(err)
@@ -538,7 +616,7 @@ func mustJSON(t *testing.T, v any) string {
 func TestDBIPMonthFallback(t *testing.T) {
 	fx := newFixture(t)
 	fx.months = map[string]bool{"2026-09": true}
-	in, err := Fetch(context.Background(), FetchOptions{Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data,
+	in, err := Fetch(context.Background(), FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data,
 		Now: time.Date(2026, 10, 1, 0, 30, 0, 0, time.UTC)}, "")
 	if err != nil {
 		t.Fatal(err)
@@ -547,7 +625,7 @@ func TestDBIPMonthFallback(t *testing.T) {
 		t.Errorf("month = %s", in.DBIPMonth)
 	}
 	fx.months = map[string]bool{}
-	if _, err := Fetch(context.Background(), FetchOptions{Config: fx.cfg, CacheDir: t.TempDir(), DataDir: fx.data,
+	if _, err := Fetch(context.Background(), FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: t.TempDir(), DataDir: fx.data,
 		Now: time.Date(2026, 10, 1, 0, 30, 0, 0, time.UTC)}, ""); err == nil {
 		t.Error("missing DB-IP file must fail the build")
 	}
@@ -569,6 +647,18 @@ func TestRepositoryDataFilesAreValid(t *testing.T) {
 	}
 	if _, err := sources.ReadRUASN(filepath.Join(dir, FileRUASN)); err != nil {
 		t.Error(err)
+	}
+	if ns, err := sources.ReadPlaceNames(filepath.Join(dir, FileRUNames)); err != nil || len(ns) == 0 {
+		t.Error(err)
+	}
+	ru, err := sources.ReadRUAdmin(filepath.Join(dir, FileRUAdmin))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, tb := range ripeTables() {
+		if _, err := ripeCountry(dir, tb, ru); err != nil {
+			t.Error(err)
+		}
 	}
 	if _, err := sources.ReadAnycastASNs(filepath.Join(dir, FileAnycastAS)); err != nil {
 		t.Error(err)
@@ -592,7 +682,7 @@ func TestRepositoryDataFilesAreValid(t *testing.T) {
 // to a province missing from cn_admin.csv, an invalid override) fail here.
 func TestBuildWithRepositoryTables(t *testing.T) {
 	fx := newFixture(t)
-	for _, name := range []string{FileCNAdmin, FileCNCities, FileCNASN, FileRUAdmin, FileRUASN, FileAnycastNS, FileAnycastAS, FileOverrides} {
+	for _, name := range []string{FileCNAdmin, FileCNCities, FileCNASN, FileRUAdmin, FileRUASN, FileRUNames, FileAnycastNS, FileAnycastAS, FileOverrides} {
 		b, err := os.ReadFile(filepath.Join("../../data", name))
 		if err != nil {
 			t.Fatal(err)
@@ -603,8 +693,11 @@ func TestBuildWithRepositoryTables(t *testing.T) {
 	}
 	out := t.TempDir()
 	m := fx.run(out)
-	if m.Layers["cn_provinces"] != 31 || m.Layers["cn_asn_province"] == 0 {
+	if m.Layers["cn_provinces"] != 31 || m.Layers["cn_asn_province"] == 0 || m.Layers["ru_regions"] != 83 {
 		t.Errorf("layers: %v", m.Layers)
+	}
+	if m.RIPE == nil || len(m.Warnings) != 0 {
+		t.Errorf("RIPE layer with the repository tables: %+v, warnings %v", m.RIPE, m.Warnings)
 	}
 	full, err := maxminddb.Open(filepath.Join(out, fx.cfg.FullFile()))
 	if err != nil {
@@ -616,6 +709,12 @@ func TestBuildWithRepositoryTables(t *testing.T) {
 	if !lookup(t, full, "36.0.0.1", &got) || got.Source != "bgp-asn" || len(got.Subdivisions) == 0 ||
 		got.Subdivisions[0].ISOCode != "JS" || got.Subdivisions[0].Names["zh-CN"] != "江苏省" || got.Location.AccuracyRadius != 200 {
 		t.Errorf("36.0.0.1 = %+v", got)
+	}
+	// "Krasnodar branch" in the RIPE object; Krasnodar Krai from ru_admin.csv.
+	got = fullRec{}
+	if !lookup(t, full, "5.7.0.1", &got) || got.Source != "whois" || len(got.Subdivisions) == 0 ||
+		got.Subdivisions[0].ISOCode != "KDA" || got.Subdivisions[0].Names["ru"] != "Краснодарский край" {
+		t.Errorf("5.7.0.1 = %+v", got)
 	}
 	// Records of countries without a region table are never touched.
 	got = fullRec{}
@@ -634,7 +733,7 @@ func TestFetchFallsBackToCache(t *testing.T) {
 	ctx := context.Background()
 	day1 := time.Date(2026, 10, 2, 2, 17, 0, 0, time.UTC)
 	fetchAt := func(now time.Time) (*InputsFile, error) {
-		return Fetch(ctx, FetchOptions{Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now,
+		return Fetch(ctx, FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now,
 			Fetcher: fixedClock(fx.cache, now)}, "")
 	}
 	first, err := fetchAt(day1)
@@ -664,12 +763,83 @@ func TestFetchFallsBackToCache(t *testing.T) {
 	fx.setFail("/iptoasn.tsv.gz", false)
 	fx.setFail("/apnic", true)
 	fresh := t.TempDir()
-	in, err = Fetch(ctx, FetchOptions{Config: fx.cfg, CacheDir: fresh, DataDir: fx.data, Now: day1}, "")
+	in, err = Fetch(ctx, FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: fresh, DataDir: fx.data, Now: day1}, "")
 	if err != nil {
 		t.Fatalf("missing APNIC file: %v", err)
 	}
 	if _, ok := in.Sources[config.SrcAPNIC]; ok || len(in.Warnings) != 1 || !strings.Contains(in.Warnings[0], "coverage statistics are missing") {
 		t.Errorf("missing APNIC: %+v", in)
+	}
+}
+
+// TestRIPEFallbacks: a failing geofeed is reused from the cache for 14 days;
+// without RIPE files the build goes on without the RIPE layer.
+func TestRIPEFallbacks(t *testing.T) {
+	fx := newFixture(t)
+	ctx := context.Background()
+	day1 := time.Date(2026, 10, 2, 2, 17, 0, 0, time.UTC)
+	runAt := func(cache string, now time.Time) (*InputsFile, *Manifest, *maxminddb.Reader) {
+		t.Helper()
+		in, err := Fetch(ctx, FetchOptions{GeofeedClient: fx.gfClient, Config: fx.cfg, CacheDir: cache, DataDir: fx.data, Now: now,
+			Fetcher: fixedClock(cache, now)}, "")
+		if err != nil {
+			t.Fatal(err)
+		}
+		out := t.TempDir()
+		m, err := Build(BuildOptions{Config: fx.cfg, Inputs: in, CacheDir: cache, DataDir: fx.data, OutDir: out, Now: now})
+		if err != nil {
+			t.Fatal(err)
+		}
+		db, err := maxminddb.Open(filepath.Join(out, fx.cfg.FullFile()))
+		if err != nil {
+			t.Fatal(err)
+		}
+		t.Cleanup(func() { db.Close() })
+		return in, m, db
+	}
+	source := func(db *maxminddb.Reader, ip string) string {
+		var r fullRec
+		if !lookup(t, db, ip, &r) {
+			return "(missing)"
+		}
+		sub := ""
+		if len(r.Subdivisions) > 0 {
+			sub = r.Subdivisions[0].ISOCode
+		}
+		return r.Source + "/" + sub
+	}
+	_, _, db := runAt(fx.cache, day1)
+	if got := source(db, "5.8.0.1"); got != "geofeed/SVE" {
+		t.Fatalf("day 1: %s", got)
+	}
+	fx.setFail("/feed.csv", true)
+	in, _, db := runAt(fx.cache, day1.Add(3*24*time.Hour))
+	if g := in.Geofeeds; g == nil || g.Reused != 1 || g.Failed != 0 || len(g.Usable) != 1 {
+		t.Errorf("reuse: %+v", in.Geofeeds)
+	}
+	if got := source(db, "5.8.0.1"); got != "geofeed/SVE" {
+		t.Errorf("reused geofeed: %s", got)
+	}
+	in, _, db = runAt(fx.cache, day1.Add(15*24*time.Hour))
+	if g := in.Geofeeds; g == nil || g.Failed != 1 || len(g.Usable) != 0 {
+		t.Errorf("stale: %+v", in.Geofeeds)
+	}
+	// Without the geofeed the place name in the object applies.
+	if got := source(db, "5.8.0.1"); got != "whois/KDA" {
+		t.Errorf("stale geofeed: %s", got)
+	}
+	if len(in.Warnings) != 0 {
+		t.Errorf("geofeed failures must not warn: %v", in.Warnings)
+	}
+
+	fx.setFail("/ripe/inetnum", true)
+	fx.setFail("/ripe/inet6num", true)
+	in, m, db := runAt(t.TempDir(), day1)
+	if len(in.Warnings) != 2 || !strings.Contains(in.Warnings[0], "RIPE layer works without it") || in.Geofeeds != nil || m.RIPE != nil {
+		t.Errorf("without RIPE files: warnings %v, geofeeds %+v", in.Warnings, in.Geofeeds)
+	}
+	if got := source(db, "5.7.0.1"); got != "dbip/" {
+		t.Errorf("without RIPE files: %s", got)
 	}
 }
 
@@ -688,7 +858,7 @@ func TestFetchAzureFallback(t *testing.T) {
 		t.Fatal(err)
 	}
 	fx.setFail("/azure-page", true)
-	in, err := Fetch(ctx, FetchOptions{Config: &cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now.Add(24 * time.Hour)}, "")
+	in, err := Fetch(ctx, FetchOptions{GeofeedClient: fx.gfClient, Config: &cfg, CacheDir: fx.cache, DataDir: fx.data, Now: now.Add(24 * time.Hour)}, "")
 	if err != nil {
 		t.Fatalf("azure fallback: %v", err)
 	}

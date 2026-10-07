@@ -26,6 +26,13 @@ The databases contain data from the following sources:
   not state a license; they are used as factual references to flag CDN,
   anycast and cloud networks.
 
+* The RIPE Database (https://www.ripe.net), used with permission of the
+  RIPE NCC: geofeed references and place names in inetnum / inet6num
+  objects. Only the derived regions are included, no database objects.
+
+* Geofeeds (RFC 8805) that network operators publish for their own address
+  space and reference from the RIPE Database.
+
 Web applications that display or use lookup results must include the link
 <a href='https://db-ip.com'>IP Geolocation by DB-IP</a> on those pages.
 

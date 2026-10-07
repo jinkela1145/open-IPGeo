@@ -18,6 +18,7 @@ import (
 	"github.com/jinkela1145/open-IPGeo/internal/config"
 	"github.com/jinkela1145/open-IPGeo/internal/fetch"
 	"github.com/jinkela1145/open-IPGeo/internal/iprange"
+	"github.com/jinkela1145/open-IPGeo/internal/ripe"
 	"github.com/jinkela1145/open-IPGeo/internal/sources"
 )
 
@@ -27,13 +28,15 @@ type Inputs struct {
 	ASN      *sources.ASNData // may be nil
 	Flags    []sources.FlagEntry
 	ASNFlags map[uint32]sources.NetFlags
-	// Regions and RegionASNs feed the regional ASN layer (China, Russia):
-	// the subdivisions of each covered country and the ASNs of networks that
-	// serve a single subdivision.
-	Regions    []sources.Region
-	RegionASNs []sources.RegionASN
-	Cities     []sources.CNCity
-	Overrides  []sources.Override
+	// Regions, RegionASNs and RegionHints feed the regional layer (China,
+	// Russia): the subdivisions of each covered country, the ASNs of networks
+	// that serve a single subdivision, and region evidence for ranges from
+	// operators' geofeeds and RIPE Database objects.
+	Regions     []sources.Region
+	RegionASNs  []sources.RegionASN
+	RegionHints []ripe.Hint
+	Cities      []sources.CNCity
+	Overrides   []sources.Override
 	// Address space delegated to China, only used for coverage statistics.
 	CNDelegatedV4, CNDelegatedV6 []iprange.Range
 }
@@ -73,6 +76,7 @@ type family struct {
 	asn   iprange.SegSpans[int32]
 	flags iprange.SegSpans[int32]
 	over  iprange.SegSpans[int32]
+	hints iprange.SegSpans[int32]
 	deleg iprange.RangeSpans
 }
 
@@ -112,6 +116,7 @@ func Build(in *Inputs, opt Options) (*Result, error) {
 		}
 		f.flags = r.flattenFlags(in.Flags, f.is4)
 		f.over = r.flattenOverrides(f.is4)
+		f.hints = r.flattenHints(in.RegionHints, f.is4)
 	}
 	if err := os.MkdirAll(opt.OutDir, 0o755); err != nil {
 		return nil, err
@@ -153,10 +158,10 @@ func Build(in *Inputs, opt Options) (*Result, error) {
 			acc.ranges++
 			pending = false
 		}
-		iprange.Refine(f.base, []iprange.Spans{f.asn, f.flags, f.over, f.deleg},
+		iprange.Refine(f.base, []iprange.Spans{f.asn, f.flags, f.over, f.hints, f.deleg},
 			func(s, e netip.Addr, bi int, li []int) {
-				k, outcome := r.keyFor(f.base[bi].Val, idx(f.asn, li[0]), idx(f.flags, li[1]), idx(f.over, li[2]))
-				acc.add(r, k, outcome, iprange.Range{Start: s, End: e}.Size(), li[3] >= 0)
+				k, outcome, via := r.keyFor(f.base[bi].Val, idx(f.asn, li[0]), idx(f.flags, li[1]), idx(f.over, li[2]), idx(f.hints, li[3]))
+				acc.add(r, k, outcome, via, iprange.Range{Start: s, End: e}.Size(), li[4] >= 0)
 				if pending && k == pendKey && pendEnd.Next() == s {
 					pendEnd = e
 					return
@@ -179,7 +184,7 @@ func Build(in *Inputs, opt Options) (*Result, error) {
 	tree, cache, fullVals = nil, nil, nil
 	runtime.GC()
 	res.Stats = Stats{
-		IPv4: accs[true].report(), IPv6: accs[false].report(),
+		IPv4: accs[true].report(r), IPv6: accs[false].report(r),
 		CNCoverageIPv4: accs[true].coverage(), CNCoverageIPv6: accs[false].coverage(),
 	}
 	if len(r.unmatched) > 0 {
@@ -194,9 +199,9 @@ func Build(in *Inputs, opt Options) (*Result, error) {
 	res.Stats.LiteAggregation = map[string]LiteAggStats{}
 	for _, f := range fams {
 		var fr []liteRun
-		iprange.Refine(f.base, []iprange.Spans{f.asn, f.flags, f.over},
+		iprange.Refine(f.base, []iprange.Spans{f.asn, f.flags, f.over, f.hints},
 			func(s, e netip.Addr, bi int, li []int) {
-				k, _ := r.keyFor(f.base[bi].Val, idx(f.asn, li[0]), idx(f.flags, li[1]), idx(f.over, li[2]))
+				k, _, _ := r.keyFor(f.base[bi].Val, idx(f.asn, li[0]), idx(f.flags, li[1]), idx(f.over, li[2]), idx(f.hints, li[3]))
 				rv := r.resolve(k)
 				lk := lc.liteKeyOf(&rv, step, tiers)
 				if n := len(fr); n > 0 && fr[n-1].k == lk && fr[n-1].end.Next() == s {
@@ -292,6 +297,36 @@ func (r *resolver) flattenFlags(all []sources.FlagEntry, is4 bool) []iprange.Seg
 		out = append(out, iprange.Seg[int32]{Start: s.Start, End: s.End, Val: r.internFlags(s.Val)})
 	}
 	return out
+}
+
+// flattenHints keeps, for every piece of address space, the hint with the
+// highest rank: a geofeed entry before a whois place name, then the most
+// specific range.
+func (r *resolver) flattenHints(all []ripe.Hint, is4 bool) []iprange.Seg[int32] {
+	var entries []iprange.Entry[int32]
+	for _, h := range all {
+		if h.R.Is4() != is4 {
+			continue
+		}
+		hv := hintVal{region: -1, block: h.Block}
+		switch h.Via {
+		case ripe.ViaGeofeed:
+			hv.via = viaGeofeed
+		case ripe.ViaWhois:
+			hv.via = viaWhois
+		default:
+			continue
+		}
+		if !h.Block {
+			p, ok := r.byISO[h.Country+"-"+h.Region]
+			if !ok {
+				continue
+			}
+			hv.region = p
+		}
+		entries = append(entries, iprange.Entry[int32]{R: h.R, Val: r.internHint(hv), Rank: h.Rank})
+	}
+	return iprange.Flatten(entries, func(vs []int32) (int32, bool) { return vs[len(vs)-1], true })
 }
 
 func (r *resolver) flattenOverrides(is4 bool) []iprange.Seg[int32] {

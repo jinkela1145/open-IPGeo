@@ -1,0 +1,300 @@
+# 在 RIPE 数据库对象的 netname / descr 里找地名时额外使用的拼写（ru_admin.csv 里的名称、DB-IP 拼写和行政中心会自动使用）。
+# Extra place names used when looking for a region in the netname / descr of RIPE Database objects and in geofeed city
+# fields. The names, DB-IP spellings and capitals of ru_admin.csv are used automatically.
+# 规则 / rules:
+# - 只按整词匹配，较长的名称优先（"Nizhny Novgorod" 不会被当成 "Novgorod"）；
+#   whole words only, longest name first.
+# - 一个对象里出现两个及以上地区的名称时不使用；莫斯科市的名字多半是地址，不当依据，和莫斯科州一起出现时整条不用。
+#   objects naming more than one region are not used; Moscow city is ignored because it is mostly a postal address,
+#   and an object naming both Moscow and Moscow Oblast is not used.
+# - region_iso 为 "-" 的词永远不当地名用（有歧义的词、常见人名）。
+#   names with region_iso "-" are never used (ambiguous words, common personal names).
+# - 只收在一个地区里唯一的城市名；同名城市、区名（Sovetsky、Leninsky 等）不收。
+#   only city names that are unique to one region; no shared names and no district names.
+name,region_iso,evidence
+Altai,-,ambiguous: Altai Republic or Altai Krai
+Altay,-,ambiguous: Altai Republic or Altai Krai
+Vladimir,-,"also a personal name; ""Vladimir Oblast"" still matches"
+St Petersburg,SPE,spelling variant for Saint Petersburg
+Saint-Petersburg,SPE,spelling variant for Saint Petersburg
+Sankt-Peterburg,SPE,spelling variant for Saint Petersburg
+Sankt Petersburg,SPE,spelling variant for Saint Petersburg
+S-Petersburg,SPE,spelling variant for Saint Petersburg
+Petersburg,SPE,spelling variant for Saint Petersburg
+Peterburg,SPE,spelling variant for Saint Petersburg
+SPb,SPE,spelling variant for Saint Petersburg
+Kolpino,SPE,city in Saint Petersburg; DB-IP City Lite 2026-06 places it there
+Peterhof,SPE,city in Saint Petersburg
+Kronstadt,SPE,city in Saint Petersburg; DB-IP City Lite 2026-06 places it there
+Sestroretsk,SPE,city in Saint Petersburg; DB-IP City Lite 2026-06 places it there
+Moskva,MOW,spelling variant for Moscow
+Zelenograd,MOW,city in Moscow; DB-IP City Lite 2026-06 places it there
+Podmoskovye,MOS,spelling variant for Moscow Oblast
+Khimki,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Podolsk,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Balashikha,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Mytishchi,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Lyubertsy,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Odintsovo,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Kolomna,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Elektrostal,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Noginsk,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Serpukhov,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Sergiev Posad,MOS,city in Moscow Oblast
+Sergiyev Posad,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Shchyolkovo,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Shchelkovo,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Dolgoprudny,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Reutov,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Ramenskoye,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Domodedovo,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Vidnoye,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Dubna,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Klin,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Dmitrov,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Pushkino,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Fryazino,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Ivanteyevka,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Lobnya,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Naro-Fominsk,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Solnechnogorsk,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Istra,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Voskresensk,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Yegoryevsk,MOS,city in Moscow Oblast
+Orekhovo-Zuyevo,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Stupino,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Kashira,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Lytkarino,MOS,city in Moscow Oblast; DB-IP City Lite 2026-06 places it there
+Kotelniki,MOS,city in Moscow Oblast
+Vyborg,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Kingisepp,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Tikhvin,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Sosnovy Bor,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Kirishi,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Vsevolozhsk,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Tosno,LEN,city in Leningrad Oblast; DB-IP City Lite 2026-06 places it there
+Nizhniy Novgorod,NIZ,spelling variant for Nizhny Novgorod Oblast
+Nizhni Novgorod,NIZ,spelling variant for Nizhny Novgorod Oblast
+Nizhnij Novgorod,NIZ,spelling variant for Nizhny Novgorod Oblast
+N Novgorod,NIZ,spelling variant for Nizhny Novgorod Oblast
+NNovgorod,NIZ,spelling variant for Nizhny Novgorod Oblast
+NNov,NIZ,spelling variant for Nizhny Novgorod Oblast
+Arzamas,NIZ,city in Nizhny Novgorod Oblast; DB-IP City Lite 2026-06 places it there
+Sarov,NIZ,city in Nizhny Novgorod Oblast; DB-IP City Lite 2026-06 places it there
+Kstovo,NIZ,city in Nizhny Novgorod Oblast; DB-IP City Lite 2026-06 places it there
+Vyksa,NIZ,city in Nizhny Novgorod Oblast; DB-IP City Lite 2026-06 places it there
+Ekaterinburg,SVE,spelling variant for Sverdlovsk Oblast
+Jekaterinburg,SVE,spelling variant for Sverdlovsk Oblast
+Ekb,SVE,spelling variant for Sverdlovsk Oblast
+Nizhny Tagil,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Nizhniy Tagil,SVE,city in Sverdlovsk Oblast
+Kamensk-Uralsky,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Kamensk-Uralskiy,SVE,city in Sverdlovsk Oblast
+Pervouralsk,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Asbest,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Serov,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Novouralsk,SVE,city in Sverdlovsk Oblast
+Revda,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Verkhnyaya Pyshma,SVE,city in Sverdlovsk Oblast; DB-IP City Lite 2026-06 places it there
+Naberezhnye Chelny,TA,city in Tatarstan; DB-IP City Lite 2026-06 places it there
+Naberezhnyye Chelny,TA,city in Tatarstan
+Chelny,TA,city in Tatarstan
+Nizhnekamsk,TA,city in Tatarstan; DB-IP City Lite 2026-06 places it there
+Almetyevsk,TA,city in Tatarstan
+Zelenodolsk,TA,city in Tatarstan; DB-IP City Lite 2026-06 places it there
+Bugulma,TA,city in Tatarstan; DB-IP City Lite 2026-06 places it there
+Yelabuga,TA,city in Tatarstan; DB-IP City Lite 2026-06 places it there
+Elabuga,TA,city in Tatarstan
+Bashkiria,BA,spelling variant for Bashkortostan
+Sterlitamak,BA,city in Bashkortostan; DB-IP City Lite 2026-06 places it there
+Salavat,BA,city in Bashkortostan; DB-IP City Lite 2026-06 places it there
+Neftekamsk,BA,city in Bashkortostan; DB-IP City Lite 2026-06 places it there
+Ishimbay,BA,city in Bashkortostan; DB-IP City Lite 2026-06 places it there
+Tuymazy,BA,city in Bashkortostan
+Beloretsk,BA,city in Bashkortostan; DB-IP City Lite 2026-06 places it there
+Tolyatti,SAM,city in Samara Oblast; DB-IP City Lite 2026-06 places it there
+Togliatti,SAM,city in Samara Oblast
+Toliatti,SAM,city in Samara Oblast
+Syzran,SAM,city in Samara Oblast; DB-IP City Lite 2026-06 places it there
+Novokuybyshevsk,SAM,city in Samara Oblast; DB-IP City Lite 2026-06 places it there
+Chapayevsk,SAM,city in Samara Oblast; DB-IP City Lite 2026-06 places it there
+Zhigulyovsk,SAM,city in Samara Oblast
+Berdsk,NVS,city in Novosibirsk Oblast; DB-IP City Lite 2026-06 places it there
+Iskitim,NVS,city in Novosibirsk Oblast; DB-IP City Lite 2026-06 places it there
+Novokuznetsk,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Prokopyevsk,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Mezhdurechensk,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Leninsk-Kuznetsky,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Belovo,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Kiselyovsk,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Yurga,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Anzhero-Sudzhensk,KEM,city in Kemerovo Oblast; DB-IP City Lite 2026-06 places it there
+Norilsk,KYA,city in Krasnoyarsk Krai
+Achinsk,KYA,city in Krasnoyarsk Krai; DB-IP City Lite 2026-06 places it there
+Kansk,KYA,city in Krasnoyarsk Krai; DB-IP City Lite 2026-06 places it there
+Minusinsk,KYA,city in Krasnoyarsk Krai; DB-IP City Lite 2026-06 places it there
+Sosnovoborsk,KYA,city in Krasnoyarsk Krai; DB-IP City Lite 2026-06 places it there
+Bratsk,IRK,city in Irkutsk Oblast; DB-IP City Lite 2026-06 places it there
+Angarsk,IRK,city in Irkutsk Oblast; DB-IP City Lite 2026-06 places it there
+Ust-Ilimsk,IRK,city in Irkutsk Oblast; DB-IP City Lite 2026-06 places it there
+Usolye-Sibirskoye,IRK,city in Irkutsk Oblast; DB-IP City Lite 2026-06 places it there
+Shelekhov,IRK,city in Irkutsk Oblast; DB-IP City Lite 2026-06 places it there
+Cheliabinsk,CHE,spelling variant for Chelyabinsk Oblast
+Magnitogorsk,CHE,city in Chelyabinsk Oblast; DB-IP City Lite 2026-06 places it there
+Zlatoust,CHE,city in Chelyabinsk Oblast; DB-IP City Lite 2026-06 places it there
+Miass,CHE,city in Chelyabinsk Oblast; DB-IP City Lite 2026-06 places it there
+Kopeysk,CHE,city in Chelyabinsk Oblast; DB-IP City Lite 2026-06 places it there
+Snezhinsk,CHE,city in Chelyabinsk Oblast; DB-IP City Lite 2026-06 places it there
+Rostov-on-Don,ROS,spelling variant for Rostov Oblast
+Rostov-na-Donu,ROS,spelling variant for Rostov Oblast
+Taganrog,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Shakhty,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Volgodonsk,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Novocherkassk,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Bataysk,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Novoshakhtinsk,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Kamensk-Shakhtinsky,ROS,city in Rostov Oblast; DB-IP City Lite 2026-06 places it there
+Kuban,KDA,spelling variant for Krasnodar Krai
+Sochi,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Novorossiysk,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Armavir,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Anapa,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Gelendzhik,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Tuapse,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Yeysk,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Adler,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Slavyansk-na-Kubani,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Belorechensk,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Labinsk,KDA,city in Krasnodar Krai; DB-IP City Lite 2026-06 places it there
+Pyatigorsk,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Kislovodsk,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Nevinnomyssk,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Yessentuki,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Essentuki,STA,city in Stavropol Krai
+Mineralnye Vody,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Budyonnovsk,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Georgievsk,STA,city in Stavropol Krai
+Mikhaylovsk,STA,city in Stavropol Krai; DB-IP City Lite 2026-06 places it there
+Kamyshin,VGG,city in Volgograd Oblast; DB-IP City Lite 2026-06 places it there
+Uryupinsk,VGG,city in Volgograd Oblast; DB-IP City Lite 2026-06 places it there
+Balakovo,SAR,city in Saratov Oblast; DB-IP City Lite 2026-06 places it there
+Balashov,SAR,city in Saratov Oblast
+Volsk,SAR,city in Saratov Oblast
+Borisoglebsk,VOR,city in Voronezh Oblast; DB-IP City Lite 2026-06 places it there
+Rossosh,VOR,city in Voronezh Oblast; DB-IP City Lite 2026-06 places it there
+Liski,VOR,city in Voronezh Oblast; DB-IP City Lite 2026-06 places it there
+Orsk,ORE,city in Orenburg Oblast; DB-IP City Lite 2026-06 places it there
+Novotroitsk,ORE,city in Orenburg Oblast; DB-IP City Lite 2026-06 places it there
+Buzuluk,ORE,city in Orenburg Oblast; DB-IP City Lite 2026-06 places it there
+Berezniki,PER,city in Perm Krai; DB-IP City Lite 2026-06 places it there
+Solikamsk,PER,city in Perm Krai; DB-IP City Lite 2026-06 places it there
+Lysva,PER,city in Perm Krai
+Kungur,PER,city in Perm Krai; DB-IP City Lite 2026-06 places it there
+Ijevsk,UD,spelling variant for Udmurtia
+Sarapul,UD,city in Udmurtia; DB-IP City Lite 2026-06 places it there
+Votkinsk,UD,city in Udmurtia; DB-IP City Lite 2026-06 places it there
+Glazov,UD,city in Udmurtia; DB-IP City Lite 2026-06 places it there
+Novocheboksarsk,CU,city in Chuvashia; DB-IP City Lite 2026-06 places it there
+Joshkar-Ola,ME,spelling variant for Mari El
+Uljanovsk,ULY,spelling variant for Ulyanovsk Oblast
+Dimitrovgrad,ULY,city in Ulyanovsk Oblast; DB-IP City Lite 2026-06 places it there
+Kirovo-Chepetsk,KIR,city in Kirov Oblast; DB-IP City Lite 2026-06 places it there
+Vyatka,KIR,spelling variant for Kirov Oblast
+Ukhta,KO,city in Komi; DB-IP City Lite 2026-06 places it there
+Vorkuta,KO,city in Komi; DB-IP City Lite 2026-06 places it there
+Pechora,KO,city in Komi; DB-IP City Lite 2026-06 places it there
+Usinsk,KO,city in Komi; DB-IP City Lite 2026-06 places it there
+Archangelsk,ARK,spelling variant for Arkhangelsk Oblast
+Severodvinsk,ARK,city in Arkhangelsk Oblast; DB-IP City Lite 2026-06 places it there
+Kotlas,ARK,city in Arkhangelsk Oblast; DB-IP City Lite 2026-06 places it there
+Novodvinsk,ARK,city in Arkhangelsk Oblast; DB-IP City Lite 2026-06 places it there
+Apatity,MUR,city in Murmansk Oblast; DB-IP City Lite 2026-06 places it there
+Severomorsk,MUR,city in Murmansk Oblast
+Monchegorsk,MUR,city in Murmansk Oblast; DB-IP City Lite 2026-06 places it there
+Kandalaksha,MUR,city in Murmansk Oblast; DB-IP City Lite 2026-06 places it there
+Kondopoga,KR,city in Karelia; DB-IP City Lite 2026-06 places it there
+Segezha,KR,city in Karelia; DB-IP City Lite 2026-06 places it there
+Cherepovets,VLG,city in Vologda Oblast; DB-IP City Lite 2026-06 places it there
+Rybinsk,YAR,city in Yaroslavl Oblast; DB-IP City Lite 2026-06 places it there
+Pereslavl-Zalessky,YAR,city in Yaroslavl Oblast
+Uglich,YAR,city in Yaroslavl Oblast; DB-IP City Lite 2026-06 places it there
+Kineshma,IVA,city in Ivanovo Oblast; DB-IP City Lite 2026-06 places it there
+Shuya,IVA,city in Ivanovo Oblast; DB-IP City Lite 2026-06 places it there
+Kovrov,VLA,city in Vladimir Oblast; DB-IP City Lite 2026-06 places it there
+Murom,VLA,city in Vladimir Oblast; DB-IP City Lite 2026-06 places it there
+Gus-Khrustalny,VLA,city in Vladimir Oblast
+Rzhev,TVE,city in Tver Oblast; DB-IP City Lite 2026-06 places it there
+Vyshny Volochyok,TVE,city in Tver Oblast; DB-IP City Lite 2026-06 places it there
+Novomoskovsk,TUL,city in Tula Oblast; DB-IP City Lite 2026-06 places it there
+Aleksin,TUL,city in Tula Oblast; DB-IP City Lite 2026-06 places it there
+Shchyokino,TUL,city in Tula Oblast; DB-IP City Lite 2026-06 places it there
+Obninsk,KLU,city in Kaluga Oblast; DB-IP City Lite 2026-06 places it there
+Lyudinovo,KLU,city in Kaluga Oblast; DB-IP City Lite 2026-06 places it there
+Kasimov,RYA,city in Ryazan Oblast
+Yelets,LIP,city in Lipetsk Oblast; DB-IP City Lite 2026-06 places it there
+Elets,LIP,city in Lipetsk Oblast
+Michurinsk,TAM,city in Tambov Oblast; DB-IP City Lite 2026-06 places it there
+Stary Oskol,BEL,city in Belgorod Oblast; DB-IP City Lite 2026-06 places it there
+Staryy Oskol,BEL,city in Belgorod Oblast
+Klintsy,BRY,city in Bryansk Oblast
+Vyazma,SMO,city in Smolensk Oblast; DB-IP City Lite 2026-06 places it there
+Roslavl,SMO,city in Smolensk Oblast; DB-IP City Lite 2026-06 places it there
+Orel,ORL,spelling variant for Oryol Oblast
+Livny,ORL,city in Oryol Oblast; DB-IP City Lite 2026-06 places it there
+Velikiye Luki,PSK,city in Pskov Oblast; DB-IP City Lite 2026-06 places it there
+Velikie Luki,PSK,city in Pskov Oblast
+Velikiy Novgorod,NGR,spelling variant for Novgorod Oblast
+Borovichi,NGR,city in Novgorod Oblast; DB-IP City Lite 2026-06 places it there
+Chernyakhovsk,KGD,city in Kaliningrad Oblast; DB-IP City Lite 2026-06 places it there
+Akhtubinsk,AST,city in Astrakhan Oblast; DB-IP City Lite 2026-06 places it there
+Derbent,DA,city in Dagestan; DB-IP City Lite 2026-06 places it there
+Khasavyurt,DA,city in Dagestan; DB-IP City Lite 2026-06 places it there
+Kaspiysk,DA,city in Dagestan; DB-IP City Lite 2026-06 places it there
+Buynaksk,DA,city in Dagestan; DB-IP City Lite 2026-06 places it there
+Groznyy,CE,spelling variant for Chechnya
+Gudermes,CE,city in Chechnya; DB-IP City Lite 2026-06 places it there
+Nazran,IN,city in Ingushetia; DB-IP City Lite 2026-06 places it there
+Prokhladny,KB,city in Kabardino-Balkaria
+Alania,SE,spelling variant for North Ossetia-Alania
+Maikop,AD,spelling variant for Adygea
+Tumen,TYU,spelling variant for Tyumen Oblast
+Tobolsk,TYU,city in Tyumen Oblast; DB-IP City Lite 2026-06 places it there
+Ishim,TYU,city in Tyumen Oblast; DB-IP City Lite 2026-06 places it there
+Yugra,KHM,spelling variant for Khanty-Mansi
+Surgut,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Nizhnevartovsk,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Nefteyugansk,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Kogalym,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Langepas,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Megion,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Nyagan,KHM,city in Khanty-Mansi; DB-IP City Lite 2026-06 places it there
+Yamal,YAN,spelling variant for Yamalo-Nenets
+Novy Urengoy,YAN,city in Yamalo-Nenets; DB-IP City Lite 2026-06 places it there
+Novyy Urengoy,YAN,city in Yamalo-Nenets
+Noyabrsk,YAN,city in Yamalo-Nenets; DB-IP City Lite 2026-06 places it there
+Nadym,YAN,city in Yamalo-Nenets; DB-IP City Lite 2026-06 places it there
+Muravlenko,YAN,city in Yamalo-Nenets; DB-IP City Lite 2026-06 places it there
+Naryan Mar,NEN,spelling variant for Nenets
+Shadrinsk,KGN,city in Kurgan Oblast; DB-IP City Lite 2026-06 places it there
+Biysk,ALT,city in Altai Krai; DB-IP City Lite 2026-06 places it there
+Rubtsovsk,ALT,city in Altai Krai; DB-IP City Lite 2026-06 places it there
+Gorno-Altaisk,AL,spelling variant for Altai Republic
+Khakasia,KK,spelling variant for Khakassia
+Sayanogorsk,KK,city in Khakassia; DB-IP City Lite 2026-06 places it there
+Chernogorsk,KK,city in Khakassia; DB-IP City Lite 2026-06 places it there
+Tyva,TY,spelling variant for Tuva
+Zabaikalsky,ZAB,spelling variant for Zabaykalsky Krai
+Zabaykalye,ZAB,spelling variant for Zabaykalsky Krai
+Transbaikalia,ZAB,spelling variant for Zabaykalsky Krai
+Yakutia,SA,spelling variant for Sakha (Yakutia)
+Neryungri,SA,city in Sakha (Yakutia); DB-IP City Lite 2026-06 places it there
+Habarovsk,KHA,spelling variant for Khabarovsk Krai
+Komsomolsk-on-Amur,KHA,city in Khabarovsk Krai; DB-IP City Lite 2026-06 places it there
+Komsomolsk-na-Amure,KHA,city in Khabarovsk Krai
+Amursk,KHA,city in Khabarovsk Krai; DB-IP City Lite 2026-06 places it there
+Nakhodka,PRI,city in Primorsky Krai; DB-IP City Lite 2026-06 places it there
+Ussuriysk,PRI,city in Primorsky Krai; DB-IP City Lite 2026-06 places it there
+Partizansk,PRI,city in Primorsky Krai; DB-IP City Lite 2026-06 places it there
+Sakhalin,SAK,spelling variant for Sakhalin Oblast
+Kholmsk,SAK,city in Sakhalin Oblast; DB-IP City Lite 2026-06 places it there
+Petropavlovsk-Kamchatskiy,KAM,spelling variant for Kamchatka Krai

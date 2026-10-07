@@ -140,9 +140,12 @@ type fullRecord struct {
 	Source  string         `maxminddb:"source"`
 }
 
-var validSources = []string{"dbip", "bgp-asn", "override"}
+var validSources = []string{"dbip", "bgp-asn", "geofeed", "whois", "override"}
 
-// regionLangs maps the countries of the regional ASN layer to the language
+// regionalSources are the sources of the regional layer.
+var regionalSources = []string{"bgp-asn", "geofeed", "whois"}
+
+// regionLangs maps the countries of the regional layer to the language
 // of their local region names.
 var regionLangs = func() map[string]string {
 	m := map[string]string{}
@@ -257,12 +260,12 @@ func Run(cfg *config.Config, dir, knownPath string) (*Report, error) {
 				rep.failf("%s: subdivision without an English name", where)
 			}
 		}
-		if rec.Source == "bgp-asn" {
-			// Records of the regional ASN layer name a region of a covered
+		if slices.Contains(regionalSources, rec.Source) {
+			// Records of the regional layer name a region of a covered
 			// country, with its code and local name.
 			lang, covered := regionLangs[rec.Country.ISOCode]
 			if !covered || len(rec.Subdivisions) == 0 || rec.Subdivisions[0].ISOCode == "" || rec.Subdivisions[0].Names[lang] == "" {
-				rep.failf("%s: regional ASN record must be in %v with a region code and a local name", where, regionCountries())
+				rep.failf("%s: regional layer record must be in %v with a region code and a local name", where, regionCountries())
 			}
 		}
 		checkNetworkMap(rep, where, rec.Network, true)

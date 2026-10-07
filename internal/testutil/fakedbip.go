@@ -71,6 +71,12 @@ var DefaultFakeNets = []FakeNet{
 	{CIDR: "5.4.0.0/16", Country: "RU", Subdivision: "Tatarstan Republic", City: "Kazan", Lat: 55.79, Lon: 49.12},
 	{CIDR: "5.5.0.0/16", Country: "RU", Subdivision: "Krasnodarskiy Kray", City: "Krasnodar", Lat: 45.04, Lon: 38.98},
 	{CIDR: "5.6.0.0/16", Country: "RU", Lat: 60.0, Lon: 100.0},
+	// Russia: the RIPE layer (see RIPEInetnum / RIPEInet6num / Geofeed).
+	{CIDR: "5.7.0.0/16", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
+	{CIDR: "5.8.0.0/16", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
+	{CIDR: "5.9.0.0/16", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
+	{CIDR: "5.10.0.0/16", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
+	{CIDR: "2a0c:1::/32", Country: "RU", Subdivision: "Moscow", City: "Moscow", Lat: 55.75, Lon: 37.62},
 }
 
 var countryInfo = map[string][4]string{
@@ -183,7 +189,9 @@ const IPtoASNSample = "1.0.0.0\t1.0.0.255\t13335\tUS\tCLOUDFLARENET\n" +
 	"5.3.0.0\t5.3.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n" +
 	"5.4.0.0\t5.4.255.255\t8580\tRU\tSANDY MTS Nizhniy Novgorod, Russia\n" +
 	"5.5.0.0\t5.5.255.255\t64701\tRU\tTEST-KRD Krasnodar, Russia\n" +
-	"5.6.0.0\t5.6.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n"
+	"5.6.0.0\t5.6.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n" +
+	"5.7.0.0\t5.9.255.255\t12389\tRU\tROSTELECOM-AS PJSC Rostelecom\n" +
+	"5.10.0.0\t5.10.255.255\t64700\tRU\tTEST-EKB Yekaterinburg, Russia\n"
 
 // AWSSample is a small ip-ranges.json.
 const AWSSample = `{
@@ -232,3 +240,74 @@ apnic|CN|ipv6|240e::|20|20131016|allocated|A92E1062
 apnic|CN|ipv6|2409:8000::|20|20130318|allocated|A92E1062
 apnic||ipv6|2409:9000::|20||available|
 `
+
+// RIPEInetnum returns a small RIPE split file of inetnum objects whose test
+// geofeed lives at geofeedURL. It mimics the dummified public files.
+func RIPEInetnum(geofeedURL string) string {
+	return `#
+# The contents of this file are subject to
+# RIPE Database Terms and Conditions
+#
+
+inetnum:        5.7.0.0 - 5.7.255.255
+netname:        RT-KRD-BB
+descr:          PJSC Rostelecom
+descr:          Krasnodar branch
+country:        RU
+admin-c:        DUMY-RIPE
+status:         ASSIGNED PA
+mnt-by:         TEST-MNT
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+
+inetnum:        5.8.0.0 - 5.8.255.255
+netname:        TEST-GEOFEED
+descr:          Krasnodar region
+country:        RU
+geofeed:        ` + geofeedURL + `
+status:         ASSIGNED PA
+source:         RIPE
+
+inetnum:        5.9.0.0 - 5.9.255.255
+netname:        MSK-NET
+descr:          Moscow and Moscow Oblast
+country:        RU
+source:         RIPE
+
+inetnum:        5.10.0.0 - 5.10.255.255
+netname:        KRD-NET
+descr:          Krasnodar
+country:        RU # comment
+source:         RIPE
+
+inetnum:        2.0.0.0 - 2.0.255.255
+netname:        FR-NET
+descr:          Krasnodar
+country:        FR
+remarks:        Geofeed ` + geofeedURL + `
+source:         RIPE
+`
+}
+
+// RIPEInet6num is a small RIPE split file of inet6num objects.
+const RIPEInet6num = `inet6num:       2a0c:1::/32
+netname:        KZN-V6
+descr:          Regional network,
++               Kazan
+country:        RU
+source:         RIPE
+`
+
+// Geofeed is the test geofeed referenced by RIPEInetnum.
+const Geofeed = "\ufeff# prefix,country,region,city,postal\n" +
+	"5.8.0.0/17,RU,RU-SVE,Yekaterinburg,\n" +
+	"5.8.128.0/17,DE,DE-BE,Berlin,\n" +
+	"5.8.0.0/24,RU,,Atlantis,\n" +
+	"5.9.0.0/24,RU,RU-SVE,,\n" +
+	"not a prefix,RU,,,\n"

@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
 	"slices"
@@ -21,7 +22,7 @@ import (
 
 // BuilderVersion changes whenever the output format or merge logic changes,
 // so that a new release is produced even if no upstream file changed.
-const BuilderVersion = "2"
+const BuilderVersion = "3"
 
 // InputsFile is written by Fetch and read by Build.
 type InputsFile struct {
@@ -30,6 +31,7 @@ type InputsFile struct {
 	DBIPMonth      string                `json:"dbip_month"`
 	ASNSource      string                `json:"asn_source"` // iptoasn or dbip_asn
 	Sources        map[string]fetch.Meta `json:"sources"`
+	Geofeeds       *GeofeedSummary       `json:"geofeeds,omitempty"`
 	Warnings       []string              `json:"warnings,omitempty"`
 }
 
@@ -40,8 +42,9 @@ type FetchOptions struct {
 	DataDir  string
 	Now      time.Time
 	Logf     func(format string, args ...any)
-	// Fetcher can be replaced in tests.
-	Fetcher *fetch.Fetcher
+	// Fetcher and GeofeedClient can be replaced in tests.
+	Fetcher       *fetch.Fetcher
+	GeofeedClient *http.Client
 }
 
 func monthURL(tmpl string, t time.Time) string {
@@ -153,6 +156,8 @@ func Fetch(ctx context.Context, opt FetchOptions, outPath string) (*InputsFile, 
 				case name == config.SrcAPNIC:
 					// Only used for the coverage statistics.
 					in.Warnings = append(in.Warnings, fmt.Sprintf("%s download failed, coverage statistics are missing from this build: %v", name, err))
+				case slices.Contains(config.RIPESources, name):
+					in.Warnings = append(in.Warnings, fmt.Sprintf("%s download failed, the RIPE layer works without it in this build: %v", name, err))
 				default:
 					errs = append(errs, err)
 				}
@@ -163,6 +168,19 @@ func Fetch(ctx context.Context, opt FetchOptions, outPath string) (*InputsFile, 
 	}
 	if len(errs) > 0 {
 		return nil, fmt.Errorf("upstream download failed: %w", errors.Join(errs...))
+	}
+	if files := ripeSplitFiles(f.CacheDir, in); len(files) > 0 && len(ripeTables()) > 0 {
+		g, err := fetchGeofeeds(ctx, opt, files, cfg.UserAgent())
+		if err != nil {
+			in.Warnings = append(in.Warnings, fmt.Sprintf("geofeeds could not be collected, the RIPE layer works without them in this build: %v", err))
+		} else {
+			in.Geofeeds = g
+			opt.Logf("geofeeds: %d referenced, %d downloaded, %d unchanged, %d reused from the cache, %d failed, %d skipped",
+				g.Referenced, g.Downloaded, g.NotModified, g.Reused, g.Failed, g.Skipped)
+			if g.Skipped > 0 {
+				in.Warnings = append(in.Warnings, fmt.Sprintf("%d geofeeds were skipped (limit %d)", g.Skipped, MaxGeofeeds))
+			}
+		}
 	}
 	fp, err := fingerprint(cfg, opt.DataDir, in)
 	if err != nil {
@@ -242,6 +260,9 @@ func fingerprint(cfg *config.Config, dataDir string, in *InputsFile) (string, er
 	slices.Sort(names)
 	for _, n := range names {
 		fmt.Fprintf(h, "source %s %s\n", n, in.Sources[n].SHA256)
+	}
+	if in.Geofeeds != nil {
+		fmt.Fprintf(h, "geofeeds %s\n", in.Geofeeds.SHA256)
 	}
 	return hex.EncodeToString(h.Sum(nil)), nil
 }

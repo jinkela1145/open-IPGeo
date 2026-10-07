@@ -21,6 +21,7 @@ const (
 	FileCNASN     = config.FileCNASN
 	FileRUAdmin   = config.FileRUAdmin
 	FileRUASN     = config.FileRUASN
+	FileRUNames   = config.FileRUNames
 	FileAnycastAS = "anycast_asns.csv"
 	FileAnycastNS = "anycast_prefixes.csv"
 	FileOverrides = "overrides.csv"
@@ -68,6 +69,8 @@ type Loaded struct {
 	Versions map[string]string
 	Layers   map[string]int
 	Epoch    int64
+	RIPE     *RIPEReport
+	Warnings []string
 }
 
 // Load parses every downloaded file and curated table.
@@ -186,6 +189,7 @@ func Load(opt BuildOptions) (*Loaded, error) {
 		}
 		l.In.CNDelegatedV4, l.In.CNDelegatedV6 = v4, v6
 	}
+	loadRIPE(opt, l)
 	return l, nil
 }
 
@@ -274,6 +278,7 @@ type Manifest struct {
 	Stats          build.Stats             `json:"stats"`
 	LiteMaxSizeMB  int                     `json:"lite_max_size_mb"`
 	Warnings       []string                `json:"warnings,omitempty"`
+	RIPE           *RIPEReport             `json:"ripe,omitempty"`
 	Benchmark      any                     `json:"benchmark"`
 }
 
@@ -290,7 +295,8 @@ func newManifest(opt BuildOptions, l *Loaded, res *build.Result) *Manifest {
 		Outputs:        map[string]build.Output{"full": res.Full, "lite": res.Lite},
 		Stats:          res.Stats,
 		LiteMaxSizeMB:  opt.Config.Lite.MaxSizeMB,
-		Warnings:       append([]string(nil), opt.Inputs.Warnings...),
+		Warnings:       append(append([]string(nil), opt.Inputs.Warnings...), l.Warnings...),
+		RIPE:           l.RIPE,
 	}
 	for name, meta := range opt.Inputs.Sources {
 		m.Sources[name] = sourceInfo(meta, l.Versions[name])

@@ -119,7 +119,7 @@ func accuracyMarkdown(m *Manifest) string {
 	b.WriteString("## 全库各层占比 / Layer shares of the whole database\n\n")
 	familyTable(&b, "IPv4", m.Stats.IPv4)
 	familyTable(&b, "IPv6", m.Stats.IPv6)
-	regionLayerTable(&b, m.Stats)
+	regionLayerTable(&b, m)
 	liteTable(&b, m.Stats.LiteAggregation)
 	b.WriteString("## 基准测试 / Benchmark\n\n第 3 阶段加入 / Coming in phase 3.\n")
 	return b.String()
@@ -199,8 +199,12 @@ func releaseNotes(cfg *config.Config, m *Manifest) string {
 			fmt.Fprintf(&b, "- %s\n", w)
 		}
 	}
+	ripeNote := ""
+	if m.RIPE != nil {
+		ripeNote = "Regional data from the RIPE Database (used with permission of the RIPE NCC) and operators' geofeeds. "
+	}
 	fmt.Fprintf(&b, "\nIP Geolocation by DB-IP (https://db-ip.com). Place data © GeoNames (https://www.geonames.org), CC BY 4.0. "+
-		"ASN data from iptoasn.com (PDDL 1.0). Data license: CC BY 4.0. See https://github.com/%s/blob/main/SOURCES.md\n", cfg.Repo)
+		"ASN data from iptoasn.com (PDDL 1.0). %sData license: CC BY 4.0. See https://github.com/%s/blob/main/SOURCES.md\n", ripeNote, cfg.Repo)
 	return b.String()
 }
 
@@ -244,6 +248,14 @@ func writeReports(dir string, l *Loaded, res *build.Result) error {
 			if err := writeASNCandidates(filepath.Join(dir, name), l, t.Country); err != nil {
 				return err
 			}
+		}
+	}
+	if err := writeRegionMoves(filepath.Join(dir, "region_moves.csv"), res.Stats); err != nil {
+		return err
+	}
+	if l.RIPE != nil {
+		if err := writeRIPEReports(dir, l); err != nil {
+			return err
 		}
 	}
 	for cc, unmatched := range res.Stats.UnmatchedSubdivisions {
@@ -466,30 +478,153 @@ func writeASNCandidates(path string, l *Loaded, country string) error {
 }
 
 // regionLayerTable reports what the regional ASN layer did per country.
-func regionLayerTable(b *strings.Builder, st build.Stats) {
-	if len(st.IPv4.RegionLayer) == 0 && len(st.IPv6.RegionLayer) == 0 {
-		return
+func regionLayerTable(b *strings.Builder, m *Manifest) {
+	st := m.Stats
+	type row struct {
+		fam, cc, via string
+		l            map[string]float64
 	}
-	b.WriteString("## 地区 ASN 层 / Regional ASN layer\n\n")
-	b.WriteString("网段的起源 AS 属于只服务一个地区的网络（中国的省公司、俄罗斯的地区运营商）时：DB-IP 给出运营商总部所在地" +
-		"（北京 / 莫斯科）或没有给地区，就改成这个地区；DB-IP 给了别的地区就保留 DB-IP。\n" +
-		"When the origin AS of a prefix serves a single region and DB-IP puts the prefix at the carriers' headquarters " +
-		"(Beijing / Moscow) or in no region, the region is replaced; when DB-IP names another region, DB-IP is kept.\n\n")
-	b.WriteString("| 地址族 / Family | 国家 / Country | 一致 / agree | 纠正 / corrected | 补上 / filled | 保留 DB-IP / kept |\n|---|---|---|---|---|---|\n")
+	var rows []row
 	for _, fam := range []struct {
 		name string
 		fr   build.FamilyReport
 	}{{"IPv4", st.IPv4}, {"IPv6", st.IPv6}} {
-		ccs := make([]string, 0, len(fam.fr.RegionLayer))
-		for cc := range fam.fr.RegionLayer {
+		for _, src := range []struct {
+			via string
+			m   map[string]map[string]float64
+		}{{"ASN", fam.fr.RegionLayer}, {"geofeed", fam.fr.GeofeedRegionLayer}, {"whois", fam.fr.WhoisRegionLayer}} {
+			ccs := make([]string, 0, len(src.m))
+			for cc := range src.m {
+				ccs = append(ccs, cc)
+			}
+			slices.Sort(ccs)
+			for _, cc := range ccs {
+				rows = append(rows, row{fam.name, cc, src.via, src.m[cc]})
+			}
+		}
+	}
+	if len(rows) == 0 {
+		return
+	}
+	slices.SortStableFunc(rows, func(a, b row) int {
+		if a.fam != b.fam {
+			return strings.Compare(a.fam, b.fam)
+		}
+		return strings.Compare(a.cc, b.cc)
+	})
+	b.WriteString("## 地区层 / Regional layer\n\n")
+	b.WriteString("依据从强到弱：运营商自己发布的 geofeed、只服务一个地区的网络的 ASN（中国的省公司、俄罗斯的地区运营商）、" +
+		"RIPE 数据库对象里写明的地名（目前只用于俄罗斯）。DB-IP 给出运营商总部所在地（北京 / 莫斯科）或没有给地区时改成依据给的地区；" +
+		"DB-IP 给了别的地区就保留 DB-IP。从不改国家。\n" +
+		"Evidence, strongest first: the operator's own geofeed, an ASN that serves a single region (Chinese provincial networks, " +
+		"Russian regional operators), a place name in the RIPE Database object (Russia only for now). Where DB-IP puts the space at the " +
+		"carriers' headquarters (Beijing / Moscow) or in no region, the region is replaced; where DB-IP names another region, DB-IP is kept. " +
+		"Countries never change.\n\n")
+	b.WriteString("| 地址族 / Family | 国家 / Country | 依据 / Evidence | 一致 / agree | 纠正 / corrected | 补上 / filled | 保留 DB-IP / kept |\n|---|---|---|---|---|---|---|\n")
+	for _, r := range rows {
+		fmt.Fprintf(b, "| %s | %s | %s | %s | %s | %s | %s |\n", r.fam, r.cc, r.via,
+			human(r.l["agree"]), human(r.l["corrected"]), human(r.l["filled"]), human(r.l["conflict"]))
+	}
+	b.WriteString("\n单位：IPv4 为地址数，IPv6 为 /48 个数。/ Units: addresses for IPv4, /48s for IPv6.\n\n")
+	if m.RIPE != nil && m.RIPE.Stats != nil {
+		rs := m.RIPE.Stats
+		ccs := make([]string, 0, len(rs.CountryObjects))
+		for cc := range rs.CountryObjects {
 			ccs = append(ccs, cc)
 		}
 		slices.Sort(ccs)
+		fmt.Fprintf(b, "RIPE 数据库：%d 个 inetnum / inet6num 对象", rs.Objects)
 		for _, cc := range ccs {
-			l := fam.fr.RegionLayer[cc]
-			fmt.Fprintf(b, "| %s | %s | %s | %s | %s | %s |\n", fam.name, cc,
-				human(l["agree"]), human(l["corrected"]), human(l["filled"]), human(l["conflict"]))
+			fmt.Fprintf(b, "；%s %d 个，其中写明地名的 %d 个", cc, rs.CountryObjects[cc], rs.WhoisHints[cc])
+		}
+		b.WriteString("。\n")
+		fmt.Fprintf(b, "RIPE Database: %d inetnum / inet6num objects", rs.Objects)
+		for _, cc := range ccs {
+			fmt.Fprintf(b, "; %s: %d, %d of them name a place", cc, rs.CountryObjects[cc], rs.WhoisHints[cc])
+		}
+		b.WriteString(".\n\n")
+		fmt.Fprintf(b, "geofeed：引用 %d 个，读到 %d 个；%d 行里 %d 行定位到地区，%d 行只有国家，%d 行在别的国家，%d 行超出引用它的对象（不用）。\n",
+			rs.GeofeedURLs, rs.GeofeedsRead, rs.Entries, sumInts(rs.Accepted), rs.CountryOnly, rs.OtherCountry, rs.Outside)
+		fmt.Fprintf(b, "Geofeeds: %d referenced, %d read; of %d entries %d name a region, %d only the country, %d another country, "+
+			"%d lie outside the object that references them (ignored).\n\n",
+			rs.GeofeedURLs, rs.GeofeedsRead, rs.Entries, sumInts(rs.Accepted), rs.CountryOnly, rs.OtherCountry, rs.Outside)
+	}
+}
+
+func sumInts(m map[string]int) int {
+	n := 0
+	for _, v := range m {
+		n += v
+	}
+	return n
+}
+
+// writeRegionMoves lists the space the regional layer moved into each
+// region, per evidence.
+func writeRegionMoves(path string, st build.Stats) error {
+	if len(st.IPv4.Moves) == 0 && len(st.IPv6.Moves) == 0 {
+		return nil
+	}
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	w := csv.NewWriter(f)
+	_ = w.Write([]string{"family", "country", "region_iso", "evidence", "corrected", "filled"})
+	for _, fam := range []struct {
+		name string
+		mv   []build.RegionMove
+	}{{"ipv4", st.IPv4.Moves}, {"ipv6_48s", st.IPv6.Moves}} {
+		for _, m := range fam.mv {
+			_ = w.Write([]string{fam.name, m.Country, m.Region, m.Via,
+				strconv.FormatFloat(m.Corrected, 'f', -1, 64), strconv.FormatFloat(m.Filled, 'f', -1, 64)})
 		}
 	}
-	b.WriteString("\n单位：IPv4 为地址数，IPv6 为 /48 个数。/ Units: addresses for IPv4, /48s for IPv6.\n\n")
+	w.Flush()
+	if err := w.Error(); err != nil {
+		f.Close()
+		return err
+	}
+	return f.Close()
+}
+
+// writeRIPEReports writes the largest whois hints and the geofeed region
+// values that matched no region. Only derived data is written: ranges,
+// regions and the place name of our vocabulary that matched, never RIPE
+// Database text.
+func writeRIPEReports(dir string, l *Loaded) error {
+	f, err := os.Create(filepath.Join(dir, "ripe_whois_hints_top.csv"))
+	if err != nil {
+		return err
+	}
+	w := csv.NewWriter(f)
+	_ = w.Write([]string{"range", "country", "region_iso", "matched_name"})
+	for _, h := range topWhoisHints(l.In.RegionHints, 2000) {
+		_ = w.Write([]string{h.R.String(), h.Country, h.Region, h.Word})
+	}
+	w.Flush()
+	if err := f.Close(); err != nil {
+		return err
+	}
+	for cc, m := range l.RIPE.Stats.UnmatchedRegions {
+		f, err := os.Create(filepath.Join(dir, "unmatched_"+strings.ToLower(cc)+"_geofeed_regions.csv"))
+		if err != nil {
+			return err
+		}
+		w := csv.NewWriter(f)
+		_ = w.Write([]string{"region_or_city", "entries"})
+		keys := make([]string, 0, len(m))
+		for k := range m {
+			keys = append(keys, k)
+		}
+		slices.Sort(keys)
+		for _, k := range keys {
+			_ = w.Write([]string{k, strconv.Itoa(m[k])})
+		}
+		w.Flush()
+		if err := f.Close(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

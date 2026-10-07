@@ -28,6 +28,8 @@ const (
 	SrcGeoNamesAdmin1 = "geonames_admin1"
 	SrcGeoNamesCN     = "geonames_cn"
 	SrcGeoNamesCNAlt  = "geonames_cn_altnames"
+	SrcRIPEInetnum    = "ripe_inetnum"
+	SrcRIPEInet6num   = "ripe_inet6num"
 )
 
 // DailySources are downloaded by every build, in this order.
@@ -35,8 +37,11 @@ var DailySources = []string{
 	SrcDBIPCity, SrcIPtoASN,
 	SrcCloudflareV4, SrcCloudflareV6, SrcFastly,
 	SrcAWS, SrcGCP, SrcOracle, SrcAzurePage,
-	SrcAPNIC,
+	SrcAPNIC, SrcRIPEInetnum, SrcRIPEInet6num,
 }
+
+// RIPESources are the RIPE Database split files of the regional layer.
+var RIPESources = []string{SrcRIPEInetnum, SrcRIPEInet6num}
 
 // Radius holds default accuracy radii in kilometres.
 type Radius struct {

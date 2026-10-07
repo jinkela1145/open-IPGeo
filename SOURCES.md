@@ -1,6 +1,6 @@
 # 数据源与授权 / Sources and licenses
 
-> **核对日期 / Checked on: 2026-10-02.** 每一条都是当天读的官网或仓库原文，引文保留原语言。新增数据源或上游改版时，要重新核对并更新日期。
+> **核对日期 / Checked on: 2026-10-02**（RIPE 数据库和 geofeed 两条为 2026-10-07 / the RIPE Database and geofeed entries: 2026-10-07）。每一条都是当天读的官网或仓库原文，引文保留原语言。新增数据源或上游改版时，要重新核对并更新日期。
 > Every entry was checked against the source's own terms on that date; quotes are verbatim.
 >
 > 状态 / Status：✅ 用于公开数据 / used in the published data　🔍 只用于统计或评估，不进产物 / statistics or evaluation only　⚠️ 待定 / pending　❌ 不使用 / not used
@@ -13,14 +13,15 @@
 |---|---|---|---|
 | DB-IP IP to City Lite | 底库 / base layer | CC BY 4.0 | ✅ |
 | DB-IP IP to ASN Lite | ASN 备用 / ASN fallback | CC BY 4.0 | ✅ |
-| iptoasn.com | ASN、中国省级修正 / ASN, China province layer | PDDL 1.0 | ✅ |
+| iptoasn.com | ASN、地区 ASN 层 / ASN, regional ASN layer | PDDL 1.0 | ✅ |
 | Cloudflare / Fastly 公布的网段 | 任播、CDN 标记 / anycast, CDN flags | 未写授权 / no license stated | ✅（仓库主人 2026-10-02 决定接受） |
 | AWS / Google Cloud / Azure / Oracle 公布的网段 | 云厂商标记 / cloud flags | 未写授权 / no license stated | ✅（同上） |
 | GeoNames | 省份 / 城市表（`data/cn_admin.csv`、`data/cn_cities.csv`） | CC BY 4.0 | ✅ |
 | 本仓库维护的表 / curated tables in `data/` | 人工修正、映射 | CC BY 4.0（本项目） | ✅ |
 | APNIC delegated 统计 | 中国覆盖率的分母 / coverage denominator | 可自由下载使用 | 🔍 |
 | RIPE Atlas 探针 | 基准测试（第 3 阶段） | RIPE Atlas T&C v3.5 | 🔍 |
-| geofeed（RFC 8805）与 RIPE 数据库 | geofeed 层（第 4 阶段） | 多数未写授权；RIPE DB 限制再利用 | ⚠️ |
+| RIPE 数据库（每日公开的 inetnum / inet6num 文件） | 俄罗斯地区层：geofeed 引用、对象里写明的地名 / Russia regional layer | RIPE Database T&C；RIPE NCC 2026-10-06 邮件许可 / permission by e-mail | ✅ |
+| 运营商的 geofeed（RFC 8805 / RFC 9632） | 俄罗斯地区层 / Russia regional layer | 多数未写授权；为供地理定位使用而发布 / published for geolocation use | ✅（仓库主人 2026-10-07 决定接受） |
 | APNIC whois（批量文件 / 查询 / RDAP） | — | **明确禁止用于 IP 定位** | ❌ |
 | ip2region | — | 代码 Apache-2.0 OR MIT；数据来源存疑 | ❌（仓库主人 2026-10-02 决定不用） |
 | MaxMind GeoLite2（含 MetaCubeX 等转发副本） | — | EULA：提供给第三方前须经 MaxMind 书面同意 | ❌ |
@@ -83,12 +84,29 @@
 
 ### 本仓库维护的表 / Curated tables
 
-`data/overrides.csv`、`data/cn_admin.csv`、`data/cn_cities.csv`、`data/cn_asn_province.csv`、`data/ru_admin.csv`、`data/ru_asn_region.csv`、`data/anycast_prefixes.csv`、`data/anycast_asns.csv`，随数据按 CC BY 4.0 发布：
+`data/overrides.csv`、`data/cn_admin.csv`、`data/cn_cities.csv`、`data/cn_asn_province.csv`、`data/ru_admin.csv`、`data/ru_asn_region.csv`、`data/ru_place_names.csv`、`data/anycast_prefixes.csv`、`data/anycast_asns.csv`，随数据按 CC BY 4.0 发布：
 
 - 每一行都要写依据；
 - 依据不能来自标 ❌ 的数据源，也不能是 APNIC whois 的查询结果；
 - 优先使用当事方自己公布的信息。
 - `data/ru_admin.csv` 的名称和行政中心是公开的官方名称，坐标是行政中心的城市中心（常识数据），已和 DB-IP City Lite 逐个对过，全部相差不到 6 km。
+- `data/ru_place_names.csv` 是地名的其他拼写和城市所属的联邦主体（常识数据），大部分城市已和 DB-IP City Lite 2026-06 对过（依据列里注明）。
+
+---
+
+### RIPE 数据库 / RIPE Database
+
+- 文件：`https://ftp.ripe.net/ripe/dbase/split/ripe.db.inetnum.gz`、`https://ftp.ripe.net/ripe/dbase/split/ripe.db.inet6num.gz`，每天更新，个人信息已去掉。
+- 条款：RIPE Database Terms and Conditions 第 4.5 条："A User may not re-package, download, compile, re-distribute or re-use any or all of the RIPE Database or the data contained therein unless they do so only with an insubstantial part of the RIPE Database or the data contained therein or when permission to do so is granted by the RIPE NCC."；第 3.1 条把 "publishing geolocation information about the usage of Internet number resources" 列为数据库用途之一。
+- 许可：仓库主人向 RIPE NCC 说明了用法——读对象里的 geofeed 引用并使用运营商 geofeed 里的位置；没有 geofeed 时，把 inetnum 对象 netname / descr 里写的地名当作位置线索；不再发布任何数据库对象或属性。RIPE NCC Member Services 回复（仓库主人 2026-10-06 收到）："Yes you can proceed with what you outlined to do."
+- 用法：只读 country 为已覆盖国家（目前只有 RU）的对象的 geofeed 引用、netname 和 descr。数据库和报告里只有推出来的「网段 → 地区」，不含对象内容；geofeed 地址也不公开，manifest 只写数量。
+- RIPE NCC 还建议，没有其他依据时可以用对象或其 ORG 对象的 country 字段。本项目从不改国家，所以没用。
+
+### geofeed（RFC 8805 / RFC 9632）
+
+- 运营商自己发布的「网段 → 位置」CSV。RFC 8805 摘要："Interested parties can poll and parse these feeds to update or merge with other geolocation data sources and procedures." 大多数没写授权；仓库主人 2026-10-07 决定接受（同云厂商网段）。
+- 只用 RIPE 对象引用的 HTTPS 地址（RFC 9632 第 3 节："The geofeed files MUST be published via and fetched using HTTPS."），只接受落在引用它的对象范围内的条目（第 4 节："When reading data from an unsigned geofeed file, one MUST ignore data outside the referring inetnum: object's address range."）。
+- 每个文件最多 64 MB，整体限时 15 分钟；下载失败时用 14 天内的缓存，失败不影响构建。
 
 ---
 
@@ -106,16 +124,6 @@
 - RIPE Atlas Service Terms and Conditions v3.5（2025-09-26 更新，2025-11-04 生效）第 4.5 条："Users agree to make responsible use of the RIPE Atlas Data in line with the purposes of the RIPE Atlas Service"；"Any commercial use of the RIPE Atlas Data is subject to prior permission by the RIPE NCC"。
 - 探针坐标："Locations of all probes, whether they are marked as public or not, are irreversibly obfuscated up to one kilometre away."
 - 只用来计算误差，`ACCURACY.md` 只发布按国家汇总的统计。
-
----
-
-## ⚠️ 待定 / Pending
-
-### geofeed（RFC 8805）与 RIPE 数据库（第 4 阶段）
-
-- geofeed 是各运营商自己发布的 CSV，绝大多数没写授权。
-- 找 geofeed 地址要读 RIR 的 whois。RIPE Database Terms and Conditions 第 4.5 条："A User may not re-package, download, compile, re-distribute or re-use any or all of the RIPE Database or the data contained therein unless they do so only with an insubstantial part of the RIPE Database or the data contained therein or when permission to do so is granted by the RIPE NCC."；第 3.1 条又把 "publishing geolocation information about the usage of Internet number resources" 列为数据库用途之一。动手前要向 RIPE NCC 确认。
-- 2026-10-03：给 RIPE NCC 的询问邮件已起草，等仓库主人发出；回复之前不使用 RIPE 数据库。
 
 ---
 
@@ -167,4 +175,6 @@ CC BY-SA 4.0，只有国家、大洲和 ASN（<https://ipinfo.io/lite>）。没�
 - IP Geolocation by DB-IP — <https://db-ip.com>（CC BY 4.0，经过合并和修改）
 - GeoNames — <https://www.geonames.org/>（CC BY 4.0）
 - iptoasn.com, by Frank Denis（PDDL 1.0）
+- RIPE 数据库：经 RIPE NCC 许可使用 / RIPE Database, used with permission of the RIPE NCC — <https://www.ripe.net/>
+- 运营商自己发布的 geofeed（RFC 8805）/ operators' self-published geofeeds
 - 网页应用必须在显示或使用查询结果的页面放上 `<a href='https://db-ip.com'>IP Geolocation by DB-IP</a>`。

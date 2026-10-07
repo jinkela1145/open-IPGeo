@@ -13,10 +13,34 @@ import (
 const (
 	SourceDBIP     = "dbip"
 	SourceBGPASN   = "bgp-asn"
+	SourceGeofeed  = "geofeed"
+	SourceWhois    = "whois"
 	SourceOverride = "override"
 )
 
-// outcome describes what the regional ASN layer did to a piece.
+// Evidence of the regional layer, strongest first: an operator's geofeed, a
+// curated ASN that serves a single region, a place name in a RIPE Database
+// object. A geofeed entry that places a range in another country blocks the
+// layer for that range.
+const (
+	viaNone uint8 = iota
+	viaGeofeed
+	viaASN
+	viaWhois
+	vias
+)
+
+var viaNames = [vias]string{"", "geofeed", "asn", "whois"}
+var viaSources = [vias]string{"", SourceGeofeed, SourceBGPASN, SourceWhois}
+
+// hintVal is a flattened region hint.
+type hintVal struct {
+	region int16 // -1 for a block
+	via    uint8
+	block  bool
+}
+
+// outcome describes what the regional layer did to a piece.
 //
 // The layer only acts where DB-IP names the same country as the region
 // table. It overrides DB-IP when DB-IP gives no subdivision, or names a
@@ -24,13 +48,12 @@ const (
 // space where their headquarters are (Beijing holds over a quarter of DB-IP's
 // Chinese IPv4 space in 2026). When DB-IP names any other subdivision it
 // probably knows something specific, and is kept; so is a subdivision name
-// the region table does not know (a variant spelling, or a territory the
-// table deliberately leaves out).
+// the region table does not know.
 type outcome uint8
 
 const (
 	outNone      outcome = iota // layer not applicable
-	outAgree                    // DB-IP already in the AS's region: kept DB-IP
+	outAgree                    // DB-IP already in the evidence's region: kept DB-IP
 	outCorrected                // DB-IP at the carriers' headquarters: replaced
 	outFilled                   // DB-IP had no subdivision: filled
 	outConflict                 // DB-IP names another or an unknown subdivision: kept DB-IP
@@ -48,7 +71,8 @@ type key struct {
 	base  int32
 	asn   int32 // index into ASNData.Infos, -1 if none
 	flags int32 // index into resolver.flagTable, -1 if none
-	prov  int16 // region applied by the regional ASN layer, -1 if none
+	prov  int16 // region applied by the regional layer, -1 if none
+	via   uint8 // evidence of prov
 	over  int32 // index into resolver.overrides, -1 if none
 }
 
@@ -85,7 +109,10 @@ type resolver struct {
 	regionPlace []*sources.Place
 	regionSubs  [][]*sources.Place
 	byCountry   map[string][]int16 // region indexes per country
+	byISO       map[string]int16   // "CC-ISO" -> region index
 	asnRegion   map[uint32]int16
+	hintTable   []hintVal
+	hintIndex   map[hintVal]int32
 	asnFlags    map[uint32]sources.NetFlags
 	flagTable   []sources.NetFlags
 	flagIndex   map[sources.NetFlags]int32
@@ -104,13 +131,15 @@ func newResolver(in *Inputs, cfg *config.Config) (*resolver, error) {
 		asn:        in.ASN,
 		regions:    in.Regions,
 		byCountry:  map[string][]int16{},
+		byISO:      map[string]int16{},
 		asnRegion:  map[uint32]int16{},
+		hintIndex:  map[hintVal]int32{},
 		asnFlags:   in.ASNFlags,
 		flagIndex:  map[sources.NetFlags]int32{},
 		baseRegion: make([]int16, len(in.Base.Records)),
 		unmatched:  map[string]map[string]int{},
 	}
-	byISO := map[string]int16{}
+	byISO := r.byISO
 	for i, p := range in.Regions {
 		key := p.Country + "-" + p.ISO
 		if _, dup := byISO[key]; dup {
@@ -147,6 +176,16 @@ func newResolver(in *Inputs, cfg *config.Config) (*resolver, error) {
 		r.overrides = append(r.overrides, ro)
 	}
 	return r, nil
+}
+
+func (r *resolver) internHint(h hintVal) int32 {
+	if id, ok := r.hintIndex[h]; ok {
+		return id
+	}
+	id := int32(len(r.hintTable))
+	r.hintTable = append(r.hintTable, h)
+	r.hintIndex[h] = id
+	return id
 }
 
 func (r *resolver) internFlags(f sources.NetFlags) int32 {
@@ -301,37 +340,59 @@ func (r *resolver) prepareOverride(o sources.Override, cities []sources.CNCity) 
 	return ro, nil
 }
 
-// keyFor computes the record key of a piece.
-func (r *resolver) keyFor(baseIdx, asnIdx, listFlags, overIdx int32) (key, outcome) {
+// keyFor computes the record key of a piece and reports what the regional
+// layer did and on which evidence.
+func (r *resolver) keyFor(baseIdx, asnIdx, listFlags, overIdx, hintIdx int32) (key, outcome, uint8) {
 	k := key{base: baseIdx, asn: asnIdx, flags: -1, prov: -1, over: overIdx}
 	var f sources.NetFlags
 	if listFlags >= 0 {
 		f = r.flagTable[listFlags]
 	}
-	oc := outNone
+	var hint *hintVal
+	if hintIdx >= 0 {
+		hint = &r.hintTable[hintIdx]
+	}
+	p, via, blocked := int16(-1), viaNone, false
+	if hint != nil && hint.via == viaGeofeed {
+		if hint.block {
+			blocked = true
+		} else {
+			p, via = hint.region, viaGeofeed
+		}
+	}
 	if asnIdx >= 0 {
 		info := &r.asn.Infos[asnIdx]
 		if af, ok := r.asnFlags[info.ASN]; ok {
 			f = f.Merge(af)
 		}
-		if p, ok := r.asnRegion[info.ASN]; ok {
-			rec := &r.base.Records[baseIdx]
-			if rec.Country != nil && rec.Country.ISOCode == r.regions[p].Country {
-				switch bp := r.baseRegion[baseIdx]; {
-				case bp == p:
-					oc = outAgree
-				case bp == noSubdivision:
-					k.prov, oc = p, outFilled
-				case bp >= 0 && r.regions[bp].CarrierHQ:
-					k.prov, oc = p, outCorrected
-				default:
-					oc = outConflict
-				}
+		if ar, ok := r.asnRegion[info.ASN]; ok && p < 0 && !blocked {
+			p, via = ar, viaASN
+		}
+	}
+	if hint != nil && hint.via == viaWhois && p < 0 && !blocked {
+		p, via = hint.region, viaWhois
+	}
+	oc := outNone
+	if p >= 0 {
+		rec := &r.base.Records[baseIdx]
+		if rec.Country != nil && rec.Country.ISOCode == r.regions[p].Country {
+			switch bp := r.baseRegion[baseIdx]; {
+			case bp == p:
+				oc = outAgree
+			case bp == noSubdivision:
+				k.prov, k.via, oc = p, via, outFilled
+			case bp >= 0 && r.regions[bp].CarrierHQ:
+				k.prov, k.via, oc = p, via, outCorrected
+			default:
+				oc = outConflict
 			}
 		}
 	}
+	if oc == outNone {
+		via = viaNone
+	}
 	k.flags = r.internFlags(f)
-	return k, oc
+	return k, oc, via
 }
 
 // resolved is the final content of a record.
@@ -375,7 +436,7 @@ func (r *resolver) resolve(k key) resolved {
 		out.radius = p.RadiusKM
 		out.timeZone = ""
 		out.level = levelSubdivision
-		out.source = SourceBGPASN
+		out.source = viaSources[k.via]
 	}
 	if k.flags >= 0 {
 		out.flags = r.flagTable[k.flags]
@@ -408,7 +469,7 @@ func (r *resolver) summary(k key) (country string, lv level, source string) {
 	rec := &r.base.Records[k.base]
 	country = countryISO(rec.Country)
 	if k.prov >= 0 {
-		return country, levelSubdivision, SourceBGPASN
+		return country, levelSubdivision, viaSources[k.via]
 	}
 	switch {
 	case rec.City != nil:

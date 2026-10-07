@@ -36,6 +36,7 @@ var (
 	HeaderAnycastASNs  = []string{"asn", "anycast", "cdn", "operator", "evidence"}
 	HeaderAnycastNets  = []string{"network", "anycast", "cdn", "operator", "evidence"}
 	HeaderOverrides    = []string{"network", "country_iso", "province", "city", "latitude", "longitude", "accuracy_km", "evidence"}
+	HeaderPlaceNames   = []string{"name", "region_iso", "evidence"}
 	errMissingEvidence = errors.New("evidence is required")
 )
 
@@ -410,4 +411,42 @@ func parseUint32(s string, allowEmpty bool) (uint32, error) {
 		return 0, fmt.Errorf("not an unsigned integer: %q", s)
 	}
 	return uint32(v), nil
+}
+
+// PlaceName is a row of a data/<cc>_place_names.csv table: a spelling of a
+// region or a city name, and the region it stands for. RegionISO is empty for
+// names that must never be used ("-" in the file).
+type PlaceName struct {
+	Name      string
+	RegionISO string
+	Evidence  string
+}
+
+// ReadPlaceNames reads a data/<cc>_place_names.csv table.
+func ReadPlaceNames(path string) ([]PlaceName, error) {
+	rows, err := readCSV(path, HeaderPlaceNames)
+	if err != nil {
+		return nil, err
+	}
+	var out []PlaceName
+	seen := map[string]bool{}
+	for _, r := range rows {
+		p := PlaceName{Name: r.get("name"), RegionISO: strings.ToUpper(r.get("region_iso")), Evidence: r.get("evidence")}
+		if p.Name == "" || p.RegionISO == "" {
+			return nil, r.errf(path, "name and region_iso are required")
+		}
+		if p.Evidence == "" {
+			return nil, r.errf(path, "%v", errMissingEvidence)
+		}
+		key := strings.ToLower(p.Name)
+		if seen[key] {
+			return nil, r.errf(path, "duplicate name %q", p.Name)
+		}
+		seen[key] = true
+		if p.RegionISO == "-" {
+			p.RegionISO = ""
+		}
+		out = append(out, p)
+	}
+	return out, nil
 }
