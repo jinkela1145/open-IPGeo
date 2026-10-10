@@ -1,0 +1,287 @@
+{
+  "name": "OpenIPGeo",
+  "version": "2026.10.10",
+  "build_epoch": 1791602826,
+  "built_at": "2026-10-10T08:29:59Z",
+  "builder_version": "2",
+  "fingerprint": "55f374ce9080b0800d0eac1848cab98d3475bbb6a5dac14d7e9fa424e4f6b827",
+  "sources": {
+    "apnic_delegated": {
+      "url": "https://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest",
+      "etag": "\"6ac904f5-8d63d3\"",
+      "last_modified": "Fri, 09 Oct 2026 15:15:01 GMT",
+      "sha256": "bb31d31039b539894d0d2a9b0f38583a95f0f010f1c2dacef50c22c96cb5e5d8",
+      "size": 9266131,
+      "fetched_at": "2026-10-10T08:29:58Z"
+    },
+    "aws": {
+      "url": "https://ip-ranges.amazonaws.com/ip-ranges.json",
+      "version": "2026-10-10-03-27-06",
+      "etag": "\"6ea04ecebb9a5a616943d49aab7daf82\"",
+      "last_modified": "Sat, 10 Oct 2026 05:25:59 GMT",
+      "sha256": "ca3bc42e302c5244566de19c1467f87c11d48daf77b5d9c9c13f3087b59814c9",
+      "size": 2717061,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "azure": {
+      "url": "https://download.microsoft.com/download/7/1/d/71d86715-5596-4529-9b13-da13a5de5b63/ServiceTags_Public_20261005.json",
+      "version": "421",
+      "etag": "\"0x025B24889B383828A91C394A9BCB63D395D1C09F4BEA02E8BD04245835AE767E\"",
+      "last_modified": "Tue, 06 Oct 2026 08:08:12 GMT",
+      "sha256": "fed834a26c3847f6c66715c924259d9d6f437078b32decf0b5337e6414f96c98",
+      "size": 4330497,
+      "fetched_at": "2026-10-10T08:29:55Z"
+    },
+    "azure_page": {
+      "url": "https://www.microsoft.com/en-us/download/details.aspx?id=56519",
+      "sha256": "0de6a1880903f05ac83d59638afb8b27c4fee5aff5e618f10c1dcfd33f7660e4",
+      "size": 128207,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "cloudflare_v4": {
+      "url": "https://www.cloudflare.com/ips-v4/",
+      "last_modified": "Sat, 10 Oct 2026 00:42:32 GMT",
+      "sha256": "f02c6d83bc01ab0ae8577160e036d700c7455359bce054df884e5d7d9e4e9e7b",
+      "size": 230,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "cloudflare_v6": {
+      "url": "https://www.cloudflare.com/ips-v6/",
+      "last_modified": "Sat, 10 Oct 2026 06:46:24 GMT",
+      "sha256": "9e9d39e3e83bad00c4decafd53c63fa62029f3d95db68de937d2be28234ca0a9",
+      "size": 104,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "dbip_city": {
+      "url": "https://download.db-ip.com/free/dbip-city-lite-2026-10.mmdb.gz",
+      "version": "2026-10",
+      "etag": "\"6abdfdc8-3967a29\"",
+      "last_modified": "Thu, 01 Oct 2026 06:29:28 GMT",
+      "sha256": "c839d407f85a1e0bddba354cef16b2c398182d1c34ed8d985555dce134b36b14",
+      "size": 60193321,
+      "fetched_at": "2026-10-10T08:29:53Z"
+    },
+    "fastly": {
+      "url": "https://api.fastly.com/public-ip-list",
+      "sha256": "d0fa4abe04cded896cf1a1d1a1c16ce2861ea4feb837ebd045a89c7b06a15ab5",
+      "size": 402,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "gcp": {
+      "url": "https://www.gstatic.com/ipranges/cloud.json",
+      "version": "2026-10-09T19:07:15.773637",
+      "last_modified": "Sat, 10 Oct 2026 02:08:00 GMT",
+      "sha256": "4a0e7b390495d67665ccd69262e3bfcc4375f424334a6100da08027bd86c8104",
+      "size": 115265,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "iptoasn": {
+      "url": "https://iptoasn.com/data/ip2asn-combined.tsv.gz",
+      "etag": "\"6ac9b6aa-899685\"",
+      "last_modified": "Sat, 10 Oct 2026 03:53:14 GMT",
+      "sha256": "4fb99062e63a9b370e3a1398a728d631b0c3aadd724bcf92b808103d441fceb0",
+      "size": 9016965,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    },
+    "oracle": {
+      "url": "https://docs.oracle.com/iaas/tools/public_ip_ranges.json",
+      "version": "2026-08-25T08:06:24.590745",
+      "etag": "\"6a8d9d00-39280\"",
+      "last_modified": "Tue, 25 Aug 2026 13:47:44 GMT",
+      "sha256": "59e5ba5e92e38f911ce377f1d71c6eaa89ffcf53f9eb4ccd667d9ffca81ead7d",
+      "size": 234112,
+      "fetched_at": "2026-10-10T08:29:54Z"
+    }
+  },
+  "layers": {
+    "anycast_asns": 3,
+    "asn_ranges": 502799,
+    "cn_asn_province": 314,
+    "cn_cities": 0,
+    "cn_provinces": 31,
+    "dbip_networks": 14297601,
+    "dbip_records": 562512,
+    "flags_aws": 17570,
+    "flags_azure": 17467,
+    "flags_cloudflare_v4": 15,
+    "flags_cloudflare_v6": 7,
+    "flags_curated": 9,
+    "flags_fastly": 21,
+    "flags_gcp": 1127,
+    "flags_oracle": 1107,
+    "overrides": 0,
+    "ru_asn_region": 159,
+    "ru_regions": 83
+  },
+  "outputs": {
+    "full": {
+      "file": "OpenIPGeo-City.mmdb",
+      "database_type": "OpenIPGeo-City",
+      "size": 176851605,
+      "sha256": "a69cca988f392cac83311bfd0af97214592e952ad70d03b1d67fee22a87f4d14",
+      "record_size": 32,
+      "ranges": 7915241
+    },
+    "lite": {
+      "file": "OpenIPGeo-City-Lite.mmdb",
+      "database_type": "OpenIPGeo-City-Lite",
+      "size": 29216300,
+      "sha256": "9ffabb4e0ab9706f0cb335d0678fb3522458459ee310492c0b3c2fd042aeaad9",
+      "record_size": 24,
+      "ranges": 3338999
+    },
+    "lite_gz": {
+      "file": "OpenIPGeo-City-Lite.mmdb.gz",
+      "database_type": "OpenIPGeo-City-Lite",
+      "size": 16217080,
+      "sha256": "dd98396506fd7d9748f7b38347ada1c16cb828e305ec20e9ed7d4ed9c7e26b43",
+      "record_size": 24,
+      "ranges": 3338999,
+      "compression": "gzip"
+    }
+  },
+  "stats": {
+    "ipv4": {
+      "unit": "addresses",
+      "ranges": 3700821,
+      "total": 3702258680,
+      "by_source": {
+        "bgp-asn": 3880527,
+        "dbip": 3698378153
+      },
+      "anycast": 1955328,
+      "cdn": 14734137,
+      "cloud": {
+        "aws": 101919350,
+        "azure": 54395133,
+        "gcp": 19302528,
+        "oracle": 4349962
+      },
+      "with_asn": 3133690810,
+      "asn_region_layer": {
+        "CN": {
+          "agree": 49906444,
+          "conflict": 1281232,
+          "corrected": 3718884,
+          "filled": 0
+        },
+        "RU": {
+          "agree": 3941336,
+          "conflict": 267709,
+          "corrected": 161643,
+          "filled": 0
+        }
+      }
+    },
+    "ipv6": {
+      "unit": "/48",
+      "ranges": 4214420,
+      "total": 35180043501568,
+      "by_source": {
+        "bgp-asn": 16686815,
+        "dbip": 35180026814753
+      },
+      "anycast": 921406,
+      "cdn": 19199682.258,
+      "cloud": {
+        "aws": 1437703.543,
+        "azure": 8769.471,
+        "gcp": 1493
+      },
+      "with_asn": 11487395362.004,
+      "asn_region_layer": {
+        "CN": {
+          "agree": 30358544,
+          "conflict": 12,
+          "corrected": 16030692,
+          "filled": 4
+        },
+        "RU": {
+          "agree": 4372764,
+          "conflict": 196608,
+          "corrected": 656119,
+          "filled": 0
+        }
+      }
+    },
+    "cn_coverage_ipv4": {
+      "unit": "addresses",
+      "delegated": 342938880,
+      "percent": {
+        "cn_asn_agree": 14.551,
+        "cn_asn_conflict": 0.374,
+        "cn_asn_corrected": 1.084,
+        "cn_asn_filled": 0,
+        "cn_city": 98.215,
+        "cn_country_only": 0,
+        "cn_source_bgp_asn": 1.084,
+        "cn_source_dbip": 98.215,
+        "cn_source_override": 0,
+        "cn_subdivision_only": 1.084,
+        "country_cn": 99.299,
+        "in_database": 100
+      },
+      "top_countries_percent": {
+        "CN": 99.299,
+        "DE": 0.136,
+        "FR": 0.042,
+        "HK": 0.221,
+        "US": 0.135
+      }
+    },
+    "cn_coverage_ipv6": {
+      "unit": "/48",
+      "delegated": 4491640905,
+      "percent": {
+        "cn_asn_agree": 0.676,
+        "cn_asn_conflict": 0,
+        "cn_asn_corrected": 0.357,
+        "cn_asn_filled": 0,
+        "cn_city": 99.614,
+        "cn_country_only": 0,
+        "cn_source_bgp_asn": 0.357,
+        "cn_source_dbip": 99.614,
+        "cn_source_override": 0,
+        "cn_subdivision_only": 0.357,
+        "country_cn": 99.971,
+        "in_database": 100
+      },
+      "top_countries_percent": {
+        "BE": 0.003,
+        "CN": 99.971,
+        "HK": 0.022,
+        "JP": 0.001,
+        "US": 0.002
+      }
+    },
+    "unmatched_subdivisions": {
+      "RU": {
+        "Crimea": 32,
+        "Kharkiv": 1,
+        "Kharkivs’ka Oblast’": 1,
+        "Luhansk": 1,
+        "Sebastopol City": 2
+      }
+    },
+    "lite_aggregation": {
+      "ipv4": {
+        "prefix_len": 24,
+        "runs_before": 2719138,
+        "runs_after": 2655113,
+        "merged_blocks": 225939,
+        "kept_blocks": 15268,
+        "moved_percent": 0.303
+      },
+      "ipv6": {
+        "prefix_len": 40,
+        "runs_before": 3154169,
+        "runs_after": 683886,
+        "merged_blocks": 272404,
+        "kept_blocks": 15952,
+        "moved_percent": 0
+      }
+    }
+  },
+  "lite_max_size_mb": 20,
+  "benchmark": null
+}

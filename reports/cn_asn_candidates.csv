@@ -1,0 +1,1342 @@
+asn,as_description,ipv4_addresses,ipv6_48s,keyword_region,mapped_region,dbip_basis,dbip_top,dbip_top_share,dbip_second,dbip_second_share,dbip_agrees_share
+137726,SINOPEC-NET China Petroleum & Chemical Corporation,0,268435456.00,,,ipv6,BJ,1.000,,,
+23910,CNGI-CERNET2-AS-AP China Next Generation Internet CERNET2,0,265943364.00,,,ipv6,BJ,1.000,GD,0.000,
+4134,"CHINANET-BACKBONE No.31,Jin-rong Street",98887424,261030280.00,,,ipv4,GD,0.174,ZJ,0.118,
+9808,"CHINAMOBILE-CN China Mobile Communications Group Co., Ltd.",17455104,246088497.00,,,ipv4,GD,0.962,FJ,0.012,
+133111,"CNT-NORTHCHINA CERNET New Technology Co., Ltd",25856,134741761.00,,,ipv4,BJ,0.990,YN,0.010,
+37963,"ALIBABA-CN-NET Hangzhou Alibaba Advertising Co.,Ltd.",9425920,67502064.00,ZJ,,ipv4,ZJ,0.353,BJ,0.229,
+38365,"BAIDU Beijing Baidu Netcom Science and Technology Co., Ltd.",342784,67174376.00,BJ,,ipv4,BJ,0.973,HB,0.027,
+4837,CHINA169-BACKBONE CHINA UNICOM China169 Backbone,57262848,26077868.00,,,ipv4,SD,0.187,LN,0.116,
+23844,BJ-GUANGHUAN-AP Beijing Guanghuan Xinwang Digital,70144,16777214.00,BJ,,ipv4,BJ,0.819,HE,0.123,
+24445,"CMNET-V4HENAN-AS-AP Henan Mobile Communications Co.,Ltd",1939456,4522489.00,HA,HA,ipv4,HA,0.999,BJ,0.001,0.999
+56040,CMNET-GUANGDONG-AP China Mobile communications corporation,828928,4276843.00,GD,GD,ipv4,GD,0.992,BJ,0.007,0.992
+4812,CHINANET-SH-AP China Telecom Group,7873280,3173889.00,,SH,ipv4,SH,0.984,BJ,0.013,0.984
+17816,CHINA169-GZ China Unicom IP network China169 Guangdong province,2656768,2739748.00,GD,GD,ipv4,GD,0.902,DE,0.077,0.902
+56041,CMNET-ZHEJIANG-AP China Mobile communications corporation,2996992,2559179.00,ZJ,ZJ,ipv4,ZJ,0.998,BJ,0.002,0.998
+56042,CMNET-SHANXI-AP China Mobile communications corporation,537600,2360863.00,SX,SX,ipv4,SX,0.998,BJ,0.002,0.998
+24400,"CMNET-V4SHANGHAI-AS-AP Shanghai Mobile Communications Co.,Ltd.",761856,2359602.00,SH,SH,ipv4,SH,0.998,BJ,0.002,0.998
+56044,CMNET-AS-LIAONING China Mobile communications corporation,973056,2344707.00,LN,LN,ipv4,LN,0.999,BJ,0.001,0.999
+56047,CMNET-HUNAN-AP China Mobile communications corporation,786176,2043419.00,HN,HN,ipv4,HN,0.998,BJ,0.002,0.998
+132525,CMNET-HEILONGJIANG-CN HeiLongJiang Mobile Communication Company Limited,419840,1966620.00,HL,HL,ipv4,HL,0.998,BJ,0.002,0.998
+219283,HAOHAO-ZHANG - Haohao Zhang,0,1836032.00,,,ipv6,DE,0.535,US,0.216,
+219208,QMQ-AS - MAOQUN QIU,0,1825024.00,,,ipv6,DE,0.539,US,0.218,
+56046,CMNET-JIANGSU-AP China Mobile communications corporation,3706112,1761883.00,JS,JS,ipv4,JS,0.995,ZJ,0.002,0.995
+4808,CHINA169-BJ China Unicom Beijing Province Network,7176448,1728278.00,BJ,BJ,ipv4,BJ,0.941,HE,0.026,0.941
+45102,"ALIBABA-CN-NET Alibaba US Technology Co., Ltd.",5558272,1589312.00,,,ipv4,HK,0.333,SG,0.192,
+24547,CMNET-V4HEBEI-AS-AP Hebei Mobile Communication Company Limited,721664,1575176.00,HE,HE,ipv4,HE,0.997,BJ,0.002,0.997
+17621,CNCGROUP-SH China Unicom Shanghai network,806144,1558773.00,SH,SH,ipv4,SH,0.584,BJ,0.403,0.584
+134810,CMNET-JILIN-AS-AP China Mobile Group JiLin communications corporation,261376,1475104.00,JL,JL,ipv4,JL,0.996,BJ,0.004,0.996
+7497,CSTNET-AS-AP Computer Network Information Center of Chinese Academy of Sciences CNIC-CAS,867840,1179648.00,,,ipv4,BJ,0.997,AH,0.002,
+59016,"HACN China Broadcast Henan Network Co., Ltd",18944,1114112.00,HA,HA,ipv4,HA,0.973,BJ,0.027,0.973
+219207,CYY-AS - YIYUAN CHEN,0,1088272.00,,,ipv6,DE,0.482,US,0.365,
+24363,CNGI-JNN-IX-AS-AP CERNET2 IX at Shandong University,0,1048577.00,SD,,ipv6,BJ,0.937,SD,0.062,
+218867,SYZ-AS - Sun Youzhi,0,1048576.00,,,ipv6,DE,1.000,,,
+56048,CMNET-BEIJING-AP China Mobile Communicaitons Corporation,1637888,989480.00,BJ,BJ,ipv4,BJ,0.904,GX,0.096,0.904
+140061,CHINANET-QINGHAI-AS-AP Qinghai Telecom,482048,962830.00,QH,QH,ipv4,QH,0.854,ZJ,0.135,0.854
+24444,CMNET-V4SHANDONG-AS-AP Shandong Mobile Communication Company Limited,1867520,914945.00,SD,SD,ipv4,SD,0.998,BJ,0.001,0.998
+56045,CMNET-JIANGXI-AP China Mobile communications corporation,1968384,856149.00,JX,JX,ipv4,BJ,0.997,JX,0.003,0.003
+38019,CMNET-V4TIANJIN-AS-AP tianjin Mobile Communication Company Limited,296448,666657.00,TJ,TJ,ipv4,TJ,0.893,GD,0.102,0.893
+152920,ZHAOCHENGLIN-AS-AP Zhao Chenglin,2304,589826.00,,,ipv4,JP,0.444,US,0.444,
+152697,HUIFA-AS-AP Nanning Huifa Technology Co Ltd,0,524290.00,GX,,ipv6,NL,1.000,HK,0.000,
+24353,CNGI-XA-IX-AS-AP CERNET2 IX at Xian Jiaotong University,65536,458847.00,SN,,ipv4,SN,1.000,,,
+138371,CNGI-QDA-IX-AS-AP CERNET2 regional IX at Ocean University of China,0,458780.00,,,ipv6,BJ,1.000,,,
+17638,CHINATELECOM-TJ-AS-AP ASN for TIANJIN Provincial Net of CT,602112,385289.00,TJ,TJ,ipv4,TJ,0.989,BJ,0.007,0.989
+17429,BGCTVNET BEIJING GEHUA CATV NETWORK CO.LTD,999680,352512.00,BJ,BJ,ipv4,BJ,0.934,HE,0.066,0.934
+23724,"CHINANET-IDC-BJ-AP IDC, China Telecommunications Corporation",1884672,339789.00,,,ipv4,BJ,0.934,SH,0.017,
+24360,CNGI-ZHZ-IX-AS-AP CERNET2 IX at Zhengzhou University,0,327884.00,HA,,ipv6,BJ,1.000,,,
+24361,CNGI-NJ-IX-AS-AP CERNET2 IX at Southeast University,65536,327869.00,,,ipv4,JS,1.000,,,
+42962,CLE-COMM CLE CORELINK COMM,0,262147.00,,,ipv6,US,1.000,JP,0.000,
+55990,HWCSNET Huawei Cloud Service data center,1608704,247810.00,,,ipv4,BJ,0.366,SH,0.274,
+140726,UNICOM-HEFEI-MAN UNICOM AnHui province network,146432,235501.00,AH,AH,ipv4,AH,0.998,HA,0.002,0.998
+58542,"CHINATELECOM-TIANJIN Tianjij,300000",110336,205314.00,TJ,TJ,ipv4,TJ,0.995,BJ,0.002,0.995
+134774,CHINANET-GUANGDONG-SHENZHEN-MAN CHINANET Guangdong province Shenzhen MAN network,213248,198000.00,GD,GD,ipv4,GD,1.000,,,1.000
+140329,CHINATELECOM-FUJIAN-FUZHOU-5G-NETWORK CHINATELECOM Fujian province Fuzhou 5G network,1024,196738.00,FJ,FJ,ipv4,BJ,0.750,FJ,0.250,0.250
+24355,CNGI-CD-IX-AS-AP CERNET2 IX at University of Electronic Science and Technology of China,0,196728.00,,,ipv6,BJ,1.000,SC,0.000,
+24352,CNGI-TJN-IX-AS-AP CERNET2 IX at Tianjin University,8192,196658.00,TJ,,ipv4,TJ,1.000,,,
+24349,CNGI-BJ-IX3-AS-AP CERNET2 IX at Peking University,65280,196646.00,,,ipv4,BJ,1.000,,,
+24348,CNGI-BJ-IX2-AS-AP CERNET2 IX at Tsinghua University,16384,196637.00,,,ipv4,BJ,1.000,,,
+45062,NETEASE-NETWORK NetEase Building No.16 Ke Yun Road,172800,196608.00,,,ipv4,BJ,0.615,GD,0.264,
+63621,"NXBCTV-NET NINGXIA BROADCAST&TV NETWORK CO.,LTD",512,180224.00,NX,NX,ipv4,NX,1.000,,,1.000
+38283,CHINANET-SCIDC-AS-AP CHINANET SiChuan Telecom Internet Data Center,241664,151832.00,SC,SC,ipv4,SC,0.759,NM,0.136,0.759
+4809,CHINATELECOM-CORE-WAN-CN2 China Telecom Next Generation Carrier Network,541952,150781.00,,,ipv4,GD,0.169,HN,0.130,
+134420,CHINATELECOM-CHONGQING-IDC Chongqing Telecom,174848,142852.00,CQ,CQ,ipv4,CQ,0.991,GD,0.009,0.991
+140330,CHINATELECOM-FUJIAN-XIAMEN-5G-NETWORK CHINATELECOM Fujian province Xiamen 5G network,3328,139394.00,FJ,FJ,ipv4,FJ,1.000,,,1.000
+137695,CHINATELECOM-XINJIANG-WULUMUQI-MAN CHINATELECOM Xinjiang Wulumuqi MAN network,67072,136500.00,XJ,XJ,ipv4,XJ,0.682,ZJ,0.160,0.682
+24372,CNGI-HRB-IX-AS-AP CERNET2 IX at Harbin Institute of Technology,0,131130.00,HL,,ipv6,BJ,0.500,HL,0.500,
+24369,CNGI-SY-IX-AS-AP CERNET2 IX at Northeast University,15360,131127.00,,,ipv4,BJ,0.833,LN,0.167,
+24350,CNGI-BJ-IX4-AS-AP CERNET2 IX at Beijing University of Posts and Telecommunications,0,131101.00,BJ,,ipv6,BJ,1.000,,,
+9812,"CNNIC-CN-COLNET Oriental Cable Network Co., Ltd.",1785856,131072.00,,,ipv4,SH,0.998,BJ,0.002,
+24139,WASUHZ Huashu media&Network Limited,530432,131072.00,,,ipv4,ZJ,1.000,,,
+142691,AS142691-42 - China Education and Research Network (CERNET),0,131071.00,,,ipv6,BJ,1.000,,,
+9425,FITI-AS-BKB2 Future Internet Technology Infrastructure FITI,0,131032.00,,,ipv6,BJ,1.000,,,
+131285,CHINATELECOM-HUBEI-SHENGJI-5G-NETWORK CHINATELECOM Hubei province Shengji 5G network,131072,125260.00,HB,HB,ipv4,HB,1.000,,,1.000
+134772,CHINANET-GUANGDONG-DONGGUAN-MAN CHINANET Guangdong province Dongguan MAN network,16384,98309.00,GD,GD,ipv4,GD,1.000,,,1.000
+58593,"BLUECLOUD Shanghai Blue Cloud Technology Co.,Ltd",771072,98304.00,SH,,ipv4,BJ,0.394,SH,0.293,
+58543,CHINATELECOM-GUANGDONG-IDC Guangdong,34048,86023.00,GD,GD,ipv4,GD,1.000,,,1.000
+134762,CHINANET-LIAONING-DALIAN-MAN CHINANET Liaoning province Dalian MAN network,195072,84227.00,LN,LN,ipv4,LN,0.900,GD,0.097,0.900
+58540,"CHINATELECOM-SHANDONG-JINAN-IDC Jinan,250000",84992,66560.00,SD,SD,ipv4,SD,0.976,BJ,0.024,0.976
+136197,"CHINATELECOM-HEBEI-XIONGAN Xiongan, Hebei Province, P.R.China.",36864,66307.00,HE,HE,ipv4,HE,0.875,GD,0.111,0.875
+142438,KSMNW-AS-AP Kasumi Networks Inc,0,65825.00,,,ipv6,JP,1.000,ZJ,0.000,
+4847,CNIX-AP China Networks Inter-Exchange,3542528,65801.00,,,ipv4,BJ,0.949,US,0.023,
+24358,CNGI-WH-IX-AS-AP CERNET2 IX at Huazhong University of Science and Technology,0,65665.00,,,ipv6,BJ,1.000,,,
+140553,CHINATELECOM-XINJIANG-SHENGJI-5G-NETWORK CHINATELECOM XINJIANG province Shengji 5G network,86016,65632.00,XJ,XJ,ipv4,XJ,0.723,GD,0.155,0.723
+24359,CNGI-CHS-IX-AS-AP CERNET2 IX at Central South University,0,65615.00,,,ipv6,BJ,1.000,,,
+24371,CNGI-CHC-IX-AS-AP CERNET2 IX at Jilin University,65536,65601.00,JL,,ipv4,LN,1.000,,,
+138378,CNGI-KMN-IX-AS-AP CERNET2 regional IX at Yunnan University,0,65598.00,YN,,ipv6,BJ,1.000,,,
+140485,CHINATELECOM-ZHEJIANG-HANGZHOU-5GC-NETWORK CHINATELECOM ZHEJIANG province HANGZHOU 5GC network,99328,65586.00,ZJ,ZJ,ipv4,ZJ,1.000,,,1.000
+140486,CHINATELECOM-ZHEJIANG-JINHUA-5GC-NETWORK CHINATELECOM ZHEJIANG province JINHUA 5GC network,99328,65586.00,ZJ,ZJ,ipv4,ZJ,1.000,,,1.000
+138375,CNGI-HHT-IX-AS-AP CERNET2 regional IX at Inner Mongolia University,0,65576.00,NM,,ipv6,BJ,1.000,,,
+209300,TWD2-NET TWD2 Education and Research Network,256,65554.00,,,ipv4,GB,1.000,,,
+38255,FITI-AS-AP China Education and Research Network CERNET,2048,65553.00,,,ipv4,BJ,1.000,,,
+152892,LIUJIARONG-AS-AP Liu Jiarong,0,65553.00,,,ipv6,US,1.000,JP,0.000,
+219289,ISVORO-NET - Jiang Songyang,1024,65552.00,,,ipv4,HK,0.500,MO,0.250,
+138377,CNGI-XNN-IX-AS-AP CERNET2 regional IX at Qinghai Normal University,0,65552.00,QH,,ipv6,BJ,1.000,,,
+209650,ZHIYUAN-AS Zhiyuan Network,256,65540.00,,,ipv4,ZJ,1.000,,,
+139726,"GYC-AS-AP Guangdong Yunjie Communication Co., Ltd.",768,65537.00,GD,,ipv4,BJ,0.667,HK,0.333,
+142690,AS142690-41 - China Education and Research Network (CERNET),0,65537.00,,,ipv6,BJ,1.000,,,
+45090,TENCENT-NET-AP Shenzhen Tencent Computer Systems Company Limited,6189824,65536.00,GD,,ipv4,SH,0.348,GD,0.269,
+17962,TOPWAY-NET ShenZhen Topway Video Communication Co. Ltd,722944,65536.00,GD,GD,ipv4,GD,0.592,BJ,0.408,0.592
+17968,DQTNET Daqing zhongji petroleum telecommunication construction limited cpmpany,438272,65536.00,,,ipv4,HL,1.000,GS,0.000,
+24364,CNGI-SH-IX-AS-AP CERNET2 IX at Shanghai Jiaotong University,286208,65536.00,SH,,ipv4,SH,0.771,HK,0.229,
+58834,GCABLENET Guangdong Cable Corporation Limited,155392,65536.00,GD,GD,ipv4,GD,0.998,BJ,0.002,0.998
+133119,UNICOM-CN China Unicom IP network,153344,65536.00,,,ipv4,DE,0.441,FR,0.426,
+133118,UNICOM-CN China Unicom IP network,66560,65536.00,,,ipv4,BJ,0.996,NM,0.004,
+18239,"CAPNET NO.11 Xi San Huan Zhong Road,Beijing",65536,65536.00,BJ,,ipv4,BJ,1.000,,,
+137539,UNICOM-HARBIN-IDC China Unicom,65536,65536.00,HL,HL,ipv4,BJ,1.000,,,0.000
+24357,CNGI-GZ-IX-AS-AP CERNET2 IX at South China University of Technology,65280,65536.00,,,ipv4,GD,1.000,,,
+45061,"SIN Shanghai Information Network Co.,Ltd.",54272,65536.00,SH,,ipv4,SH,0.849,ZJ,0.151,
+10212,CHINAENTERCOM China Enterprise ICT Solutions Limited,48640,65536.00,,,ipv4,BJ,1.000,,,
+134542,UNICOM-GUIAN China Unicom IP network,33792,65536.00,,,ipv4,DE,0.500,FR,0.500,
+7641,CHINABTN China Broadcasting TV Net,18944,65536.00,,,ipv4,BJ,0.784,US,0.216,
+63590,HEBBTN Hebei Broadcasting&TV Network,16384,65536.00,HE,HE,ipv4,HE,1.000,,,1.000
+131562,"HNCATV HUNAN CATV Network Group CO.,LTD.",16128,65536.00,HN,,ipv4,GD,1.000,,,
+38381,"TRAVELSKY west wing no.157,dongsi west street Dongcheng, Beijing, China",11520,65536.00,BJ,,ipv4,BJ,1.000,,,
+63581,"GXRTVNET GUANGXI RADIO & TELEVISION INFORMATION NETWORK CO.,LTD.",10240,65536.00,GX,GX,ipv4,GX,1.000,,,1.000
+139154,CEGN-SD Big Data Center Of Shandong Province,8704,65536.00,SD,,ipv4,SD,1.000,,,
+24424,"GOOGLECN Beijing Gu Xiang Information Technology Co.,Ltd.",8192,65536.00,BJ;SN,,ipv4,BJ,0.938,SH,0.062,
+146834,"XUNYOU SiChuan XunYou Network Technologe Limit, co",6656,65536.00,SC,,ipv4,HK,0.538,BJ,0.231,
+9807,GOVSTATS Data Management Centre National Bureau of Statistics of China,6144,65536.00,,,ipv4,BJ,1.000,,,
+4859,CEISTNET-AS-AP The State Information Center of P.R.China,4096,65536.00,,,ipv4,SX,1.000,,,
+37942,"SACHNET 3rd Floor, Wenbo Building, No.A2 Gaoyuan Street",4096,65536.00,,,ipv4,BJ,1.000,,,
+59029,"PEOPLENET People.Cn CO.,LTD",4096,65536.00,,,ipv4,BJ,1.000,,,
+131506,"LJWL HEILONGJIANG RADIO & TV NETWORK CO.,LTD",3072,65536.00,HL,HL,ipv4,HL,0.667,DE,0.333,0.667
+146762,SHIXP NATIONALSHANGHAI NEW-TYPE INTERNET EXCHANGE POINT,2560,65536.00,SH,,ipv4,SH,1.000,,,
+63570,ERX-NASDA-ASN - ERX-NASDA-ASN,2048,65536.00,,,ipv4,SH,1.000,,,
+63620,"HUABOTECHNET ShenZhen HuaBo Technology Develop Co., Ltd.",2048,65536.00,GD,,ipv4,GD,1.000,,,
+136189,"OPERA-AS-AP Opera Software Technology Beijing Co., Ltd.",2048,65536.00,BJ,,ipv4,BJ,0.750,SG,0.250,
+131574,HIDDOS Beijing Haiyu Technology Co. Ltd..,1536,65536.00,BJ,,ipv4,BJ,0.500,NL,0.333,
+9405,TPS-CN-AS Test platform Service Center,1280,65536.00,,,ipv4,BJ,1.000,,,
+137995,"SHUANGYU-AS-AP Shuangyu Communications Technology Co., Limited",1280,65536.00,,,ipv4,HK,1.000,,,
+56002,MCNNET BEIJING MARINE COMMUNICATION AND NAVIGATION CO.,1024,65536.00,BJ,,ipv4,BJ,1.000,,,
+59012,SINOGRAIN China Grain Reserves Group LTD.Company,1024,65536.00,,,ipv4,BJ,1.000,,,
+63629,"AUTOHOME Beijing Autohome imformation technology Co.,Ltd",1024,65536.00,BJ,,ipv4,BJ,1.000,,,
+132019,"EARTHNET-AS Earth network technology Shanghai Co., Ltd",1024,65536.00,SH,,ipv4,SH,1.000,,,
+137715,GTJANET GTJA Securities,1024,65536.00,,,ipv4,SH,1.000,,,
+138029,"TTCL-CN Shen Zhen Hu Lian Xian Feng Technology Co., Limited",1024,65536.00,SN,,ipv4,HK,0.750,KR,0.250,
+9818,IFLAB Internet Finance Laboratory,512,65536.00,,,ipv4,BJ,1.000,,,
+23911,CNGI-BJIX-AS-AP China Next Generation Internet Beijing IX,512,65536.00,BJ,,ipv4,BJ,1.000,,,
+63607,"ANHUIGUANGDIAN Anhui Radio and Television Information Network Co.,Ltd.",512,65536.00,AH,AH,ipv4,AH,1.000,,,1.000
+135426,ZTECORPORATION-AS-AP ZTE Corporation,512,65536.00,,,ipv4,HK,1.000,,,
+136237,"SSCTC-AS-AP Shuangyu Communication Technology co.,Ltd.",512,65536.00,,,ipv4,HK,1.000,,,
+139090,WXEIMSC Wuxi Education Information Management Service Center,512,65536.00,JS,,ipv4,JS,1.000,,,
+139139,SYAUNET Shenyang Agricultural University,512,65536.00,LN,,ipv4,BJ,1.000,,,
+139141,YUSYS-FINANCIAL-CLOUD Yusys Financial Cloud,512,65536.00,,,ipv4,BJ,1.000,,,
+146782,UCASS University Of Chinese Academy Of Social Sciences,512,65536.00,,,ipv4,BJ,1.000,,,
+151313,"TAIBAO-KEJI-NET Pacific Insurance Technology Co., Ltd",512,65536.00,,,ipv4,BJ,1.000,,,
+154010,XWNTL-AS-AP Xian WeiShiJi Network Technology LTD,512,65536.00,SN,,ipv4,SN,1.000,,,
+138979,"GSSCCCL-AS-AP Guangzhou Shujie Suyuan Culture Communication Co., Ltd.",256,65536.00,GD,,ipv4,GD,1.000,,,
+154315,LEIDIANYUN-AS-AP Guangzhou Leidianyun Technology Co Ltd,256,65536.00,GD,,ipv4,GD,1.000,,,
+24362,CNGI-HEF-IX-AS-AP CERNET2 IX at University of Science and Technology of China,0,65536.00,,,ipv6,AH,1.000,,,
+24367,CNGI-HZH-IX-AS-AP CERNET2 IX at Zhejiang University,0,65536.00,ZJ,,ipv6,ZJ,1.000,,,
+38355,CNT ChongQing Broadcast & TV Broadband IP MAN,0,65536.00,CQ,CQ,ipv6,CQ,1.000,,,1.000
+45576,CERNET2-TSINGHUA6-AS-AP Tsinghua University,0,65536.00,,,ipv6,BJ,1.000,,,
+55641,"ONEWORLD-GROUP Changping District, Beijing",0,65536.00,BJ,,ipv6,BJ,1.000,,,
+56004,SHERNET Information Center of Shanghai Municipal Education Commission,0,65536.00,SH,,ipv6,SH,1.000,,,
+59265,CT-CNGI China telecom ACAEURA China Next Generation Internet,0,65536.00,,,ipv6,BJ,1.000,,,
+63539,"CLOUD-UNION Cloud Union HuBei Network Technology Co., Ltd",0,65536.00,HB,,ipv6,HB,1.000,,,
+131526,"XJGDNET XINJIANG BROADCAST NETWORK CO.,LTD",0,65536.00,XJ,XJ,ipv6,XJ,1.000,,,1.000
+137721,"HENTE ANKANG HENTE TECHNOLOGY DEVELOPMENT CO.,LTD.",0,65536.00,,,ipv6,GD,1.000,,,
+138441,CNGI-WLQ-IX-AS-AP CERNET2 regional IX at Xinjiang University,0,65536.00,XJ,,ipv6,BJ,1.000,,,
+139100,BMW-BRILLIANCE BMW Brilliance Automotive Ltd.,0,65536.00,,,ipv6,LN,1.000,,,
+139112,"QNET Shanghai Qnet Networking Technology Co.,Ltd",0,65536.00,SH,,ipv6,SH,1.000,,,
+139161,XJRCCB Xinjiang Rural Credit Union,0,65536.00,XJ,,ipv6,XJ,1.000,,,
+142650,AS142650-1 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142651,AS142651-2 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142652,AS142652-3 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142653,AS142653-4 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142654,AS142654-5 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142655,AS142655-6 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142656,AS142656-7 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142657,AS142657-8 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142658,AS142658-9 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142659,AS142659-10 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142660,AS142660-11 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142661,AS142661-12 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142662,AS142662-13 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142663,AS142663-14 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142665,AS142665-16 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142666,AS142666-17 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142667,AS142667-18 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142668,AS142668-19 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142669,AS142669-20 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142670,AS142670-21 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142671,AS142671-22 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142672,AS142672-23 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142673,AS142673-24 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142674,AS142674-25 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142675,AS142675-26 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142676,AS142676-27 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142677,AS142677-28 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142678,AS142678-29 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142679,AS142679-30 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142680,AS142680-31 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142681,AS142681-32 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142682,AS142682-33 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142683,AS142683-34 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142684,AS142684-35 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142685,AS142685-36 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142686,AS142686-37 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142687,AS142687-38 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142688,AS142688-39 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142692,AS142692-43 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142693,AS142693-44 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142694,AS142694-45 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142695,AS142695-46 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142696,AS142696-47 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142697,AS142697-48 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142698,AS142698-49 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142699,AS142699-50 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142700,AS142700-51 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142701,AS142701-52 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142702,AS142702-53 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142703,AS142703-54 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142704,AS142704-55 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142705,AS142705-56 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142706,AS142706-57 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142707,AS142707-58 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142708,AS142708-59 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142709,AS142709-60 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142710,AS142710-61 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142711,AS142711-62 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142712,AS142712-63 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142713,AS142713-64 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142714,AS142714-65 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142715,AS142715-66 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142716,AS142716-67 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142717,AS142717-68 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142718,AS142718-69 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142719,AS142719-70 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142720,AS142720-71 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142721,AS142721-72 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142722,AS142722-73 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142723,AS142723-74 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142724,AS142724-75 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142725,AS142725-76 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142726,AS142726-77 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142727,AS142727-78 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142728,AS142728-79 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142729,AS142729-80 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142730,AS142730-81 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142731,AS142731-82 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142732,AS142732-83 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142733,AS142733-84 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142734,AS142734-85 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142735,AS142735-86 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142736,AS142736-87 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142737,AS142737-88 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142738,AS142738-89 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142739,AS142739-90 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142740,AS142740-91 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142741,AS142741-92 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142742,AS142742-93 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142743,AS142743-94 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142744,AS142744-95 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142745,AS142745-96 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142746,AS142746-97 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142747,AS142747-98 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142748,AS142748-99 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142749,AS142749-100 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142750,AS142750-101 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142751,AS142751-102 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142752,AS142752-103 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142753,AS142753-104 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142754,AS142754-105 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142755,AS142755-106 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142756,AS142756-107 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142757,AS142757-108 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142758,AS142758-109 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142759,AS142759-110 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142760,AS142760-111 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142761,AS142761-112 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142762,AS142762-113 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142763,AS142763-114 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142764,AS142764-115 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142765,AS142765-116 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142766,AS142766-117 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142767,AS142767-118 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142768,AS142768-119 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142769,AS142769-120 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142770,AS142770-121 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142771,AS142771-122 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142772,AS142772-123 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142773,AS142773-124 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142774,AS142774-125 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142775,AS142775-126 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142776,AS142776-127 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+142777,AS142777-128 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143674,AS143674-1 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143675,AS143675-2 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143676,AS143676-3 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143677,AS143677-4 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143678,AS143678-5 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143679,AS143679-6 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143680,AS143680-7 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143681,AS143681-8 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143682,AS143682-9 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143683,AS143683-10 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143684,AS143684-11 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143685,AS143685-12 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143686,AS143686-13 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143687,AS143687-14 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143688,AS143688-15 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143689,AS143689-16 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143690,AS143690-17 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143691,AS143691-18 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143692,AS143692-19 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143693,AS143693-20 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143694,AS143694-21 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143695,AS143695-22 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143696,AS143696-23 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143697,AS143697-24 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143698,AS143698-25 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143699,AS143699-26 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143700,AS143700-27 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143701,AS143701-28 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143702,AS143702-29 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143703,AS143703-30 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143704,AS143704-31 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143705,AS143705-32 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143706,AS143706-33 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143707,AS143707-34 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143708,AS143708-35 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143709,AS143709-36 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143710,AS143710-37 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143711,AS143711-38 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143712,AS143712-39 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143713,AS143713-40 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143714,AS143714-41 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143715,AS143715-42 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143716,AS143716-43 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143717,AS143717-44 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143718,AS143718-45 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143719,AS143719-46 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143720,AS143720-47 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143721,AS143721-48 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143722,AS143722-49 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143723,AS143723-50 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143724,AS143724-51 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143725,AS143725-52 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143726,AS143726-53 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143727,AS143727-54 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143728,AS143728-55 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143729,AS143729-56 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143730,AS143730-57 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143731,AS143731-58 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143732,AS143732-59 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143733,AS143733-60 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143734,AS143734-61 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143735,AS143735-62 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143736,AS143736-63 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143737,AS143737-64 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143738,AS143738-65 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143739,AS143739-66 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143740,AS143740-67 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143741,AS143741-68 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143742,AS143742-69 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143743,AS143743-70 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143744,AS143744-71 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143745,AS143745-72 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143746,AS143746-73 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143747,AS143747-74 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143748,AS143748-75 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143749,AS143749-76 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143750,AS143750-77 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143751,AS143751-78 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143752,AS143752-79 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143753,AS143753-80 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143754,AS143754-81 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143755,AS143755-82 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143756,AS143756-83 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143757,AS143757-84 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143758,AS143758-85 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143759,AS143759-86 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143760,AS143760-87 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143761,AS143761-88 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143762,AS143762-89 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143763,AS143763-90 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143764,AS143764-91 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143765,AS143765-92 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143766,AS143766-93 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143767,AS143767-94 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143768,AS143768-95 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143769,AS143769-96 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143770,AS143770-97 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143771,AS143771-98 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143772,AS143772-99 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143773,AS143773-100 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143774,AS143774-101 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143775,AS143775-102 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143776,AS143776-103 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143777,AS143777-104 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143778,AS143778-105 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143779,AS143779-106 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143780,AS143780-107 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143781,AS143781-108 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143782,AS143782-109 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143783,AS143783-110 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143784,AS143784-111 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143785,AS143785-112 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143786,AS143786-113 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143787,AS143787-114 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143788,AS143788-115 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143789,AS143789-116 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143790,AS143790-117 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143791,AS143791-118 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143792,AS143792-119 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143793,AS143793-120 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143794,AS143794-121 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143795,AS143795-122 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143796,AS143796-123 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143797,AS143797-124 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143798,AS143798-125 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143799,AS143799-126 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143800,AS143800-127 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+143801,AS143801-128 - China Education and Research Network (CERNET),0,65536.00,,,ipv6,BJ,1.000,,,
+213582,AIFUNS,0,65536.00,,,ipv6,US,1.000,,,
+214759,LG-PLUS,0,65536.00,,,ipv6,KR,1.000,,,
+23853,"CNNIC-DSNET-AP Shanghai Data Solution Co., Ltd.",20224,65535.00,SH,,ipv4,SH,1.000,,,
+17428,"CHINA-ABITCOOL 21Vianet.Co.,Ltd",10496,65532.00,,,ipv4,BJ,0.902,SH,0.098,
+24151,CNNIC-CRITICAL-AP China Internet Network Infomation Center,11520,65521.00,,,ipv4,BJ,0.978,SC,0.022,
+59019,"BJKSCNET Beijing Kingsoft Cloud Internet Technology Co., Ltd",56576,65519.00,BJ,,ipv4,BJ,0.986,US,0.009,
+24144,"LSHIY-AS-AP Wuhan LSHIY Network Technology Co., Ltd.",0,65503.00,HB,,ipv6,HB,0.500,GD,0.250,
+38272,FITI-AS-BKB China Education and Research Network CERNET,0,65497.00,,,ipv6,BJ,1.000,,,
+59078,YUNIFY-NET Yunify Technologies Inc.,62208,64512.00,,,ipv4,BJ,1.000,,,
+214040,WEN-NET,0,53280.00,,,ipv6,US,0.999,NL,0.001,
+134419,CHINATELECOM-GUANGXI-BEIHAI-MAN Beihai,112384,47879.00,GX,GX,ipv4,GX,0.977,GD,0.018,0.977
+17622,CNCGROUP-GZ China Unicom Guangzhou network,498688,47404.00,GD,GD,ipv4,GD,0.751,DE,0.098,0.751
+58563,CHINATELECOM-HUBEI-IDC CHINANET Hubei province network,157440,43026.00,HB,HB,ipv4,HB,0.967,BJ,0.026,0.967
+137698,"CHINATELECOM-HEILONGJIANG-HANAN-IDC HaerbingHeilongjiang Province, P.R.China.",40960,33795.00,HL,HL,ipv4,HL,1.000,,,1.000
+136190,"CHINATELECOM-ZHEJIANG-JINHUA-IDC JINHUA, ZHEJIANG Province, P.R.China.",123904,33025.00,ZJ,ZJ,ipv4,ZJ,0.981,BJ,0.010,0.981
+133492,CLOUD-CN AIYUN,0,32800.00,,,ipv6,JP,1.000,,,
+24489,TEIN2-NORTH-AP Trans-Eurasia Information Network TEIN2 - North,2048,32768.00,,,ipv4,BJ,1.000,,,
+24490,TEIN2-SG-AP Trans-Eurasia Information Network TEIN2 - SG,2048,32768.00,,,ipv4,BJ,1.000,,,
+59074,"TAIKANG-INSURANCE-GROUP TAIKANG INSURANCE GROUP CO.,LTD.",1024,32768.00,,,ipv4,BJ,1.000,,,
+23650,CHINANET-JIANGSU-PROVINCE-IDC AS Number for CHINANET jiangsu province backbone,69120,32609.00,JS,JS,ipv4,JS,0.678,BJ,0.204,0.678
+9929,CUII CHINA UNICOM Industrial Internet Backbone,651264,28290.00,,,ipv4,BJ,0.578,JS,0.086,
+137691,"CHINATELECOM-HEILONGJIANG-IDC Heilongjiang Province, P.R.China.",512,27138.00,HL,HL,ipv4,HL,1.000,,,1.000
+134771,"CHINATELECOM-ZHEJIANG-WENZHOU-IDC WENZHOU, ZHEJIANG Province, P.R.China.",71680,24577.00,ZJ,ZJ,ipv4,ZJ,1.000,,,1.000
+133775,CHINATELECOM-FUJIAN-XIAMEN-IDC1 Xiamen,23552,24069.00,FJ,FJ,ipv4,FJ,0.560,ZJ,0.217,0.560
+58519,CHINATELECOM-CTCLOUD Cloud Computing Corporation,515584,22594.00,,,ipv4,SD,0.677,GZ,0.104,
+137694,CHINATELECOM-XINJIANG-KEZHOU-MAN CHINATELECOM Xinjiang Kezhou MAN network,95744,22528.00,XJ,XJ,ipv4,XJ,0.578,ZJ,0.305,0.578
+4811,CHINANET-SHANGHAI-MAN China Telecom Group,965888,20797.00,SH,SH,ipv4,SH,0.747,BJ,0.198,0.747
+58772,CHINANET-FUJIAN-FUZHOU-IDC CHINANET Fujian province Fuzhou IDC network,20224,20734.00,FJ,FJ,ipv4,FJ,0.595,SD,0.405,0.595
+139887,CHINANET-YANTAI-IDC ChinaNet Shandong Yantai IDC network,6656,18688.00,SD,SD,ipv4,SD,1.000,,,1.000
+133774,CHINATELECOM-FUJIAN-FUZHOU-IDC1 Fuzhou,183552,18442.00,FJ,FJ,ipv4,FJ,0.912,GD,0.060,0.912
+10206,CUZW-CN China Unicom Zhongwei Cloud,1536,18432.00,,,ipv4,BJ,0.500,NX,0.500,
+133776,CHINATELECOM-FUJIAN-QUANZHOU-IDC1 Quanzhou,45312,18177.00,FJ,FJ,ipv4,FJ,0.910,GD,0.090,0.910
+58466,CT-GUANGZHOU-IDC CHINANET Guangdong province network,188416,17749.00,GD,GD,ipv4,GD,0.420,BJ,0.289,0.420
+17623,CNCGROUP-SZ China Unicom Shenzen network,456448,17119.00,,GD,ipv4,GD,0.929,DE,0.043,0.929
+132203,"TENCENT-NET-AP-CN Tencent Building, Kejizhongyi Avenue",2156287,16675.00,,,ipv4,HK,0.247,SG,0.189,
+136188,"CHINATELECOM-ZHEJIANG-NINGBO-IDC NINGBO, ZHEJIANG Province, P.R.China.",106496,16385.00,ZJ,ZJ,ipv4,ZJ,0.842,BJ,0.158,0.842
+136958,UNICOM-GUANGZHOU-IDC China Unicom Guangdong IP network,116736,16371.00,GD,GD,ipv4,GD,0.950,BJ,0.044,0.950
+140292,CHINATELECOM-JIANGSU-SUZHOU-5G-NETWORK CHINATELECOM Jiangsu province Suzhou 5G network,1393152,16050.00,JS,JS,ipv4,JS,0.965,BJ,0.021,0.965
+55960,BJ-GUANGHUAN-AP Beijing Guanghuan Xinwang Digital,439808,13377.00,BJ,,ipv4,BJ,1.000,,,
+140345,CHINATELECOM-YUNNAN-SHENGJI-5G-NETWORK CHINATELECOM Yunnan province Shengji 5G network,62464,12868.00,YN,YN,ipv4,YN,1.000,,,1.000
+63835,"CT-HUNAN-CHANGSHA-IDC No.293,Wanbao Avenue",152832,12810.00,HN,HN,ipv4,HN,0.951,GD,0.013,0.951
+4816,CHINANET-IDC-GD China Telecom Group,48128,12808.00,,GD,ipv4,GD,0.814,BJ,0.165,0.814
+134763,CT-DONGGUAN-IDC CHINANET Guangdong province network,121600,12546.00,GD,GD,ipv4,GD,0.952,SD,0.034,0.952
+134764,CT-FOSHAN-IDC CHINANET Guangdong province network,27136,12546.00,GD,GD,ipv4,SG,0.443,GD,0.396,0.396
+134768,CHINANET-SHAANXI-CLOUD-BASE CHINANET SHAANXI province Cloud Base network,184576,12280.00,SN,,ipv4,SN,0.638,SX,0.254,
+139007,UNICOM-NM-WULANCHABU-IDC UNICOM InnerMongolia province network,120064,11269.00,NM,NM,ipv4,NM,0.386,FJ,0.271,0.386
+134543,UNICOM-DONGGUAN-IDC China Unicom Guangdong IP network,50432,10448.00,GD,GD,ipv4,GD,0.909,BJ,0.056,0.909
+4835,CHINANET-IDC-SN China Telecom Group,205824,10245.00,,,ipv4,BJ,0.644,SX,0.240,
+58541,"CHINATELECOM-SHANDONG-QINGDAO-IDC Qingdao,266000",80896,10240.00,SD,SD,ipv4,SD,0.835,GD,0.089,0.835
+135629,WESTCLOUDDATA Ningxia West Cloud Data Technology Co.Ltd.,354816,9268.00,NX,,ipv4,NX,0.994,BJ,0.006,
+139201,CHINANET-JIANGXI-JIUJIANG-IDC Jiangxi Jiujiang IDC,30976,9220.00,JX,JX,ipv4,JX,0.992,BJ,0.008,0.992
+136195,"CHINATELECOM-QINGDAO-CLOUDBASE Qingdao, Shandong Province, P.R.China.",50176,8469.00,SD,,ipv4,SD,1.000,,,
+63838,CT-HUNAN-HENGYANG-IDC Hengyang,50944,8451.00,HN,HN,ipv4,HN,0.990,FJ,0.005,0.990
+132153,"CT-SHANXI-MAN-2 No.3,Shu-Ma Road",9472,8449.00,SX,SX,ipv4,SX,1.000,,,1.000
+17799,CHINATELECOM-LN-AS-AP asn for Liaoning Provincial Net of CT,8192,8449.00,LN,LN,ipv4,LN,0.906,BJ,0.094,0.906
+132147,"CT-SHANXI-MAN No.3,Shu-Ma Road",20736,8448.00,SX,SX,ipv4,SX,1.000,,,1.000
+55967,"BAIDU Beijing Baidu Netcom Science and Technology Co., Ltd.",41472,8192.00,BJ,,ipv4,HK,0.340,BJ,0.302,
+154402,SHENZHEN6-AS-AP 91440300MACU5UQ19G,1536,8192.00,GD,,ipv4,SG,0.500,HK,0.333,
+137693,"CHINATELECOM-GUANGXI-NANNING-IDC CHINATELECOM Guangxi Nanning IDC networkdescr: NanningGuangxi Province, P.R.China.",46080,7427.00,GX,GX,ipv4,GX,1.000,,,1.000
+137702,"CHINATELECOM-JIANGSU-NANJING-IDC Nanjing, Jiangsu Province, P.R.China.",82432,7200.00,JS,JS,ipv4,JS,0.997,BJ,0.003,0.997
+138169,ASEAN-INTERNATIONAL-INFORMATION-GARDEN-IDC China Telecom,55296,7171.00,,,ipv4,GX,0.963,GD,0.037,
+17897,CHINATELECOM-HLJ-AS-AP asn for Heilongjiang Provincial Net of CT,151296,6660.00,HL,HL,ipv4,HL,0.998,BJ,0.002,0.998
+134238,CT-JIANGXI-IDC CHINANET Jiangx province IDC network,83712,6647.00,JX,JX,ipv4,JX,1.000,,,1.000
+137690,"CHINATELECOM-SHANDONG-ZAOZHUANG-IDC Zaozhuang,Shandong Province, P.R.China.",8192,6400.00,SD,SD,ipv4,SD,1.000,,,1.000
+151823,CT-CENTRALSOUTH-CHINA-IIP China Telecom,32768,5376.00,,,ipv4,HN,1.000,,,
+10111,ZEONET-AS-AP Zeofast Network,5120,4898.00,,,ipv4,US,0.300,HK,0.200,
+138982,CHINANET-HUBEI-JIANGXIA-IDC Hubei Jiangxia IDC,18688,4865.00,JX;HB,HB,ipv4,HB,1.000,,,1.000
+149178,CT-HEFEI-NANGANG-IDC China Telecom,16384,4626.00,AH,AH,ipv4,AH,1.000,,,1.000
+134756,CHINANET-NANJING-JISHAN-IDC CHINANET Nanjing Jishan IDC network,114688,4618.00,JS,JS,ipv4,JS,0.871,BJ,0.045,0.871
+139220,CHINANET-SICHUAN-CHUANXI-IDC Sichuan Chuanxn IDC,22528,4609.00,SC,SC,ipv4,SC,0.534,FJ,0.182,0.534
+140716,UNICOM-JSWX-IDC UNICOM JiangSu WuXi IDC network,33536,4417.00,JS,JS,ipv4,JS,0.908,SD,0.053,0.908
+142404,CHINANET-AS-AP China Telecom,10240,4352.00,,,ipv4,SX,1.000,,,
+134770,CHINANET-JIANGSU-SUZHOU-TAIHU-IDC CHINANET Jiangsu province Suzhou taihu IDC network,13056,4144.00,JS,JS,ipv4,JS,1.000,,,1.000
+140083,CHINANET-ANHUI-AS-AP China Telecom,13568,4112.00,AH,AH,ipv4,AH,1.000,,,1.000
+140886,UNICOM-GX-IDC UNICOM Guangxi province network,6656,4112.00,GX,GX,ipv4,GX,1.000,,,1.000
+214955,LAUNCHPAD-NETWORK,0,4099.00,,,ipv6,SH,1.000,CH,0.000,
+140717,UNICOM-JSSZ-IDC UNICOM JiangSu Suzhou IDC network,20992,4097.00,JS,JS,ipv4,JS,0.793,SH,0.098,0.793
+17633,CHINATELECOM-SD-AS-AP ASN for Shandong Provincial Net of CT,8704,4096.00,SD,SD,ipv4,SD,0.941,BJ,0.059,0.941
+136194,"CHINATELECOM-HUBEI-HUANGSHI-IDC Huangshi, Hubei Province, P.R.China.",5376,4096.00,HB,HB,ipv4,HB,1.000,,,1.000
+140647,CHINATELECOM-GUIZHOU-SHENGJI-5G-NETWORK CHINATELECOM Guizhou province Shengji 5G network,102656,3683.00,GZ,GZ,ipv4,GZ,1.000,,,1.000
+214660,JUNLINYIZHAN,0,3585.00,,,ipv6,US,1.000,CQ,0.000,
+140636,CHINANET-IOT-BEIJING China Telecom,14848,3520.00,BJ,,ipv4,JS,0.948,BJ,0.034,
+134769,CHINANET-JIANGSU-CHANGZHOU-LIYANG-IDC ChinaNet Jiangsu Changzhou Liyang IDC network,9216,3348.00,JS;ZJ,JS,ipv4,JS,1.000,,,1.000
+136191,"CHINATELECOM-HUBEI-YICHANG-IDC YICHANG, Hubei Province, P.R.China.",17664,3328.00,HB,HB,ipv4,HB,1.000,,,1.000
+140638,CHINANET-IOT-SICHUAN China Telecom,14848,3296.00,SC,,ipv4,JS,0.759,ZJ,0.241,
+137692,"CHINATELECOM-IOT-GUANGDONG-NETWORK IOT Guangdong network, Chinatelecom, P.R.China.",20992,3200.00,GD,,ipv4,GD,0.780,JS,0.159,
+149837,CHINANET-JX-YUNHE-IDC China Telecom,16384,3076.00,,JX,ipv4,JX,1.000,,,1.000
+136192,"CHINATELECOM-HUBEI-XIANGYANG-IDC Xiangyang, Hubei Province, P.R.China.",14336,3072.00,HB;SN,HB,ipv4,HB,1.000,,,1.000
+137689,"CHINATELECOM-IOT-JIANGSU-NETWORK IOT Jiangsu network, Chinatelecom, P.R.China.",43264,3008.00,JS,,ipv4,ZJ,0.876,JS,0.112,
+135061,UNICOM-SHENZHEN-IDC China Unicom Guangdong IP network,99584,2995.00,GD,GD,ipv4,GD,1.000,,,1.000
+132225,CHINATELECOM-QINGHAI-5G-NETWORK China Telecom,20992,2880.00,QH,QH,ipv4,QH,1.000,,,1.000
+137697,"CHINATELECOM-JIANGSU-YANGZHOU-IDC CHINATELECOM JiangSu YangZhou IDC networkdescr: YangZhouJiangsu Province, P.R.China.",68096,2563.00,JS,JS,ipv4,JS,0.970,BJ,0.030,0.970
+209261,JQ-NETWORKS JQ Networks,0,2563.00,,,ipv6,US,0.400,HK,0.100,
+140293,CHINATELECOM-JIANGSU-CHANGZHOU-5G-NETWORK CHINATELECOM Jiangsu province Changzhou 5G network,431104,2517.00,JS;ZJ,JS,ipv4,JS,1.000,,,1.000
+138950,CHINATELECOM-JIANGSU-WUXI-INTERNATIONAL-IDC Jiangsu Wuxi International IDC network,62464,2323.00,JS,JS,ipv4,JS,0.762,BJ,0.090,0.762
+148969,CHINANET-JIANGXI-LINKONG-IDC China Telecom,8192,2306.00,JX,JX,ipv4,JX,1.000,,,1.000
+151185,CT-XIANGYANG-IDC2 China Telecom,76544,1797.00,SN,,ipv4,HB,1.000,,,
+138991,CHINATELECOM-GUANGXI-LIUZHOU-IDC China Telecom,5632,1539.00,GX,GX,ipv4,GX,1.000,,,1.000
+131325,CHINATELECOM-JIANGSU-NANTONG-MAN CHINATELECOM JIANGSU province NANTONG MAN network,19456,1299.00,JS,JS,ipv4,JS,1.000,,,1.000
+150145,CHINANET-HUBEI-SANXIA-IDC China Telecom,8448,1280.00,HB,HB,ipv4,HB,1.000,,,1.000
+153376,BRNET-AS-AP Jilin Province Brick Business Service Limited,256,1052.00,JL,,ipv4,JL,1.000,,,
+63646,"XJKJ Beijing Xiaoju Science and Technology Co., Ltd.",73728,1032.00,BJ,,ipv4,BJ,1.000,,,
+205610,JAMESITS Jamesits Networks,512,1026.00,,,ipv4,JP,0.500,US,0.500,
+140328,CHINATELECOM-FUJIAN-SHENGJI-5G-NETWORK CHINATELECOM Fujian province Shengji 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140331,CHINATELECOM-FUJIAN-NINGDE-5G-NETWORK CHINATELECOM Fujian province NINGDE 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140332,CHINATELECOM-FUJIAN-PUTIAN-5G-NETWORK CHINATELECOM Fujian province Putian 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140333,CHINATELECOM-FUJIAN-QUANZHOU-5G-NETWORK CHINATELECOM Fujian province Quanzhou 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140334,CHINATELECOM-FUJIAN-ZHANGZHOU-5G-NETWORK CHINATELECOM Fujian province Zhangzhou 5G network,0,1024.00,ZJ;FJ,FJ,ipv6,BJ,1.000,,,0.000
+140335,CHINATELECOM-FUJIAN-LONGYAN--5G-NETWORK CHINATELECOM Fujian province Longyan 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140336,CHINATELECOM-FUJIAN-SANMING-5G-NETWORK CHINATELECOM Fujian province Sanming 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+140337,CHINATELECOM-FUJIAN-NANPING-5G-NETWORK CHINATELECOM Fujian province Nanping 5G network,0,1024.00,FJ,FJ,ipv6,BJ,1.000,,,0.000
+209481,DENGHAOYU,0,1022.00,,,ipv6,US,1.000,,,
+146966,CHINANET-YANGZHOUNORTH-IDC China Telecom,38400,827.00,,,ipv4,JS,0.800,GD,0.127,
+140915,DFA-AS-AP Xiang Xuanchen,0,800.00,SN,,ipv6,US,0.980,ZJ,0.020,
+141679,CHINATELECOM-IDC-BTHBD-AP China Telecom Beijing Tianjin Hebei Big Data Industry Park Branch,115200,771.00,BJ;TJ;HE,,ipv4,BJ,0.944,SD,0.024,
+138538,NANBIAN-VPSORGLOBAL-AS VPSOR-GLOBAL,7424,768.00,,,ipv4,HK,0.724,ZJ,0.207,
+137758,"ICBC-ASTRONET Industrial and Commercial Bank of China Limited,ICBC",256,768.00,,,ipv4,BJ,1.000,,,
+137401,CHINATELECOM-HUBEI-HUANGSHI-5G-NETWORK CHINATELECOM Hubei province Huangshi 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+137402,CHINATELECOM-HUBEI-SHIYAN-5G-NETWORK CHINATELECOM Hubei province Shiyan 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140528,CHINATELECOM-HUBEI-YICHANG-5G-NETWORK CHINATELECOM Hubei province Yichang 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140529,CHINATELECOM-HUBEI-XIANGYANG-5G-NETWORK CHINATELECOM Hubei province Xiangyang 5G network,0,768.00,HB;SN,HB,ipv6,BJ,1.000,,,0.000
+140530,CHINATELECOM-HUBEI-EZHOU-5G-NETWORK CHINATELECOM Hubei province Ezhou 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140531,CHINATELECOM-HUBEI-JINGMEN-5G-NETWORK CHINATELECOM Hubei province Jingmen 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140532,CHINATELECOM-HUBEI-XIAOGAN-5G-NETWORK CHINATELECOM Hubei province Xiaogan 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140533,CHINATELECOM-HUBEI-JINGZHOU-5G-NETWORK CHINATELECOM Hubei province Jingzhou 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140534,CHINATELECOM-HUBEI-HUANGGANG-5G-NETWORK CHINATELECOM Hubei province Huanggang 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140535,CHINATELECOM-HUBEI-XIANNING-5G-NETWORK CHINATELECOM Hubei province Xianning 5G network,0,768.00,HB;SN,HB,ipv6,BJ,1.000,,,0.000
+140536,CHINATELECOM-HUBEI-SUIZHOU-5G-NETWORK CHINATELECOM Hubei province Suizhou 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140537,CHINATELECOM-HUBEI-ENSHI-5G-NETWORK CHINATELECOM Hubei province Enshi 5G network,0,768.00,HB,HB,ipv6,BJ,1.000,,,0.000
+140538,CHINATELECOM-HUBEI-XIANTAO-5G-NETWORK CHINATELECOM Hubei province Xiantao 5G network,0,768.00,HB;SN,HB,ipv6,BJ,1.000,,,0.000
+214203,HUIFA,0,768.00,,,ipv6,US,1.000,,,
+134767,CHINANET-SICHUAN-CHENGDU-MAN CHINANET Sichuan province Chengdu MAN network,5376,665.00,SC,,ipv4,YN,1.000,,,
+63540,SD-CLOUD Shandong Cloud Comb Culture CO.LTD,1024,608.00,SD,,ipv4,SD,1.000,,,
+203236,LILY-NETWORK Lily Network,256,592.00,,,ipv4,BJ,1.000,,,
+136959,UNICOM-FUOSHAN-IDC China Unicom Guangdong IP network,24064,577.00,GD,GD,ipv4,GD,1.000,,,1.000
+140731,TOHU-OP-AP TOHU Public Internet,0,576.00,,,ipv6,GD,1.000,,,
+4842,TH-AS-AP Tianhai InfoTech,256,554.00,,,ipv4,US,1.000,,,
+138421,CU-CN-AS China Unicom,73984,532.00,,,ipv4,BJ,0.412,DE,0.308,
+211575,RuiNetwork,256,530.00,,,ipv4,US,1.000,,,
+149979,CHINANET-HUNAN-ACROSS-REGION-IDC China Telecom,1280,520.00,HN,,ipv4,HN,0.800,JX,0.200,
+134760,"CHINANET-HEBEI-SHIJIAZHUANG-IDC Shijiazhuang IDC network, CHINANET Hebei province",68608,514.00,HE,HE,ipv4,HE,0.896,FJ,0.056,0.896
+132510,SHANXIMCC-IDC IDC ShanXi China Mobile communications corporation,59136,514.00,SX,SX,ipv4,BJ,0.952,SH,0.048,0.000
+142608,CHINANET-ANHUI-BENGBU-IDC China Telecom,4864,513.00,AH,AH,ipv4,AH,1.000,,,1.000
+139791,WOPAI-AS-AP Langfang Wopai Communications Co Ltd,0,513.00,,,ipv6,PL,0.499,US,0.499,
+219332,PMMAN-AS - Xiang Zhou,0,513.00,SN,,ipv6,JP,0.992,BJ,0.004,
+151331,SORAYOU-AS-JP Sora You,0,512.00,,,ipv6,HK,0.998,BJ,0.002,
+214610,YANGXULIAO,0,480.00,,,ipv6,SG,0.533,NL,0.433,
+215502,XING_QINGYU,512,433.00,,,ipv4,TW,0.500,US,0.500,
+199310,QFLINK-AS WolfXun Experimental Research Global Network,256,345.00,,,ipv4,FJ,1.000,,,
+138407,CMNET-GZIDC-CN The Internet Data Center of Guizhou Mobile Communication Company Limited,30464,343.00,GZ,GZ,ipv4,BJ,1.000,,,0.000
+24429,"TAOBAO Zhejiang Taobao Network Co.,Ltd",174080,305.00,ZJ,,ipv4,HK,0.226,SG,0.150,
+215750,TENONET,0,299.00,,,ipv6,NL,0.880,HK,0.057,
+151673,CHENXINYU-AS-AP Chen Xinyu,256,292.00,,,ipv4,GS,1.000,,,
+208754,CHIYODA-NETWORK,256,290.00,,,ipv4,SD,1.000,,,
+213605,PYSIO-NETWORK,768,284.00,,,ipv4,JS,0.667,SC,0.333,
+214899,YLL-AS,256,277.00,,,ipv4,BJ,1.000,,,
+213629,ZEXINCHEN,0,272.00,,,ipv6,US,0.941,HK,0.059,
+214848,COMPATIBLENETWORK,0,272.00,,,ipv6,HK,0.062,FR,0.015,
+151194,STELIGHT-AS-AP Zhu Yucheng,0,267.00,,,ipv6,NL,0.715,JP,0.116,
+153725,TENONET-AS-AP Tenonet Hangzhou Co Ltd,512,262.00,ZJ,,ipv4,HK,0.500,JP,0.500,
+207299,ASTRAL-EXPRESS Astral Express Inc.,0,261.00,,,ipv6,JP,0.985,HB,0.004,
+205794,RTTW-AS as205794.net,0,260.00,,,ipv6,GD,0.988,DE,0.004,
+141771,CHINANET-HEBEI-ZHANGJIAKOU-MAN China Telecom,60416,258.00,HE,HE,ipv4,BJ,0.750,HE,0.250,0.250
+141025,"CT-LIAONING-SHENYANG-MAN Shenyang MAN, Liaoning, China Telecom",256,258.00,LN,LN,ipv4,LN,1.000,,,1.000
+136535,HRBM27-AS-AP Yang Mengqi,0,258.00,,,ipv6,HL,0.930,BJ,0.066,
+218883,"MELSPECTRUM-AS - Melspectrum Technology Co., Ltd.",0,258.00,,,ipv6,GB,0.992,GD,0.008,
+142664,AS142664-15 - China Education and Research Network (CERNET),0,257.00,,,ipv6,BJ,1.000,,,
+213876,ISEREBINAIRE3,0,257.00,,,ipv6,BJ,0.685,HK,0.191,
+9389,CGWNET BEIJING SHENZHOU GREATWALL COMMUNICATION,175616,256.00,BJ,,ipv4,BJ,0.994,HL,0.006,
+141006,CT-NEIMENGGU-WULANCHABU-MAN China Telecom,4096,256.00,NM,NM,ipv4,NM,1.000,,,1.000
+4813,BACKBONE-GUANGDONG-AP China TelecomGroup,2560,256.00,GD,GD,ipv4,GD,1.000,,,1.000
+133475,NEWYORKUNIVERSITY-AS-SHANGHAI New York University ASN,512,256.00,SH,,ipv4,BJ,1.000,,,
+58571,CHINATELECOM-GUIZHOU CHINANET Guizhou province network,256,256.00,GZ,GZ,ipv4,GZ,1.000,,,1.000
+139073,FSIX-AS-AP Fantasy Sky Internet eXchange,256,256.00,,,ipv4,JP,1.000,,,
+215786,YC-NETWORK,256,256.00,,,ipv4,BJ,1.000,,,
+38587,CERNET-IDC-AP CERNET Internet Data Center,0,256.00,,,ipv6,BJ,1.000,,,
+139888,TIME-GLOBAL-AS-AP Tang Zhuo,0,256.00,,,ipv6,HN,1.000,,,
+140056,CHINANET-MAOMING-AS-AP China Telecom,0,256.00,,,ipv6,BJ,1.000,,,
+140346,CHINATELECOM-YUNNAN-KUNMING-5G-NETWORK CHINATELECOM Yunnan province Kunming 5G network,0,256.00,YN,YN,ipv6,BJ,0.996,YN,0.004,0.004
+140348,CHINATELECOM-YUNNAN-BAOSHAN-5G-NETWORK CHINATELECOM Yunnan province Baoshan 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140349,CHINATELECOM-YUNNAN-CHUXIONG-5G-NETWORK CHINATELECOM Yunnan province Chuxiong 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140350,CHINATELECOM-YUNNAN-DALI-5G-NETWORK CHINATELECOM Yunnan province Dali 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140351,CHINATELECOM-YUNNAN-DEHONG-5G-NETWORK CHINATELECOM Yunnan province Dehong 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140353,CHINATELECOM-YUNNAN-HONGHE-5G-NETWORK CHINATELECOM Yunnan province Honghe 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140354,CHINATELECOM-YUNNAN-LIJIANG-5G-NETWORK CHINATELECOM Yunnan province Lijiang 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140355,CHINATELECOM-YUNNAN-LINCANG-5G-NETWORK CHINATELECOM Yunnan province Lincang 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140356,CHINATELECOM-YUNNAN-NUJIANG-5G-NETWORK CHINATELECOM Yunnan province Nujiang 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140357,CHINATELECOM-YUNNAN-PUER-5G-NETWORK CHINATELECOM Yunnan province Puer 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140358,CHINATELECOM-YUNNAN-QUJING-5G-NETWORK CHINATELECOM Yunnan province Qujing 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140359,CHINATELECOM-YUNNAN-WENSHAN-5G-NETWORK CHINATELECOM Yunnan province Wenshan 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140360,CHINATELECOM-YUNNAN-YUXI-5G-NETWORK CHINATELECOM Yunnan province Yuxi 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+140361,CHINATELECOM-YUNNAN-ZHAOTONG-5G-NETWORK CHINATELECOM Yunnan province Zhaotong 5G network,0,256.00,YN,YN,ipv6,BJ,1.000,,,0.000
+200267,ZHAO-AS,0,256.00,,,ipv6,LU,0.938,GB,0.062,
+200268,CHEN-AS,0,256.00,,,ipv6,US,0.996,JP,0.004,
+200545,QUANHAO-AS,0,256.00,,,ipv6,DE,1.000,,,
+206315,SHUCHENG,0,256.00,,,ipv6,US,1.000,,,
+214775,LYC-AS,0,256.00,,,ipv6,KP,1.000,,,
+219397,IDDQD-AS - IDDQD-AS,0,256.00,,,ipv6,ZJ,1.000,,,
+212532,RUI-AS,512,245.00,,,ipv4,BJ,0.500,US,0.500,
+137735,CCBNET China Construction Bank,9984,225.00,,,ipv4,BJ,1.000,,,
+140494,CHINATELECOM-ZHEJIANG-HUZHOU-5G-NETWORK CHINATELECOM ZHEJIANG province HUZHOU 5G network,0,193.00,ZJ,ZJ,ipv6,BJ,0.984,DE,0.010,0.000
+140290,CHINATELECOM-JIANGSU-5G-CORE-NETWORK CHINATELECOM Jiangsu province 5G CORE network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140291,CHINATELECOM-JIANGSU-NANJING-5G-NETWORK CHINATELECOM Jiangsu province Nanjing 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140294,CHINATELECOM-JIANGSU-YANGZHOU-5G-NETWORK CHINATELECOM Jiangsu provinceYangzhou 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140295,CHINATELECOM-JIANGSU-LIANYUNGANG-5G-NETWORK CHINATELECOM Jiangsu province Lianyungang 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140296,CHINATELECOM-JIANGSU-WUXI-5G-NETWORK CHINATELECOM Jiangsu province Wuxi 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140297,CHINATELECOM-JIANGSU-XUZHOU-5G-NETWORK CHINATELECOM Jiangsu province Xuzhou 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140298,CHINATELECOM-JIANGSU-YANCHENG-5G-NETWORK CHINATELECOM Jiangsu province Yancheng 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140299,CHINATELECOM-JIANGSU-NANTONG-5G-NETWORK CHINATELECOM Jiangsu province Nantong 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140300,CHINATELECOM-JIANGSU-SUQIAN-5G-NETWORK CHINATELECOM Jiangsu province Suqian 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140301,CHINATELECOM-JIANGSU-TAIZHOU-5G-NETWORK CHINATELECOM Jiangsu province Taizhou 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140302,CHINATELECOM-JIANGSU-ZHENJIANG-5G-NETWORK CHINATELECOM Jiangsu province Zhenjiang 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140303,CHINATELECOM-JIANGSU-HUAIAN-5G-NETWORK CHINATELECOM Jiangsu province Huaian 5G network,0,192.00,JS,JS,ipv6,BJ,1.000,,,0.000
+140347,CHINATELECOM-YUNNAN-XISHUANGBANNA-5G-NETWORK CHINATELECOM Yunnan province Xishuangbanna 5G network,0,192.00,YN,YN,ipv6,BJ,0.995,YN,0.005,0.005
+140352,CHINATELECOM-YUNNAN-DIQING-5G-NETWORK CHINATELECOM Yunnan province Diqing 5G network,0,192.00,YN,YN,ipv6,BJ,0.995,YN,0.005,0.005
+202335,HAIMA-AS Haima Global Network,0,192.00,,,ipv6,GB,0.458,JP,0.208,
+138182,CNGI-SJZ-IX-AS-AP CERNET2 regional IX at Hebei Normal University,0,124.00,HE,,ipv6,BJ,1.000,,,
+7721,QC-NET Qin Cloud Networks,256,101.00,,,ipv4,SN,1.000,,,
+133555,DOORPOST-AS-AP DOORPOST Limited,256,97.00,,,ipv4,BJ,1.000,,,
+203309,CHOCO-AS,256,96.00,,,ipv4,BJ,1.000,,,
+212164,HE-AS Kakan Network,256,86.00,,,ipv4,HK,1.000,,,
+202256,LAWLIETNET,0,86.00,,,ipv6,US,0.942,GB,0.058,
+134773,CHINANET-GUANGDONG-GUANGZHOU-MAN CHINANET Guangdong province Guangzhou MAN network,102400,85.00,GD,GD,ipv4,GD,0.532,US,0.383,0.532
+139317,ZX-AS-AP Ningbo Dahuamao Information Technology Co Ltd,0,85.00,ZJ,,ipv6,BJ,0.165,HK,0.141,
+137718,"VOLCANO-ENGINE Beijing Volcano Engine Technology Co., Ltd.",505344,80.00,BJ,,ipv4,BJ,1.000,,,
+24356,CNGI-CHQ-IX-AS-AP CERNET2 IX at Chongqing University,0,76.00,CQ,,ipv6,BJ,0.987,CQ,0.013,
+200959,SUNFLYER-AS Sunflyer Global Experiment Network,0,72.00,,,ipv6,FR,0.653,SG,0.264,
+214439,ZXCT-AS,256,69.00,,,ipv4,HK,1.000,,,
+137753,JD Beijing Jingdong Shangke Information Technology Co. Ltd.,11776,68.00,BJ,,ipv4,SG,0.696,NL,0.283,
+140979,UNICOM-SHFT-IDC China Unicom Shanghai FuTe IDC network,56832,65.00,SH,SH,ipv4,SH,1.000,,,1.000
+58777,CT2 ChinaTelecom Cybersecurity Tech,5888,64.00,,,ipv4,FJ,0.130,GD,0.087,
+216299,LCNET Liuchang Network,0,64.00,,,ipv6,HK,0.422,CA,0.297,
+138381,CNGI-GYN-IX-AS-AP CERNET2 regional IX at Guizhou University,0,60.00,GZ,,ipv6,BJ,0.983,GZ,0.017,
+140105,CMNET-SNIDC-CN-AP Shaanxi Mobile Communication Company Limited,26112,56.00,SN,SN,ipv4,BJ,0.804,SH,0.196,0.000
+138374,CNGI-TYN-IX-AS-AP CERNET2 regional IX at Taiyuan University,0,56.00,SX,,ipv6,BJ,1.000,,,
+24354,CNGI-LZH-IX-AS-AP CERNET2 IX at Lanzhou University,0,51.00,GS,,ipv6,BJ,1.000,,,
+141425,CMNET-GUANGDONG-CN China Mobile Group Guangdong communications corporation,40448,50.00,GD,GD,ipv4,BJ,0.797,HK,0.196,0.000
+210738,CP-AS,0,50.00,,,ipv6,MY,0.040,AQ,0.020,
+209306,SOHANET Soha Network,256,49.00,,,ipv4,BJ,1.000,,,
+219378,SAKARIN-NETWORK - ZHANG XIYUAN,0,48.00,,,ipv6,TW,0.417,JP,0.208,
+219489,AS-MZKNET - Zhengda Li,0,48.00,,,ipv6,JP,0.667,HK,0.333,
+214575,CUTECH Curious Universe Technology,256,42.00,,,ipv4,CQ,1.000,,,
+150184,OWONET-AS-AP Chen Chi,0,42.00,,,ipv6,TW,0.500,HK,0.381,
+137908,MOEFIRE-AS-AP Lin Siqi,0,38.00,,,ipv6,BJ,0.421,NL,0.421,
+139080,CMNET-SCIDC-CN The Internet Data Center of Sichuan Mobile Communication Company Limited,74240,37.00,SC,SC,ipv4,BJ,1.000,,,0.000
+152120,UNICOM-TJGC-IDC China Unicom TianJing GaoCun IDC network,9216,35.00,TJ,,ipv4,TJ,0.917,BJ,0.083,
+37936,"SINA 15F,Ideal Plaza No.58 Bei Si Huan Xi Road",1280,35.00,,,ipv4,BJ,1.000,,,
+136198,CHINANET-GUANGDONG-YUEXI-MAN CHINANET Guangdong province Yuexi MAN network,1280,35.00,GD,GD,ipv4,GB,0.600,GD,0.400,0.400
+24370,CNGI-DLN-IX-AS-AP CERNET2 IX at Dalian University of Technology,0,35.00,LN,,ipv6,BJ,1.000,,,
+200936,GUO-AS Chengjie Guos Experimental Network,0,34.00,,,ipv6,JP,0.500,HK,0.088,
+139462,CHINANET-GY-AS CHINANET Guizhou Yilong IDC,7168,33.00,GZ,GZ,ipv4,GZ,1.000,,,1.000
+139203,CHINANET-GUIZHOU-GUIAN-IDC Guizhou GuiAn IDC,36352,32.00,GZ,GZ,ipv4,GZ,0.831,GD,0.169,0.831
+37965,CNNIC-PBSL-AP Pacnet Business Solutions LTD,22272,32.00,,,ipv4,GD,0.782,BJ,0.149,
+139148,"CHINAUNIONPAY China UnionPay Co., Ltd",3072,32.00,,,ipv4,SH,1.000,,,
+212237,Phoenix Network,1024,32.00,,,ipv4,BJ,0.750,US,0.250,
+151464,"LUOGU-AS-AP Shanghai Luogu Network Technology Co., Ltd.",256,32.00,SH,,ipv4,SG,1.000,,,
+202782,EVERLINK-AS EverLink Global Enterprise Network,0,32.00,,,ipv6,DE,0.500,SG,0.500,
+203655,ZHIWENSUN,0,32.00,,,ipv6,SH,1.000,,,
+206729,VINCENT-NET-AS,0,32.00,,,ipv6,CA,0.500,FR,0.500,
+208618,CYY-AS,0,32.00,,,ipv6,HN,1.000,,,
+209218,FISH-NETWORK-AS Fish Network,0,32.00,,,ipv6,XJ,0.594,HK,0.250,
+202396,ZYK-AS,0,26.00,,,ipv6,HK,0.731,GB,0.115,
+208679,YIKAI-AS,0,21.00,,,ipv6,US,0.857,DE,0.143,
+210352,YIJIAXU,0,21.00,,,ipv6,ZJ,0.333,US,0.143,
+38364,"LTEL RM 1706,Block A,Ocean Express,No.66",3584,20.00,,,ipv4,BJ,1.000,,,
+17490,"ETFIBERNET 3F,Yi Qing Building,Hua Jing Xin Cheng,Guangzhou",1024,20.00,GD,,ipv4,BJ,1.000,,,
+138376,CNGI-YCH-IX-AS-AP CERNET2 regional IX at Ningxia University,0,20.00,NX,,ipv6,BJ,1.000,,,
+150141,W1N0DL-AS-AP Wang Jiacheng,0,20.00,,,ipv6,TJ,0.800,HK,0.050,
+135671,RBB-AS-AP RBB InfoTech,256,19.00,,,ipv4,US,1.000,,,
+210041,WALS5H-AS,256,19.00,,,ipv4,JP,1.000,,,
+140308,CHINATELECOM-GUANGDONG-ZHUHAI-5G-NETWORK CHINATELECOM Guangdong province Zhuhai 5G network,328192,18.00,GD,GD,ipv4,GD,0.992,BJ,0.006,0.992
+140318,CHINATELECOM-GUANGDONG-HEYUAN-5G-NETWORK CHINATELECOM Guangdong province Heyuan 5G network,319744,18.00,GD,GD,ipv4,GD,0.986,BJ,0.012,0.986
+140319,CHINATELECOM-GUANGDONG-QINGYUAN-5G-NETWORK CHINATELECOM Guangdong province Qingyuan 5G network,255232,18.00,GD,GD,ipv4,GD,0.990,BJ,0.009,0.990
+140309,CHINATELECOM-GUANGDONG-ZHONGSHAN-5G-NETWORK CHINATELECOM Guangdong province Zhongshan 5G network,233984,18.00,GD,GD,ipv4,GD,0.996,BJ,0.002,0.996
+140320,CHINATELECOM-GUANGDONG-SHANWEI-5G-NETWORK CHINATELECOM Guangdong province Shanwei 5G network,225536,18.00,GD,GD,ipv4,GD,0.997,BJ,0.003,0.997
+140311,CHINATELECOM-GUANGDONG-JIANGMEN-5G-NETWORK CHINATELECOM Guangdong province Jiangmen 5G network,215808,18.00,GD,GD,ipv4,GD,0.987,BJ,0.013,0.987
+203991,AS20473,256,18.00,,,ipv4,US,1.000,,,
+205152,DAIHAN,256,18.00,,,ipv4,US,1.000,,,
+209294,FANSNET FansNET A Not Stable NETwork,256,18.00,,,ipv4,HB,1.000,,,
+140053,CHINANET-HUIZHOU-AS-AP China Telecom,0,18.00,,,ipv6,BJ,1.000,,,
+215007,BOZHAN-AS,0,18.00,,,ipv6,AU,0.722,BJ,0.056,
+141776,BAOSHUO-AS-AP Baoshuo Network,256,17.00,,,ipv4,DE,1.000,,,
+39753,LIUXYON Liuxyon International,0,17.00,,,ipv6,FR,0.235,JP,0.235,
+151674,HYU-AS-AP Cheng Yijia,0,17.00,,,ipv6,HB,1.000,,,
+152598,CHAT-AS-AP Beijing Gong Gong Fa Technology Co Ltd,0,17.00,BJ,,ipv6,BJ,0.941,HK,0.059,
+152911,SYICT-AS-KR SY ICT,0,17.00,,,ipv6,KR,1.000,,,
+204185,STARCLOUD-AS StarCloud global network powered by high-end Arduino BGP routers.,0,17.00,,,ipv6,HK,0.529,US,0.471,
+204518,MORAN-AS,0,17.00,,,ipv6,BJ,0.941,SH,0.059,
+205603,WOLFLAB,0,17.00,,,ipv6,JP,1.000,,,
+210903,QINGYAO-AS,0,17.00,,,ipv6,HE,0.706,GB,0.176,
+219480,nfdns - shuai wang,0,17.00,,,ipv6,SG,0.941,DE,0.059,
+24147,"CBDTELENET BEIJING CBD TELECOM CO,.LTD",4096,16.00,BJ,BJ,ipv4,BJ,1.000,,,1.000
+139721,CHINATELECOM-ANHUI-HEFEI-MAN HeFei,2048,16.00,AH,AH,ipv4,AH,1.000,,,1.000
+44421,EVE-NET,256,16.00,,,ipv4,NL,1.000,,,
+205651,CATOFES,256,16.00,,,ipv4,HK,1.000,,,
+24239,TWD2-NET-AS-AP TWD2 Education and Research Network,0,16.00,,,ipv6,BJ,0.500,GB,0.375,
+135674,KANONETWORK-AS-JP Kano Network,0,16.00,,,ipv6,JP,1.000,,,
+139216,HTROY-AS-AP Htroy Network Research Limited,0,16.00,,,ipv6,SG,0.312,HK,0.188,
+198078,Silicon-AS - Hangzhou Silicon-based Agile Technology Limited,0,16.00,ZJ,,ipv6,JP,1.000,,,
+198516,UNDEFINED-AS,0,16.00,,,ipv6,NL,1.000,,,
+198527,REI-AS,0,16.00,,,ipv6,DE,1.000,,,
+199406,JINHAN-NET,0,16.00,,,ipv6,TW,0.125,AR,0.062,
+200789,OPTNET,0,16.00,,,ipv6,DE,1.000,,,
+210176,APPLEBLOCK-NETWORK,0,16.00,,,ipv6,TW,0.938,KP,0.062,
+213545,LOKI-AS,0,16.00,,,ipv6,SH,0.750,JP,0.125,
+213878,ZHENGYONGCHEN,0,16.00,,,ipv6,SH,1.000,,,
+205532,DREAMRY Heng Zichao aka Wencey Wang.,0,15.00,,,ipv6,FR,0.800,HK,0.133,
+214921,JUDGEDUCK-NET JudgeDuck Research and Development Network,0,14.00,,,ipv6,DE,0.786,BJ,0.143,
+23848,"PINGANCOM Shenzhen Ping An Communication Technology Co.,Ltd",14848,13.00,GD,,ipv4,GD,1.000,,,
+216056,VIRTUALIZE-NETWORK,0,13.00,,,ipv6,HK,0.385,US,0.231,
+38345,ZDNS Internet Domain Name System Beijing Engineering Resrarch Center Ltd.,6144,12.00,BJ,,ipv4,BJ,0.917,US,0.083,
+213891,LIUZHEN-AS,0,12.00,,,ipv6,GB,0.250,HB,0.167,
+151187,LEONET-AS-AP Shen Jiale,0,11.00,,,ipv6,SH,0.818,US,0.091,
+140707,UNICOM-NXZW-IDC UNICOM Ningxia province network,10240,10.00,NX,NX,ipv4,BJ,1.000,,,0.000
+214933,-Reserved AS-,256,10.00,,,ipv4,US,1.000,,,
+24351,CNGI-BJ-IX5-AS-AP CERNET2 IX at Beijing University of Aeronautics and Astronautics,0,10.00,BJ,,ipv6,BJ,1.000,,,
+142553,AIRSPROJECT-PRIVATE-NETWORK Airs Project Private Network Main,0,10.00,,,ipv6,JP,0.400,US,0.200,
+49904,Kosaka Network,0,9.00,,,ipv6,BJ,0.444,US,0.333,
+140682,MCDAWANJIA-AS-AP Yang Xuyao,0,9.00,,,ipv6,TW,0.444,US,0.222,
+198025,ARCHTIC-NETWORK,0,9.00,,,ipv6,SH,0.444,TW,0.333,
+200890,BMIP,0,9.00,,,ipv6,HK,0.333,GB,0.222,
+214963,YPH-AS,0,9.00,,,ipv6,JP,0.222,LU,0.222,
+4538,ERX-CERNET-BKB China Education and Research Network Center,16446720,8.00,,,ipv4,BJ,0.327,JS,0.135,
+63647,WJHTEDU Beijing WangJu Interworking Information Technology Co. LTD,34304,8.00,BJ,,ipv4,BJ,1.000,,,
+133865,"IQIYI-AS-AP Beijing IQIYI Science & Technology Co., Ltd.",7936,8.00,BJ,,ipv4,BJ,0.677,HK,0.226,
+24406,CNNIC-CRITICAL-AP China Internet Network Infomation Center,4352,8.00,,,ipv4,BJ,1.000,,,
+58448,AP-CONAC-AS-AP CONAC China Organizational Name Administration Center,1024,8.00,,,ipv4,BJ,1.000,,,
+138401,TUPLENET2-AS-AP TupleTech Corporation,256,8.00,,,ipv4,HK,1.000,,,
+137256,CATIO-NETWORK-AS-AP CatIO Network,0,8.00,,,ipv6,JP,0.375,HK,0.125,
+201705,E-PORTS-NETPORTS-AS,0,8.00,,,ipv6,JP,0.250,CA,0.125,
+212793,XIWEI-NETWORK,0,8.00,,,ipv6,US,0.375,CH,0.125,
+24409,CNNIC-CRITICAL-AP China Internet Network Infomation Center,2560,7.00,,,ipv4,BJ,1.000,,,
+137264,WINGMARK-AS-AP Wingmark Matrix Wuhan Computer Systems Co Ltd,256,7.00,HB,,ipv4,BJ,1.000,,,
+151785,ZHOU-AS-AP Zhou Yang,0,7.00,,,ipv6,SG,0.714,BJ,0.143,
+212985,WMJ-AS geo.skh.cxgeofeed.csv,0,7.00,,,ipv6,JP,0.286,AL,0.143,
+214704,RUI,0,7.00,,,ipv6,NL,1.000,,,
+216100,-Reserved AS-,0,7.00,,,ipv6,SE,0.286,HK,0.143,
+142433,DATAWAVE-AS-AP DATAWAVE GLOBAL LLC,3072,6.00,,,ipv4,HK,0.333,JP,0.333,
+133846,IMLONGHAO-AS-AP IMLONGHAO,256,6.00,,,ipv4,BJ,1.000,,,
+152922,ZHANGFUYU-AS-CN Zhang Fuyu,0,6.00,,,ipv6,HE,1.000,,,
+153057,LIRUIZHI-AS-AP Li Ruizhi,0,6.00,,,ipv6,SD,1.000,,,
+153168,LUBIN-AS-AP Lu Bin,0,6.00,,,ipv6,SD,1.000,,,
+153170,CUIHONGTAO-AS-AP Cui Hongtao,0,6.00,,,ipv6,SD,1.000,,,
+153171,HANJIAJUN-AS-AP Han Jiajun,0,6.00,,,ipv6,SD,1.000,,,
+153172,WANGGONGRUI-AS-AP Wang Gongrui,0,6.00,,,ipv6,HE,1.000,,,
+216342,MARIONIC_PERSONAL_NETWORK-AS Marionic Personal Network ~ MPN,0,6.00,,,ipv6,CH,0.167,DE,0.167,
+151397,CT-ESURFINGCLOUD-CDN China Telecom,4864,5.00,,,ipv4,BJ,1.000,,,
+58811,AP-CONAC-AS-AP CONAC China Organizational Name Administration Center,2048,5.00,,,ipv4,BJ,1.000,,,
+133478,"TENCENT-AS-AP Tencent Cloud Computing Beijing Co., Ltd",1536,5.00,BJ,,ipv4,BJ,0.167,ID,0.167,
+211843,TIANKAI-AS,256,5.00,,,ipv4,JP,1.000,,,
+136725,CHENJITONG-AS-AP Chen Jitong,0,5.00,,,ipv6,SD,1.000,,,
+137436,CONGPENGBO-AS-AP Cong Pengbo,0,5.00,,,ipv6,SD,1.000,,,
+149510,FENGLIBO-AS-AP Feng Libo,0,5.00,,,ipv6,SD,1.000,,,
+151202,HONOKA-AS-AP Suzhou Honoka Technology Co Ltd,0,5.00,,,ipv6,JP,1.000,,,
+153185,WANGDEHONG-AS-AP Wang Dehong,0,5.00,,,ipv6,SD,1.000,,,
+153186,XUJIAYOU-AS-AP Xu Jiayou,0,5.00,,,ipv6,SD,1.000,,,
+153187,WUCHUNYU-AS-AP Wu Chunyu,0,5.00,,,ipv6,SD,1.000,,,
+153189,WANGJIANWEI-AS-AP Wang Jianwei,0,5.00,,,ipv6,SD,1.000,,,
+153190,ZHANGCHONG-AS-AP Zhang Chong,0,5.00,,,ipv6,BJ,1.000,,,
+153331,CHENWEI-AS-AP Chen Wei,0,5.00,,,ipv6,SD,1.000,,,
+153333,FUJIECHUN-AS-AP Fu Jiechun,0,5.00,,,ipv6,SD,1.000,,,
+154185,LIUHAORAN-AS-CN Liu HaoRan,0,5.00,,,ipv6,DE,0.400,TW,0.400,
+200809,KURAL,0,5.00,,,ipv6,DE,0.400,US,0.400,
+213782,GoForceX Networks,0,5.00,,,ipv6,CA,0.200,HB,0.200,
+135089,CHINANET-GUANGZHOU-SOUTHBASE-IDC China Telecom,107520,4.00,GD,GD,ipv4,GD,0.912,SD,0.048,0.912
+132536,CHINANET-TIANJIN-MAN-NEW China Telecom,6400,4.00,TJ,TJ,ipv4,TJ,1.000,,,1.000
+18241,SPINET State Power Information Net,3328,4.00,,,ipv4,BJ,1.000,,,
+146788,"CHINA-BROADNET China Broadcasting Network Co., Ltd",3072,4.00,,,ipv4,BJ,1.000,,,
+24149,ZDNS Internet Domain Name System Beijing Engineering Resrarch Center Ltd.,1024,4.00,BJ,,ipv4,BJ,1.000,,,
+55966,"PSBCNET Post Savings Bank of China Tower A, No.3",1024,4.00,,,ipv4,BJ,1.000,,,
+146812,"DBCN-WEB Deutsche Bank China Co., Ltd. Shanghai Branch",512,4.00,SH,,ipv4,BJ,1.000,,,
+209574,HEXNET-AS,256,4.00,,,ipv4,BJ,1.000,,,
+218834,NKX - Kaixiang Nie,256,4.00,SN,,ipv4,IE,1.000,,,
+45275,ZPARKNET-AS-AP BII Group Holding Ltd.,0,4.00,,,ipv6,BJ,1.000,,,
+138387,CHINATELECOM-SHAANXI-XIAN-5G-NETWORK CHINATELECOM Shaanxi province Xian 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138409,CHINATELECOM-SHAANXI-TONGCHUAN-5G-NETWORK CHINATELECOM Shaanxi province Tongchuan 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138436,CHINATELECOM-SHAANXI-BAOJI-5G-NETWORK CHINATELECOM Shaanxi province Baoji 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138442,CNGI-LSA-IX-AS-AP CERNET2 regional IX at Tibet University,0,4.00,XZ,,ipv6,BJ,1.000,,,
+138513,CHINATELECOM-SHAANXI-WEINAN-5G-NETWORK CHINATELECOM Shaanxi province Weinan 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138514,CHINATELECOM-SHAANXI-XIANYANG-5G-NETWORK CHINATELECOM Shaanxi province Xianyang 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138597,CHINATELECOM-SHAANXI-HANZHONG-5G-NETWORK CHINATELECOM Shaanxi province Hanzhong 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138635,CHINATELECOM-SHAANXI-ANKANG-5G-NETWORK CHINATELECOM Shaanxi province Ankang 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138641,CHINATELECOM-SHAANXI-YULIN-5G-NETWORK CHINATELECOM Shaanxi province Yulin 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+138679,CHINATELECOM-SHAANXI-YANAN-5G-NETWORK CHINATELECOM Shaanxi province Yanan 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+140238,CHINATELECOM-SHAANXI-SHANGLUO-5G-NETWORK CHINATELECOM Shaanxi province Shangluo 5G network,0,4.00,SN,SN,ipv6,BJ,1.000,,,0.000
+140649,CHINATELECOM-GUIZHOU-ZUNYI-5G-NETWORK CHINATELECOM Guizhou province Zunyi 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140650,CHINATELECOM-GUIZHOU-ANSHUN-5G-NETWORK CHINATELECOM Guizhou province Anshun 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140651,CHINATELECOM-GUIZHOU-QIANNAN-5G-NETWORK CHINATELECOM Guizhou province Qiannan 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140652,CHINATELECOM-GUIZHOU-QIANDONGNAN-5G-NETWORK CHINATELECOM Guizhou province Qiandongnan 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140653,CHINATELECOM-GUIZHOU-TONGREN-5G-NETWORK CHINATELECOM Guizhou province Tongren 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140654,CHINATELECOM-GUIZHOU-BIJIE-5G-NETWORK CHINATELECOM Guizhou province Bijie 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140655,CHINATELECOM-GUIZHOU-LIUPANSHUI-5G-NETWORK CHINATELECOM Guizhou province Liupanshui 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140656,CHINATELECOM-GUIZHOU-QIANXINAN-5G-NETWORK CHINATELECOM Guizhou province Qianxinan 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+140657,CHINATELECOM-GUIZHOU-GUIAN-5G-NETWORK CHINATELECOM Guizhou province Guian 5G network,0,4.00,GZ,GZ,ipv6,BJ,1.000,,,0.000
+151276,"UOTO XIAN UOTOCOM NETWORK TECHNOLOGY CO.,LTD",0,4.00,SN,,ipv6,BJ,1.000,,,
+198266,YNN5-NET,0,4.00,,,ipv6,NL,0.750,HK,0.250,
+198681,REIA-NETWORK REIA-NETWORK,0,4.00,,,ipv6,HK,1.000,,,
+200853,LI-AS,0,4.00,,,ipv6,FR,0.500,US,0.500,
+218796,GREYWIND-AS - Yunsheng Deng,0,4.00,,,ipv6,HK,0.500,GB,0.250,
+136200,CHINANET-GUANGDONG-FOSHAN-MAN CHINANET Guangdong province Foshan MAN network,74752,3.00,GD,GD,ipv4,HK,0.339,SG,0.332,0.000
+45079,GDSNET GDS CHANGAN SERVICES Ltd.,9728,3.00,,,ipv4,BJ,1.000,,,
+56006,"SPDB-CN Shanghai Pudong Development Bank Co.,Ltd.",1536,3.00,SH,,ipv4,SH,1.000,,,
+58536,AP-CONAC-AS-AP CONAC China Organizational Name Administration Center,1280,3.00,,,ipv4,BJ,1.000,,,
+59073,BOC Bank of China Limited,768,3.00,,,ipv4,BJ,1.000,,,
+142111,AIYUN-AS-AP Zhejiang Aiyun Network Technology Co Ltd,768,3.00,ZJ,,ipv4,MY,0.667,US,0.333,
+50922,SHI-LILI,256,3.00,,,ipv4,US,1.000,,,
+204211,LOCYAN-NETWORK-AS LoCyanTeam,256,3.00,,,ipv4,SG,1.000,,,
+138535,FURDEVS-AS-AP Wu Qi,0,3.00,,,ipv6,ZJ,1.000,,,
+139589,GETONG-AS-AP GTDev Network,0,3.00,,,ipv6,DE,0.667,US,0.333,
+140245,CHINATELECOM-ANHUI-SHENGJI-5G-NETWORK CHINATELECOM Anhui province Shengji 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140246,CHINATELECOM-ANHUI-HEFEI-5G-NETWORK CHINATELECOM Anhui province Hefei 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140247,CHINATELECOM-ANHUI-WUHU-5G-NETWORK CHINATELECOM Anhui province Wuhu 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140248,CHINATELECOM-ANHUI-ANQING-5G-NETWORK CHINATELECOM Anhui province Anqing 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140249,CHINATELECOM-ANHUI-BENGBU-5G-NETWORK CHINATELECOM Anhui province Bengbu 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140250,CHINATELECOM-ANHUI-FUYANG-5G-NETWORK CHINATELECOM Anhui province Fuyang 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140251,CHINATELECOM-ANHUI-BOZHOU-5G-NETWORK CHINATELECOM Anhui province Bozhou 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140252,CHINATELECOM-ANHUI-HUAIBEI-5G-NETWORK CHINATELECOM Anhui province Huaibei 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140253,CHINATELECOM-ANHUI-HUAINAN-5G-NETWORK CHINATELECOM Anhui province Huainan 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140254,CHINATELECOM-ANHUI-SHUZHOU-5G-NETWORK CHINATELECOM Anhui province Shuzhou 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140255,CHINATELECOM-ANHUI-CHUZHOU-5G-NETWORK CHINATELECOM Anhui province Chuzhou 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140256,CHINATELECOM-ANHUI-LIUAN-5G-NETWORK CHINATELECOM Anhui province Liuan 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140257,CHINATELECOM-ANHUI-CHIZHOU-5G-NETWORK CHINATELECOM Anhui province Chizhou 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140258,CHINATELECOM-ANHUI-MAANSHAN-5G-NETWORK CHINATELECOM Anhui province Maanshan 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140259,CHINATELECOM-ANHUI-TONGLING-5G-NETWORK CHINATELECOM Anhui province Tongling 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140260,CHINATELECOM-ANHUI-XUANCHENG-5G-NETWORK CHINATELECOM Anhui province Xuancheng 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140261,CHINATELECOM-ANHUI-HUANGSHAN-5G-NETWORK CHINATELECOM Anhui province Huangshan 5G network,0,3.00,AH,AH,ipv6,BJ,1.000,,,0.000
+140364,CHINATELECOM-HUNAN-5G-CORE-NETWORK-5G-NETWORK CHINATELECOM Hunan province 5G Core Network 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140365,CHINATELECOM-HUNAN-CHANGSHA-5G-NETWORK CHINATELECOM Hunan province Changsha 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140366,CHINATELECOM-HUNAN-HENGYANG-5G-NETWORK CHINATELECOM Hunan province Hengyang 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140367,CHINATELECOM-HUNAN-YUEYANG-5G-NETWORK CHINATELECOM Hunan province Yueyang 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140368,CHINATELECOM-HUNAN-ZHUZHOU-5G-NETWORK CHINATELECOM Hunan province Zhuzhou 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140369,CHINATELECOM-HUNAN-XIANGTAN-5G-NETWORK CHINATELECOM Hunan province Xiangtan 5G network,0,3.00,HN;SN,HN,ipv6,BJ,1.000,,,0.000
+140370,CHINATELECOM-HUNAN-CHENZHOU-5G-NETWORK CHINATELECOM Hunan province Chenzhou 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140371,CHINATELECOM-HUNAN-YONGZHOU-5G-NETWORK CHINATELECOM Hunan province Yongzhou 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140372,CHINATELECOM-HUNAN-YIYANG-5G-NETWORK CHINATELECOM Hunan province Yiyang 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140373,CHINATELECOM-HUNAN-CHANGDE-5G-NETWORK CHINATELECOM Hunan province Changde 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140374,CHINATELECOM-HUNAN-ZHANGJIAJIE-5G-NETWORK CHINATELECOM Hunan province Zhangjiajie 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140375,CHINATELECOM-HUNAN-XIANGXI-5G-NETWORK CHINATELECOM Hunan province Xiangxi 5G network,0,3.00,HN;SN,HN,ipv6,BJ,1.000,,,0.000
+140376,CHINATELECOM-HUNAN-HUAIHUA-5G-NETWORK CHINATELECOM Hunan province Huaihua 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140377,CHINATELECOM-HUNAN-SHAOYANG-5G-NETWORK CHINATELECOM Hunan province Shaoyang 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140378,CHINATELECOM-HUNAN-DOUDI-5G-NETWORK CHINATELECOM Hunan province Loudi 5G network,0,3.00,HN,HN,ipv6,BJ,1.000,,,0.000
+140508,CHINATELECOM-GUANGXI-SHENGJI-5G-NETWORK CHINATELECOM GUANGXI province Shengji 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140509,CHINATELECOM-GUANGXI-NANNING-5G-NETWORK CHINATELECOM GUANGXI province NanNing 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140510,CHINATELECOM-GUANGXI-LIUZHOU-5G-NETWORK CHINATELECOM GUANGXI province LiuZhou 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140511,CHINATELECOM-GUANGXI-GUILIN-5G-NETWORK CHINATELECOM GUANGXI province GuiLin 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140512,CHINATELECOM-GUANGXI-YULIN-5G-NETWORK CHINATELECOM GUANGXI province YuLin 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140513,CHINATELECOM-GUANGXI-BAISE-5G-NETWORK CHINATELECOM GUANGXI province BaiSe 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140514,CHINATELECOM-GUANGXI-GUIGANG-5G-NETWORK CHINATELECOM GUANGXI province GuiGang 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140515,CHINATELECOM-GUANGXI-HECHI-5G-NETWORK CHINATELECOM GUANGXI province HeChi 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140516,CHINATELECOM-GUANGXI-QINZHOU-5G-NETWORK CHINATELECOM GUANGXI province QinZhou 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140517,CHINATELECOM-GUANGXI-WUZHOU-5G-NETWORK CHINATELECOM GUANGXI province WuZhou 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140518,CHINATELECOM-GUANGXI-BEIHAI-5G-NETWORK CHINATELECOM GUANGXI province BeiHai 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140519,CHINATELECOM-GUANGXI-CHONGZUO-5G-NETWORK CHINATELECOM GUANGXI province ChongZuo 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140520,CHINATELECOM-GUANGXI-LAIBIN-5G-NETWORK CHINATELECOM GUANGXI province LaiBin 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140521,CHINATELECOM-GUANGXI-HEZHOU-5G-NETWORK CHINATELECOM GUANGXI province HeZhou 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+140522,CHINATELECOM-GUANGXI-FANGCHENGGANG-5G-NETWORK CHINATELECOM GUANGXI province FangChengGang 5G network,0,3.00,GX,GX,ipv6,BJ,1.000,,,0.000
+198135,MONET,0,3.00,,,ipv6,SH,0.667,JP,0.333,
+207303,XIE-AS,0,3.00,,,ipv6,CA,0.333,DE,0.333,
+207317,JQ-NETWORK ********************,0,3.00,,,ipv6,HK,0.333,IT,0.333,
+207338,AS_ZZ Novazy Network,0,3.00,,,ipv6,FR,0.333,HK,0.333,
+207615,XINYU-ZHANG,0,3.00,,,ipv6,JP,0.333,SG,0.333,
+209556,HOSHI-NETWORK,0,3.00,,,ipv6,GB,0.333,HK,0.333,
+210773,MAGICEDGE-GLOBAL-LTD,0,3.00,,,ipv6,CA,0.333,HK,0.333,
+212053,SHIJITONG,0,3.00,,,ipv6,JP,1.000,,,
+212982,REBMIT-AS,0,3.00,,,ipv6,HK,0.667,US,0.333,
+216173,ULAYER-AS,0,3.00,,,ipv6,GB,0.667,HK,0.333,
+216305,ORG-CZ25-RIPE,0,3.00,,,ipv6,GB,0.333,SH,0.333,
+136199,CHINANET-GUANGDONG-YUEDONG-MAN CHINANET Guangdong province Yuedong MAN network,475904,2.00,GD,GD,ipv4,GD,0.996,BJ,0.004,0.996
+59223,CT-QINGHAI-IDC CHINANET Qinghai province IDC network,12032,2.00,QH,QH,ipv4,QH,0.957,SD,0.043,0.957
+132833,CHINANET-ANHUI-WUHU-NEWIDC China Telecom,4096,2.00,AH,AH,ipv4,AH,1.000,,,1.000
+58866,CFCA-NET China Financial Certification Authority,1792,2.00,,,ipv4,BJ,1.000,,,
+146772,"PENGCHENGNET Shenzhen Pengcheng communication network Co., Ltd",1280,2.00,GD,,ipv4,GD,1.000,,,
+139138,"GOPAY Gopay Information Technology Co.,Ltd",1024,2.00,,,ipv4,BJ,0.500,JP,0.250,
+63641,"MVNET Mega Vantage Information Consulting Co., Ltd.",768,2.00,,,ipv4,SH,1.000,,,
+213404,YESONGIT-NETWORKS,512,2.00,,,ipv4,HK,1.000,,,
+139136,"NNIX-HZ ZHEJIANG PROVINCE NEW-TYPE INTERNET EXCHANGE POINT CO.,LTD.",256,2.00,ZJ,,ipv4,ZJ,1.000,,,
+24423,"FJGDWL No. 207 Hualin Road, Fuzhou, Fujian, China",0,2.00,FJ,,ipv6,FJ,1.000,,,
+132479,JUSTKEEPMEEDO-AS-AP Xue Desen,0,2.00,,,ipv6,BJ,1.000,,,
+134775,CHINANET-GUANGDONG-ZHUSANJIAO-MAN CHINANET Guangdong province Zhusanjiao MAN network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+139249,ENMOE-AS-CN ENMOE,0,2.00,,,ipv6,HK,0.500,US,0.500,
+139859,TT-AS-AP TemasekTech.com,0,2.00,,,ipv6,AU,0.500,NZ,0.500,
+140310,CHINATELECOM-GUANGDONG-DONGGUAN-5G-NETWORK CHINATELECOM Guangdong province Dongguan 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+140312,CHINATELECOM-GUANGDONG-ZHANJIANG-5G-NETWORK CHINATELECOM Guangdong province Zhanjiang 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+140313,CHINATELECOM-GUANGDONG-ZHAOQING-5G-NETWORK CHINATELECOM Guangdong province Zhaoqing 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+140314,CHINATELECOM-GUANGDONG-SHANTOU-5G-NETWORK CHINATELECOM Guangdong province Shantou 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+140315,CHINATELECOM-GUANGDONG-JIEYANG-5G-NETWORK CHINATELECOM Guangdong province Jieyang 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+140316,CHINATELECOM-GUANGDONG-CHAOZHOU-5G-NETWORK CHINATELECOM Guangdong province Chaozhou 5G network,0,2.00,GD,GD,ipv6,BJ,1.000,,,0.000
+150173,POLOCLOUD-AS-AP PoloCloud Computing Hong Kong Limited,0,2.00,,,ipv6,HK,0.500,TW,0.500,
+151418,JUNKAI-AS-AP Zhang Junkai,0,2.00,,,ipv6,LN,1.000,,,
+151490,GAONIT-AS-KR GaonIT,0,2.00,,,ipv6,KR,1.000,,,
+152930,LINXIANGLIANG-AS-AP Lin Xiangliang,0,2.00,SN,,ipv6,SD,1.000,,,
+153033,SHANGXU-AS-AP Shang Xu,0,2.00,,,ipv6,HL,1.000,,,
+153034,WANGLIN-AS-AP Wang Lin,0,2.00,,,ipv6,SD,1.000,,,
+197626,YAOYAO-AS,0,2.00,,,ipv6,JP,0.500,KR,0.500,
+201235,CLBN-GLOBAL,0,2.00,,,ipv6,MO,0.500,SG,0.500,
+201944,PYSIO-NEXT-NETWORK,0,2.00,,,ipv6,HK,0.500,SG,0.500,
+206574,WIFIBER,0,2.00,,,ipv6,HK,0.500,US,0.500,
+206843,JACKREN-AS,0,2.00,,,ipv6,GB,0.500,HK,0.500,
+209565,ALSARDFIBER,0,2.00,,,ipv6,JP,1.000,,,
+209645,TRASH-NETWORK,0,2.00,,,ipv6,CQ,0.500,HK,0.500,
+209661,MCFX,0,2.00,,,ipv6,DE,0.500,KP,0.500,
+213116,BIKGO-NETWORK,0,2.00,,,ipv6,GD,1.000,,,
+213700,WYH-AS,0,2.00,,,ipv6,LN,1.000,,,
+213903,ZLY-AS,0,2.00,,,ipv6,HB,0.500,ZJ,0.500,
+214871,YJP-AS,0,2.00,,,ipv6,BJ,0.500,GB,0.500,
+215832,JIANXU-AS,0,2.00,,,ipv6,NL,1.000,,,
+218985,YUWANG-AS - YU WANG,0,2.00,,,ipv6,GB,0.500,JP,0.500,
+23771,"SXBCTV-AP SXBCTV ,Internet Service Provider",505344,1.00,,,ipv4,SX,0.910,SN,0.074,
+55992,QIHOO Beijing Qihu Technology Company Limited,82432,1.00,BJ,,ipv4,BJ,0.991,US,0.009,
+58539,"CHINATELECOM-HEBEI-LANGFANG-IDC Langfang,Hebei province, P.R.China",40448,1.00,HE,HE,ipv4,HE,0.962,BJ,0.038,0.962
+17775,STN-CN shanghai science and technology network communication limited company,37888,1.00,SH,,ipv4,ZJ,1.000,,,
+152672,AIYUN-AS-AP Aiyun HK Network,21760,1.00,,,ipv4,US,0.871,DE,0.094,
+45106,JSCNNET JIANGSU BROADCASTING DATA NETWORK CORPORATION LIMITED,20992,1.00,JS,JS,ipv4,JS,1.000,,,1.000
+63614,"QISHANGONLINE A4, 5th Floor, Tower C, Triumph Plaza, Unit A, No 143",19456,1.00,,,ipv4,BJ,1.000,,,
+137699,CHINATELECOM-JIANGSU-SUQIAN-IDC CHINATELECOM Jiangsu Suqian IDC network,16896,1.00,JS,JS,ipv4,BJ,0.970,JS,0.030,0.030
+45110,CBCNET Beijing Tian Wei Xin Tong technology corp. limited.,14848,1.00,BJ,,ipv4,BJ,0.966,DE,0.034,
+131516,"JHWA Jinhua Weian InfoTech Co., Ltd",10240,1.00,,,ipv4,ZJ,1.000,,,
+18257,"BITCOMM-AS ChangZhou Bitcomm Software Technology Co., Limited",6656,1.00,ZJ,,ipv4,JS,1.000,,,
+58854,KAOPY Kaopu Cloud,6400,1.00,,,ipv4,ZJ,0.800,FJ,0.200,
+38367,"ULICNET 20F.,Kuntai International Mansion,Buiding1 Yi No.12",4096,1.00,,,ipv4,BJ,1.000,,,
+37969,"VRNET-CN Hangzhou CloudZone Network Technology Co.,Ltd",3584,1.00,ZJ,,ipv4,ZJ,1.000,,,
+63555,CNBIDCC Beijing Beilong Yunhai Network Data Technology Corporation,3328,1.00,BJ,,ipv4,BJ,1.000,,,
+59083,"KHTECH Shanghai Kuanhui Tech. Co.,ltd",2304,1.00,SH;AH,,ipv4,SH,1.000,,,
+151295,JSYINSUYUN Jiangsu Yinsuyun Network Technology Co.Ltd.,2048,1.00,JS,,ipv4,BJ,0.500,DE,0.375,
+137798,"DIGITAL-GUANGDONG 5F, Zhujiang Yide Building, 362 Dongfeng Middle Road, Yuexiu District",1792,1.00,GD,,ipv4,GD,1.000,,,
+154648,TERMRATNETWORKLIMITED-AS-AP - TermRat Network Limited,1792,1.00,,,ipv4,HK,1.000,,,
+135363,"CFIT-AS-AP Beijing Dunhuang Heguang Information Technology Co.,Lt.",1536,1.00,BJ,,ipv4,BJ,1.000,,,
+201674,WENZHANGYU,1024,1.00,,,ipv4,FR,0.500,HK,0.500,
+24376,YAHOO-CN2-AP Yahoo China Datacenter,768,1.00,,,ipv4,TW,1.000,,,
+134413,KMNIX-AS-AP KMNIX LLC,768,1.00,,,ipv4,HK,1.000,,,
+151951,"SLNTCL-AS-AP Shenzhen lesuyun Network Technology Co., Ltd",768,1.00,GD,,ipv4,HK,0.667,JP,0.333,
+59068,"SPDB-CN Shanghai Pudong Development Bank Co.,Ltd.",512,1.00,SH,,ipv4,SH,1.000,,,
+136769,"GFITCL-AS-AP Guangzhou Fengyun Information Technology Co., Ltd.",512,1.00,GD,,ipv4,GD,1.000,,,
+139179,"CPIC China Pacific Insurance Group Co.,Ltd.",512,1.00,,,ipv4,BJ,1.000,,,
+150166,NDB-AS-AP The New Development Bank,512,1.00,,,ipv4,SH,1.000,,,
+150374,JMSTDCCL-AS-AP Jiang Men Shi Tian Da Cloud Co. Ltd,512,1.00,,,ipv4,HK,1.000,,,
+152186,MINTEL-AS-AP Mintel Holding Limited,512,1.00,,,ipv4,HK,1.000,,,
+219300,GEESEFLY-AS - Yan Xiangdong,512,1.00,SN,,ipv4,ZJ,1.000,,,
+24310,NGDC-AS-AP Net-Glyph Data Center,256,1.00,,,ipv4,BJ,1.000,,,
+58858,CNNIC-CRITICAL-AP China Internet Network Infomation Center,256,1.00,,,ipv4,BJ,1.000,,,
+133465,DKU-AS-AP Duke Kunshan University,256,1.00,,,ipv4,JS,1.000,,,
+139767,CHINANET-AS-OA China Telecom Headquarters OA network,256,1.00,,,ipv4,GD,1.000,,,
+146771,"CCBFT CCB Fintech Co., Ltd.",256,1.00,,,ipv4,SH,1.000,,,
+151058,CT-HAINAN China Telecom,256,1.00,HI,HI,ipv4,HI,1.000,,,1.000
+153726,"SHTCL-AS-AP Shanghai Huiduan Technology Co., LTD.",256,1.00,SH,,ipv4,SH,1.000,,,
+199392,NIE-SHIZHENG,256,1.00,,,ipv4,JX,1.000,,,
+218668,CENA-NET - XU YINUO,256,1.00,,,ipv4,SH,1.000,,,
+219210,ZIMO-AS - ZiMo Wang,256,1.00,,,ipv4,HK,1.000,,,
+24150,"SCN 1 TianXianQiao BinHe Road,Chengdu,SiChuan",0,1.00,SC;SN,,ipv6,SC,1.000,,,
+24302,CRIS-CERNET-AS CRIS-CERNET,0,1.00,,,ipv6,BJ,1.000,,,
+38323,"MACL-AS-AP Meifeng Advertising Co., Ltd.",0,1.00,,,ipv6,BJ,1.000,,,
+44446,YUAN_XUE,0,1.00,,,ipv6,JP,1.000,,,
+49575,PARA-AS ParaMoe Network,0,1.00,,,ipv6,SH,1.000,,,
+58828,GDRCU GUANGDONG RURAL CREDIT UNION,0,1.00,GD,,ipv6,GD,1.000,,,
+132623,TSUKERU-AS Tsukeru Networks,0,1.00,,,ipv6,ZJ,1.000,,,
+134477,JUNRUIYUN-AS-AP Shaoxing Junruiyunjisuan Co Ltd,0,1.00,,,ipv6,ZJ,1.000,,,
+134488,CTJ-AS-AP CTJs Global Network,0,1.00,,,ipv6,BJ,1.000,,,
+135646,AS-LUGINBASH-AP Luginbash AS,0,1.00,,,ipv6,JP,1.000,,,
+137835,NATCHAN-AS Nathaniel Chan Jie Le,0,1.00,,,ipv6,SG,1.000,,,
+138211,TUPLENET-AS-AP TupleTech Corporation,0,1.00,,,ipv6,GD,1.000,,,
+138369,CNGI-SZH-IX-AS-AP CERNET2 regional IX at Shenzhen University,0,1.00,GD,,ipv6,HL,1.000,,,
+139231,ZERO-AS-AP Zero,0,1.00,,,ipv6,ZJ,1.000,,,
+140852,CHINATELECOM-JIANGXI-SHENGJI-5G-NETWORK CHINATELECOM Jiangxi province Shengji 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140853,CHINATELECOM-JIANGXI-NANCHANG-5G-NETWORK CHINATELECOM Jiangxi province Nanchang 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140854,CHINATELECOM-JIANGXI-JIUJIANG-5G-NETWORK CHINATELECOM Jiangxi province Jiujiang 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140855,CHINATELECOM-JIANGXI-JINGDEZHEN-5G-NETWORK CHINATELECOM Jiangxi province Jingdezhen 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140856,CHINATELECOM-JIANGXI-SHANGRAO-5G-NETWORK CHINATELECOM Jiangxi province Shangrao 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140857,CHINATELECOM-JIANGXI-YINGTAN-5G-NETWORK CHINATELECOM Jiangxi province yingtan 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140858,CHINATELECOM-JIANGXI-YICHUN-5G-NETWORK CHINATELECOM Jiangxi province Yichun 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140859,CHINATELECOM-JIANGXI-PINGXIANG-5G-NETWORK CHINATELECOM Jiangxi province Pingxiang 5G network,0,1.00,JX;SN,JX,ipv6,BJ,1.000,,,0.000
+140860,CHINATELECOM-JIANGXI-XINYU-5G-NETWORK CHINATELECOM Jiangxi province Xinyu 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140861,CHINATELECOM-JIANGXI-GANZHOU-5G-NETWORK CHINATELECOM Jiangxi province Ganzhou 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140862,CHINATELECOM-JIANGXI-JIAN-5G-NETWORK CHINATELECOM Jiangxi province Jian 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+140863,CHINATELECOM-JIANGXI-FUZHOU-5G-NETWORK CHINATELECOM Jiangxi province Fuzhou 5G network,0,1.00,JX,JX,ipv6,BJ,1.000,,,0.000
+141429,AGATHA-AS-AP Agatha Network,0,1.00,,,ipv6,BJ,1.000,,,
+141445,PXNET-AS-AP Phoenix Network,0,1.00,,,ipv6,HL,1.000,,,
+142067,AS142067-1 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142068,AS142068-2 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142069,AS142069-3 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142070,AS142070-4 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142071,AS142071-5 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142072,AS142072-6 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142073,AS142073-7 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142074,AS142074-8 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142075,AS142075-9 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142076,AS142076-10 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142077,AS142077-11 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142078,AS142078-12 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142079,AS142079-13 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142080,AS142080-14 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142081,AS142081-15 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142082,AS142082-16 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142083,AS142083-17 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142084,AS142084-18 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142085,AS142085-19 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142086,AS142086-20 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142087,AS142087-21 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142088,AS142088-22 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142089,AS142089-23 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142090,AS142090-24 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142091,AS142091-25 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142092,AS142092-26 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142093,AS142093-27 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142094,AS142094-28 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142095,AS142095-29 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142096,AS142096-30 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142097,AS142097-31 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142098,AS142098-32 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142099,AS142099-33 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142100,AS142100-34 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142101,AS142101-35 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142102,AS142102-36 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142104,AS142104-38 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142105,AS142105-39 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142106,AS142106-40 - China Education and Research Network (CERNET),0,1.00,,,ipv6,BJ,1.000,,,
+142164,GOLDDOGE-AS-AP GoldDoge Computer Technologies & Networks Information Center,0,1.00,,,ipv6,JS,1.000,,,
+142586,LIGHTXI-AS-AP Zhuhai Xiyun Cloud Technology Co Ltd,0,1.00,,,ipv6,ZJ,1.000,,,
+142642,ATONAL-AS-AP Atonal System,0,1.00,,,ipv6,ZJ,1.000,,,
+150370,"BWNTCL-AS-AP Beijing WuYuYunLian Network Technology Co., Ltd.",0,1.00,BJ,,ipv6,BJ,1.000,,,
+150373,BEACOWORKS-AS-AP Zhang Bocheng,0,1.00,,,ipv6,ZJ,1.000,,,
+151230,"TONGRI-NET Guangdong Tongri Network Technology Co., Ltd.",0,1.00,GD,,ipv6,GD,1.000,,,
+151423,AS151423-1 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151424,AS151424-2 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151425,AS151425-3 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151426,AS151426-4 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151427,AS151427-5 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151428,AS151428-6 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151429,AS151429-7 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151430,AS151430-8 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151431,AS151431-9 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151432,AS151432-10 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151433,AS151433-11 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151434,AS151434-12 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151435,AS151435-13 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151436,AS151436-14 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151437,AS151437-15 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151438,AS151438-16 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151439,AS151439-17 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151440,AS151440-18 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151441,AS151441-19 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151442,AS151442-20 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151443,AS151443-21 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151444,AS151444-22 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151445,AS151445-23 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151446,AS151446-24 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151447,AS151447-25 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151448,AS151448-26 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151449,AS151449-27 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151450,AS151450-28 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151451,AS151451-29 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151452,AS151452-30 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151453,AS151453-31 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151454,AS151454-32 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151455,AS151455-33 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151456,AS151456-34 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151457,AS151457-35 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151458,AS151458-36 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151459,AS151459-37 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151460,AS151460-38 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151461,AS151461-39 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151462,AS151462-40 - Future Internet Technology Infrastructure (FITI),0,1.00,,,ipv6,BJ,1.000,,,
+151814,GUOCHUANGXINXINGBEIJINGTECHNOLOGYCOLTD-AS-CN Guo Chuang Xin Xing Beijing Technology Co Ltd,0,1.00,BJ,,ipv6,HK,1.000,,,
+152118,DARK495-AS-AP Shenzhen Mengsi Computer System Co Ltd,0,1.00,GD,,ipv6,HK,1.000,,,
+152134,ZORO-AS-AP Zoro Limited,0,1.00,,,ipv6,HK,1.000,,,
+152631,XYHELPER-AS-AP Xyhelper Inc,0,1.00,,,ipv6,HK,1.000,,,
+152921,YUDONG-AS-AP Yu Dong,0,1.00,,,ipv6,SD,1.000,,,
+153330,CLOSEAI-AS-AP Northern Lights Technologies LLC,0,1.00,,,ipv6,HK,1.000,,,
+153332,FREEGPTS-AS-US InnoCloud Services LLC,0,1.00,,,ipv6,HK,1.000,,,
+153458,HARUZAKURA-AS-AP Haruzakura Cloud,0,1.00,,,ipv6,HB,1.000,,,
+154155,"SUZHOUYESONG-AS-AP Suzhou Yesong Information Technology Co., Ltd",0,1.00,,,ipv6,JS,1.000,,,
+197433,PART0CLOUD-NET Part0 Network,0,1.00,,,ipv6,NL,1.000,,,
+199832,AS-KURAL-RESEARCH,0,1.00,,,ipv6,JS,1.000,,,
+199932,TIANLE-NET,0,1.00,,,ipv6,ZJ,1.000,,,
+200021,PTH-AS,0,1.00,,,ipv6,GB,1.000,,,
+200103,ZHU-AS,0,1.00,,,ipv6,FR,1.000,,,
+200256,CAO-AS,0,1.00,,,ipv6,GB,1.000,,,
+200720,YICHENSHI,0,1.00,,,ipv6,BJ,1.000,,,
+203643,G0L4NET,0,1.00,,,ipv6,SE,1.000,,,
+203664,LANXING-AS,0,1.00,,,ipv6,LU,1.000,,,
+205369,IYOROY-NETWORK,0,1.00,,,ipv6,AH,1.000,,,
+205618,ORZFLY,0,1.00,,,ipv6,JP,1.000,,,
+205779,YTH-AS,0,1.00,,,ipv6,CQ,1.000,,,
+207091,JHNETWORK-AS,0,1.00,,,ipv6,JP,1.000,,,
+207292,YuYan Network Service,0,1.00,,,ipv6,DE,1.000,,,
+208698,HTROY,0,1.00,,,ipv6,GD,1.000,,,
+208872,JINGMI,0,1.00,,,ipv6,US,1.000,,,
+208993,MMRNET Mizar Magic and Reserach Network,0,1.00,,,ipv6,US,1.000,,,
+209484,YUNISKYDATACENTER,0,1.00,,,ipv6,ZA,1.000,,,
+209586,SUNYOU-AS,0,1.00,,,ipv6,DE,1.000,,,
+210426,LIANGZHU-NETWORK,0,1.00,,,ipv6,ZJ,1.000,,,
+211051,YEAPCLOUD-NETWORK,0,1.00,,,ipv6,BJ,1.000,,,
+211158,BG4CZU-AS,0,1.00,,,ipv6,DE,1.000,,,
+211968,CHENRAN-AS,0,1.00,,,ipv6,AH,1.000,,,
+211992,WEI,0,1.00,,,ipv6,DE,1.000,,,
+214613,EASTON-AS,0,1.00,,,ipv6,DE,1.000,,,
+214843,YAKA-AS,0,1.00,,,ipv6,NL,1.000,,,
+215265,HUXIAOYOU,0,1.00,,,ipv6,PL,1.000,,,
+215315,LUOLIZI,0,1.00,,,ipv6,NL,1.000,,,
+215507,AS-MIANTIAO-LAB,0,1.00,,,ipv6,SG,1.000,,,
+215848,LOLITA-AS,0,1.00,,,ipv6,FR,1.000,,,
+215969,TANZ,0,1.00,,,ipv6,BJ,1.000,,,
+216373,XIN-XU,0,1.00,,,ipv6,GB,1.000,,,
+9394,CTTNET China TieTong Telecommunications Corporation,2663168,0.00,,,ipv4,BJ,0.973,GD,0.005,
+137266,CHINATELECOM-HUBEI-WUHAN-5G-NETWORK CHINATELECOM Hubei province Wuhan 5G network,1273088,0.00,HB,HB,ipv4,HB,1.000,BJ,0.000,1.000
+24138,CTTNET China TieTong Telecommunications Corporation,558080,0.00,,,ipv4,BJ,0.992,SH,0.007,
+58461,"CT-HANGZHOU-IDC No.288,Fu-chun Road",359424,0.00,ZJ,ZJ,ipv4,ZJ,0.998,AH,0.001,0.998
+9308,CHINA-ABITCOOL AbitcoolChina Inc.,307968,0.00,,,ipv4,BJ,0.948,GX,0.050,
+18118,"CITICNET-CN CITIC Networks Management Co.,Ltd.",188160,0.00,,,ipv4,BJ,0.999,AH,0.001,
+141739,CT-CHONGQING-MAN2-AP China Telecom,125952,0.00,CQ,CQ,ipv4,CQ,1.000,,,1.000
+9811,DRCSCNET Development & Research Center of State Council Net.,123648,0.00,,,ipv4,BJ,1.000,,,
+38341,"HCENET HEXIE Information technology Co., Ltd.",109824,0.00,,,ipv4,BJ,0.977,HL,0.023,
+140527,CHINANET-ANHUI-WUHU-IDC China Telecom,98560,0.00,AH,AH,ipv4,AH,1.000,,,1.000
+9306,"CIETNET RongHua Road No.11, Beijing Economy Technology Development Area, 100176",98304,0.00,BJ,,ipv4,BJ,1.000,,,
+9814,"FIBRLINK Beijing FibrLINK Networks Co.,Ltd.",75520,0.00,BJ,,ipv4,BJ,1.000,,,
+17969,CNT ChongQing Broadcast & TV Transfer Network Co. Ltd,75520,0.00,CQ,CQ,ipv4,BJ,1.000,,,0.000
+59037,"RUILITECHNOLOGY Zhejiang Ruili Information Technology Co., Ltd",69632,0.00,ZJ,,ipv4,ZJ,1.000,,,
+24143,CNNIC-QCN-AP Qingdao Cable TV Network Center,68608,0.00,SD,SD,ipv4,SD,0.992,BJ,0.008,0.992
+56019,"SHUJUJIA Beijing ShuJuJia Technology Co., Ltd.",67584,0.00,BJ,,ipv4,BJ,0.939,FJ,0.061,
+56005,"FASTIDC Zhengzhou Fastidc Technology Co.,Ltd.",66560,0.00,HA,,ipv4,HA,1.000,,,
+137688,CHINATELECOM-LIAONING-BENXI-MAN CHINATELECOM Liaoning Benxi MAN,66048,0.00,LN,LN,ipv4,LN,0.995,BJ,0.005,0.995
+24137,"HNPCNET KuanggongLu, Pingdingshan, Henan, China",65536,0.00,HA,,ipv4,BJ,1.000,,,
+37937,EGOVNET China eGovNet Information Center,65536,0.00,,,ipv4,BJ,1.000,,,
+45075,CRI China Central Television,65536,0.00,,,ipv4,BJ,1.000,,,
+45083,"HXDNET Beijing haixunda Communication Co., Ltd",65536,0.00,BJ,,ipv4,BJ,1.000,,,
+45113,"DTCOAL Shanxi Datong Coal Group Communication Co., Ltd",65536,0.00,SX,,ipv4,SX,1.000,,,
+17789,CNCGROUP-SH-IDC CNCGROUP IP network of ShangHai IDC,65280,0.00,SH,SH,ipv4,BJ,1.000,,,0.000
+9939,"DYXNET-CN DYXNET of Shenzhen Communication Co., Ltd.",57344,0.00,GD,,ipv4,BJ,0.953,HE,0.042,
+141998,CHINANET-LANZHOU-IDC China Telecom,54784,0.00,GS,GS,ipv4,GS,0.991,BJ,0.009,0.991
+58851,"YOUWE Priority of FashionBeijingInformation Technology Co.,Ltd",45824,0.00,BJ,,ipv4,BJ,1.000,,,
+146817,"FXNET Hubei Feixun Network Co., Ltd",45312,0.00,HB,,ipv4,HB,0.644,BJ,0.356,
+134765,CHINANET-YUNNAN-IDC1 CHINANET Yunnan province IDC1 network,41472,0.00,YN,YN,ipv4,YN,0.877,BJ,0.123,0.877
+17964,"DXTNET Beijing Dian-Xin-Tong Network Technologies Co., Ltd.",38144,0.00,BJ,,ipv4,BJ,0.919,SC,0.067,
+134766,CHINANET-YUNNAN-IDC2 CHINANET Yunnan province IDC2 network,37376,0.00,YN,YN,ipv4,YN,1.000,,,1.000
+134761,CHINANET-NINGXIA-ZHONGWEI-IDC CHINANET NINGXIA province ZHONGWEI IDC network,36352,0.00,NX,NX,ipv4,NX,0.958,BJ,0.028,0.958
+38027,"MOST-AS-AP Information Center, Ministry of Sci and Tech",35840,0.00,,,ipv4,SH,1.000,,,
+63648,"XJKJ Beijing Xiaoju Science and Technology Co., Ltd.",33024,0.00,BJ,,ipv4,US,0.992,BJ,0.008,
+131486,"JDCOM Beijing Jingdong 360 Degree E-commerce Co., Ltd.",32512,0.00,BJ,,ipv4,BJ,1.000,,,
+148981,CHINANET-HUBEI-SHIYAN-IDC China Telecom,25856,0.00,HB,HB,ipv4,HB,0.960,JS,0.040,0.960
+139587,CHINANET-HENAN-ZHENGZHOU-SHUJUGANG-IDC China Telecom Henan Zhengzhou Shujugang IDC network,25600,0.00,HA,HA,ipv4,HA,0.970,BJ,0.030,0.970
+56282,"VCLOUD Beijing Internet Harbor Technology Co., Ltd",24832,0.00,BJ,,ipv4,BJ,1.000,,,
+45058,"XMGBNET Golden-Bridge Netcom communication Co.,LTD.",23296,0.00,,,ipv4,BJ,0.560,FJ,0.363,
+134425,CHINANET-HEFEI-QIMENLU-IDC China Telecom,19456,0.00,AH,AH,ipv4,AH,1.000,,,1.000
+151229,SAUNET Shenyang Aerospace University,16896,0.00,LN,,ipv4,LN,1.000,,,
+23842,SZINC-AS-AP Shenzhen Information and Network Center,16384,0.00,GD,,ipv4,GD,0.750,BJ,0.250,
+59077,UCLOUD-NET Shanghai UCloud Information Technology Company Limited,16384,0.00,SH,,ipv4,SH,1.000,,,
+24430,"CHINAPOST Jia No.8, North Lishi Road, Xicheng Dist.Beijing, China",14336,0.00,BJ,,ipv4,BJ,1.000,,,
+9809,"NOVANETWORK SHENZHEN NOVA TECHNOLOGIES DEVELOPMENT.,LTD.",12800,0.00,GD,,ipv4,GD,1.000,,,
+55999,CNLINKNET CNLink Network Technology Ltd.,12288,0.00,,,ipv4,SH,1.000,,,
+131565,IMBTVN INNER MONGOLIA BROADCAST&TV NETWORK GROUP CORPORATION,10240,0.00,NM,NM,ipv4,BJ,1.000,,,0.000
+147038,CHINANET-QINGYANG-IDC China Telecom,10240,0.00,,,ipv4,GS,1.000,,,
+137687,"CHINATELECOM-HENAN-LUOYANG-IDC Luoyang, Henan Province, P.R.China.",9728,0.00,HA,HA,ipv4,HA,1.000,,,1.000
+58026,JIUFUNETWORK,9216,0.00,,,ipv4,US,1.000,,,
+55991,ERX-NASDA-ASN - ERX-NASDA-ASN,8960,0.00,,,ipv4,ZJ,0.914,BJ,0.064,
+17739,"HAPLINK-CN-AP Shanghai Telecom Haplink Network Co., Ltd",8192,0.00,SH,SH,ipv4,SH,1.000,,,1.000
+139180,"SDYXT Shandong eshinton Network Technology Co., Ltd.",8192,0.00,SD,,ipv4,BJ,0.500,SD,0.500,
+151263,"JZKJ-NET Juzhi technology co., ltd",7936,0.00,,,ipv4,HB,1.000,,,
+63631,"CLOUDBASE Guangdong Cloudbase Technology Co., Ltd.",6912,0.00,GD,,ipv4,GD,0.519,BJ,0.296,
+18242,"CDIH Chengdu Information Harbor Co., Ltd",6144,0.00,SC,,ipv4,SC,1.000,,,
+59009,WXDATA QingDao WangXin Telcom Corp. Limited,6144,0.00,SD,,ipv4,SD,1.000,,,
+151300,AS151300-85 - China Internet Network Information Center,5888,0.00,,,ipv4,JS,1.000,,,
+38378,RBCN-NET Bosch China Investment Ltd.,5632,0.00,,,ipv4,JS,0.909,BJ,0.091,
+63567,"PGYIDC Suqian Pugongying Network Service Co.,Ltd",5632,0.00,,,ipv4,JS,1.000,,,
+9810,"TNSNET Beijing Times Netstar Technology Co.,Ltd",5120,0.00,BJ,,ipv4,BJ,1.000,,,
+24427,FREENET Freecomm Corporation,5120,0.00,,,ipv4,SH,1.000,,,
+4611,XINHUANET CNNIC member,4864,0.00,,,ipv4,BJ,1.000,,,
+59067,"MMAISNET Microsoft Mobile Alliance Internet Services Co., Ltd",4608,0.00,,,ipv4,BJ,1.000,,,
+45086,YOVOLE Shanghai Yovole Networks Inc.,4352,0.00,SH,,ipv4,SH,1.000,,,
+55996,CYPRESSTEL CYPRESS TELECOM CHINA LIMITED,4352,0.00,,,ipv4,GD,0.824,HK,0.176,
+7640,CITICNET China International Trust & Investment Corporation Management Information Center,4096,0.00,,,ipv4,BJ,1.000,,,
+17781,XHNEWS XINHUA NEWS AGENCY,4096,0.00,,,ipv4,BJ,0.938,US,0.062,
+37970,"HIGHWAYNET Floor 9,Hua Sheng Building No.1 Lane 519 Ao Men Road,Shanghai",4096,0.00,SH,,ipv4,BJ,0.875,FR,0.125,
+56012,LGNET-CHINA LGNET China,4096,0.00,,,ipv4,BJ,1.000,,,
+56013,SDSC SAMSUNG SDS CHINA,4096,0.00,,,ipv4,BJ,1.000,,,
+131511,URPLUSNET URPLUS,4096,0.00,,,ipv4,BJ,1.000,,,
+131536,"SHGWBNNET Shanghai Great Wall Broadband Network Service Co., Ltd.",4096,0.00,SH,,ipv4,BJ,0.500,SH,0.500,
+134421,CHINATELECOM-YUNNAN-YUEME-CDN Yunnan Telecom,4096,0.00,YN,YN,ipv4,YN,1.000,,,1.000
+139099,GEELY Zhejiang Geely Holding Group,4096,0.00,ZJ,,ipv4,ZJ,1.000,,,
+140903,CHINANET-HEBEI-BAODING-MAN CHINA TELECOM,4096,0.00,HE,HE,ipv4,BJ,1.000,,,0.000
+59045,"SUNHONGS Guangzhou navigation information technology co., LTD",3840,0.00,GD,,ipv4,BJ,1.000,,,
+38358,"ICCAST 3 Fuxing Road, Beijing, China",3584,0.00,BJ,,ipv4,BJ,1.000,,,
+133952,ZLTL-AS-AP Zhengzhou longling technology ltd.,3456,0.00,HA,,ipv4,HA,0.519,HK,0.296,
+24404,"CNISP-UNION CNISP-Union Technology Beijing Co., Ltd",3328,0.00,BJ,,ipv4,BJ,1.000,,,
+59011,"YLWL Beijing Yunlin Network Technology Co.,Ltd.",3328,0.00,BJ,,ipv4,FJ,0.615,BJ,0.308,
+45064,"ZSPNET BEIJING ZHONGGUANCUN SOFTWARE PARK DEVELOPMENT CO.,Ltd.",3072,0.00,BJ,,ipv4,SC,0.667,BJ,0.333,
+45101,"WALMART-CN 2-5F,Tower 2 and 1-12F,Tower 3,SZITIC Square",3072,0.00,,,ipv4,US,0.667,BJ,0.167,
+59048,"CLOUDTIMES Bei Jing Cloud Times Technology Co.,Ltd",3072,0.00,,,ipv4,BJ,0.500,JS,0.333,
+55468,CRI China Radio International,2816,0.00,,,ipv4,BJ,1.000,,,
+146842,CDC-SAP-DC-SHA ChinaDataCom Corporation Limited,2560,0.00,,,ipv4,GD,0.800,BJ,0.200,
+131522,YOVOLECLOUD Beijing Yovole Cloud Computing Technology Company Limited,2304,0.00,BJ,,ipv4,BJ,1.000,,,
+138570,CT-ANQING-IDC China Telecom,2304,0.00,,,ipv4,AH,1.000,,,
+23852,"NGNNET 17FL, International Bank Center",2048,0.00,,,ipv4,SG,0.375,GD,0.250,
+38375,GSGH GSGH security LLC,2048,0.00,,,ipv4,BJ,1.000,,,
+38380,CNNIC-CSRNET-AP China South Locomotive And Rolling Stock Industry Company,2048,0.00,,,ipv4,BJ,1.000,,,
+45074,GOVSTATS Data Management Centre National Bureau of Statistics of China,2048,0.00,,,ipv4,BJ,1.000,,,
+45097,"BAOLIRONGTONG Poly facility Beijing Technology Co., Ltd.",2048,0.00,BJ,,ipv4,BJ,0.500,HE,0.500,
+58852,GZGD Guizhou provincial radio and television information Network Inc,2048,0.00,GZ,GZ,ipv4,GZ,1.000,,,1.000
+59043,"LDNET Guangzhou LanDong Information technology co., LTD",2048,0.00,GD,,ipv4,GX,1.000,,,
+63561,"WESTONE China Electronics Technology Cyber Security Co.,LTD",2048,0.00,,,ipv4,BJ,1.000,,,
+132437,CHINANET-HUAIBEI-IDC China Telecom,2048,0.00,,,ipv4,AH,1.000,,,
+134578,UFWDTL-AS-AP UNION FU WAH DIGITAL TECHNOLOGY LIMITED,2048,0.00,,,ipv4,HK,0.875,SG,0.125,
+137788,BEACON Shanxi Beacon Cloudscape,2048,0.00,SX,,ipv4,BJ,1.000,,,
+139769,GLNTC-AS-AP Guangzhou LinSeek Network Technology Co.Ltd,2048,0.00,GD,,ipv4,GD,1.000,,,
+151302,HJ-HIDDOS Hebei Sea Whale Technology Co. Ltd.,2048,0.00,HE,,ipv4,BJ,0.500,JS,0.500,
+63548,LENOVO-BEIJING LENOVO BEIJING Co.ltd,1792,0.00,BJ,,ipv4,BJ,1.000,,,
+134417,CHINATELECOM-JIANGSU-NANJING-HEXI-IDC Nanjing,1792,0.00,JS,JS,ipv4,JS,1.000,,,1.000
+9803,"JINGXUN Beijing Jingxun Public Information Technology Co., Ltd",1536,0.00,BJ,,ipv4,BJ,1.000,,,
+59064,NCN The North United Cable Network.Inc,1536,0.00,,,ipv4,LN,1.000,,,
+63593,"OPPO Guangdong HeyTap Technology Co., Ltd.",1536,0.00,GD,,ipv4,IN,1.000,,,
+63603,GSS-NETWORKS GSS China,1536,0.00,,,ipv4,BJ,1.000,,,
+135054,"CMNET-HAINAN-IDC China Mobile Group Hainan Co., Ltd.",1536,0.00,HI,HI,ipv4,BJ,1.000,,,0.000
+139118,"RUGUINFO Shanghai Rugu Info&Tech Co.,Ltd.",1536,0.00,SH,,ipv4,SH,1.000,,,
+139128,DRPBD Dr.Peng BigData co.LTD,1536,0.00,,,ipv4,BJ,1.000,,,
+140484,CHINATELECOM-ZHEJIANG-SHENGJI-EPCCE-NETWORK CHINATELECOM ZHEJIANG province Shengji EPCCE network,1536,0.00,ZJ,ZJ,ipv4,ZJ,1.000,,,1.000
+146841,GIANTDC Tianjin GiantDC Data Technology Co.Ltd,1536,0.00,TJ,,ipv4,TJ,1.000,,,
+152711,"STSL-AS-AP Suike Information Technology SiChuan Co., Ltd",1536,0.00,SC,,ipv4,HK,0.667,AU,0.167,
+18245,FOUNDERBN CNNIC,1280,0.00,,,ipv4,BJ,1.000,,,
+58518,CHINATELECOM-CDMANETWORK-BG-GUANGZHOU China Telecom,1280,0.00,GD,,ipv4,BJ,1.000,,,
+63617,MCKINSEY McKinsey & Consulting Company Inc. Shanghai,1280,0.00,SH,,ipv4,DE,1.000,,,
+136180,"IPIP-CN Beijing Tiantexin Tech. Co., Ltd.",1280,0.00,BJ,,ipv4,BJ,1.000,,,
+151253,"SWRH Beijing Sanwang Fusion Technology Co., Ltd",1280,0.00,BJ,,ipv4,BJ,1.000,,,
+216224,TIANJIN-TIANZHAN-TECHNOLOGY-CO-LTD,1280,0.00,TJ,,ipv4,PH,0.800,HK,0.200,
+9802,CHINA-ABITCOOL AbitcoolChina Inc.,1024,0.00,,,ipv4,BJ,1.000,,,
+45057,CTTSH CHINA TIETONG SHANGHAI,1024,0.00,SH,,ipv4,BJ,1.000,,,
+45071,"LNSG-CN No.8 Xing Guang 5th Street, Opto-Mechatronics Industrial Park",1024,0.00,,,ipv4,BJ,1.000,,,
+55786,MOBIUS-CN 1065-A Zhaojiabang Road,1024,0.00,,,ipv4,SH,0.750,US,0.250,
+55971,CASS-NET Chinese Academy of Social Sciences,1024,0.00,,,ipv4,BJ,1.000,,,
+55982,"CHIT Changhong IT information Products CO.,LTD.",1024,0.00,,,ipv4,BJ,1.000,,,
+55994,"RUISU-51IDC Shanghai ruisu Network Technology Co.,Ltd",1024,0.00,SH,,ipv4,SH,1.000,,,
+56000,"HERBALIFE-CNDC HERBALIFESHANGHAIMANAGEMENT CO.,LTD.",1024,0.00,SH,,ipv4,BJ,1.000,,,
+58862,"MCCL-CHN Microsoft China Co., Ltd.",1024,0.00,,,ipv4,BJ,0.750,SH,0.250,
+59049,"WALMART-CN Wal-mart China Investment Co., Ltd.",1024,0.00,,,ipv4,BJ,1.000,,,
+59089,CLOUDVSP NO.18 Building University of Technology,1024,0.00,,,ipv4,BJ,1.000,,,
+63634,"CPCN China Payment & Clearing Network Co., Ltd.",1024,0.00,,,ipv4,BJ,1.000,,,
+131497,"VGC-BEIJING Volkswagen China Investment Co., LTD",1024,0.00,BJ,,ipv4,BJ,1.000,,,
+131519,HISENSE Hisense,1024,0.00,,,ipv4,BJ,1.000,,,
+131567,"DOUBLENET Fnetlink International Co., Ltd.",1024,0.00,,,ipv4,BJ,1.000,,,
+131578,BFSUNET Beijing Foreign Studies University,1024,0.00,BJ,,ipv4,BJ,1.000,,,
+133219,NEWMEDIAEXPRESSCHINA-AS-AP NewMedia Express Pte Ltd,1024,0.00,,,ipv4,DE,0.500,HK,0.250,
+137571,PESYUN-AS-AP arebz.com,1024,0.00,,,ipv4,HB,1.000,,,
+137731,GSXZHL Gansu Xingzhao Interconnection Electronic Technology Co.Ltd.,1024,0.00,GS,,ipv4,BJ,1.000,,,
+137745,AS137745-216 -,1024,0.00,,,ipv4,BJ,1.000,,,
+137785,"CACLOUD CACloud Services Shanghai Co., Ltd.",1024,0.00,SH,,ipv4,SH,0.750,DE,0.250,
+137787,NEWCAMPUS4-LENOVO Beijing Jingdong Shangke Information Technology Co. Ltd.,1024,0.00,BJ,,ipv4,BJ,1.000,,,
+137801,"AIPO-CN AIPO Cloud Guizhou Technology Co., Ltd.",1024,0.00,GZ,,ipv4,BJ,1.000,,,
+137806,WALMART-GS WMGS Consulting Shenzhen Co.Ltd,1024,0.00,GD,,ipv4,GD,1.000,,,
+139177,EDU New Oriental Education & Technology Group Ltd.,1024,0.00,,,ipv4,BJ,1.000,,,
+146806,"CLOUD-UNICOM-NET Beijing Yunlian Interactive Technology Co., Ltd.",1024,0.00,BJ,,ipv4,BJ,1.000,,,
+151296,JIEIIS Changzhou Jieyun Network Technology Co. Ltd.,1024,0.00,ZJ,,ipv4,JS,1.000,,,
+24141,"DMTNET Shanghai DMT Information Network cor.,LTD.",768,0.00,SH,,ipv4,SX,1.000,,,
+58517,CHINATELECOM-CDMANETWORK-BG-BEIJING China Telecom,768,0.00,BJ,,ipv4,BJ,1.000,,,
+58850,BBGINETCN Bloomberg Financial Information Beijing Co Ltd,768,0.00,BJ,,ipv4,BJ,1.000,,,
+131524,"SHPJNET Shanghai pujv Communication Technology co., Ltd.",768,0.00,SH,,ipv4,SH,0.667,HK,0.333,
+137746,AS137746-217 -,768,0.00,,,ipv4,SH,1.000,,,
+137764,YOUKAI Beijing Youkai Technology Co.Ltd,768,0.00,BJ,,ipv4,ZJ,1.000,,,
+139110,NEWCAMPUS1-LENOVO Lenovo Mobile Communication Technology Beijing Ltd,768,0.00,BJ,,ipv4,BJ,1.000,,,
+151232,"SCRUISU Sichuan Ruisu Technology Co., LTD",768,0.00,SC,,ipv4,SC,1.000,,,
+210634,YESONGIT,768,0.00,,,ipv4,HK,1.000,,,
+212371,HUIGU-AS,768,0.00,,,ipv4,US,0.667,PE,0.333,
+9805,ENS-PEK SIEMENS LTD. CHINA,512,0.00,,,ipv4,BJ,1.000,,,
+23840,"TEDA-NET TEDA Cable Television Network Co.,Ltd",512,0.00,,,ipv4,TJ,1.000,,,
+23841,"TJBTN 6F, No.3 Huatian Road, New Technology Industry Area",512,0.00,,,ipv4,BJ,1.000,,,
+24413,SHANGHAI263 263 Shanghai Communications Ltd.,512,0.00,SH,,ipv4,JS,0.500,SH,0.500,
+38057,"DELLCHINA Dell China Co.,Ltd",512,0.00,,,ipv4,DE,0.500,FJ,0.500,
+38564,NVIDIA-ASIA-IN-GW-AP NVIDIA Asia Internet Gateway,512,0.00,,,ipv4,HK,1.000,,,
+38834,NVIDIA-BANGALORE-AP NVIDIA-BANGALORE,512,0.00,,,ipv4,IN,1.000,,,
+55956,"MAGNA-ASIAPACIFIC Magna Automotive Technology and ServiceShanghaiCo.,Ltd",512,0.00,SH,,ipv4,SH,1.000,,,
+63580,"NOVARTIS-CN China Novartis Institutes for Bio-Medical Research Co., Ltd.",512,0.00,,,ipv4,BJ,1.000,,,
+63633,"HOTWON GUANGZHOU HOTWON COMPUTER TECHNOLOGY CO.,LTD.",512,0.00,GD,,ipv4,GD,1.000,,,
+131482,"ARONNET Hangzhou Aron Teconology Co.,Ltd.",512,0.00,ZJ,,ipv4,ZJ,1.000,,,
+131495,"NINE-CLOUD Beijing nine cloud infinite network technology co., LTD",512,0.00,BJ,,ipv4,BJ,0.500,HK,0.500,
+131558,"WALMART-CN Wal-mart China Investment Co., Ltd.",512,0.00,,,ipv4,BJ,1.000,,,
+135432,VISA-AS-AP Visa Information Technology Beijing Co. Ltd.,512,0.00,BJ,,ipv4,BJ,1.000,,,
+136250,ZQHWL-AS-AP ZhongShanShi QiYi HuDong WangLuoKeJi Ltd,512,0.00,,,ipv4,GD,1.000,,,
+136766,"RBX-AS-AP ROBLOX SHENZHEN DIGITAL SCIENCE AND TECHNOLOGY CO., LTD",512,0.00,GD,,ipv4,GD,1.000,,,
+137710,"WANGSHENXINXI Net God Information Technology Beijing Co., Ltd.",512,0.00,BJ,,ipv4,BJ,1.000,,,
+137719,"CERWD Qingdao Weidong Big Data Technology Co., Ltd",512,0.00,SD,,ipv4,SD,1.000,,,
+137755,QHGDNET China Radio and Television Qinghai Network Co. Ltd,512,0.00,QH,QH,ipv4,BJ,1.000,,,0.000
+137759,"MTSCHINANET MTS SYSTEM China Co.,Ltd",512,0.00,,,ipv4,SH,1.000,,,
+138457,CAICT-AS-AP China Academy of Information and Communications Technology,512,0.00,,,ipv4,BJ,0.500,US,0.500,
+138545,"ZCCCCL-AS-AP Zero Cirrus Cloud Computing Shanghai Co., Ltd.",512,0.00,SH,,ipv4,HK,1.000,,,
+139184,"SWIFTCALL Beijing Swiftcall Science Technologies,Ltd",512,0.00,BJ,,ipv4,BJ,1.000,,,
+139266,"GTITCL-AS-AP Guangzhou Tiansui Information Technology Co., Ltd.",512,0.00,GD,,ipv4,GD,1.000,,,
+139874,"WCNTCL-AS-AP Wuan Chihong Network Technology Co., Ltd.",512,0.00,,,ipv4,IL,1.000,,,
+140633,BILIBILIHKLIMITED-AS-AP BILIBILI HK LIMITED,512,0.00,,,ipv4,HK,1.000,,,
+146746,"TAIKANG-INSURANCE-WUHAN TaiKang Insurance Group CO.,LTD.,Wuhan Operating Center",512,0.00,HB,,ipv4,HB,1.000,,,
+146758,"SENSETIME ShangHai Sensetime Technology Development Co., Ltd.",512,0.00,SH,,ipv4,SH,1.000,,,
+146802,"CBN-YN China Broadcasting Network Yunnan Co.,Ltd",512,0.00,YN,YN,ipv4,YN,1.000,,,1.000
+146810,HPE-SDWAN-SHC Shanghai Hewlett-Packard Co. Ltd. Dalian Branch,512,0.00,LN;SH,,ipv4,US,1.000,,,
+146814,"HKUST-GZ Hong Kong University of Science and Technology, Dongchung Town",512,0.00,,,ipv4,HK,1.000,,,
+149304,"SQNTCL-AS-AP Shenzhen Qiyi Network Technology Co., Ltd.",512,0.00,GD,,ipv4,KR,1.000,,,
+151247,HSDC-CN HSBC Software Development Guangdong Limited Shanghai Branch,512,0.00,SH;GD,,ipv4,SH,1.000,,,
+151277,"CBINET China Broadcast Network International Co.,Ltd",512,0.00,,,ipv4,HK,1.000,,,
+152092,HACCTCL-AS-AP Henan Angran Cloud Computing Technology Co. Ltd,512,0.00,HA,,ipv4,HA,1.000,,,
+7609,MSMSL-AS-AP Morgan Stanley Management Service Shanghai Limited,256,0.00,SH,,ipv4,SH,1.000,,,
+7653,MSMSL-AS-AP Morgan Stanley Management Service Shanghai Limited,256,0.00,SH,,ipv4,BJ,1.000,,,
+10981,EDUSOL,256,0.00,,,ipv4,BJ,1.000,,,
+17442,CHINANETCENTER-AP Internet Service Provider in China,256,0.00,,,ipv4,BJ,1.000,,,
+17776,CHINAENTERCOM China Enterprise ICT Solutions Limited,256,0.00,,,ipv4,BJ,1.000,,,
+23851,"CNNIC-CQCNC-AP CHONGQING CNC BROADBAND NETWORKS CO.,LTD",256,0.00,CQ,,ipv4,SC,1.000,,,
+24415,CNNIC-JXBTIN-AP Jiangxi Broadcasting and TV information Network,256,0.00,JX,JX,ipv4,JX,1.000,,,1.000
+51928,DWX-NET,256,0.00,,,ipv4,GB,1.000,,,
+59034,"WISHNET BeiJing Wish Network Technology CO.,LTD.",256,0.00,BJ,,ipv4,BJ,1.000,,,
+63571,"GWLINK Shenzhen cyberlink Century Investment Co., Ltd.",256,0.00,GD,,ipv4,BJ,1.000,,,
+131541,ERX-NASDA-ASN - ERX-NASDA-ASN,256,0.00,,,ipv4,GZ,1.000,,,
+133194,CHTLC-AS Connections Hub Technology Shanghai Ltd. Company,256,0.00,SH,,ipv4,SH,1.000,,,
+134169,"CERNEWTECHRES-AS-CN CERNEWTECH Beijing co.,LTD",256,0.00,BJ,,ipv4,BJ,1.000,,,
+137795,"SULIAN-IDC002 Hangzhou Sulian Information Technology Co.,ltd",256,0.00,ZJ,,ipv4,ZJ,1.000,,,
+139018,CHINANET-HENAN-LUOYANG-IDC Henan Luoyang IDC,256,0.00,HA,HA,ipv4,HA,1.000,,,1.000
+139122,BMAC BEIJING MUNICIPAL ADMINISTRATION COMMUNICATION CARD CO..LTD,256,0.00,BJ,,ipv4,BJ,1.000,,,
+139183,TRLCNET Thomson Reuters Beijing Technology Development Co. Ltd,256,0.00,BJ,,ipv4,BJ,1.000,,,
+139743,"SHENZHENSHIFANGTEC-AS-CN Shen Zhen Shi Fang Technology Co., Limited",256,0.00,GD,,ipv4,JP,1.000,,,
+139799,"BDIITCL-AS-AP Beijing Dajia Internet Information Technology Co., Ltd.",256,0.00,BJ,,ipv4,BR,1.000,,,
+146813,SUIJI Shanghai Suiji Networks Tech. Co. Ltd.,256,0.00,SH,,ipv4,FI,1.000,,,
+146822,CHINANET-XINFU Shenzhenshi Zhongyun Shujujishu Youxiangongsi,256,0.00,GD;SN,,ipv4,GD,1.000,,,
+147008,DIANJIANG-AS-AP Shenzhen Dianjiang Technology Co Ltd,256,0.00,GD,,ipv4,GD,1.000,,,
+148982,BQIT-AS-AP Bijie Qiulin Information Technology,256,0.00,,,ipv4,HK,1.000,,,
+149464,CHINANET-GANSU-JIAYUGUAN-5G-MAN-NETWORK CHINATELECOM Gansu province Jiayuguan 5G MAN network,256,0.00,GS,GS,ipv4,GS,1.000,,,1.000
+149511,"YNCL-AS-AP Yamu Technologies Co., Ltd.",256,0.00,,,ipv4,SH,1.000,,,
+151231,GC-INFOTECH GOOGLE CHINA INFOTECH OU,256,0.00,,,ipv4,BJ,1.000,,,
+151245,AS151245-30 - China Internet Network Information Center,256,0.00,,,ipv4,SH,1.000,,,
+151257,CITICORP-CHINA Citigroup Services and Technology China Limited,256,0.00,,,ipv4,SH,1.000,,,
+151284,AS151284-69 - China Internet Network Information Center,256,0.00,,,ipv4,BJ,1.000,,,
+151640,QINGYETECHNOLOGY-AS-AP Bengbu Qingye Technology,256,0.00,,,ipv4,AH,1.000,,,
+198588,TUNGSTEN,256,0.00,,,ipv4,FR,1.000,,,
+211265,MYNETWORK-AS,256,0.00,,,ipv4,JP,1.000,,,
+213625,CXLNET,256,0.00,,,ipv4,GD,1.000,,,
+218515,SHENFENG-CHEN - Shenfeng Chen,256,0.00,,,ipv4,HK,1.000,,,
+219324,GUOLIN-AS - LI GUOLIN,256,0.00,,,ipv4,DE,1.000,,,
