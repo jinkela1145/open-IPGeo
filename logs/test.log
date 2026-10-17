@@ -1,0 +1,10 @@
+?   	github.com/jinkela1145/open-IPGeo/cmd/egeo	[no test files]
+ok  	github.com/jinkela1145/open-IPGeo/internal/build	0.672s
+?   	github.com/jinkela1145/open-IPGeo/internal/config	[no test files]
+ok  	github.com/jinkela1145/open-IPGeo/internal/fetch	0.026s
+ok  	github.com/jinkela1145/open-IPGeo/internal/geo	0.004s
+ok  	github.com/jinkela1145/open-IPGeo/internal/iprange	0.021s
+ok  	github.com/jinkela1145/open-IPGeo/internal/pipeline	0.089s
+ok  	github.com/jinkela1145/open-IPGeo/internal/sources	0.012s
+?   	github.com/jinkela1145/open-IPGeo/internal/testutil	[no test files]
+?   	github.com/jinkela1145/open-IPGeo/internal/verify	[no test files]
