@@ -139,6 +139,8 @@ APNIC Whois Database Acceptable Use Agreement（APNIC whois 和 RDAP 结果里�
 
 所以不从 `inet6num` 的 `netname` / `descr` 推省份，也不用 whois 里的高校名称给教育网定位。出处：<https://www.apnic.net/manage-ip/using-whois/bulk-access/copyright/>
 
+仓库主人 2026-10 向 APNIC 询问过能否只把 `netname` / `descr` 里的省份当作线索、不再发布任何对象。APNIC 回复：用 whois 数据推断地理位置一般不被允许，这种用法 "would not normally be considered an approved use"。另外，APNIC 正在讨论的政策提案 prop-173（"Copyright and Acceptable Use Terms for APNIC Directory Services"）把 "using directory data to infer or represent the geographic location of an address, network, organisation, or individual" 列为禁止用途：<https://www.apnic.net/wp-content/uploads/2026/08/prop-173-v001.txt>
+
 ### ip2region
 
 - 代码协议 `Apache-2.0 OR MIT`。

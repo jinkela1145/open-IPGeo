@@ -14,14 +14,14 @@
 | `OpenIPGeo-City-Lite.mmdb` | 地图精简版：国家、取整后的坐标、精度半径、网络类型标记 |
 | `OpenIPGeo-City-Lite.mmdb.gz` | 精简版的 gzip 压缩包，解压后和上一个文件一模一样 |
 
-固定下载地址（第一次发布之后可用）：
+固定下载地址（始终指向最新一版）：
 
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City.mmdb`
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb`
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb.gz`
 - jsDelivr 加速：`https://cdn.jsdelivr.net/gh/jinkela1145/open-IPGeo@release/OpenIPGeo-City-Lite.mmdb.gz`
 
-jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版的压缩包；完整版和未压缩的精简版请从 Releases 下载。每个文件都附带 `.sha256`。`manifest.json` 记录每个上游的版本、哈希和各层的覆盖情况，`ACCURACY.md` 记录中国 IPv4 / IPv6 的覆盖率和地区层的修正量。
+jsDelivr 只分发 20 MB 以内的文件，所以加速地址只提供精简版的压缩包；完整版和未压缩的精简版请从 Releases 下载。Releases 只保留最近 30 版，需要固定某一版请自己留一份。每个文件都附带 `.sha256`。`manifest.json` 记录每个上游的版本、哈希和各层的覆盖情况，`ACCURACY.md` 记录中国 IPv4 / IPv6 的覆盖率和地区层的修正量。
 
 ## 数据从哪来
 

@@ -14,14 +14,14 @@ An open-source IP geolocation database that is safe to redistribute, rebuilt dai
 | `OpenIPGeo-City-Lite.mmdb` | Map edition: country, rounded coordinates, accuracy radius and network flags |
 | `OpenIPGeo-City-Lite.mmdb.gz` | The Lite edition, gzip-compressed; identical after decompression |
 
-Stable URLs (available after the first release):
+Stable URLs (always the newest release):
 
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City.mmdb`
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb`
 - `https://github.com/jinkela1145/open-IPGeo/releases/latest/download/OpenIPGeo-City-Lite.mmdb.gz`
 - jsDelivr: `https://cdn.jsdelivr.net/gh/jinkela1145/open-IPGeo@release/OpenIPGeo-City-Lite.mmdb.gz`
 
-jsDelivr only serves files up to 20 MB, so the CDN URL carries the compressed Lite edition; get the full edition and the uncompressed Lite edition from Releases. Every file comes with a `.sha256` file. `manifest.json` records the version and hash of every upstream file and per-layer statistics; `ACCURACY.md` reports coverage of the address space delegated to China and what the regional layer changed.
+jsDelivr only serves files up to 20 MB, so the CDN URL carries the compressed Lite edition; get the full edition and the uncompressed Lite edition from Releases. Only the 30 newest releases are kept; save a copy if you need to pin a version. Every file comes with a `.sha256` file. `manifest.json` records the version and hash of every upstream file and per-layer statistics; `ACCURACY.md` reports coverage of the address space delegated to China and what the regional layer changed.
 
 ## Sources and merge order
 
