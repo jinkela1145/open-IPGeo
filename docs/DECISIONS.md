@@ -28,4 +28,5 @@
 | 2026-10-07 | 对象里的地名只按整词匹配、长名优先；写了两个及以上地区的对象不用；莫斯科市的名字多半是地址，不当依据，和莫斯科州一起出现时整条不用；补充拼写和城市名放在 `data/ru_place_names.csv`，有歧义的词（Altai、Vladimir 等）在表里标 "-" | 宁可少改也不改错：这一层只动 DB-IP 放在莫斯科市或没有地区的地址 |
 | 2026-10-07 | 暂不向 APNIC 申请用 whois 推中国的省份 | APNIC 条款明文写 "you cannot use the database to map IP address to geographic location"，和 RIPE 当初只是含糊不同；要不要去问由仓库主人决定 |
 | 2026-10-13 | 确定不用 APNIC whois 推中国的省份，中国继续只用省公司 ASN 层 | 仓库主人问过 APNIC，回复是这种用法通常不会被认可；正在讨论的提案 prop-173 也把用目录数据推断地理位置列为禁止用途（见 SOURCES.md） |
+| 2026-10-21 | `manifest.json` 去掉 `unmatched_subdivisions` 字段；转载上游原始文字的核对清单（认不出的地区名、AS 名称候选表）不再推到公开的 ci-reports 分支，只留在每次构建的 Actions 产物里（保留 7 天） | manifest 会随 Release 发布，ci-reports 谁都能看；这些清单只给维护者补别名、核对 ASN 用，没必要公开转载上游文字；仓库主人同意 |
 | 2026-10-21 | 第一次正式发布：先手动发布一版，核对下载和内容后再打开 `PUBLISH_ENABLED`；Releases 只留最新 30 个，更早的连同 tag 一起删 | 仓库主人的决定；按数量保留，构建坏一段时间也不会把旧版删光 |

@@ -156,8 +156,10 @@ type Stats struct {
 	CNCoverageIPv4 CoverageReport `json:"cn_coverage_ipv4"`
 	CNCoverageIPv6 CoverageReport `json:"cn_coverage_ipv6"`
 	// UnmatchedSubdivisions counts DB-IP subdivision names of countries
-	// with a region table that match no row, per country.
-	UnmatchedSubdivisions map[string]map[string]int `json:"unmatched_subdivisions,omitempty"`
+	// with a region table that match no row, per country. The names are
+	// upstream text for maintainers; they go to a report file in the build
+	// artifact, not into the published manifest.
+	UnmatchedSubdivisions map[string]map[string]int `json:"-"`
 	// LiteAggregation reports the Lite block aggregation per family
 	// ("ipv4", "ipv6").
 	LiteAggregation map[string]LiteAggStats `json:"lite_aggregation,omitempty"`

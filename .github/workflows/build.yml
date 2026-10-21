@@ -5,7 +5,8 @@
 #   Variables). Until then they are dry runs.
 # - Pushes to main and manual runs are dry runs unless "publish" is ticked.
 # - Every run that builds pushes its reports (no databases) to the ci-reports
-#   branch so maintainers can read them without downloading artifacts.
+#   branch so maintainers can read them without downloading artifacts. Review
+#   lists that repeat upstream text stay in the artifact only.
 name: build
 
 on:
@@ -187,6 +188,9 @@ jobs:
           branch=$(jq -r '.release.reports_branch // "ci-reports"' config.json)
           mkdir -p ../reports-out
           cp -r dist/manifest.json dist/ACCURACY.md dist/warnings.txt dist/reports dist/logs ../reports-out/ 2>/dev/null || true
+          # Review lists that repeat upstream text (AS names, unrecognised
+          # place names) stay in the run's artifact only.
+          rm -f ../reports-out/reports/unmatched_*.csv ../reports-out/reports/*_asn_candidates.csv
           {
             echo "# Build report"
             echo

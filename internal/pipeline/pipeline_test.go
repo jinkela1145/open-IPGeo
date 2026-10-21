@@ -416,6 +416,8 @@ func TestEndToEnd(t *testing.T) {
 	}
 	if b, err := os.ReadFile(filepath.Join(out, "manifest.json")); err != nil || strings.Contains(string(b), fx.gf.URL) {
 		t.Errorf("manifest.json must not contain geofeed URLs (%v)", err)
+	} else if strings.Contains(string(b), "Krasnodarskiy Kray") || strings.Contains(string(b), "Atlantis") {
+		t.Error("manifest.json must not repeat unrecognised upstream place names")
 	}
 	if b, err := os.ReadFile(filepath.Join(out, "reports", "unmatched_ru_subdivisions.csv")); err != nil || !strings.Contains(string(b), "Krasnodarskiy Kray,") {
 		t.Errorf("unmatched RU subdivisions report: %v %q", err, b)
