@@ -1,0 +1,32 @@
+08:29:26 egeo: RIPE layer: 5706592 objects (map[RU:193755] covered), whois hints map[RU:46651], geofeeds 431 referenced / 351 read, entries 43088: accepted map[RU:8716], country only 101, other country 3807, outside the object 30454, bad lines 7410
+08:29:26 egeo: building OpenIPGeo-City.mmdb
+08:30:14 egeo: building OpenIPGeo-City-Lite.mmdb
+08:30:28 egeo: full: OpenIPGeo-City.mmdb 177.1 MB, 7922897 ranges
+08:30:28 egeo: lite: OpenIPGeo-City-Lite.mmdb 29.2 MB, 3340088 ranges
+08:30:28 egeo: lite_gz: OpenIPGeo-City-Lite.mmdb.gz 16.2 MB, 3340088 ranges
+08:30:28 egeo: lite ipv4: /24 blocks, 2725086 -> 2656116 ranges, 226842 blocks merged, 15270 split blocks kept, 0.30% of addresses moved
+08:30:28 egeo: lite ipv6: /40 blocks, 3154399 -> 683972 ranges, 272429 blocks merged, 15949 split blocks kept, 0.00% of addresses moved
+08:30:28 egeo: build done in 1m18s
+	Command being timed: "go run ./cmd/egeo build -version 2026.10.31"
+	User time (seconds): 103.07
+	System time (seconds): 4.01
+	Percent of CPU this job got: 137%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:18.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7115460
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 2191994
+	Voluntary context switches: 43843
+	Involuntary context switches: 6492
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 683760
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
