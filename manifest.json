@@ -1,0 +1,366 @@
+{
+  "name": "OpenIPGeo",
+  "version": "2026.11.07",
+  "build_epoch": 1794032825,
+  "built_at": "2026-11-07T08:50:22Z",
+  "builder_version": "3",
+  "fingerprint": "f2d1190b89e9a6c5a926dd81765a0a14fe1c12e87448856e203957c851016249",
+  "sources": {
+    "apnic_delegated": {
+      "url": "https://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest",
+      "etag": "\"6aedeef5-8dda70\"",
+      "last_modified": "Fri, 06 Nov 2026 15:15:01 GMT",
+      "sha256": "d7ef4ca31a7b77fa835cdb9109aa2e15aa0a321da9269f203ce3946520436eb8",
+      "size": 9296496,
+      "fetched_at": "2026-11-07T08:47:15Z"
+    },
+    "aws": {
+      "url": "https://ip-ranges.amazonaws.com/ip-ranges.json",
+      "version": "2026-11-07-06-27-05",
+      "etag": "\"c9c6e1ed5c4d25224a9eafa62f4976a5\"",
+      "last_modified": "Sat, 07 Nov 2026 08:28:07 GMT",
+      "sha256": "ceab0c0f5ad9b769e1fd54b2477129a4b0bf21c56ea591b66d7b687d0a880c9d",
+      "size": 2753162,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "azure": {
+      "url": "https://download.microsoft.com/download/7/1/d/71d86715-5596-4529-9b13-da13a5de5b63/ServiceTags_Public_20261102.json",
+      "version": "425",
+      "etag": "\"0x5440940854C86764455EA05016EB357E47D72D954EE6D80C00BB8253046652AB\"",
+      "last_modified": "Tue, 03 Nov 2026 13:53:15 GMT",
+      "sha256": "b6804f5c4475e598f416a9d591a507bf57b7051849eb7333137cba1a11498f08",
+      "size": 4570790,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "azure_page": {
+      "url": "https://www.microsoft.com/en-us/download/details.aspx?id=56519",
+      "sha256": "fb7f3a92598ae1bc8bd26a04d1e92ad60e8ab6a1fb48075688658600d8ce7fd7",
+      "size": 128473,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "cloudflare_v4": {
+      "url": "https://www.cloudflare.com/ips-v4/",
+      "last_modified": "Sat, 07 Nov 2026 07:07:07 GMT",
+      "sha256": "f02c6d83bc01ab0ae8577160e036d700c7455359bce054df884e5d7d9e4e9e7b",
+      "size": 230,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "cloudflare_v6": {
+      "url": "https://www.cloudflare.com/ips-v6/",
+      "last_modified": "Fri, 06 Nov 2026 09:18:04 GMT",
+      "sha256": "9e9d39e3e83bad00c4decafd53c63fa62029f3d95db68de937d2be28234ca0a9",
+      "size": 104,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "dbip_city": {
+      "url": "https://download.db-ip.com/free/dbip-city-lite-2026-11.mmdb.gz",
+      "version": "2026-11",
+      "etag": "\"6ae6ed32-395709f\"",
+      "last_modified": "Sun, 01 Nov 2026 07:41:38 GMT",
+      "sha256": "b69c625515f636ac92112b71df26bb92a5748f648c79bad124ecd9ba1c97bf4a",
+      "size": 60125343,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "fastly": {
+      "url": "https://api.fastly.com/public-ip-list",
+      "sha256": "b5e8800ff76c2a8fdcedb7d9b27f23b6cb3158034b157540e594651d42b60bc6",
+      "size": 451,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "gcp": {
+      "url": "https://www.gstatic.com/ipranges/cloud.json",
+      "version": "2026-11-07T00:11:44.610936",
+      "last_modified": "Sat, 07 Nov 2026 08:18:00 GMT",
+      "sha256": "89c8d458896ff2d88fd740f6b84a699326cb119d68a40b7cd65942b4802f2b8e",
+      "size": 117975,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "iptoasn": {
+      "url": "https://iptoasn.com/data/ip2asn-combined.tsv.gz",
+      "etag": "\"6ae708aa-a72abe\"",
+      "last_modified": "Sun, 01 Nov 2026 09:38:50 GMT",
+      "sha256": "1634a0e449f3ee11088bba85493447a51007b44dff3ac18328f1f2d9127c0a9e",
+      "size": 10955454,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "oracle": {
+      "url": "https://docs.oracle.com/iaas/tools/public_ip_ranges.json",
+      "version": "2026-10-28T02:47:53.012304",
+      "etag": "\"6ae1682d-39cf3\"",
+      "last_modified": "Wed, 28 Oct 2026 03:12:45 GMT",
+      "sha256": "c070ef9ff7bea6d63e56e19578d083ffbdbd535c1344d6b74d36d23cce2cd228",
+      "size": 236787,
+      "fetched_at": "2026-11-07T08:47:11Z"
+    },
+    "ripe_inet6num": {
+      "url": "https://ftp.ripe.net/ripe/dbase/split/ripe.db.inet6num.gz",
+      "etag": "\"6aee60e2-2a6ba18\"",
+      "last_modified": "Fri, 06 Nov 2026 23:21:06 GMT",
+      "sha256": "d0abf786c1e3261c7d7b0b8bc67497b019540c71c49273634efdfe3a1f508230",
+      "size": 44481048,
+      "fetched_at": "2026-11-07T08:47:25Z"
+    },
+    "ripe_inetnum": {
+      "url": "https://ftp.ripe.net/ripe/dbase/split/ripe.db.inetnum.gz",
+      "etag": "\"6aee60e2-d55000d\"",
+      "last_modified": "Fri, 06 Nov 2026 23:21:06 GMT",
+      "sha256": "f004503a5604718ab2a48e2586f63bc87747f3a2fdc83a64ecafeaf15e2b60f9",
+      "size": 223674381,
+      "fetched_at": "2026-11-07T08:47:23Z"
+    }
+  },
+  "layers": {
+    "anycast_asns": 3,
+    "asn_ranges": 500337,
+    "cn_asn_province": 314,
+    "cn_cities": 0,
+    "cn_provinces": 31,
+    "dbip_networks": 14288137,
+    "dbip_records": 561356,
+    "flags_aws": 17801,
+    "flags_azure": 22892,
+    "flags_cloudflare_v4": 15,
+    "flags_cloudflare_v6": 7,
+    "flags_curated": 9,
+    "flags_fastly": 24,
+    "flags_gcp": 1153,
+    "flags_oracle": 1118,
+    "overrides": 0,
+    "ripe_geofeed_entries_ru": 8784,
+    "ripe_geofeeds_read": 353,
+    "ripe_objects": 5725054,
+    "ripe_objects_ru": 193868,
+    "ripe_whois_hints_ru": 46653,
+    "ru_asn_region": 159,
+    "ru_regions": 83
+  },
+  "outputs": {
+    "full": {
+      "file": "OpenIPGeo-City.mmdb",
+      "database_type": "OpenIPGeo-City",
+      "size": 178276059,
+      "sha256": "55801830832f66026699ceb1e934f73b65d5c1496dec08d556605f5c98773536",
+      "record_size": 32,
+      "ranges": 7908702
+    },
+    "lite": {
+      "file": "OpenIPGeo-City-Lite.mmdb",
+      "database_type": "OpenIPGeo-City-Lite",
+      "size": 29410148,
+      "sha256": "320aea1e254a021538cbd37c9b62b13be83edda2dd18a2a398133e68c41dab28",
+      "record_size": 24,
+      "ranges": 3361775
+    },
+    "lite_gz": {
+      "file": "OpenIPGeo-City-Lite.mmdb.gz",
+      "database_type": "OpenIPGeo-City-Lite",
+      "size": 16260251,
+      "sha256": "71e4ad5beee97d794b46cf538609d5f964c828a8857481c2f870897327bd3e04",
+      "record_size": 24,
+      "ranges": 3361775,
+      "compression": "gzip"
+    }
+  },
+  "stats": {
+    "ipv4": {
+      "unit": "addresses",
+      "ranges": 3683809,
+      "total": 3702258680,
+      "by_source": {
+        "bgp-asn": 3899350,
+        "dbip": 3697514863,
+        "geofeed": 11484,
+        "whois": 832983
+      },
+      "anycast": 1959680,
+      "cdn": 14736217,
+      "cloud": {
+        "aws": 102043817,
+        "azure": 65450331,
+        "gcp": 19385984,
+        "oracle": 4483082
+      },
+      "with_asn": 3133671387,
+      "asn_region_layer": {
+        "CN": {
+          "agree": 49280515,
+          "conflict": 1119826,
+          "corrected": 3748971,
+          "filled": 256
+        },
+        "RU": {
+          "agree": 3601812,
+          "conflict": 471041,
+          "corrected": 150123,
+          "filled": 0
+        }
+      },
+      "geofeed_region_layer": {
+        "RU": {
+          "agree": 3473318,
+          "conflict": 426596,
+          "corrected": 11484,
+          "filled": 0
+        }
+      },
+      "whois_region_layer": {
+        "RU": {
+          "agree": 7853630,
+          "conflict": 863016,
+          "corrected": 832983,
+          "filled": 0
+        }
+      }
+    },
+    "ipv6": {
+      "unit": "/48",
+      "ranges": 4224893,
+      "total": 35180043501568,
+      "by_source": {
+        "bgp-asn": 16375455.996,
+        "dbip": 35180026192285.926,
+        "geofeed": 4454,
+        "whois": 929372.079
+      },
+      "anycast": 921410,
+      "cdn": 19330450.258,
+      "cloud": {
+        "aws": 1449799.711,
+        "azure": 8769.479,
+        "gcp": 1493
+      },
+      "with_asn": 11385347579.004,
+      "asn_region_layer": {
+        "CN": {
+          "agree": 28629853,
+          "conflict": 11,
+          "corrected": 15784869,
+          "filled": 3
+        },
+        "RU": {
+          "agree": 2816281.004,
+          "conflict": 1294337,
+          "corrected": 590583.996,
+          "filled": 0
+        }
+      },
+      "geofeed_region_layer": {
+        "RU": {
+          "agree": 12240197,
+          "conflict": 1114235,
+          "corrected": 4454,
+          "filled": 0
+        }
+      },
+      "whois_region_layer": {
+        "RU": {
+          "agree": 3834991.082,
+          "conflict": 70703.832,
+          "corrected": 929372.079,
+          "filled": 0
+        }
+      }
+    },
+    "cn_coverage_ipv4": {
+      "unit": "addresses",
+      "delegated": 342940416,
+      "percent": {
+        "cn_asn_agree": 14.369,
+        "cn_asn_conflict": 0.327,
+        "cn_asn_corrected": 1.093,
+        "cn_asn_filled": 0,
+        "cn_city": 98.228,
+        "cn_country_only": 0,
+        "cn_source_bgp_asn": 1.093,
+        "cn_source_dbip": 98.228,
+        "cn_source_override": 0,
+        "cn_subdivision_only": 1.093,
+        "country_cn": 99.321,
+        "in_database": 100
+      },
+      "top_countries_percent": {
+        "CN": 99.321,
+        "DE": 0.168,
+        "HK": 0.137,
+        "SG": 0.116,
+        "US": 0.082
+      }
+    },
+    "cn_coverage_ipv6": {
+      "unit": "/48",
+      "delegated": 4491771977,
+      "percent": {
+        "cn_asn_agree": 0.637,
+        "cn_asn_conflict": 0,
+        "cn_asn_corrected": 0.351,
+        "cn_asn_filled": 0,
+        "cn_city": 99.62,
+        "cn_country_only": 0,
+        "cn_source_bgp_asn": 0.351,
+        "cn_source_dbip": 99.62,
+        "cn_source_override": 0,
+        "cn_subdivision_only": 0.351,
+        "country_cn": 99.971,
+        "in_database": 100
+      },
+      "top_countries_percent": {
+        "AU": 0.003,
+        "CN": 99.971,
+        "HK": 0.022,
+        "JP": 0.001,
+        "US": 0.002
+      }
+    },
+    "lite_aggregation": {
+      "ipv4": {
+        "prefix_len": 24,
+        "runs_before": 2715081,
+        "runs_after": 2646691,
+        "merged_blocks": 226909,
+        "kept_blocks": 12280,
+        "moved_percent": 0.304
+      },
+      "ipv6": {
+        "prefix_len": 40,
+        "runs_before": 3183445,
+        "runs_after": 715084,
+        "merged_blocks": 279966,
+        "kept_blocks": 16299,
+        "moved_percent": 0
+      }
+    }
+  },
+  "lite_max_size_mb": 20,
+  "ripe": {
+    "stats": {
+      "objects": 5725054,
+      "country_objects": {
+        "RU": 193868
+      },
+      "whois_hints": {
+        "RU": 46653
+      },
+      "geofeed_urls": 437,
+      "geofeeds_read": 353,
+      "geofeed_unreadable": 0,
+      "geofeed_entries": 43943,
+      "geofeed_accepted": {
+        "RU": 8784
+      },
+      "geofeed_country_only": 102,
+      "geofeed_other_country": 3806,
+      "geofeed_no_country": 10,
+      "geofeed_outside_object": 31241,
+      "geofeed_bad_lines": 7263
+    },
+    "geofeeds": {
+      "referenced": 437,
+      "downloaded": 99,
+      "not_modified": 242,
+      "reused": 12,
+      "failed": 84,
+      "sha256": "66cc28ec0ad48d6361f2622ee38bb29aa7a68c99ab9b9a5e9085f60e205d89d8"
+    }
+  },
+  "benchmark": null
+}
